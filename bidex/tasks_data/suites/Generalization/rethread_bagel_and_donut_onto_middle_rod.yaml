@@ -1,0 +1,118 @@
+name: rethread_bagel_and_donut_onto_middle_rod
+language: Move the bagel from the left rod to the middle rod, then the donut from
+  the right rod to the middle rod.
+subtasks:
+- name: Left arm lifts the bagel off the left rod
+  score: 25
+- name: Left arm re-threads the bagel onto the middle rod
+  score: 25
+- name: Right arm lifts the donut off the right rod
+  score: 25
+- name: Right arm re-threads the donut onto the middle rod
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+ordered_subtasks: true
+regions:
+  rack_zone:
+    center:
+    - 0.05
+    - 0.0
+    - 0.8
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - 0.0
+    - 0.01
+    rest_on_surface: true
+  bagel_zone:
+    target: obj1_root
+    center:
+    - 0.0
+    - -0.15
+    - 0.04
+    xy_range:
+    - 0.001
+    - 0.001
+    yaw_range:
+    - -3.14
+    - 3.14
+  donut_zone:
+    target: obj1_root
+    center:
+    - 0.0
+    - 0.15
+    - 0.04
+    xy_range:
+    - 0.001
+    - 0.001
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: threading_rod_triple
+  region: rack_zone
+  scale: 1
+  freejoint: true
+  mass: 200
+- name: rc/objaverse/bagel/bagel_4
+  region: bagel_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/donut/donut_10
+  region: donut_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+# The two "lift off the rod" subtasks are interchangeable (either arm first):
+# they share order_group "lift" so they do NOT gate each other. The two
+# "re-thread onto the middle rod" inside subtasks ARE ordered -- bagel_4 must be
+# re-threaded BEFORE donut_10 (no order_group -> strict declaration order). With
+# the lifts grouped & declared first, both lifts latch (in any order) before
+# either inside becomes eligible, then inside(bagel) latches, then inside(donut).
+# NO `upright` on the re-thread subtasks: a bagel/donut threaded onto a HORIZONTAL
+# rod hangs with its disk plane VERTICAL (local-z horizontal) -- `upright` reads
+# False there and falsely failed a correctly-threaded bagel. inside(on the middle
+# rod) is the only orientation-independent check needed; threshold 0.025 (a touch
+# wider than 0.015 to absorb the bagel's hole-radius offset on the rod).
+- type: lifted
+  args:
+  - rc/objaverse/bagel/bagel_4
+  subtask: Left arm lifts the bagel off the left rod
+  order_group: lift
+- type: lifted
+  args:
+  - rc/objaverse/donut/donut_10
+  subtask: Right arm lifts the donut off the right rod
+  order_group: lift
+- type: inside
+  args:
+  - rc/objaverse/bagel/bagel_4
+  - threading_rod_triple
+  subtask: Left arm re-threads the bagel onto the middle rod
+  threshold: 0.025
+  must_hold: true
+- type: inside
+  args:
+  - rc/objaverse/donut/donut_10
+  - threading_rod_triple
+  subtask: Right arm re-threads the donut onto the middle rod
+  threshold: 0.025
+  must_hold: true
+obj_of_interest:
+- threading_rod_triple
+- rc/objaverse/bagel/bagel_4
+- rc/objaverse/donut/donut_10

@@ -1,0 +1,116 @@
+name: place_condiments_on_tray
+language: Place the salt and pepper shaker, mustard, and bbq sauce on the tray.
+subtasks:
+- name: Pick up the salt and pepper shaker
+  score: 20
+- name: Place the salt and pepper shaker on the tray
+  score: 20
+- name: Place the mustard on the tray
+  score: 30
+- name: Place the bbq sauce on the tray
+  score: 30
+robot_type: astribot_s1_fixed_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - 0.0
+  - 0.0
+  quat:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+regions:
+  salt_and_pepper_shaker_zone:
+    center:
+    - 0.25
+    - -0.15
+    - 0.8775
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+  mustard_zone:
+    center:
+    - 0.25
+    - 0.15
+    - 0.8775
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+  bbq_sauce_zone:
+    center:
+    - 0.55
+    - -0.15
+    - 0.8775
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+  tray_zone:
+    center:
+    - 0.55
+    - 0.15
+    - 0.8775
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: salt_and_pepper_shaker
+  region: salt_and_pepper_shaker_zone
+- name: mustard
+  region: mustard_zone
+- name: bbq_sauce
+  region: bbq_sauce_zone
+- name: tray
+  region: tray_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - salt_and_pepper_shaker
+  subtask: Pick up the salt and pepper shaker
+# inside_box (NOT circular `on`): the tray is a long rectangular slab (~0.13 x
+# 0.22 m footprint); the old `on` radius 0.08 was too tight, so a bottle at the
+# tray edge (or tilted/reclined toward the end) read off -- and a tilted mustard
+# placed in the tray was missed. inside_box uses the tray's own box footprint
+# (x/y half-extents + 0.02 margin), so any bottle resting anywhere on the tray
+# (upright OR tilted) latches, and one off the tray does not. must_hold keeps it
+# on the tray at the final frame.
+- type: inside_box
+  args:
+  - salt_and_pepper_shaker
+  - tray
+  threshold: 0.02
+  subtask: Place the salt and pepper shaker on the tray
+  must_hold: true
+- type: inside_box
+  args:
+  - mustard
+  - tray
+  threshold: 0.02
+  subtask: Place the mustard on the tray
+  must_hold: true
+- type: inside_box
+  args:
+  - bbq_sauce
+  - tray
+  threshold: 0.02
+  subtask: Place the bbq sauce on the tray
+  must_hold: true
+obj_of_interest:
+- salt_and_pepper_shaker
+- mustard
+- bbq_sauce
+- tray

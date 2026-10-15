@@ -1,0 +1,119 @@
+name: stand_two_wine_bottles_upright
+language: Pick up the two wine bottles lying on their sides and stand them upright on the table.
+subtasks:
+- name: Pick up the first wine bottle
+  score: 25
+- name: Stand the first wine bottle upright
+  score: 25
+- name: Pick up the second wine bottle
+  score: 25
+- name: Stand the second wine bottle upright
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Two free `wine` instances (wine_2 / wine_3) from the previously-UNTOUCHED
+# `wine` family. A wine bottle is a tall slim cylinder (reg_bbox half 0.018 x
+# 0.019 x 0.095; scale 1.5 -> half-length 0.1425 m, ~28.5 cm tall x 5.7 cm
+# wide). Each spawns LYING ON ITS SIDE via `spawn_quat` (90 deg about x lays the
+# bottle's long/local-z axis horizontal) with a random yaw, free-jointed so it
+# settles stably on its cylindrical body. This is the UPRIGHT archetype: the
+# bottles start tipped over and must be stood up. (Was a three-bottle task; the
+# third bottle -- wine_4 -- was removed and the task renamed.)
+#
+# `upright(bottle, 0.6)` is the gate -- it reads the body xmat and checks the
+# bottle's local z-axis points within 0.6 (~53 deg) of world up. A bottle lying
+# on its side has local-z horizontal -> dot ~ 0 < 0.6 -> RED at spawn; a bottle
+# stood on its base has local-z up -> dot ~ 1 > 0.6 -> GREEN. `lifted` precedes
+# each stand so the subtask latches only once the bottle is actually handled.
+# `must_hold: true` rejects a bottle that fell back over by the final frame.
+#
+# The TWO bottle spawn regions are random but never overlap. A lying bottle's
+# footprint reaches at most its half-length (0.1425 m) from its centre along the
+# (random yaw) long axis; for two bottles never to touch the centre separation
+# must stay > 2*0.1425 = 0.285 m even in the worst case. The two zones sit on a
+# diagonal -- b0 at (-0.18, 0.18), b1 at (0.18, -0.18), each xy 0.05 -> nominal
+# centre separation sqrt(0.36^2+0.36^2) = 0.509 m. Worst-case jitter (both
+# centres shift 0.05 m toward each other) closes them to 0.368 m, and worst-case
+# yaw (both long axes pointing along the line of centres) still leaves a
+# 0.368 - 2*0.1425 = 0.083 m gap between the bottles, so they never touch. Both
+# stay on the table (max extent 0.18 + 0.05 + 0.1425 = 0.37 m < 0.40 m
+# half-width).
+ordered_subtasks: true
+regions:
+  bottle0_zone:
+    center:
+    - 0.0
+    - 0.18
+    - 0.87
+    xy_range:
+    - 0.08
+    - 0.05
+    yaw_range:
+    - -0.3
+    - 0.3
+  bottle1_zone:
+    center:
+    - 0.18
+    - -0.18
+    - 0.87
+    xy_range:
+    - 0.08
+    - 0.05
+    yaw_range:
+    - 2.7
+    - 3.3
+objects:
+- name: rc/objaverse/wine/wine_2
+  region: bottle0_zone
+  scale: 1.8
+  freejoint: true
+  spawn_quat:
+  - 0.7071
+  - 0.7071
+  - 0
+  - 0
+- name: rc/objaverse/wine/wine_3
+  region: bottle1_zone
+  scale: 1.8
+  freejoint: true
+  spawn_quat:
+  - 0.7071
+  - 0.7071
+  - 0
+  - 0
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/wine/wine_2
+  subtask: Pick up the first wine bottle
+- type: upright
+  args:
+  - rc/objaverse/wine/wine_2
+  subtask: Stand the first wine bottle upright
+  threshold: 0.6
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/wine/wine_3
+  subtask: Pick up the second wine bottle
+- type: upright
+  args:
+  - rc/objaverse/wine/wine_3
+  subtask: Stand the second wine bottle upright
+  threshold: 0.6
+  must_hold: true
+obj_of_interest:
+- rc/objaverse/wine/wine_2
+- rc/objaverse/wine/wine_3

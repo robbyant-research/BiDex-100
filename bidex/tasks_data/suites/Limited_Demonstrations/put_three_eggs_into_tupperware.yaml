@@ -1,0 +1,108 @@
+# Auto-generated task. Pick up the three eggs one at a time and place them into the tupperware.
+name: put_three_eggs_into_tupperware
+language: Pick up the three eggs one at a time and place them into the tupperware.
+subtasks:
+- name: Place the item into the container
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+ordered_subtasks: true
+regions:
+  cont_zone:
+    center:
+    - -0.12
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.02
+    - 0.06
+    yaw_range:
+    - 0.0
+    - 0.01
+    rest_on_surface: true
+  it0_zone:
+    center:
+    - 0.25
+    - -0.2
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  it1_zone:
+    center:
+    - 0.22
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  it2_zone:
+    center:
+    - 0.22
+    - 0.25
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/lightwheel/tupperware/Tupperware028
+  region: cont_zone
+  freejoint: true
+  scale: 1.2
+- name: rc/objaverse/egg/egg_0
+  region: it0_zone
+  freejoint: true
+- name: rc/objaverse/egg/egg_1
+  region: it1_zone
+  freejoint: true
+- name: rc/objaverse/egg/egg_3
+  region: it2_zone
+  freejoint: true
+fixtures: []
+goal:
+- type: inside_contact
+  args:
+  - rc/objaverse/egg/egg_0
+  - rc/lightwheel/tupperware/Tupperware028
+  subtask: Place the item into the container
+  must_hold: true
+- type: inside_contact
+  args:
+  - rc/objaverse/egg/egg_1
+  - rc/lightwheel/tupperware/Tupperware028
+  subtask: Place the item into the container
+  must_hold: true
+- type: inside_contact
+  args:
+  - rc/objaverse/egg/egg_3
+  - rc/lightwheel/tupperware/Tupperware028
+  subtask: Place the item into the container
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/tupperware/Tupperware028
+- rc/objaverse/egg/egg_0
+- rc/objaverse/egg/egg_1
+- rc/objaverse/egg/egg_3

@@ -1,0 +1,157 @@
+name: arrange_three_bagels_in_oven_tray
+language: Pick up the three bagels one at a time and lay each flat in the oven tray so it rests within the tray.
+subtasks:
+- name: Pick up the first bagel
+  score: 10
+- name: Lay the first bagel in the oven tray
+  score: 20
+- name: Pick up the second bagel
+  score: 10
+- name: Lay the second bagel in the oven tray
+  score: 25
+- name: Pick up the third bagel
+  score: 10
+- name: Lay the third bagel in the oven tray
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Every object is from a previously-UNTOUCHED category: bagel_1/2/3 are free
+# instances (the breakfast task uses bagel_0) and OvenTray002 is a free instance
+# (the two-spoons / canned-food / strainer tasks use other OvenTray indices). An
+# oven tray is a flat ~0.40 x 0.28 m slab with low rims -- a heavy station
+# (freejoint + mass 200, rest_on_surface true so its flat underside sits on the
+# table, yaw pinned 0) as the fixed arrange target on the -x side; the three
+# ~10 cm bagels spawn free-jointed on the +x side in a y-column.
+#
+# `inside_box` (NOT contact-gated `inside_contact`, NOT circular `inside`) is the
+# gate here: a bagel counts as arranged only when its xy lies within the tray
+# subtree's BOX geom half-extents + margin (threshold 0.04 m). The tray's rim
+# defines a clear rectangular footprint, so the box-extent test is the natural
+# fit (it falls back to a circular test only if no box geoms are found). A bagel
+# left on the TABLE beside the tray is outside the footprint -> RED.
+# `must_hold: true` rejects a bagel that slid back off the tray by the final
+# frame.
+#
+# Region boxes are disjoint (separation in x between tray and bagels, separation
+# in y within the bagel column): tray x[-0.16,-0.08] y[-0.04,0.04] (xy 0.04);
+# bagels x[0.17,0.31] at y +/-{0.18,0.0,-0.18} (each xy 0.07 -> 0.14 wide).
+# tray-to-bagel ~0.33 m clear in x; bagel zones 0.18 m apart in y centre
+# (0.04 m gap between 0.14-wide boxes); the ~10 cm bagels never touch at spawn.
+regions:
+  tray_zone:
+    center:
+    - -0.12
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - 0.0
+    - 0.0
+    rest_on_surface: true
+  bg0_zone:
+    center:
+    - 0.24
+    - 0.18
+    - 0.85
+    xy_range:
+    - 0.07
+    - 0.07
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  bg1_zone:
+    center:
+    - 0.24
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.07
+    - 0.07
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  bg2_zone:
+    center:
+    - 0.24
+    - -0.18
+    - 0.85
+    xy_range:
+    - 0.07
+    - 0.07
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/lightwheel/oven_tray/OvenTray002
+  region: tray_zone
+  scale: 1
+  freejoint: true
+  mass: 200
+- name: rc/objaverse/bagel/bagel_1
+  region: bg0_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/bagel/bagel_2
+  region: bg1_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/bagel/bagel_3
+  region: bg2_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/bagel/bagel_1
+  subtask: Pick up the first bagel
+- type: inside_box
+  args:
+  - rc/objaverse/bagel/bagel_1
+  - rc/lightwheel/oven_tray/OvenTray002
+  subtask: Lay the first bagel in the oven tray
+  threshold: 0.04
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/bagel/bagel_2
+  subtask: Pick up the second bagel
+- type: inside_box
+  args:
+  - rc/objaverse/bagel/bagel_2
+  - rc/lightwheel/oven_tray/OvenTray002
+  subtask: Lay the second bagel in the oven tray
+  threshold: 0.04
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/bagel/bagel_3
+  subtask: Pick up the third bagel
+- type: inside_box
+  args:
+  - rc/objaverse/bagel/bagel_3
+  - rc/lightwheel/oven_tray/OvenTray002
+  subtask: Lay the third bagel in the oven tray
+  threshold: 0.04
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/oven_tray/OvenTray002
+- rc/objaverse/bagel/bagel_1
+- rc/objaverse/bagel/bagel_2
+- rc/objaverse/bagel/bagel_3

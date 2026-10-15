@@ -1,0 +1,85 @@
+name: insert_two_cubes_into_slot
+language: Insert two cubes into the slot.
+subtasks:
+- name: Insert cube A into the slot
+  score: 50
+- name: Insert cube B into the slot
+  score: 50
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions:
+  fixture_zone:
+    center:
+    - 0.0
+    - 0.0
+    - 0.8
+    xy_range:
+    - 0.0
+    - 0.1
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  parts_zone:
+    center:
+    - 0.24
+    - 0.0
+    - 0.8
+    xy_range:
+    - 0.08
+    - 0.15
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+    min_distance: 0.08
+objects:
+- name: assembly_slot2
+  region: fixture_zone
+  freejoint: false
+  scale: 1
+- name: cube_a
+  region: parts_zone
+  scale: 1
+  freejoint: true
+- name: cube_b
+  region: parts_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: inside_site
+  args:
+  - cube_a
+  - assembly_slot2
+  - slot_a
+  - -0.02
+  - 0.015
+  threshold: 0.05
+  subtask: Insert cube A into the slot
+  must_hold: true
+- type: inside_site
+  args:
+  - cube_b
+  - assembly_slot2
+  - slot_b
+  - -0.02
+  - 0.015
+  threshold: 0.05
+  subtask: Insert cube B into the slot
+  must_hold: true
+obj_of_interest:
+- assembly_slot2
+- cube_a
+- cube_b

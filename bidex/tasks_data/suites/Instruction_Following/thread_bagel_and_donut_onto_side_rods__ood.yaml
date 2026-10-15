@@ -1,0 +1,148 @@
+name: thread_bagel_and_donut_onto_side_rods
+language: Thread the bagel onto the right rod and the donut onto the left rod.
+subtasks:
+- name: Left arm picks up the donut
+  score: 10
+- name: Left arm threads the donut onto the left rod
+  score: 40
+- name: Right arm picks up the bagel
+  score: 10
+- name: Right arm threads the bagel onto the right rod
+  score: 40
+ood:
+  base_task: tabletop_thread_bagel_donut_onto_side_rods
+  scene_randomize: true
+  baked_layout: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 25.2
+max_steps: 630
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions:
+  rod_left_zone:
+    center:
+    - 0.0
+    - -0.15
+    - 0.8
+    xy_range:
+    - 0.001
+    - 0.001
+    yaw_range:
+    - 0.0
+    - 0.01
+  rod_mid_zone:
+    center:
+    - 0.0
+    - 0.0
+    - 0.8
+    xy_range:
+    - 0.001
+    - 0.001
+    yaw_range:
+    - 0.0
+    - 0.01
+  rod_right_zone:
+    center:
+    - 0.0
+    - 0.15
+    - 0.8
+    xy_range:
+    - 0.001
+    - 0.001
+    yaw_range:
+    - 0.0
+    - 0.01
+  bagel_zone:
+    center:
+    - 0.1957
+    - 0.1321
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  donut_zone:
+    center:
+    - 0.2181
+    - -0.1739
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: threading_rod_left
+  region: rod_left_zone
+  scale: 1
+  freejoint: false
+- name: threading_rod_mid
+  region: rod_mid_zone
+  scale: 1
+  freejoint: false
+- name: threading_rod_right
+  region: rod_right_zone
+  scale: 1
+  freejoint: false
+- name: rc/objaverse/bagel/bagel_4
+  region: bagel_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/donut/donut_2
+  region: donut_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/bagel/bagel_4
+  subtask: Left arm picks up the donut
+- type: inside
+  args:
+  - rc/objaverse/bagel/bagel_4
+  - threading_rod_right
+  subtask: Left arm threads the donut onto the left rod
+  threshold: 0.015
+  must_hold: true
+- type: upright
+  args:
+  - rc/objaverse/bagel/bagel_4
+  subtask: Left arm threads the donut onto the left rod
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/donut/donut_2
+  subtask: Right arm picks up the bagel
+- type: inside
+  args:
+  - rc/objaverse/donut/donut_2
+  - threading_rod_left
+  subtask: Right arm threads the bagel onto the right rod
+  threshold: 0.015
+  must_hold: true
+- type: upright
+  args:
+  - rc/objaverse/donut/donut_2
+  subtask: Right arm threads the bagel onto the right rod
+  must_hold: true
+obj_of_interest:
+- threading_rod_left
+- threading_rod_mid
+- threading_rod_right
+- rc/objaverse/bagel/bagel_4
+- rc/objaverse/donut/donut_2

@@ -1,0 +1,49 @@
+name: pick_up_whisk
+language: Pick up the whisk.
+subtasks:
+- name: Pick up the whisk
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos: [0.5, -0.45, 0.6]
+  quat: [0.382683, 0, 0, 0.92388]
+# TOOL DELIVERY archetype (1 tool, 1 target, different from the "place 3 food
+# items into 1 container" pattern of every other pick-and-place task). A whisk
+# (Whisk002, UNTOUCHED, ~30 cm long, scale 0.7 -> ~21 cm) is picked up and
+# placed on a frying pan (pan_0, UNTOUCHED, mass 200, rest_on_surface). The
+# whisk spawns with yaw pinned ~pi/2 (long axis along world x -> x-footprint
+# 0.105 m, y-footprint 0.028 m) on the +x side; the pan is a heavy station on
+# the -x side. on(whisk, pan, 0.08) gates (whisk within 8 cm of pan centre and
+# above); the whisk on the table at spawn (dxy ~0.30) reads RED.
+regions:
+  pan_zone:
+    center: [0.1, -0.1, 0.85]
+    xy_range: [0.1, 0.04]
+    yaw_range: [-0.05, 0.05]
+    rest_on_surface: true
+  whisk_zone:
+    center: [0.1, 0.2, 0.85]
+    xy_range: [0.1, 0.04]
+    yaw_range: [3.14, 3.16]
+objects:
+- name: rc/objaverse/pan/pan_0
+  region: pan_zone
+  scale: 1.5
+  freejoint: true
+  mass: 0.01
+- name: rc/lightwheel/whisk/Whisk002
+  region: whisk_zone
+  scale: 1.2
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args: [rc/lightwheel/whisk/Whisk002]
+  subtask: Pick up the whisk
+  threshold: 0.85
+  must_hold: true
+obj_of_interest:
+- rc/objaverse/pan/pan_0
+- rc/lightwheel/whisk/Whisk002

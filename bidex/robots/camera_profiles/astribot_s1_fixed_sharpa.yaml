@@ -1,0 +1,43 @@
+# Camera profile for Astribot S1 (fixed_sharpa / mobile_sharpa variants).
+# Body names come from
+# assembly/astribot_s1/shared/astribot_s1_body_subtree.xml. Wrist cameras
+# attach at the tool link the sharpa hand is mounted to; head cam is on
+# astribot_head_link_2 (the pitched head plate that houses the RGBD).
+# Pose values are sensible defaults — re-calibrate per real setup.
+num_cameras: 3
+width: 640
+height: 480
+fps: 30
+cameras:
+  - name: head
+    type: sim
+    serial_number: SIM_HEAD_CAM
+    attach: astribot_head_link_2
+    # Canonical pos from
+    # astribot_descriptions/mjcf/astribot_s1_mjcf/
+    # model_with_effector/astribot_s1_model_with_hand.xml:64 (head_rgbd
+    # commented camera). Original quat there was
+    # `[0.7025, -0.0295, -0.7100, -0.0135]` but that produced an
+    # upside-down image in our env's camera convention — post-multiplied
+    # by a 180-deg roll about the camera-local Z axis (i.e. ⊗ [0,0,0,1]
+    # wxyz) to flip the image right-side up. Using `quat` directly
+    # (wxyz) — scipy 'xyz' euler does not round-trip through MuJoCo's
+    # <camera euler> for arbitrary rotations because the camera-local
+    # axes convention differs; quat is lossless.
+    pos: [0.0603, -0.2139, -0.0135]
+    quat: [0.0135, -0.7105, 0.0295, 0.7030]
+    fovy: 80
+  - name: left_wrist
+    type: sim
+    serial_number: SIM_LEFT_WRIST
+    attach: astribot_arm_left_tool_link
+    pos: [-0.08, 0.0, 0.0]
+    euler: [3.1415, 0.2, 1.5707963]
+    fovy: 80
+  - name: right_wrist
+    type: sim
+    serial_number: SIM_RIGHT_WRIST
+    attach: astribot_arm_right_tool_link
+    pos: [0.08, 0.0, 0.0]
+    euler: [3.1415, -0.2, 1.5707963]
+    fovy: 80

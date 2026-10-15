@@ -1,0 +1,48 @@
+name: raise_laptop_stand_platform
+language: Raise the platform of the laptop stand.
+subtasks:
+- name: Raise the platform of the laptop stand
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - -0.45
+  - 0.7
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  laptop_stand_with_articulated_height_adjustment_zone:
+    center:
+    - 0.3
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: laptop_stand_with_articulated_height_adjustment
+  region: laptop_stand_with_articulated_height_adjustment_zone
+  scale: 0.65
+fixtures: []
+articulations:
+- object: laptop_stand_with_articulated_height_adjustment
+  joint: base_to_platform
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - laptop_stand_with_articulated_height_adjustment
+  - base_to_platform
+  threshold: 0.6
+  subtask: Raise the platform of the laptop stand
+obj_of_interest:
+- laptop_stand_with_articulated_height_adjustment
+max_seconds: 60

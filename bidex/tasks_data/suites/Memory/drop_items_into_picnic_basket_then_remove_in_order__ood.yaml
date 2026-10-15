@@ -1,0 +1,111 @@
+name: drop_items_into_picnic_basket_then_remove_in_order
+language: Drop the hotdog bun, baguette, juice carton and water bottle into the picnic
+  basket in any order, then take them out in the same order and stand the water bottle
+  upright on the mat.
+subtasks:
+- name: Both arms place all four items into the basket
+  score: 50
+- name: Both arms remove all four items in the same order they were placed
+  score: 50
+ood:
+  base_task: tabletop_long_picnic_basket_fifo
+  scene_randomize: true
+  baked_layout: true
+  geometry_safe_placement: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+max_seconds: 180
+ordered_subtasks: true
+regions:
+  food_zone:
+    center:
+    - 0.05
+    - -0.26
+    - 0.86
+    xy_range:
+    - 0.18
+    - 0.04
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.1
+  drink_zone:
+    center:
+    - 0.14
+    - 0.26
+    - 0.95
+    xy_range:
+    - 0.18
+    - 0.04
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.1
+  mat_zone:
+    center:
+    - 0.3
+    - 0.28
+    - 0.8
+    xy_range:
+    - 0.0
+    - 0.0
+objects:
+- name: rc/lightwheel/basket/Basket036
+  pos:
+  - 0.08
+  - 0.0
+  - 0.838
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.0
+  freejoint: false
+  basket: true
+- name: rc/lightwheel/hotdog_bun/HotdogBun001
+  region: food_zone
+  freejoint: true
+  orderable: true
+- name: rc/objaverse/baguette/baguette_0
+  region: food_zone
+  scale: 0.85
+  freejoint: true
+  orderable: true
+- name: rc/lightwheel/juice/Juice002
+  region: drink_zone
+  scale: 0.7
+  freejoint: true
+  orderable: true
+- name: rc/objaverse/water_bottle/water_bottle_1
+  region: drink_zone
+  freejoint: true
+  orderable: true
+fixtures: []
+goal:
+- type: placed_n
+  args:
+  - rc/lightwheel/basket/Basket036
+  - 4
+  subtask: Both arms place all four items into the basket
+- type: order_match
+  args:
+  - rc/lightwheel/basket/Basket036
+  must_hold: true
+  subtask: Both arms remove all four items in the same order they were placed
+obj_of_interest:
+- rc/lightwheel/basket/Basket036
+- rc/lightwheel/hotdog_bun/HotdogBun001
+- rc/objaverse/baguette/baguette_0
+- rc/lightwheel/juice/Juice002
+- rc/objaverse/water_bottle/water_bottle_1

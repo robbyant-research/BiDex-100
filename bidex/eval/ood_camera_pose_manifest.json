@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "name": "bidex-camera-v4",
+  "description": "Finite collision-aware camera-local extrinsic perturbations with an exact 1:1:1:2 nominal/head-only/wrists-only/head-and-wrists occurrence schedule. Head cameras use at most 1.8 cm / 6 degrees; wrist cameras use at most 1.35 cm / 6 degrees and may only translate outward along their mount-clearance axis.",
+  "translation_limit_m": [0.018, 0.018, 0.018],
+  "rotation_limit_deg": [6.0, 6.0, 6.0],
+  "camera_scales": {
+    "head": {"translation": 1.0, "rotation": 1.0},
+    "left_wrist": {"translation": 0.75, "rotation": 1.0},
+    "right_wrist": {"translation": 0.75, "rotation": 1.0}
+  },
+  "robot_camera_rules": {
+    "dual_fr3v2_sharpa": {
+      "left_wrist": {
+        "positive_translation_axes": [2],
+        "reason": "The Franka wrist camera is mounted at positive link-Z; allowing only outward Z motion prevents the link8 connector entering the view."
+      },
+      "right_wrist": {
+        "positive_translation_axes": [2],
+        "reason": "The Franka wrist camera is mounted at positive link-Z; allowing only outward Z motion prevents the link8 connector entering the view."
+      }
+    },
+    "astribot_s1_fixed_sharpa": {
+      "head": {
+        "positive_translation_axes": [0],
+        "reason": "The Astribot head camera may move outward but not inward through the head shell."
+      },
+      "left_wrist": {
+        "negative_translation_axes": [0],
+        "reason": "The left wrist camera is mounted at negative tool-X; only outward X motion keeps the tool connector behind the camera."
+      },
+      "right_wrist": {
+        "positive_translation_axes": [0],
+        "reason": "The right wrist camera is mounted at positive tool-X; only outward X motion keeps the tool connector behind the camera."
+      }
+    }
+  },
+  "poses": [
+    {"id": "p00", "delta_pos": [0.018, 0.012, 0.009], "delta_euler_deg": [5.0, -4.0, 2.0]},
+    {"id": "p01", "delta_pos": [-0.018, -0.012, -0.009], "delta_euler_deg": [-5.0, 4.0, -2.0]},
+    {"id": "p02", "delta_pos": [0.015, -0.018, 0.012], "delta_euler_deg": [-4.0, -5.0, 5.0]},
+    {"id": "p03", "delta_pos": [-0.015, 0.018, -0.012], "delta_euler_deg": [4.0, 5.0, -5.0]},
+    {"id": "p04", "delta_pos": [0.009, 0.015, -0.018], "delta_euler_deg": [6.0, -2.0, -4.0]},
+    {"id": "p05", "delta_pos": [-0.009, -0.015, 0.018], "delta_euler_deg": [-6.0, 2.0, 4.0]},
+    {"id": "p06", "delta_pos": [0.018, -0.009, -0.015], "delta_euler_deg": [2.0, 6.0, -5.0]},
+    {"id": "p07", "delta_pos": [-0.018, 0.009, 0.015], "delta_euler_deg": [-2.0, -6.0, 5.0]},
+    {"id": "p08", "delta_pos": [0.012, 0.018, -0.009], "delta_euler_deg": [-5.0, 5.0, 6.0]},
+    {"id": "p09", "delta_pos": [-0.012, -0.018, 0.009], "delta_euler_deg": [5.0, -5.0, -6.0]},
+    {"id": "p10", "delta_pos": [0.015, 0.000, 0.018], "delta_euler_deg": [0.0, 6.0, -6.0]},
+    {"id": "p11", "delta_pos": [-0.015, 0.000, -0.018], "delta_euler_deg": [0.0, -6.0, 6.0]}
+  ],
+  "fingerprint": "2d308019f6585fb95e69a1046f371df582a7b2121e32f39170de1b3a7b5eb82c"
+}

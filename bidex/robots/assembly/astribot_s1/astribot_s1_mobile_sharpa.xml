@@ -1,0 +1,30 @@
+<mujoco model="astribot_s1_mobile_sharpa">
+  <!-- Astribot S1 humanoid with mobile chassis (3-DOF: planar slide
+       x/y + yaw hinge) and sharpa_wave hands on both arms.
+       Mirrors astribot_s1_with_hand.xml from astribot_descriptions
+       but swaps the end-effector. Use this for navigation/whole-body
+       tasks; for tabletop manipulation prefer astribot_s1_fixed_sharpa. -->
+  <compiler angle="radian" autolimits="true" balanceinertia="true" discardvisual="false"/>
+  <option impratio="10" cone="elliptic" integrator="implicitfast" viscosity="0.1" gravity="0 0 -9.81"/>
+  <visual>
+    <map znear="0.001" zfar="50"/>
+  </visual>
+
+  <include file="shared/astribot_s1_assets.xml"/>
+  <include file="shared/sharpa_defaults.xml"/>
+  <include file="shared/sharpa_assets.xml"/>
+
+  <worldbody>
+    <body name="chassis_base" pos="0 0 0.097" euler="0 0 -1.57">
+      <joint name="astribot_chassis_x" type="slide" axis="1 0 0" limited="false"/>
+      <joint name="astribot_chassis_y" type="slide" axis="0 1 0" limited="false"/>
+      <joint name="astribot_chassis_zrot" type="hinge" axis="0 0 1" limited="false"/>
+      <include file="shared/astribot_s1_body_subtree.xml"/>
+    </body>
+  </worldbody>
+
+  <include file="shared/astribot_s1_chassis_actuators.xml"/>
+  <include file="shared/astribot_s1_actuators.xml"/>
+  <include file="shared/sharpa_actuators.xml"/>
+  <include file="shared/sharpa_contacts.xml"/>
+</mujoco>

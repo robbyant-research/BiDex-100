@@ -1,0 +1,86 @@
+name: put_mustard_and_honey_bottle_on_tray
+language: Put the mustard and the honey bottle on the tray.
+subtasks:
+- name: Pick up the mustard
+  score: 25
+- name: Place the mustard on the tray
+  score: 25
+- name: Place the honey bottle on the tray
+  score: 50
+robot_type: astribot_s1_fixed_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - 0.0
+  - 0.0
+  quat:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+regions:
+  mustard_zone:
+    center:
+    - 0.3
+    - -0.15
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+  honey_bottle_zone:
+    center:
+    - 0.3
+    - 0.15
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+  tray_zone:
+    center:
+    - 0.55
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: mustard
+  region: mustard_zone
+- name: honey_bottle
+  region: honey_bottle_zone
+- name: tray
+  region: tray_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - mustard
+  subtask: Pick up the mustard
+- type: 'on'
+  args:
+  - mustard
+  - tray
+  threshold: 0.08
+  subtask: Place the mustard on the tray
+  must_hold: true
+- type: 'on'
+  args:
+  - honey_bottle
+  - tray
+  threshold: 0.08
+  subtask: Place the honey bottle on the tray
+  must_hold: true
+obj_of_interest:
+- mustard
+- honey_bottle
+- tray

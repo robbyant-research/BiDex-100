@@ -1,0 +1,48 @@
+name: open_rice_cooker_lid
+language: Open the lid of the rice cooker.
+subtasks:
+- name: Open the lid of the rice cooker
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - -0.45
+  - 0.7
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  rice_cooker_zone:
+    center:
+    - 0.3
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: rice_cooker
+  region: rice_cooker_zone
+  scale: 0.7
+fixtures: []
+articulations:
+- object: rice_cooker
+  joint: body_to_lid
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - rice_cooker
+  - body_to_lid
+  threshold: 1.1
+  subtask: Open the lid of the rice cooker
+obj_of_interest:
+- rice_cooker
+max_seconds: 60

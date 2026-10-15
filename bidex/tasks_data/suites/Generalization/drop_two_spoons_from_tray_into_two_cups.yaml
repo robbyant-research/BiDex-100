@@ -1,0 +1,137 @@
+# Grab two spoons from the tray and drop them, one each, into two cups (one spoon
+# per arm). The oven_tray is a freejoint mass-200 STATION (rest_on_surface ->
+# settles on the table, no embed, stays put). The tray is ROTATED 90 DEG (yaw
+# pinned pi/2): its 0.40 m long EDGE now runs along world y, its 0.25 m short
+# edge along world x. The two spoons keep their NATURAL direction (long axis
+# local y -> world y at yaw ~0 / ~pi) -- they are only TRANSLATED, not rotated,
+# to the two ends of the tray's long edge: spoon_22 at +y (y=+0.10) and spoon_23
+# at -y (y=-0.10). A spoon's half-length is 0.09 m, so each spans y[+0.01,+0.19]
+# / y[-0.19,-0.01] -> a 0.02 m gap between them (no overlap) and both sit fully
+# on the tray (0.19 < 0.202 m tray y-half). (At only y=+/-0.08 the lying spoons
+# would overlap by ~0.02 m, hence the +/-0.10 offset.) Each spoon zone targets
+# the tray's live root (obj1_root) with rest_on_surface so the spoon base sits
+# above the tray (no tray penetration). The two mugs sit on the +x side 24 cm
+# apart in y; the rotated tray stays clear of them (tray world x[-0.17,0.07] vs
+# mugs at x=0.22). `inside_contact` gates "in the mug" (a support contact with
+# the mug body, not just leaning on it).
+name: drop_two_spoons_from_tray_into_two_cups
+language: With each arm pick up a spoon from the tray and drop it, one each, into the two cups.
+subtasks:
+- name: Drop the first spoon into a cup
+  score: 50
+- name: Drop the second spoon into a cup
+  score: 50
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+ordered_subtasks: true
+regions:
+  tray_zone:
+    center:
+    - -0.05
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.0
+    - 0.0
+    yaw_range:
+    - 1.5708
+    - 1.5808
+    rest_on_surface: true
+  u0_zone:
+    center:
+    - 0.0
+    - 0.15
+    - 0.08
+    xy_range:
+    - 0.05
+    - 0.0
+    yaw_range:
+    - -0.05
+    - 0.05
+    target: obj1_root
+    rest_on_surface: true
+  u1_zone:
+    center:
+    - 0.0
+    - -0.15
+    - 0.085
+    xy_range:
+    - 0.05
+    - 0.0
+    yaw_range:
+    - 3.14
+    - 3.15
+    target: obj1_root
+    rest_on_surface: true
+  cup0_zone:
+    center:
+    - 0.22
+    - 0.12
+    - 0.86
+    xy_range:
+    - 0.04
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  cup1_zone:
+    center:
+    - 0.22
+    - -0.16
+    - 0.86
+    xy_range:
+    - 0.04
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/lightwheel/oven_tray/OvenTray008
+  region: tray_zone
+  freejoint: false
+  scale: 1.2
+- name: rc/objaverse/spoon/spoon_22
+  region: u0_zone
+  freejoint: true
+- name: rc/objaverse/spoon/spoon_23
+  region: u1_zone
+  freejoint: true
+- name: rc/objaverse/mug/mug_9
+  region: cup0_zone
+  freejoint: true
+- name: rc/objaverse/mug/mug_8
+  region: cup1_zone
+  freejoint: true
+fixtures: []
+goal:
+- type: inside_contact
+  args:
+  - rc/objaverse/spoon/spoon_22
+  - rc/objaverse/mug/mug_9
+  subtask: Drop the first spoon into a cup
+  must_hold: true
+- type: inside_contact
+  args:
+  - rc/objaverse/spoon/spoon_23
+  - rc/objaverse/mug/mug_8
+  subtask: Drop the second spoon into a cup
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/oven_tray/OvenTray008
+- rc/objaverse/spoon/spoon_22
+- rc/objaverse/spoon/spoon_23
+- rc/objaverse/mug/mug_9
+- rc/objaverse/mug/mug_8

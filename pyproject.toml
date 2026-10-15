@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bidex"
+version = "0.1.0"
+description = "BiDex-100 — minimal MuJoCo simulation benchmark for imitation-learning evaluation (franka / astribot)."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.21",
+    "mujoco>=3.8.0",
+    "PyYAML>=5.4",
+    "mink",
+    "scipy>=1.7",
+    "quaternionic>=1.0",
+    "pandas>=1.3",
+    "pyarrow>=10",
+    "imageio>=2.20",
+]
+
+[project.optional-dependencies]
+eval = [
+    "h5py>=3.7",
+    "msgpack>=1.0",
+    "websockets>=11",
+]
+web = [
+    "Flask>=2.2",
+]
+test = [
+    "Flask>=2.2",
+    "msgpack>=1.0",
+    "pytest>=7",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["bidex*"]
+
+# Ship the non-Python data the package needs at runtime: robot MJCF/meshes,
+# task YAMLs, IK profiles, camera profiles, init poses. Assets under
+# libero/ and robocasa/assets are symlinks (see README) and excluded.
+[tool.setuptools.package-data]
+bidex = [
+    "eval/ood_texture_manifest.json",
+    "eval/ood_camera_pose_manifest.json",
+    "robots/**/*.xml",
+    "robots/**/*.STL",
+    "robots/**/*.stl",
+    "robots/**/*.obj",
+    "robots/**/*.png",
+    "robots/**/*.yaml",
+    "tasks_data/**/*.yaml",
+    "tasks_data/**/*.npy",
+    "ik/**/*.xml",
+    "ik/**/*.obj",
+    "ik/**/*.stl",
+]

@@ -1,0 +1,784 @@
+{
+  "schema": "bidex-legacy-distractors-v1",
+  "seeds": {
+    "Generalization/cook_egg_in_frypan": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_3",
+          "rc/objaverse/canned_food/canned_food_1"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/digital_scale/DigitalScale008",
+          "rc/objaverse/spoon/spoon_23",
+          "rc/objaverse/spoon/spoon_11"
+        ]
+      }
+    },
+    "Generalization/drop_two_spoons_from_tray_into_two_cups": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_2",
+          "rc/objaverse/donut/donut_10"
+        ]
+      },
+      "3": {
+        "omitted": [
+          "rc/lightwheel/digital_scale/DigitalScale008"
+        ],
+        "preserve": [
+          "rc/objaverse/apple/apple_3",
+          "rc/lightwheel/glass_cup/GlassCup003",
+          "rc/lightwheel/ice_cube/IceCube001"
+        ]
+      }
+    },
+    "Generalization/insert_two_cubes_into_slot": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/mug/mug_8",
+          "rc/objaverse/canned_food/canned_food_0",
+          "rc/objaverse/spoon/spoon_12",
+          "rc/objaverse/wine/wine_2"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/mug/mug_9",
+          "rc/lightwheel/glass_cup/GlassCup003"
+        ]
+      }
+    },
+    "Generalization/make_cereal_in_bowl": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/mug/mug_8",
+          "rc/objaverse/orange/orange_4",
+          "rc/objaverse/canned_food/canned_food_3",
+          "rc/lightwheel/glass_cup/GlassCup003"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_2",
+          "rc/objaverse/bagel/bagel_4",
+          "rc/lightwheel/glass_cup/GlassCup005",
+          "rc/objaverse/fork/fork_2"
+        ]
+      }
+    },
+    "Generalization/measure_two_paprika_shakers_on_digital_scale": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/mug/mug_8",
+          "rc/objaverse/wine/wine_3",
+          "rc/objaverse/canned_food/canned_food_4"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_4",
+          "rc/objaverse/apple/apple_13"
+        ]
+      }
+    },
+    "Generalization/nest_medium_box_in_large_box": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/donut/donut_10",
+          "rc/objaverse/orange/orange_2"
+        ]
+      },
+      "3": {
+        "omitted": [
+          "rc/lightwheel/fruit_bowl/FruitBowl002"
+        ],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_23",
+          "rc/objaverse/mug/mug_8"
+        ]
+      }
+    },
+    "Generalization/organize_items_in_desk_caddy": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/ice_cube/IceCube001",
+          "rc/objaverse/orange/orange_2",
+          "rc/objaverse/apple/apple_13"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bowl/bowl_13",
+          "rc/lightwheel/glass_cup/GlassCup003",
+          "rc/objaverse/canned_food/canned_food_4"
+        ]
+      }
+    },
+    "Generalization/pick_up_peach": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bagel/bagel_4",
+          "rc/objaverse/mug/mug_8"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_0",
+          "rc/objaverse/spoon/spoon_11"
+        ]
+      }
+    },
+    "Generalization/pick_up_pear": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_3",
+          "rc/objaverse/orange/orange_2",
+          "rc/lightwheel/glass_cup/GlassCup003",
+          "rc/lightwheel/glass_cup/GlassCup005"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_5",
+          "rc/lightwheel/measuring_cup/MeasuringCup002"
+        ]
+      }
+    },
+    "Generalization/pick_up_tangerine": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/glass_cup/GlassCup003",
+          "rc/objaverse/bagel/bagel_4"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/mug/mug_8",
+          "rc/objaverse/spoon/spoon_12",
+          "rc/objaverse/knife/knife_10",
+          "rc/objaverse/canned_food/canned_food_6"
+        ]
+      }
+    },
+    "Generalization/place_coffee_mug_and_spoon_on_tray": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_23",
+          "rc/objaverse/wine/wine_2"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_2",
+          "rc/lightwheel/paprika/Paprika001"
+        ]
+      }
+    },
+    "Generalization/place_condiments_on_tray": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_3",
+          "rc/objaverse/spoon/spoon_11"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bowl/bowl_13",
+          "rc/lightwheel/ice_cube/IceCube001",
+          "rc/lightwheel/digital_scale/DigitalScale008",
+          "rc/objaverse/apple/apple_12"
+        ]
+      }
+    },
+    "Generalization/prepare_salad_in_bowl": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/measuring_cup/MeasuringCup002",
+          "rc/objaverse/apple/apple_12",
+          "rc/objaverse/apple/apple_14",
+          "rc/objaverse/mug/mug_16"
+        ]
+      },
+      "3": {
+        "omitted": [
+          "rc/lightwheel/fruit_bowl/FruitBowl002"
+        ],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_3",
+          "rc/objaverse/canned_food/canned_food_6"
+        ]
+      }
+    },
+    "Generalization/put_apple_and_orange_in_bowl": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/glass_cup/GlassCup005",
+          "rc/objaverse/canned_food/canned_food_4"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/mug/mug_8",
+          "rc/objaverse/spoon/spoon_12",
+          "rc/objaverse/canned_food/canned_food_0"
+        ]
+      }
+    },
+    "Generalization/put_apple_in_white_bowl": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/knife/knife_10",
+          "rc/objaverse/apple/apple_2"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/fruit_bowl/FruitBowl002",
+          "rc/lightwheel/glass_cup/GlassCup003",
+          "rc/objaverse/spoon/spoon_11"
+        ]
+      }
+    },
+    "Generalization/put_hotdog_bun_on_tray": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/measuring_cup/MeasuringCup002",
+          "rc/lightwheel/glass_cup/GlassCup003",
+          "rc/lightwheel/glass_cup/GlassCup005"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/mug/mug_8",
+          "rc/objaverse/spoon/spoon_12",
+          "rc/objaverse/canned_food/canned_food_3"
+        ]
+      }
+    },
+    "Generalization/put_marshmallow_and_cookie_dough_ball_in_bowl": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_23",
+          "rc/objaverse/spoon/spoon_12",
+          "rc/objaverse/knife/knife_10",
+          "rc/objaverse/spoon/spoon_22"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_6",
+          "rc/lightwheel/ice_cube/IceCube001",
+          "rc/lightwheel/digital_scale/DigitalScale008",
+          "rc/lightwheel/paprika/Paprika003"
+        ]
+      }
+    },
+    "Generalization/put_measuring_cup_and_ice_into_glass": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bagel/bagel_4",
+          "rc/objaverse/spoon/spoon_22",
+          "rc/objaverse/donut/donut_10",
+          "rc/objaverse/mug/mug_16"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/mug/mug_9",
+          "rc/objaverse/canned_food/canned_food_1"
+        ]
+      }
+    },
+    "Generalization/put_mustard_and_honey_bottle_on_tray": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bowl/bowl_13",
+          "rc/objaverse/mug/mug_8",
+          "rc/objaverse/apple/apple_12",
+          "rc/objaverse/canned_food/canned_food_0"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/glass_cup/GlassCup003",
+          "rc/objaverse/apple/apple_3",
+          "rc/objaverse/canned_food/canned_food_3",
+          "rc/objaverse/spoon/spoon_22"
+        ]
+      }
+    },
+    "Generalization/put_onion_on_cutting_board": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bagel/bagel_4",
+          "rc/lightwheel/measuring_cup/MeasuringCup002",
+          "rc/objaverse/fork/fork_2"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_13",
+          "rc/objaverse/orange/orange_2"
+        ]
+      }
+    },
+    "Generalization/put_peach_in_fruit_bowl": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_13",
+          "rc/objaverse/spoon/spoon_11",
+          "rc/lightwheel/fruit_bowl/FruitBowl002"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_14",
+          "rc/objaverse/spoon/spoon_11",
+          "rc/objaverse/mug/mug_8"
+        ]
+      }
+    },
+    "Generalization/put_peeler_and_pizza_cutter_in_drainer": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_1",
+          "rc/objaverse/apple/apple_3"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_5",
+          "rc/lightwheel/paprika/Paprika001"
+        ]
+      }
+    },
+    "Generalization/put_sweet_potato_and_onion_in_bowl": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_4",
+          "rc/lightwheel/glass_cup/GlassCup003",
+          "rc/objaverse/orange/orange_4"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/wine/wine_3",
+          "rc/objaverse/canned_food/canned_food_0"
+        ]
+      }
+    },
+    "Generalization/put_three_apples_into_fruit_bowl": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/wine/wine_3",
+          "rc/objaverse/canned_food/canned_food_5"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_5",
+          "rc/objaverse/spoon/spoon_13",
+          "rc/objaverse/bagel/bagel_4"
+        ]
+      }
+    },
+    "Generalization/rethread_bagel_and_donut_onto_middle_rod": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_12",
+          "rc/lightwheel/paprika/Paprika003",
+          "rc/objaverse/canned_food/canned_food_0"
+        ]
+      },
+      "3": {
+        "omitted": [
+          "rc/lightwheel/fruit_bowl/FruitBowl002"
+        ],
+        "preserve": [
+          "rc/objaverse/mug/mug_16",
+          "rc/objaverse/knife/knife_10",
+          "rc/objaverse/apple/apple_3"
+        ]
+      }
+    },
+    "Generalization/stack_yellow_book_on_black_book": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/apple/apple_3",
+          "rc/objaverse/donut/donut_10"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_5",
+          "rc/objaverse/canned_food/canned_food_0",
+          "rc/objaverse/mug/mug_8"
+        ]
+      }
+    },
+    "Generalization/store_condiments_in_short_cabinet": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bowl/bowl_13",
+          "rc/objaverse/mug/mug_8",
+          "rc/objaverse/canned_food/canned_food_0"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/canned_food/canned_food_5",
+          "rc/objaverse/spoon/spoon_11",
+          "rc/objaverse/mug/mug_8"
+        ]
+      }
+    },
+    "Generalization/store_snacks_in_slide_cabinet": {
+      "2": {
+        "omitted": [
+          "rc/lightwheel/digital_scale/DigitalScale008"
+        ],
+        "preserve": [
+          "rc/objaverse/apple/apple_2"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_13",
+          "rc/objaverse/canned_food/canned_food_4"
+        ]
+      }
+    },
+    "Limited_Demonstrations/arrange_three_bagels_in_oven_tray": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/avocado/avocado_4",
+          "rc/objaverse/egg/egg_0",
+          "rc/lightwheel/glass_cup/GlassCup009"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/egg/egg_0",
+          "rc/objaverse/egg/egg_1",
+          "rc/objaverse/orange/orange_1"
+        ]
+      }
+    },
+    "Limited_Demonstrations/assemble_arch_bridge": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/fork/fork_3",
+          "rc/objaverse/avocado/avocado_4",
+          "rc/objaverse/bar/bar_9",
+          "rc/objaverse/orange/orange_2"
+        ]
+      },
+      "3": {
+        "omitted": [
+          "rc/lightwheel/strainer/Strainer001",
+          "rc/objaverse/cutting_board/cutting_board_1"
+        ],
+        "preserve": [
+          "rc/objaverse/orange/orange_1",
+          "rc/objaverse/bar/bar_9"
+        ]
+      }
+    },
+    "Limited_Demonstrations/drain_three_tomatoes_in_strainer": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/avocado/avocado_5",
+          "rc/objaverse/egg/egg_3",
+          "rc/objaverse/orange/orange_1",
+          "rc/objaverse/bell_pepper/bell_pepper_2"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/avocado/avocado_6",
+          "rc/objaverse/cheese/cheese_0",
+          "rc/objaverse/bowl/bowl_7",
+          "rc/objaverse/bar/bar_9"
+        ]
+      }
+    },
+    "Limited_Demonstrations/flip_open_bottle_cap": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_15",
+          "rc/objaverse/bar/bar_9"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_16",
+          "rc/objaverse/egg/egg_0",
+          "rc/objaverse/onion/onion_2"
+        ]
+      }
+    },
+    "Limited_Demonstrations/open_bread_maker_lid": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/avocado/avocado_6",
+          "rc/objaverse/tomato/tomato_1",
+          "rc/objaverse/tomato/tomato_0"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bowl/bowl_7",
+          "rc/objaverse/plate/plate_19",
+          "rc/objaverse/tomato/tomato_2"
+        ]
+      }
+    },
+    "Limited_Demonstrations/open_flatbed_scanner_lid": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bell_pepper/bell_pepper_3",
+          "rc/lightwheel/tray/Tray003"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bell_pepper/bell_pepper_2",
+          "rc/objaverse/bagel/bagel_3"
+        ]
+      }
+    },
+    "Limited_Demonstrations/open_microwave_oven_door": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/orange/orange_2",
+          "rc/objaverse/bagel/bagel_3"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bell_pepper/bell_pepper_2",
+          "rc/lightwheel/tray/Tray003",
+          "rc/objaverse/bagel/bagel_1"
+        ]
+      }
+    },
+    "Limited_Demonstrations/open_rice_cooker_lid": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/fork/fork_3",
+          "rc/objaverse/egg/egg_1"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bagel/bagel_2",
+          "rc/objaverse/spoon/spoon_14"
+        ]
+      }
+    },
+    "Limited_Demonstrations/open_wheelie_bin_lid": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_14",
+          "rc/objaverse/bagel/bagel_2",
+          "rc/objaverse/avocado/avocado_5"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bowl/bowl_7",
+          "rc/objaverse/bar/bar_9",
+          "rc/objaverse/onion/onion_1"
+        ]
+      }
+    },
+    "Limited_Demonstrations/pick_up_whisk": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bowl/bowl_5",
+          "rc/objaverse/bar/bar_9"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/orange/orange_1",
+          "rc/objaverse/cake/cake_4"
+        ]
+      }
+    },
+    "Limited_Demonstrations/pull_down_slot_machine_lever": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bagel/bagel_2",
+          "rc/objaverse/cake/cake_4"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/lightwheel/tray/Tray003",
+          "rc/objaverse/spoon/spoon_15"
+        ]
+      }
+    },
+    "Limited_Demonstrations/pull_open_cabinet_drawer": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/tomato/tomato_0",
+          "rc/objaverse/bell_pepper/bell_pepper_2"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/tomato/tomato_2",
+          "rc/objaverse/avocado/avocado_6"
+        ]
+      }
+    },
+    "Limited_Demonstrations/pull_open_cash_register_drawer": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bagel/bagel_2",
+          "rc/objaverse/bell_pepper/bell_pepper_2",
+          "rc/objaverse/orange/orange_2"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/orange/orange_1",
+          "rc/objaverse/avocado/avocado_5",
+          "rc/objaverse/cheese/cheese_0"
+        ]
+      }
+    },
+    "Limited_Demonstrations/put_apple_and_orange_into_basket": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/egg/egg_0",
+          "rc/objaverse/spoon/spoon_15",
+          "rc/lightwheel/glass_cup/GlassCup009"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/bar/bar_9",
+          "rc/objaverse/egg/egg_1",
+          "rc/objaverse/spoon/spoon_14",
+          "rc/objaverse/bell_pepper/bell_pepper_3"
+        ]
+      }
+    },
+    "Limited_Demonstrations/put_three_eggs_into_tupperware": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/spoon/spoon_16",
+          "rc/lightwheel/whisk/Whisk002",
+          "rc/lightwheel/tray/Tray003"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/cheese/cheese_1",
+          "rc/objaverse/cake/cake_4"
+        ]
+      }
+    },
+    "Limited_Demonstrations/store_frozen_food_in_freezer": {
+      "2": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/avocado/avocado_4",
+          "rc/objaverse/egg/egg_0"
+        ]
+      },
+      "3": {
+        "omitted": [],
+        "preserve": [
+          "rc/objaverse/avocado/avocado_4",
+          "rc/objaverse/cheese/cheese_0"
+        ]
+      }
+    }
+  }
+}

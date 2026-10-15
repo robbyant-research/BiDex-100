@@ -1,0 +1,146 @@
+name: hammer_two_nails_each_hand
+language: With the left arm use the left hammer to drive the two left nails into the board, and with the right arm use the right hammer to drive the two right nails.
+max_seconds: 49.64
+max_steps: 1241
+subtasks:
+- name: Left arm drives the first left nail into the board
+  score: 25
+- name: Left arm drives the second left nail into the board
+  score: 25
+- name: Right arm drives the first right nail into the board
+  score: 25
+- name: Right arm drives the second right nail into the board
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions: {}
+objects:
+- name: dexjoco_wood_board
+  pos:
+  - -0.05
+  - 0.0
+  - 0.84
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+- name: dexjoco_nail_1
+  pos:
+  - -0.15
+  - 0.0
+  - 0.943
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+  nail: true
+- name: dexjoco_nail_2
+  pos:
+  - 0.05
+  - 0.0
+  - 0.943
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.0
+  freejoint: false
+  nail: true
+- name: dexjoco_nail_3
+  pos:
+  - -0.05
+  - 0.1
+  - 0.943
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.0
+  freejoint: false
+  nail: true
+- name: dexjoco_nail_4
+  pos:
+  - -0.05
+  - -0.1
+  - 0.943
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.0
+  freejoint: false
+  nail: true
+- name: dexjoco_hammer
+  pos:
+  - 0.15
+  - -0.22
+  - 0.82
+  quat:
+  - 0.5
+  - -0.5
+  - 0.5
+  - 0.5
+  scale: 0.8
+  freejoint: true
+  hammer: true
+- name: dexjoco_hammer
+  pos:
+  - 0.15
+  - 0.22
+  - 0.82
+  quat:
+  - 0.5
+  - 0.5
+  - 0.5
+  - -0.5
+  scale: 0.8
+  freejoint: true
+  hammer: true
+fixtures: []
+goal:
+- type: sunk
+  args:
+  - dexjoco_nail_1
+  subtask: Left arm drives the first left nail into the board
+  threshold: 0.04
+- type: sunk
+  args:
+  - dexjoco_nail_3
+  subtask: Left arm drives the second left nail into the board
+  threshold: 0.04
+- type: sunk
+  args:
+  - dexjoco_nail_2
+  subtask: Right arm drives the first right nail into the board
+  threshold: 0.04
+- type: sunk
+  args:
+  - dexjoco_nail_4
+  subtask: Right arm drives the second right nail into the board
+  threshold: 0.04
+obj_of_interest:
+- dexjoco_wood_board
+- dexjoco_nail_1
+- dexjoco_nail_2
+- dexjoco_nail_3
+- dexjoco_nail_4
+- dexjoco_hammer

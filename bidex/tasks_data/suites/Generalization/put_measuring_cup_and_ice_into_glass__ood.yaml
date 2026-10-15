@@ -1,0 +1,99 @@
+name: put_measuring_cup_and_ice_into_glass
+language: Place the ice cube in the measuring cup, then place the measuring cup and
+  ice into the glass.
+subtasks:
+- name: Pick up the measuring cup
+  score: 25
+- name: Pick up an ice cube
+  score: 25
+- name: Place the measuring cup and ice into the glass
+  score: 50
+ood:
+  base_task: tabletop_ice_via_measuring_cup_into_glass
+  scene_randomize: true
+  baked_layout: true
+  distractors:
+    count: 4
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+ordered_subtasks: true
+regions:
+  dest_zone:
+    center:
+    - -0.08
+    - -0.0005
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - 0.0
+    - 0.01
+    rest_on_surface: true
+  mcup_zone:
+    center:
+    - 0.1719
+    - 0.1795
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - 3.13
+    - 3.14
+    rest_on_surface: true
+  ice0_zone:
+    center:
+    - 0.1719
+    - -0.1805
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/lightwheel/glass_cup/GlassCup003
+  region: dest_zone
+  freejoint: false
+  scale: 2.0
+- name: rc/lightwheel/measuring_cup/MeasuringCup002
+  region: mcup_zone
+  scale: 1.5
+  freejoint: true
+- name: rc/lightwheel/ice_cube/IceCube001
+  region: ice0_zone
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/lightwheel/measuring_cup/MeasuringCup002
+  subtask: Pick up the measuring cup
+- type: lifted
+  args:
+  - rc/lightwheel/ice_cube/IceCube001
+  subtask: Pick up an ice cube
+- type: inside_contact
+  args:
+  - rc/lightwheel/measuring_cup/MeasuringCup002
+  - rc/lightwheel/glass_cup/GlassCup003
+  subtask: Place the measuring cup and ice into the glass
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/glass_cup/GlassCup003
+- rc/lightwheel/measuring_cup/MeasuringCup002
+- rc/lightwheel/ice_cube/IceCube001

@@ -1,0 +1,143 @@
+name: nest_four_bowls
+language: Nest these four bowls of decreasing sizes into a stack, fitting each smaller bowl inside the larger one beneath it.
+subtasks:
+- name: Nest the 12 cm bowl into the 13 cm base bowl
+  score: 20
+- name: Nest the 11.5 cm bowl into the 12 cm bowl
+  score: 30
+- name: Nest the 10 cm bowl into the 11.5 cm bowl
+  score: 50
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions:
+  # Four DISJOINT per-bowl spawn zones (2x2 grid, x pitch 0.25 m / y pitch 0.28
+  # m, each +/-0.04 m jitter). The jitter boxes (0.08 m wide) sit 0.17 m apart in
+  # x and 0.20 m apart in y -> the four REGION boxes never overlap
+  # (regions do not overlap). The bowls themselves (radius ~5-6.5 cm) also never touch
+  # at spawn: the worst-case adjacent centre distance is 0.25 - 2*0.04 = 0.17 m >
+  # the two largest bowls' combined radius (~0.13 m). bowl_0 (the 13 cm base) is
+  # front-left; the others scatter around it and are gathered + nested onto it.
+  bowl_0_zone: # 13 cm base bowl -- the stack forms here
+    center:
+    - 0.0
+    - -0.15
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -3.14
+    - 3.14
+  bowl_6_zone: # 12 cm bowl
+    center:
+    - 0.25
+    - -0.15
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -3.14
+    - 3.14
+  bowl_2_zone: # 11.5 cm bowl
+    center:
+    - 0.0
+    - 0.13
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -3.14
+    - 3.14
+  bowl_4_zone: # 10 cm bowl (top)
+    center:
+    - 0.25
+    - 0.13
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+# Four UNUSED, graduated objaverse bowls that nest large -> small:
+#   bowl_0  13 cm dia x 3.7 cm tall   (base, half-extent 0.065 x 0.0184)
+#   bowl_6  12 cm dia x 4.9 cm tall   (half 0.0600 x 0.0246)
+#   bowl_2  11.5 cm dia x 4.8 cm tall (half 0.0575 x 0.0242)
+#   bowl_4  10 cm dia x 5.0 cm tall   (top, half 0.050 x 0.0249)
+# Each smaller bowl sits inside the larger below (origin at the bowl's mid-height,
+# so a nested upper bowl's centre is a few cm above the lower's). bowl_1/bowl_9/
+# bowl_15 are used elsewhere (swap_fruits / other), so bowl_6 is used here as the
+# 12 cm tier instead. scale 1, free-jointed so each can be picked up and nested.
+- name: rc/objaverse/bowl/bowl_0
+  region: bowl_0_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/bowl/bowl_6
+  region: bowl_6_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/bowl/bowl_2
+  region: bowl_2_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/bowl/bowl_4
+  region: bowl_4_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+# `stacked_on(upper, lower, z_min, z_max)` with `threshold` = xy radius: the
+# upper bowl must be centred on the lower (dxy < 0.06 m) AND its centre one
+# nesting-layer above (z_min..z_max above the lower's centre). The z window
+# 0.01..0.07 m covers a shallow-bowl nesting depth (~1-7 cm): accepts a smaller
+# bowl nested inside a larger one, rejects two bowls side by side (dz ~0 < 0.01)
+# and rejects a bowl placed far above (dz > 0.07). The bowls are GRADUATED so a
+# smaller bowl nests cleanly inside the next-larger; bowl_0 (13 cm) is the base
+# and stays where it spawns -- the others are gathered from their zones and
+# nested onto it. must_hold: true -> every layer must still be nested at the
+# final frame (a slipped bowl fails).
+- type: stacked_on
+  args:
+  - rc/objaverse/bowl/bowl_6
+  - rc/objaverse/bowl/bowl_0
+  - 0.01
+  - 0.07
+  subtask: Nest the 12 cm bowl into the 13 cm base bowl
+  threshold: 0.06
+  must_hold: true
+- type: stacked_on
+  args:
+  - rc/objaverse/bowl/bowl_2
+  - rc/objaverse/bowl/bowl_6
+  - 0.01
+  - 0.07
+  subtask: Nest the 11.5 cm bowl into the 12 cm bowl
+  threshold: 0.06
+  must_hold: true
+- type: stacked_on
+  args:
+  - rc/objaverse/bowl/bowl_4
+  - rc/objaverse/bowl/bowl_2
+  - 0.01
+  - 0.07
+  subtask: Nest the 10 cm bowl into the 11.5 cm bowl
+  threshold: 0.06
+  must_hold: true
+obj_of_interest:
+- rc/objaverse/bowl/bowl_0
+- rc/objaverse/bowl/bowl_6
+- rc/objaverse/bowl/bowl_2
+- rc/objaverse/bowl/bowl_4

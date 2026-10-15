@@ -1,0 +1,137 @@
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - glass_cup
+  subtask: Pick up the glass cup
+  threshold: 0.9
+- type: 'on'
+  args:
+  - glass_cup
+  - placemat
+  subtask: Place the glass cup on the placemat
+  threshold: 0.1
+  must_hold: true
+- type: lifted
+  args:
+  - spatula
+  subtask: Pick up the spatula
+  threshold: 0.85
+- type: inside
+  args:
+  - spatula
+  - glass_cup
+  subtask: Insert the spatula into the glass cup
+  threshold: 0.05
+  must_hold: true
+- type: lifted
+  args:
+  - rolling_pin
+  subtask: Pick up the rolling pin
+  threshold: 0.85
+- type: inside
+  args:
+  - rolling_pin
+  - glass_cup
+  subtask: Insert the rolling pin into the glass cup
+  threshold: 0.05
+  must_hold: true
+language: Pick up the glass cup, then insert the spatula into the cup, insert the rolling pin into the cup, and place the cup on the placemat.
+subtasks:
+- name: Pick up the glass cup
+  score: 15
+- name: Place the glass cup on the placemat
+  score: 15
+- name: Pick up the spatula
+  score: 15
+- name: Insert the spatula into the glass cup
+  score: 20
+- name: Pick up the rolling pin
+  score: 15
+- name: Insert the rolling pin into the glass cup
+  score: 20
+name: insert_spatula_and_rolling_pin_into_glass_cup
+obj_of_interest:
+- glass_cup
+- spatula
+- rolling_pin
+- placemat
+objects:
+- name: glass_cup
+  region: glass_cup_zone
+  scale: 1.2
+  freejoint: true
+  mass: 0.65
+- name: spatula
+  region: spatula_zone
+  scale: 1
+  freejoint: true
+- name: rolling_pin
+  region: rolling_pin_zone
+  scale: 1
+  freejoint: true
+- name: placemat
+  region: placemat_zone
+  scale: 1
+  freejoint: true
+regions:
+  glass_cup_zone:
+    center:
+    - -0.22
+    - 0.05
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  placemat_zone:
+    center:
+    - 0.1
+    - -0.18
+    - 0.85
+    xy_range:
+    - 0.1
+    - 0.1
+    yaw_range:
+    - -0.15
+    - 0.15
+  rolling_pin_zone:
+    # Rolling pin at +x (x 0.18), separated from the spatula at x 0.0. Both are
+    # ~0.23 m long (along y) so x separation 0.18 keeps their footprints clear.
+    center:
+    - 0.18
+    - 0.22
+    - 0.85
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.4
+    - 0.4
+  spatula_zone:
+    # Spatula at x 0.0 (clear of the rolling pin at x 0.18 and the glass_cup at
+    # x -0.22).
+    center:
+    - 0.0
+    - 0.22
+    - 0.85
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.4
+    - 0.4
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style

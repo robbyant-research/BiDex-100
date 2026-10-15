@@ -1,0 +1,125 @@
+name: measure_two_paprika_shakers_on_digital_scale
+language: Take the paprika shakers one at a time, put each on the digital scale, and
+  then remove it.
+subtasks:
+- name: Pick up the first paprika shaker
+  score: 10
+- name: Place the first paprika shaker on the digital scale
+  score: 20
+- name: Pick up the second paprika shaker
+  score: 20
+- name: Place the second paprika shaker on the digital scale
+  score: 10
+- name: Take the first paprika shaker off the digital scale
+  score: 20
+- name: Take the second paprika shaker off the digital scale
+  score: 20
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+ordered_subtasks: true
+regions:
+  scale_zone:
+    center:
+    - -0.0
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - 1.57
+    - 1.58
+    rest_on_surface: true
+  paprika_a_zone:
+    center:
+    - 0.25
+    - 0.12
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+  paprika_b_zone:
+    center:
+    - 0.25
+    - -0.12
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: rc/lightwheel/digital_scale/DigitalScale008
+  region: scale_zone
+  scale: 1.5
+  freejoint: true
+  mass: 200
+- name: rc/lightwheel/paprika/Paprika001
+  region: paprika_a_zone
+  scale: 1
+  freejoint: true
+- name: rc/lightwheel/paprika/Paprika003
+  region: paprika_b_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/lightwheel/paprika/Paprika001
+  subtask: Pick up the first paprika shaker
+  order_group: on_scale
+- type: inside
+  args:
+  - rc/lightwheel/paprika/Paprika001
+  - rc/lightwheel/digital_scale/DigitalScale008
+  subtask: Place the first paprika shaker on the digital scale
+  threshold: 0.1
+  order_group: on_scale
+- type: lifted
+  args:
+  - rc/lightwheel/paprika/Paprika003
+  subtask: Pick up the second paprika shaker
+  order_group: on_scale
+- type: inside
+  args:
+  - rc/lightwheel/paprika/Paprika003
+  - rc/lightwheel/digital_scale/DigitalScale008
+  subtask: Place the second paprika shaker on the digital scale
+  threshold: 0.1
+  order_group: on_scale
+- type: not_inside
+  args:
+  - rc/lightwheel/paprika/Paprika001
+  - rc/lightwheel/digital_scale/DigitalScale008
+  subtask: Take the first paprika shaker off the digital scale
+  threshold: 0.1
+  must_hold: true
+  order_group: off_scale
+- type: not_inside
+  args:
+  - rc/lightwheel/paprika/Paprika003
+  - rc/lightwheel/digital_scale/DigitalScale008
+  subtask: Take the second paprika shaker off the digital scale
+  threshold: 0.1
+  must_hold: true
+  order_group: off_scale
+obj_of_interest:
+- rc/lightwheel/digital_scale/DigitalScale008
+- rc/lightwheel/paprika/Paprika001
+- rc/lightwheel/paprika/Paprika003

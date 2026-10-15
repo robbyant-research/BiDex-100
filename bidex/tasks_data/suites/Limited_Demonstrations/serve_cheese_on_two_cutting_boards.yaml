@@ -1,0 +1,146 @@
+name: serve_cheese_on_two_cutting_boards
+language: Pick up a cheese block and set it flat on its cutting board, one cheese per board.
+subtasks:
+- name: Pick up the first cheese block
+  score: 25
+- name: Set the first cheese block on its cutting board
+  score: 25
+- name: Pick up the second cheese block
+  score: 25
+- name: Set the second cheese block on its cutting board
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Every object is from a previously-UNTOUCHED category: the objaverse `cheese`
+# family (cheese_0, cheese_1) and `cutting_board` family (cutting_board_0,
+# cutting_board_1) are both entirely new. A cutting board is a flat ~30 x 20 cm
+# slab -- a heavy station (freejoint + mass 200, rest_on_surface true so its flat
+# underside sits on the table, yaw pinned 0) that stays put while a cheese block
+# is laid on it. The two cheese blocks spawn free-jointed on the +x side, one
+# per arm, each to be lifted and set onto its paired board on the -x side.
+#
+# `on(obj, target, threshold)` is the gate -- NOT inside_contact / stacked_on:
+# `on` tests the cheese's xy is within `threshold` (0.06 m) of the board's xy
+# centre AND the cheese sits at/above the board (cheese.z > board.z - 0.02). One
+# cheese per board keeps the single-centre radius test valid (two cheeses on one
+# board could not both sit within 0.06 m of the same centre without overlapping).
+# `must_hold: true` rejects a cheese that slid back off the board by the final
+# frame. This is a parallel two-arm task (no ordered_subtasks): each arm completes
+# its own board independently.
+#
+# Region boxes are disjoint (separation in x between boards and cheeses,
+# separation in y between the two boards / two cheeses): board zones at
+# x[-0.25,-0.15] y +/-0.16 (xy 0.05); cheese zones at x[0.15,0.29] y +/-0.16
+# (xy 0.07). board-to-cheese ~0.40 m clear in x; the two boards are 0.32 m apart
+# in y centre (0.22 m gap between 0.10-wide boxes); the two cheeses likewise.
+# The ~6 cm cheese blocks and ~30 cm boards never touch at spawn.
+regions:
+  board0_zone:
+    center:
+    - -0.05
+    - 0.16
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - 0.0
+    - 0.0
+    rest_on_surface: true
+  board1_zone:
+    center:
+    - -0.05
+    - -0.16
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - 0.0
+    - 0.0
+    rest_on_surface: true
+  cheese0_zone:
+    center:
+    - 0.22
+    - 0.16
+    - 0.85
+    xy_range:
+    - 0.07
+    - 0.07
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  cheese1_zone:
+    center:
+    - 0.22
+    - -0.16
+    - 0.85
+    xy_range:
+    - 0.07
+    - 0.07
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/objaverse/cutting_board/cutting_board_0
+  region: board0_zone
+  scale: 1
+  freejoint: true
+  mass: 200
+- name: rc/objaverse/cutting_board/cutting_board_1
+  region: board1_zone
+  scale: 1
+  freejoint: true
+  mass: 200
+- name: rc/objaverse/cheese/cheese_0
+  region: cheese0_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/cheese/cheese_1
+  region: cheese1_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/cheese/cheese_0
+  subtask: Pick up the first cheese block
+  threshold: 0.85
+- type: 'on'
+  args:
+  - rc/objaverse/cheese/cheese_0
+  - rc/objaverse/cutting_board/cutting_board_0
+  subtask: Set the first cheese block on its cutting board
+  threshold: 0.06
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/cheese/cheese_1
+  subtask: Pick up the second cheese block
+  threshold: 0.85
+- type: 'on'
+  args:
+  - rc/objaverse/cheese/cheese_1
+  - rc/objaverse/cutting_board/cutting_board_1
+  subtask: Set the second cheese block on its cutting board
+  threshold: 0.06
+  must_hold: true
+obj_of_interest:
+- rc/objaverse/cutting_board/cutting_board_0
+- rc/objaverse/cutting_board/cutting_board_1
+- rc/objaverse/cheese/cheese_0
+- rc/objaverse/cheese/cheese_1

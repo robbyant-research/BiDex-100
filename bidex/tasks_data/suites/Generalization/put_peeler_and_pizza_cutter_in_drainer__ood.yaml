@@ -1,0 +1,115 @@
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - pizza_cutter
+  subtask: Pick up the pizza cutter
+- type: inside
+  args:
+  - pizza_cutter
+  - bowl_drainer
+  subtask: Put the pizza cutter in the drainer
+  threshold: 0.12
+  must_hold: true
+- type: lifted
+  args:
+  - peeler
+  subtask: Pick up the peeler
+- type: inside
+  args:
+  - peeler
+  - bowl_drainer
+  subtask: Put the peeler in the drainer
+  threshold: 0.14
+  must_hold: true
+language: Pick up the peeler and the pizza cutter and put them in the drainer.
+subtasks:
+- name: Pick up the pizza cutter
+  score: 20
+- name: Put the pizza cutter in the drainer
+  score: 30
+- name: Pick up the peeler
+  score: 20
+- name: Put the peeler in the drainer
+  score: 30
+ood:
+  base_task: tabletop_insert_knives_into_block
+  scene_randomize: true
+  baked_layout: true
+  distractors:
+    count: 3
+name: put_peeler_and_pizza_cutter_in_drainer
+obj_of_interest:
+- pizza_cutter
+- peeler
+- bowl_drainer
+objects:
+- name: pizza_cutter
+  region: pizza_cutter_zone
+  scale: 1
+  freejoint: true
+- name: peeler
+  region: peeler_zone
+  scale: 1
+  freejoint: true
+- name: bowl_drainer
+  region: bowl_drainer_zone
+  scale: 1.4
+  freejoint: true
+regions:
+  bowl_drainer_zone:
+    center:
+    - -0.12
+    - -0.0213
+    - 0.85
+    xy_range:
+    - 0.02
+    - 0.08
+    yaw_range:
+    - -0.2
+    - 0.2
+  knife_block_zone:
+    center:
+    - -0.18
+    - 0.1787
+    - 0.85
+    xy_range:
+    - 0.1
+    - 0.1
+    yaw_range:
+    - -0.15
+    - 0.15
+  peeler_zone:
+    center:
+    - 0.2346
+    - -0.2127
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+  pizza_cutter_zone:
+    center:
+    - 0.2253
+    - 0.2119
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style

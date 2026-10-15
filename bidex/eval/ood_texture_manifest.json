@@ -1,0 +1,5302 @@
+{
+  "files": [
+    {
+      "path": "libero/textures/brown_ceramic_tile.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "76f19ce9c0a307a447d9c65edcf0757e405358e6d22e2a52cfa2cd6dc5c63224",
+      "size": 1192761
+    },
+    {
+      "path": "libero/textures/ceramic.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "beef464a2aa9143ba6a25a44adcbfd1f1aff16c5969edbf08019b61025388402",
+      "size": 1442030
+    },
+    {
+      "path": "libero/textures/cream-plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5f989033f089158b2c8f0f1f7881f6922b018a5b154558b2edcc9f41a21ab983",
+      "size": 696397
+    },
+    {
+      "path": "libero/textures/dapper_gray_floor.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "99f641e7f34f43896155816c265b7206972ebd3997e83ab98f3be210222deec0",
+      "size": 176753
+    },
+    {
+      "path": "libero/textures/dark_blue_wall.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "ecb999e23c85dfef374feeea938c6864f8fc14ba22b8a4c1b37785812d0923c5",
+      "size": 1216412
+    },
+    {
+      "path": "libero/textures/dark_floor_texture.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "182b1d927029d6284b5cbe3e317b111cbc5b147b692fd0f19e4181a02d08f647",
+      "size": 432717
+    },
+    {
+      "path": "libero/textures/dark_gray_plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "122ac950498a1e157ddbe54df9a585344059018e36328341d2dd4eef72f5337c",
+      "size": 172397
+    },
+    {
+      "path": "libero/textures/dark_green_plaster_wall.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "a2a9531fc002626a79a7ac3aaaee26a15bb5fee03253ab80f6b3004f3c9d1878",
+      "size": 6873572
+    },
+    {
+      "path": "libero/textures/gray_ceramic_tile.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "93a1c2b647f31aded62b4125439e17aa1a55c8f4e77820909d9a1c235f6c7315",
+      "size": 435890
+    },
+    {
+      "path": "libero/textures/gray_floor.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "8c806924415a06b5fa49d852ad14a0b1bb07afc225153eb832f3369bcefabc60",
+      "size": 1289546
+    },
+    {
+      "path": "libero/textures/gray_plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5c3f8353cdebc86273b8619205f3bb1bc2be252d3db41d77848a32d9eda0d965",
+      "size": 700270
+    },
+    {
+      "path": "libero/textures/gray_wall.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "c90b41e7f3f0b32635804f47811bc8deba14cf561b1af40ec62972fb6039cef9",
+      "size": 7088154
+    },
+    {
+      "path": "libero/textures/grigia_caldera_porcelain_floor.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "1382cde9e4674cd7c251c5c79f0035d863c4c2e2fb49c01baee316f4401025ea",
+      "size": 87431
+    },
+    {
+      "path": "libero/textures/light-gray-floor-tile.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "a2aae4ba3b38c3ab9851eca9ad6e76cef9357ef75b3e9a4b280f694ca30acbc5",
+      "size": 73373
+    },
+    {
+      "path": "libero/textures/light-gray-plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "d0bdaf13b44ab6ef3122451f6b3853e40bdf20bb9be7662649683ba525dfe191",
+      "size": 516639
+    },
+    {
+      "path": "libero/textures/light_blue_wall.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "0e53979a16a1464ba0ba693e38cf71fb541875a5529e00853ed9b3c739687df2",
+      "size": 180284
+    },
+    {
+      "path": "libero/textures/light_floor.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "f6e69937f87ef7d956e4434535ab2ff99939216cc03c842cd9b4ba16023b32e6",
+      "size": 868219
+    },
+    {
+      "path": "libero/textures/light_gray_plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "d590eae1c249dd8644a698ab1776aa1380262630cf79556a1cb2f9a726729844",
+      "size": 1309377
+    },
+    {
+      "path": "libero/textures/light_grey_plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "c7fc746d496fcaed1c716ad5fc5f8237095613e09dd80eae3e969f599cee9c06",
+      "size": 392158
+    },
+    {
+      "path": "libero/textures/linen_wall_texture.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "292d1bb3a8536b2faf73c91b9d6b11ac90c58136cbaade2af0d7b941f70904aa",
+      "size": 607573
+    },
+    {
+      "path": "libero/textures/marble_floor.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "097ed503a7e6280549a8f249d92f6813f491a3e20b7b8d9a29d5f03b6e4c973c",
+      "size": 158880
+    },
+    {
+      "path": "libero/textures/martin_novak_wood_table.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9d714fbf44d4d44f279761c0ddd0b2fd7271446cdbb85fcbef8677fe5f929850",
+      "size": 940180
+    },
+    {
+      "path": "libero/textures/meeka-beige-plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "a24b1b67ef66a52358dfe7382e955cc9eca699ae846072d9745f78000e41b10c",
+      "size": 657870
+    },
+    {
+      "path": "libero/textures/new_light_gray_plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5a51d3ac1fc9991c1530eefdf7922aefdbd18f4cb1fd08ca0ee81e74b586defd",
+      "size": 1457824
+    },
+    {
+      "path": "libero/textures/rustic_floor.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "915563b7009b30fe63c69b0107f36cc40448ab3e9b83ce8a67f5ebbb2f94c7fe",
+      "size": 350989
+    },
+    {
+      "path": "libero/textures/seamless_wood_planks_floor.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "c7a70ef3fad0cafc1d196e49f9ff1b483d0a5e62ed457b108a9c9b2c9ed1dd13",
+      "size": 3174441
+    },
+    {
+      "path": "libero/textures/stucco_wall.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "b4c2cc15cf253c3c2e7e88930cae7d5b699552f9397673ba5df874f871c6c84d",
+      "size": 282099
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/blue-wood.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9b1eab21395a05d7463751f9075b16bc4fba8fd4be42938bda25ea634a345884",
+      "size": 201294
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/dark-wood.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5da8dbf7af06ecd251840aceec25fedcfa98267041cea289b2829c982e008dc3",
+      "size": 239227
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/dark_wood_planks_2.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "5c75de264157b4fbe893d8565a15c10a489b0c11264cb83c2ca34cab186d81fa",
+      "size": 3658772
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/gray-plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "7ee7520ebf6118051ced809cb9754983e7537a40f8d5271d5cb2fabdd71c33bd",
+      "size": 474599
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/gray_wood_planks.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "7d3b3e0a7a970c698a742452fb3c0666a5b4e7ad324749a629b5acffd8f8dd7a",
+      "size": 4682704
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/light-wood.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "967be64bdb170d36283bc43c2ae5d525ec88f78bc837dc7d0efc9a28d68caad1",
+      "size": 801173
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/metal.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "93784216a66b52be9c8ccc3732e50f511815291e32f34f97bd139ed7229061fa",
+      "size": 196878
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/pink-plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "c6f8435c8aec555fa89ee72d472d652f31ce1afc0e07372e9857b0aa50f6e029",
+      "size": 553251
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/red-wood.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "cfeb8ac96d9561f84f453e5d1b59e0556ee6384b062edd1a75c52838ccae52ac",
+      "size": 1035862
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/steel-brushed.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "43f30e7a2d0e8085aa15f58623b1753a003f93e5fe336eeaf65c146f955a81d5",
+      "size": 275192
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/steel-scratched.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "7e22a111d516cc84addde9b2b18353d8a6ec521b9b79ec5e9c169e2d9000d3fe",
+      "size": 391216
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/walnut_wood_grain.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "afd303b8733396f4ef549c414592675f53795364e85b3babcea6acd276a833f7",
+      "size": 6438369
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/warm_wood_grain_2.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "037f8eca21eae5962429984354d167e4d3a2eb1f856beedbe26718265f720272",
+      "size": 5327782
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/white-plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "a35c03edcef74c940400dd39e2384d05169d1d15ac247166b3b7a930acd70f03",
+      "size": 624094
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/wood_grain_1.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "7f6d8b8274a915ed892ac489bd2c665cec9d3ef43ae1d77be9bd62915eb811f9",
+      "size": 635366
+    },
+    {
+      "path": "libero/textures/table_arena/desktop_random_textures/yellow-plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "7f98027e5dd4ad845a1a20f302b183c62b8e8fab54799634c5143c1dde0d0362",
+      "size": 477879
+    },
+    {
+      "path": "libero/textures/table_light_wood.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c260c4543647d53da9379078a788d183a334734103739a42dce1a004a2eb0e33",
+      "size": 202250
+    },
+    {
+      "path": "libero/textures/white_marble_floor.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "d79fb61f545669659a6bbdfd68c750fe4fd2830e448465f223fe4c224b8d17ca",
+      "size": 652993
+    },
+    {
+      "path": "libero/textures/white_wall.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "c02f6ad8cbd0e217da8d0068eca3dcff5752611c46999666ad7d4835de05bf12",
+      "size": 15793
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/00846c84-f900-4bdd-897f-3928e7d87dce.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1de4149d078b22308f2cdca2ce54864eaa98dd5879504068926cda3644b44dd5",
+      "size": 1539689
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/01f783e0-38de-497d-8ebe-c8d8a47e520a.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e2bdaf7a455dab720f3bd7a9a1b796b6c46bfb4cf8edefc2da0f1ae59e96177c",
+      "size": 1736041
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/11717454-440d-4b32-85c3-bf0013c66c61.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "85078a408d4062fba383f2383cbb4dfa01420ebb6f6623d59669a3a2484d99ce",
+      "size": 2433430
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/18338c06-57fc-4882-ad44-b5f3b3846806.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "3c8e4c0e1ac3f1a0069af2f28c013ad67597a3808112d083c8159f27494a26c9",
+      "size": 2144239
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/196415a6-3c0f-4a1f-a644-fc54a6801223.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6d111e2c1aa13e7f409d106b924f1193ce8ff8211458f99ec470e88d40688ad1",
+      "size": 1836747
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/1aac54cf-8bf3-428c-93cd-1d3c258ff6b4.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c1169fe161926203fe2e4672b8786e5171d115292e7b72125cb327979f2315a5",
+      "size": 1776687
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/1fb8c016-b655-48ab-ad53-d6238a745065.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b0a8974152b503528744f84c35b80ca50b6ef8983a36b5c35db7acaf6772c6b7",
+      "size": 1420344
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/230e3f37-02d7-4be9-b6a8-1e4fb3acd368.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "976bfeaec6f9cb9452ff3510a75eb7865e153bef04104a6a1d784e67bd2987c1",
+      "size": 1673328
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/251695ed-d413-48fe-817e-c3e02b3ee117.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "dbe51da4b3e306a037aa5fa82bb45f8fe327b8ed01ee773b733af5f44507a4e0",
+      "size": 1903693
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/25436e21-3140-4875-89a9-d14c5ce20f31.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "eba85dcd2a36005482cc6774e8bb57d12c25d838095f95ecc3f3141fd8ec888a",
+      "size": 1343004
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/28d31de4-53f8-434a-ac57-4d5d27f5ab2f.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "02217edc3d4c746f0efcba1a6582fa88c4abcab075b5e6b42f872c996c95dc51",
+      "size": 1640307
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/2a310e7f-8005-4dba-8dea-edb1484e1e28.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "922866b28f6469085c7a9e318f7ed7500342f5a8625c0902c75ada388cd75357",
+      "size": 1389903
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/34c9cf7b-5b5d-4c81-bb95-6d5743d25a18.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "61b7761f1906524843502a593a0b5c2981ee2f31165275e2e8c7b5db7022f29b",
+      "size": 1759922
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/36a1e6cb-98a1-4ada-a14e-8c04f135c5ee.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "54b8e8aa5328a205425eedc317f1390bd6b82b83623bc10936e9c98bf2dc2b74",
+      "size": 1301338
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/397c17e0-e91b-4fa6-98d9-97e6d2f009ed.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d5a4994aed5ff917e71c464db687c95c9427338b414b24a05de8ebf95c9d7461",
+      "size": 1842274
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/43a60b06-97b9-4119-b416-c7fc6783aa81.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4f62b996f1610ceed9d3b579d71b21a7efd0b75ee1a1a826e6ca389d088a2838",
+      "size": 1664784
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/518ddc39-55c2-4b18-8bf6-e9c4f0806760.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fbf43ada52d97cd22987755b23503623eeccb7b1c45aba5e93c20877933f8b40",
+      "size": 1660295
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/532a9660-8c7a-488b-8930-9134a9479afa.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1f8b8841a9689d3ad678d98a9d0e08cf72309c98704dd1aae00e40562fcbfc56",
+      "size": 1467894
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/54c4d59e-c0b1-4608-a953-568e9ae13409.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "69d3360a38ebe09b789b1dfa60f99663643018428cd261c8820cdadb9354aa4a",
+      "size": 1868315
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/5a34b72d-3b7e-4a9a-9a0f-f73f2230fe28.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "3e82e7a791b0dd806185f17692253ff0738336feb37bd1e2d17ef5e139ef3340",
+      "size": 2330624
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/6698bb80-52f7-4e5b-ad6a-4a8122504f9a.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0b84cfba23a5419232a5008c6255721cc1029dee57a09bdded99f23193070ea5",
+      "size": 1538397
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/67d50012-cba6-4525-8e00-b71124861f7e.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "21bac4ebe072b3c0dd2283c0ba5c46b2d54da31e529c112005bbf59e383b27ab",
+      "size": 2043700
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/68a933bc-df0c-4891-bd41-2c05e4fde504.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d11ffe032b2dc78aea74365fa607a83c976073284b517e5e68d41ff2b9a1a5d1",
+      "size": 2458948
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/6a13b80d-83c7-4fe1-8412-4fc07eefaa35.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f272054e1de96e53ed0e78cf6aa46db2f1e80bf49df050382f0d6f3cfbac2545",
+      "size": 1476919
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/7f426b18-12ee-492b-9c69-dfa8ccbc42cc.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "53909f6d9dc82984ce1726b972e49be785b70642e9de5a39dc80337482c2e962",
+      "size": 2266586
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/7fe6e2dc-615f-432e-92d4-0a4f17a9ac49.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "42aace72e9a54ca9055c5baf32ee6fa003ffe9a154c58fd908ca831ca5d9ddb9",
+      "size": 1944460
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/860cab10-089c-4d99-ae89-3e4f87df5d9c.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "88bba32ffd7489eb93ac24dbfa1a6fc012febf8a549760ee5aa9fa8e11bc8b8f",
+      "size": 2224004
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/8de5fd51-b7b5-4014-a892-f0498c35fec2.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "533c71f05c0965acf2e11a037139f12c757e95e54d0211ae2bc72bfe4af46d2d",
+      "size": 1527151
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/992f49b2-3f7c-4c54-a4d6-75af4693353b.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "00ef189ed0db7855b81a9c2d36dec12216ff79635ebd152234b316920e8ef4a2",
+      "size": 1164241
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/99f0113d-8cb4-40b6-9670-b4be4c1fc475.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "cad181619d1e5f231d4089c62d3013eb815eb371359c71c00f8cb9b06da9254c",
+      "size": 1657040
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/9fe8882d-3aa9-4d2b-8de3-d9d220ea526c.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4fbfc28d6d6f17dd655cac43aa867deb3743f760278a274b8aadf09ced564946",
+      "size": 1452384
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/a6bb714e-0f35-46d6-b7e8-3c18232a4801.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "749551c4bd313c95ccae9d8a6403db788086c1408e6b1514ad43381b7acb367e",
+      "size": 1553895
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/a86a130e-04a3-44b0-99b7-44ce0a63cc2b.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "255584a9eeeb03acbcd0aeb99286837b8762988a3ec741bb8e93798ba9a0612d",
+      "size": 1891030
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/aae9ec57-7df1-4af7-8e40-62962b90cce4.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b4f8d7b43772d2c26acde287170076525c261e1cd2d611b73f3db4eba963c21e",
+      "size": 1515291
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/af993127-4ec6-4fa3-9a27-018af985a4a0.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "665a585daca73cfcad14254ccc52752d0f39c1e384845729a1ca385763ab4725",
+      "size": 1856521
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/b6abcb20-8b90-42d3-9175-ba6b4d53a7a9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b1eb66e87b6f4f9074184e40cf2b3df6f2023129ae4cd91a4ab531b1dff0d8f3",
+      "size": 1992365
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/c1ad279c-9093-469e-aa20-b73af0fc8db4.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9be837d5883eccdf9598cdaec32cdbe7c864f91bc30446c5ddafecb1eeda1829",
+      "size": 1812330
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/d0299fe2-026b-4727-85e1-cb5de303e315.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "262063b30cb0c1282a7507b238f15b9116856126dbf2a298886932947deffeb7",
+      "size": 1483432
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/d29a6530-28d6-4dbe-bce5-9014d613ae5e.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1e6040f008b415f18e22f70cad58d5b8ddc991e6e03b65cda056f23d8acffead",
+      "size": 1382554
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/de7f86d5-56c9-4331-a9aa-655687dc354b.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "54c6b55f26180fe70ce542430b590d8dabd1ac27ecc6a8ee758c5f158df939d6",
+      "size": 1708508
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/e0e2d63e-900b-4ecb-8df9-28115a58c3a2.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f6279edff9b31720f34c60476024b0d2558eebd2dda047228f00d2e7b4580a37",
+      "size": 1796085
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/e2e0160d-9809-48d2-b018-416ee0254fc0.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f1a9ab7b8fa5cf3281ddde2be0a4662f7948497d96522b7acec5fd681afed9f9",
+      "size": 1681171
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/e4a28073-2252-4603-8c4b-75527a8c5ae9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5fa0b9ebce15766d8dc802b442e67224762354fc68113f25ffc3ee2ba33b0247",
+      "size": 1090014
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/e6420ee4-14f0-404f-9cd7-abc9a69da621.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "da4999860a0292aa42874f8a075f38b72b117483b14e0d6b55ad74527f3c5250",
+      "size": 1776238
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/edc5b189-60a3-4aa0-a68d-cc35009f3648.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "183f60638cb24d82f69f3494e80827184b1a32b746244a770ddaff043fa7696f",
+      "size": 1885351
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/f06bca10-a7ce-4a4a-92f6-973d7400fe8a.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ef568590c8650ad37f86a07557e8929d1e8619ce12e11e4b8db62bae6d83447d",
+      "size": 2174538
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/f29d41e9-d285-47e4-ad29-f04423533802.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "de8291d3c8d870a611030a57688ad92779b9e258dee4de3a6980a4c62b5bc9bc",
+      "size": 1501217
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/f80067c5-9967-4607-880f-1c4002d400cb.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "7569a38cb400e052abf2da01ebdb65f9090b2a454742e8b992066867d810ff08",
+      "size": 1804742
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/fd195b15-b98c-47c9-b608-de4157f6ceba.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5c8294dea6d569a88e1ba4d171ba7e7654e12e976b61c7d8ee4b70a9b1004095",
+      "size": 1985443
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 10.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "8498449dbcd05fd768ba7c6ca3a93f4049211e71a1b04a143bd350b5f656c2a6",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 11.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f4a78a6cc385fcb3705f0109cd20a36ebd1d764ce818c736d2c94688098bfe54",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 12.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4c600ad9377a6c6f93fbb18f0dbc96ee0ff83e06fb6af344fa8e0df6c9658ce7",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 13.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d8ec78c0e4083f82857ff3ef2eb370a741ec6c3d22256aca5f92e3ace5fd37a1",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 14.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "36dce76bb8d53cf33adece2c5bce5384265bcda4c73987ca0c280867cf133940",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 15.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fae8279488daf79293841188e63fa21a675c2cb995cb9e6eff038fd2260e47b7",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 16.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "801d840dedc55a60e7493f3ec4bdafeeef163c22869eaf7948ec3b7417fac5fc",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 17.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5a9721c70c853e4531b4ca12329e618fe8a7e7c0de484fcd7bd119cff23886f4",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 18.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f052245997491819915fd94aa794b9b3068bfab438190fbff0a891307e73cb3c",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 19.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a4e6ca1f2190dfe9c0053a4034a037ccca9b119a84e74f050088b1ba2bbf4b94",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 2.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ec7136a1313bf08ec7e08a25d4bbd5500bf5590cad658150b01d55ad682645aa",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 20.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ff922aa0a8b33b5d0b138cefa4f060288cfb17849ef7631388826fdfb2297cdf",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 21.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9aaaeaf2e6fa916aad390304caaa4113da83a588b6c341da7b0d0274cf0daccc",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 22.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "90f18540514ff5fb2a4a16f0e4804b46f63b3330d41e114f1c8fe8a4904b98ef",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 23.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "de2a624e1a8db6a3c5f339cd9ff4229d47c57f885cdeffb5066ae2309f5946ab",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 24.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2838fd2217cbf7fc2b8f6d48479fcaf08ce86ecbca27c7019dda7bbaa85a301c",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 25.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6d65d97f2423ea3cc5d5bea72427388b06788781fd44073c5440818e0daf100e",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 26.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "94d2542504e0bb9ee7f09b83caccafee6935c4788a19dc0dfc7356a41bab3723",
+      "size": 21261
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 27.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0f800a2f9d99dcf220d9a8515fae2a7c2ad64a769fcdd77dcae70ba8f5a7e068",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 28.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "69e938decc04b3bd2c14204b0e2733f8be83de4c9cbe505e9e4e50a9064df092",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 29.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "14c7b150a79f9be0f76bc06484725cec53d4098cbcc32d4c2d03ede8b7050edc",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 3.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f35f3f6f040318c9c4e854ba5f5e29f4351298045362b2c17f649b85801b7dfd",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 30.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "78c2835c84278e0f0739836d14e32bfa664ece1fd448c6bb44cc801005a8198a",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 31.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1732d5bb68273730aab317c10b7184f731d3c8ae22bd8c590506c9f3d27978c2",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 32.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "79eb28b96840a7df79cc6861d1f7dd9fd25ab4eb297f228987c33616e8171136",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 33.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a6664dea22e13a0190b4275b3db57da3b24db83fffa7910e9c6a484c0000a378",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 34.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "812ff3ea36dc0f4ee417e8e5f7e4619f16e955f66e6fd5900b025a1146d918ae",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 35.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e44dae9f749e57b102a1ca7161f97171ca719a19bd9e60d22e480ad2bf3c7565",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 36.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c69be4a0b04512b711130e04fb175e810babc579459425613e5e0fe2e32d356b",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 37.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ba0cf578964c3230fb98ca14a41e346c330302d49a1ebe28a76658555ef4bddf",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 38.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "79204ac8d42b860bd859db15d26666cb986673f6123737c19a3a58d4e0c257f8",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 39.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "720faadcd07a152896d3873e5007b5e399907d4d290df2821556b3757bf1a2ee",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 4.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f550fdbeb58b67c080932e4bc977bb326d94c2601110d79ba4f21bcffa9dbc66",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 40.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1579d6d10b14d0390a3e49bb3c040974b46f3bfa6c2d2159fa85809c6890849b",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 41.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c684d7f80c924f3054b1b437bd4a5143f723775663b588edae265431599acd36",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 42.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fde567c5fd69fdd79bf2f0a243e883a314dec6d488531026f9e75874328dd4cb",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 43.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e9852710f82c991bfb4d9a32bb1e8e468e605d5ef56ce19c9d50c8f9ca366f8d",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 44.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "14160d90c7fa9833ba3dc2b20b52c553b15fced31a90eace0b10f31ee89661a2",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 45.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c0bd66852b9c5ed5805c793183bd73e45fc3fad52b62fea9d293fb32b00c19cc",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 46.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "7b407c37dff4cbcbcb23eaafdd778e69274cc29e4914dbbbae1522d7762b3612",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 47.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "7383d4c1d4758151e8810143e7a4a0b7e8bb83aa6244d0be5b314efbd063a3c2",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 48.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ce002364c108c201e84b1fdd0bbc11354046025441b8d8a6da55a756be4eac87",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 49.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fe3b2dbe861423d71d2c1f51dc7e405ccc9abe9457628f76a5cbe4e04f9807bf",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 5.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f4d5b33c4efa32af96be4f0efffc5856a65f55832be06dd1096ab228d7f33799",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 50.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fe9165e99a86efdfb0e0e0c5940eabe8e3290bd538b90483bca3054e69fca604",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 6.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6e5b7b682603208d05437920383e3a99ae877935b5ffc678fd10e62b588e0bba",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 7.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c4cfdcf1669b13b8bd9d38565fb896304e1127335cfcae0a66d35c14306a5e9b",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 8.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d3cdac97ef2260e5b284fb2597ab64b6fe16aa742fe60f60343083734eae4bbe",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy 9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "3a440ed913173ca1e8b4be233dab8bd2d7e0274fb77e9cbbc98dd7edf2a8dbac",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat copy.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6e77b1506fbd06fed4e565cb56dab4e25dac8b5b5d3e26918ac025a190611f2b",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/cabinet/flat.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "dd0f3a02ad07e8da7359afdf9cf3f8afd99df3d3e3da51f9d5587199dbaf63e5",
+      "size": 20998
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/00e4b598-2dd0-4ff9-b0a4-46e223a9296e.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5679565b4ef9807583e5e6115c7568aa442f9c94bbd083cb9ddeb8ff171646da",
+      "size": 1816392
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/0104c474-6473-4e05-b789-6bdb59f55da7.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "64536bf6702d93edf5be585746a667ee584e1d43cf4ccdab09b38a44072632fd",
+      "size": 2048908
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/014ac251-0435-41c2-9dee-c664ee268327.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2828af8df7684ff3ec9c46371af51b5191ea2ec978e162eb44b08d01dc9b580e",
+      "size": 1497157
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/0171bbba-6293-4117-b0ad-bc4b98d1c20e.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "aeb471a11bddb17763219bc7c76daa45d1c396f4351d606e5930067a6d18a4c1",
+      "size": 2065139
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/040ff758-026f-4313-b390-ec86d3690f9d.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "776ca0117f2de98e9d1bd77e4500e99d7a71003ac848d20ab68787f5841a7f07",
+      "size": 993372
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/0666bf9a-4625-4132-bd7f-0079dace8c8c.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "aa3873000ddd0c75140d2cf4011641587ded0ddc313abe7f72ad634ef25fea87",
+      "size": 1330106
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/06da7e0e-c12c-4da7-a56b-9a3c82d87809.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e3b6b41039ad889df82101bbc6606026e9577db4c2b957f255d61cd3cf58db0e",
+      "size": 2199569
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/08ca0b3f-17e9-476e-9c17-ff81616c6bd7.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "87297a114f56dc9ce80798ee50fea2f2343c32c27da52de070f0e9d7608798f2",
+      "size": 1454815
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/0b184f66-ba4f-4fcd-9556-bea9f58dc9c6.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fd8652c33e8a186ba1fa4da323593a5ad0552952fca39bf6f83bacb403dc4825",
+      "size": 2018242
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/0bd64a61-e098-4d06-ba3f-0a12269d3584.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "476d268e2e4f2fca6df6a6bd989283272ce837f6f52867d8e568e3192a8b340f",
+      "size": 2122759
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/0ed8ccf8-33e5-45a2-9200-4dc1a5565494.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e00e20e6e9243c00225b61e01593d75ac499799564289752feb9f46271af08d8",
+      "size": 2064582
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/124bd263-2b8a-4057-9211-b36869047fd2.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "8a47ced2c68deccdeb302355748a3ef84af4924752e347a0bff4f897de4c1058",
+      "size": 1979175
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/133b4eaf-bb93-4655-844c-a02278dfc032.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "de3a6311cbff7ad8165e5e98511d370e407a10a9361b2a3499d1d5083d7527e5",
+      "size": 2236225
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/1563c9ee-30ab-44cc-b21f-fab5ad8df99d.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0d377a0d2e837ce30d24faab83c13db7334a6851ecad89bbb9a82e94b4390b7a",
+      "size": 1905453
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/1ab263d2-ea24-4fe7-9383-f227aadc8c47.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "223ba4fa648844928e29b66f024cbdb42bd1d865c821482f0c6c760336c01c75",
+      "size": 1795172
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/1b23c19f-7e79-4b96-a744-42615a72d722.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "00646d7befc6b5333117e56060e7dc18eb97604d7db2fa898250e5beebc529bc",
+      "size": 2303543
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/1c6ea15c-1cad-4a0c-838a-5eee8f99cfc9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "079a33fa489ab46930213bef89d95ae24feb177ad3b86c919d224ab40818938a",
+      "size": 2613531
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/1c6fc0f3-d4ef-423b-9bba-d4a5d59c05df.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fda998ca28e6d4600eb0fb078c174400e318b394c887300192d29aced60dc76b",
+      "size": 1891601
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/1c72f7db-374f-47db-8424-9526d4e7fa7a.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5fa575aec17837acd1894b815b633ce109d723688fe69b0943a7bc66ade049ab",
+      "size": 1992539
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/1ccd1303-2e23-44c4-bb21-0dd474b0d899.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fd103dd5fa7a119faade06ca34dfb2a8f70511a959c5af86ba839d04500c1183",
+      "size": 1668925
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/1fa52c2f-7474-4aa9-9ff9-0e411a78daac.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2c5faf710e6e3a97acfc89125781b49d6f90570e567dc65fbb02f574a4a0a9d0",
+      "size": 1147822
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/2408cfed-ad91-43e2-9295-fdafafb76c8d.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2b22d16e89fb338cf030be2f487342991f2c7ed732c4200e368d0f784bd4c9e2",
+      "size": 1354154
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/258270ae-3af4-4644-a031-176efac2c3f9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4b0732e2cd16052e55b5d4b145773899394a353d68b1fcc6e90ff9b0060473fd",
+      "size": 2163756
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/25d4c91a-c831-4249-b78e-a4b25d0b1ea1.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5dd02f02091f5ca008181b514924f56b6bec95587eff03ec3ae4a4080159068b",
+      "size": 1464932
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/276de88a-374b-4dde-ac45-c52d651044b3.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6763adba585154aced70cf3a1d3a95d269baf0008e60915bc71468936a1babdf",
+      "size": 2400857
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/2a8aea9d-218c-4601-8e8d-b98eb93fa461.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "415a13ab49738f3ee92d6723bc439542e701aa9ab1a7509601108e7dbd02e0ca",
+      "size": 2074400
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/2cea6a36-7053-4808-be22-fc5cc76b5531.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4341961c7ef5cedab304c1fd399e2f827d72e0c57e8b8206be76eda28745052f",
+      "size": 2004707
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/39be4639-f28b-4bfa-8c1e-4b37e40395be.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "51c7fd51e440b1bf1e840105c9e8bfc1965766b1ae687367afd0ab81d6654268",
+      "size": 1780251
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/3b958a28-0807-484a-92e7-f17b4c6dcbeb.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b589a8003aebe529cdb6195e5ebe132a11feb1ec583ac9503eb8cf9d1382a2e9",
+      "size": 1981602
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/3d48ef42-02d9-41ed-bef6-f5c0dd47cdfa.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0774588937f4e1b12bc1a983a659cc17e6926a797375a59e97e27f7dda366b90",
+      "size": 1711802
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/3dc423ca-b351-429f-9842-1bd17e3ce360.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9cfba1a0456e86cadaed1f43b97ed6c5c7a2d3c45ee34b5befccc74c7bb8104a",
+      "size": 2545864
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/3e81b87f-10ee-4f74-8ba8-1b724df383fb.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "7e5c1f1af43db38c835bc1f1586ba00d653bce88d157ad9ddc3782c16a998aed",
+      "size": 1178486
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/451b6b8b-5d86-44ad-853b-e99153ba48e1.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "147fcb2cfa83dab214efbfc97288882fa8c8e0102f21a1a49c38da27a04232a9",
+      "size": 2460406
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/46c59505-7dec-48f2-a0d1-c36ac213890e.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2406a149a964ac532990049a2aba6308d421da667485de4894b6a3d1045cb60a",
+      "size": 2093350
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/5065776e-1fbc-4a70-a786-9a2ec6ee5aa0.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "509d1ac6367ea2d654b96110ec7066d2733b5fe379ed8d14afac245ea6fa2a9e",
+      "size": 1351136
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/5259cbe7-d956-4a0a-99d1-d7c7d391488f.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1f8941f5b3942a0172e069878167816e2da542b4d7c131030b2468f4b347cd0e",
+      "size": 2157899
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/561d2d94-ec96-4246-974a-d9abc6f2297a.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6ff698fc3323d95f197de84d600cb5d212a875a37b4cd746e4fd84e0092ea44e",
+      "size": 2543318
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/58bcfa8c-6e11-494f-8fc5-d5a32ac7b3de.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "511f7611f3ecf5c6f22ba465f6204999aee420c16dc0ecfdf0711e9bc45c9024",
+      "size": 1217417
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/5ab4d96a-5401-45d8-977c-b3fef4e55ca9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2c5a3a063abfb1e6f6e7a1790b1d192d6be28d30f5a605cb5483a3a05a9484a2",
+      "size": 1349012
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/5e2958ab-c27d-41c8-8167-de9053f79038.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ae3b7812e468b3cd3a9fbb3bf302878e3ccc535fa17f224fd26abe639936119e",
+      "size": 1797761
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/65e832aa-974a-4ca8-9dd8-e90a96d75b6c.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "82545729e740b8f0b2a6669475d3b6a9788f5a771659ed76a74173db845d6eee",
+      "size": 2018700
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/6a4f994f-293f-4a8a-8f8d-ac99f8e58adf.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "93905d2ff9c8c3763f979aad7469c60d665306d4178d2c1b41778239bb6bc878",
+      "size": 2304615
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/6a6a86a2-bbba-422a-9620-5b90adaaf7a3.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0d4785db1f8c2a5899fbde7c6639dbe4e1a1ad7c909e2c093b0fdbd02e5f236b",
+      "size": 1745395
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/71d72043-3d97-4ea6-82f0-3ccbb53e0534.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "3435d088cf45f2d73ec6eb97f7117723cf23d18a940c24e96f4f168759fac3ae",
+      "size": 1913143
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/725eb22a-2c4b-44b0-8aaf-bef282232601.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "54d2bff885ca0286f59d888b6d001b5bfa4d68e76a1a445a274f95de45005c0a",
+      "size": 2052106
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/761d55a2-5858-4d02-ab13-0bb272a67eed.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e3c1e76e998a8424bdd1f288c296b3e9b3ec76a90dd02dfb54647140f3894669",
+      "size": 1630312
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/76a72b39-24ec-4044-aad8-49f381939063.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ccf24f8e10954187124480ec4f16eeea15fd04559ba91fc5bd05f58082074ab1",
+      "size": 1694573
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/76c7b19f-b375-48db-a1df-d79485a86d94.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a7e6b7f5c9bed5526666329abf26a32df866a743c9b5096d754b97c733f12fa7",
+      "size": 1924676
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/771c03d6-f0c8-4e3e-b734-0a07fff03c22.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "56890d6682259f788de02d76ef8d3210caaf45a2d893fe3a225a03e4a2a33732",
+      "size": 2038862
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/7f638e9b-10e8-448c-a2f9-a75ae414dcfa.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "7aa16a43906e1af55f59ae7bf1419be5dc83868fa30c33614da4fa254347078c",
+      "size": 2354843
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/827976d2-dbab-47a3-905f-602e945a6b30.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4f42a948ea36cb585e497e571e1f4ec945199388ed1ade202b5a5ab931ee28c8",
+      "size": 1376100
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/8549466d-50fe-4cb9-9001-e93532e7938c.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e4247c64f50d2f060b04b27491599ea44a23facffa0913671ca9afaf3b99b97a",
+      "size": 1629362
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/8585099d-cf7f-4c1c-8f36-937939dba42e.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c3ecff5b0f2f5f7ddad59e7a1297aca6a02e60ca018ae7c31c5d658f5d4355a5",
+      "size": 2319547
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/897d7c04-f1bd-4bb1-bffb-bfada23a5b58.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5e35da771d4437dcac98d9b997dd019f6ec5646fde05f00f31e8cf47d28fbc00",
+      "size": 1206807
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/8bafdd4c-a44c-4bc0-8978-e7bc0abcedb4.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "41105abe8b822718795b2180ac811a42d368ec052a82527d15e570422afd5f36",
+      "size": 2582356
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/8c165058-abec-4ea9-9990-19b7eff4df4f.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "62bfe10cf8f98252d22fe18e56a1e12e67c13caea4052533451a07fe370a869d",
+      "size": 2515273
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/8c6ed656-6d1c-4707-82a2-cbff87a589f7.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ab02d18d73b801f077a887f54138347e36e2c29a1b545d0f04710ae666be0cb1",
+      "size": 1899442
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/8c8dd1cd-6c84-4fa8-b51b-ac736fda7a6c.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "85463f3b5639d51ea070630b4f6cf489752f2b90c5a14145a55503958ee4f173",
+      "size": 2119526
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/932f5612-9058-4923-820d-894d630190cb.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "86dbcb5e5b256b8c973175497c42e5b94285e2ce6a5602d2535c488e6aac571c",
+      "size": 2120873
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/94bdb3c5-faa2-4274-9337-ca5b9fabce88.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2efff67247bcbcc99c4e3cbab90b572397f69d5a701d48d5a2a224e12a65cf07",
+      "size": 2137610
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/956782b3-ca4b-49e8-8939-6c50e87b9609.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "cd8d9ec57a9d6dcda0261f8fa0c9d13cc4221dd1ff06b9e30b70a1a886457dde",
+      "size": 1467788
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/95b636b0-8afb-4430-8f6a-1f4e0f4eb808.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1b9df9a6469473f937d79e4da943f29070b96c9091cef46861fd762804c0a9fc",
+      "size": 2524057
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/9af6ae6e-a842-4baa-a01e-cec57045c367.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "79d61e364fc9ee134093ac855f8651813f29c5ec72e01021ef46d37c25c47efb",
+      "size": 1768077
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/9b637968-8173-44da-8f41-3943c4d182f9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ae15c49b9a2cf3b3736411049cf59be527baba4206866858faebdf1971a2a3af",
+      "size": 1784739
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/9c47a3ac-2e56-47c1-86d4-006f98e21987.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "98cb79acbc5033d761e797908e2a97c15c4e19ed4ac4ee7249b7d353321196bc",
+      "size": 1456178
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/9ccbd07a-887c-48c8-a806-0fac93606bb0.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e1ffb844b9cb550c64bf085b86a6564a28147ba4a37a00793b29e25af71f5b4d",
+      "size": 2205617
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/9e1fd142-1d1c-4a82-a961-681db31b343f.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f12cbffbb304539d9659356958ae5e10e1e4e34aeb33204d316b77a9e24bd679",
+      "size": 2285010
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/a1cfe2ab-12cd-4d43-9ffc-77d48d0493f3.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "724955fc241ff0355fa747fb56ccce26d7fdef53bc0541b552f3c4d90ab02f8d",
+      "size": 1542483
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/a4903060-7bfd-4bd5-b8d6-b916d172a82b.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "dac2d530fc7d7741763bee82326cc383c2c317222ba5e3061d8c555a0e147087",
+      "size": 2225138
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/a875270b-fd82-409d-9bed-1d567657ff8e.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "8e147eced64014fb02ba99d13c5defe08b5de5250f8aed597b0edf90ac635ac9",
+      "size": 2694763
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/a8f33495-cd01-4b66-9c7e-3ba5edec6565.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "3d92ce362b1b3bc62243b300c4092afd5f6fa97a75ea9bd88379db9bd760b00a",
+      "size": 2026977
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/ac3491a2-e817-4f5e-8453-ce34cb78a8a9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "cc19c586485dd2419bc31d56bdbe070823115cf65a1b72a80996179f3d91f372",
+      "size": 1878256
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/adcb6ab3-7ecf-47f9-a11e-6a505ad23d98.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ac7b4a97f0ac6cbc106fa855197f984c6f89793c52fe64972ca6f9b8c2db5928",
+      "size": 1462662
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/b4f0036f-f2e7-4167-bbc4-708ee783052f.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6d606808500e9d8e09360b133b77dbf8eb82749910820cb4bb0d8f7ec41616e4",
+      "size": 2074525
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/b6618923-8455-44c3-8ae6-b766f34267cc.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2ed44034c5eb51862f3e2ae8b40730bdb597564022ba85132104a1caa5dfcc1a",
+      "size": 2105643
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/6e381354-7b8d-4536-b9f5-c0e41e40777f.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "eb66b95692ff2e72a9400ec6ab5daddb41fd513ba6aa4d9971fbeac32815b7a7",
+      "size": 2407213
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/7f8df913-87b0-422b-86ce-33272447e94a.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6c42ad9c6ffcd5dc5483966cfe0ad42506c525e375fa02cb5c6603ea14e729e3",
+      "size": 2497837
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/7f968482-2a2e-4f96-948e-4042b89538e8.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f68ad6f5e58d3bc65749d0ac77179b6631c2707a7d3d3caf7c0c59324db2e525",
+      "size": 2233355
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/a5e196e3-d378-4e15-9eaa-83b9b7f02908.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2670332d40dfb3f75fada2fa5c0eba8ac3cf6923f804663f3836f98e2213fc03",
+      "size": 2331949
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 10.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2748d98a9c851d56f646479b512d9ea97545c2cdf1fbde7702b3d203e2824487",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 11.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0bd6eddc7bedc827e5036496323a727d29f1b27afe0c70c341c08a76a62ed0d0",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 12.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b8f4d738fe1d3d907506573d635eada1197145b390afda1975efd5359bc0fed2",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 13.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9d448329e468d7fd1039f560ede2c7da86eb3a444e14c9e58f021f841498b8b0",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 14.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fd5077f8133ee8e861d8ab0579536c8d7afc76008e958d1637876e539290f2ea",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 15.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2eaefdce135fd82ad3c1511535e87848e083dc733b7154c446a6da024d1631e7",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 16.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c75d6210cc74fdbae8a4e4627116ba9cf5a0a18b536f9d3f9986aaa4f1b476b6",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 17.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c5f558c93a11f396c74d8cf043d100dad14333d1cfdcc3c7d3747c7bd36ce262",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 18.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "26432ca950e339d9106284c4e5cb03093353ca2a55f591c854e5211816ffbe4f",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 19.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2835f3f01e1bba4dff89158ad3c62cefda6ae951dc38c4a74bf5081d0be4d245",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 2.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "359ccf391c8f12f659bc7af134f942279463a3f1abfdd9d1b26239d9beb8c170",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 20.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a6444566e8185d4e95b5e568472a99a2dcd435304fbc56fe2164d97ea9a22c23",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 21.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6be1c327d1015262f82dbd1934cc379f5dd407f5fd633c0af9d38e3285efb605",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 22.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1fdce6afc42efa67931cf0bf611b89ada955bcc67073835b89f7e38dd43efc0c",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 23.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a043a4588e2664762e5a9ca287ba6b69970dc0e4acf2f7e8a531a6c53aa3a899",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 24.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5a132147337bacc6aea176a12615a2723556e582c9a54eedab808d503778ad91",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 25.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4748443ea4b0a5d7203e31523099ec9eb5f20d593fcac138bb6116ad24374a60",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 26.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ed83fb97f1456c8ca2deb64e167a7691042eb00add4cba55f99810f0fc23ace6",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 27.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9f3cc0b67047bd2b236a6b41caa5811b04c37c8515e0036da36812a824bac806",
+      "size": 21261
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 28.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a97df6e7febf0ff2a3e98b5bf52dfffd318413fb4cb9eac616dc4ebd417e6897",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 29.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "eb8e22f954740cc9da54c7d2e2aa081e1219d46ac7a53ff4ed3313fa532c9523",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 3.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4df5f748543bdefedc865ce9e63a394ea730b4c5c4e7280de7a59b01a56cad8b",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 30.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a8e4a85eecc16d049f25171cd009aa256c549f423dffe268964b27c216158f5f",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 31.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "bcd3b9d1056b8f4df7e039f87ad986b7b618bafd9354523c8ac234f56e7b3328",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 32.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "db15be0f0868a507f3b1510a555915b1e098df558f7d8afdfac40876cbf1ed5c",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 33.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "52f7156590e9b12341778f8ffd4c00eed38e3a218a401cb5a9f93fda02cdf8f9",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 34.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "3d57ca24d427b656d540fe49892cd306252b45ccf22cf1d65fe5fd90db821bb3",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 35.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5e5640516be429600e827eed674d2a3bd06baba5f66c59ce3774034ea46cc5fa",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 36.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "dfc7dd82ee23d1ef7b39c7a10203eb054b12fc9cc5db2016591c0aa508071d2b",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 37.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2e4a359a6b4c85f7c673965984ed7f2bc7a05c7f8425cc1f38977ade1c40d20e",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 38.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "60a85e5987c777cbda08437e780cbd50c7144d61f31e2c973d1070ead603327a",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 39.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2fc3873abcc5dde2975f61554c2857f4159f9a200626397dd2110271d8c34c7e",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 4.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "3dd56934febd9783b0f0de20b0bac1e6be22098284d221e298dd23690b90dfd4",
+      "size": 21261
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 40.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6149049e3b71dd2feff6161925bae5167627e99c13b2169ae3223e4014c44132",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 41.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "59c2be1e43b5fdea9cc49857b8729763588f4b9a3b3b402ef4a31f0e1b51931b",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 42.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ffc3ebb70f632a29156d3842708893be4a6a60d02117722ab35c34244f76b060",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 43.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "aabe83ec322a4d6d8cb2f7e115d4a518074e8534d5bfec1423f4a9490d69a9f4",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 44.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "320a988eb798f7c310947888f703b7558224aed07bf0d46a5e3998768f77784d",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 45.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "760a0349fc593060f40dfd818b19d6b77fcd143bd85219dfb2bfe95cf441cd75",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 5.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "767a6c468c6453455e8f46b097228acc4320e929b5595f6837a38e47f573ff8e",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 6.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "83c9cf64af63099648c3999597a0aee90135330b7f018853228f95eeb79dcee1",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 7.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "be9dcbbd3862274f302d23c718eb94acbe0a5e3656aae8700081a04ce6c846a0",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 8.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1d3d1d00ae9046592e0870aca6befbe138ae61ba2b51e92570f9865d7fbf137a",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy 9.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e94203cf111fed1b2635929b71620249ef55f3d32d2d46b4ed44e59eafc732ea",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain copy.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "bc24467f8e36bd8ef54e25dee31a773994f0b7e74d188873e391eb07fee94968",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/base/plain.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "13daff71ffd268d2e4eea2780ae3b10cada37dff7f36fb0ee2d3b4d0b175162e",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/bf277536-38a6-41cd-a278-bd68e25816fd.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "6199cd0f8ac55b93eec5aaa998582729407ebc33a0ad0d4b2f0b8e19e5241244",
+      "size": 2089516
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/c9d714cd-b00b-4d96-b6a6-cdc9e01c1b71.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ecc50704786055a971a5ba8a276e680419070824ca08ba83fb72369805ce354d",
+      "size": 1379602
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/ceb18b7d-1dcf-4aa2-adae-0e0aae1c5eeb.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9c7e834a90d3df78bca59950104e549e67a41a170d725f26975bdf7385cf8611",
+      "size": 1683899
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/d366b33d-335e-4a76-91f5-a5ce14266c89.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b49ff5de0bddf91153a4d29e3ed65d9def3e3a45a74dd74a6696d94ffceb684a",
+      "size": 1267120
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/d5db5c5c-779b-4de0-ac66-31856239d488.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0da53cffb7f8b921b786f317f9befea885e3d022c13fb3971db3827c507194c9",
+      "size": 2396291
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/da90fb4d-3dfb-4a17-8ecc-95e82ab69b32.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "016ff60e1f585fa523d979e4595e9f7735f5bb4df44550ede674e843e6362eed",
+      "size": 2396521
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/db04923e-96ac-41db-a16c-901f10a41bf0.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0c1e6f57c3189c2abf0ecbd1b5873c34396c1a677f436108d28079e4d3453897",
+      "size": 2340689
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/deb1e565-5c29-4285-aef8-f904c2b41dfb.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "745037b09703a8a8c9d54ff6e9170243931734412da423099043d5c103b7f49d",
+      "size": 2026962
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/e563fd4b-656f-45f1-b803-df0d6dcb8bd3.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e210be9ae4d864e1ef9970482abb5cf7e87784deb29e76800588f0add7a11cb3",
+      "size": 1390178
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/e572f3d8-9ef2-4cd2-83c1-8acb766dbc4b.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0d9d8690b7ec00749e194706f74f03cb900b786b567293f824804670e125c58c",
+      "size": 1859760
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/e5d1c208-34ad-49a7-8151-c0d55ecff952.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "11f2f4dd4ad6bf19ac9032c44cb865b6e9617642bf13359bc989d70b8e16cfdd",
+      "size": 1151146
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/e7f151aa-2354-48d0-94e8-071462f16ca7.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5cc41dee519c816ccd99e9e4a9206d0f333d176de9281fd4f987e3de7d2a3254",
+      "size": 2607541
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/ecd3c3fb-c4f2-4021-86d8-665e92b2735e.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5c3f1c25b8f392d00cec96dd7d50605a5402cbd0ee5780c766a0a594054377b0",
+      "size": 2311730
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/ecf23b20-3db2-476a-bc06-442754ba5e76.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f58006d1ccd234581f360b40f9db091171fc3103fdc5afb5f9a2d7cb44092a48",
+      "size": 1536800
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/efca4079-dd9f-4d54-8943-216d6c02e70a.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "003abdb59e53df057dfa25c4204b73c16ceac89266da54bbd51ff88475e1bdb6",
+      "size": 2042266
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/f1299a54-59e5-42ea-9f53-e9f11fd6ca3c.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d2274dbb1ade659c1d7fe6b5450a26c3e603af1ed2c160a7452865b4663a54ad",
+      "size": 1271405
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/f29cfb8b-d640-48a4-ae5e-02395ed7c6db.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1434982dfb04855215d5d65b591ad98b648bc9f15c0331fcad4d2f3ceb4244b2",
+      "size": 1989844
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/f52f1aaa-c061-42c0-8bdd-d2edb4af8736.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "821f688090b9807a31330e6fe913b79fc44cd38ba4d157c7000687b19f2c62f3",
+      "size": 2074752
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/f5f4cf81-db71-42c7-b889-c25c145132c6.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "732f5ad111227b547100d60cc5744ab31f3392df98a3a88c12172e4cc4fbd61f",
+      "size": 1887744
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/f66bf802-8273-4df7-a58a-faa8ba6ed46f.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "537a1cfb711ba104cd54936c3dd1bd6074264439c3df56937be051cc50e16b41",
+      "size": 2566391
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/f69e2027-7163-4a53-8361-6050e5679242.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "dcaa8fcfeb161a9c34cd57f7c7dbeef76cc01f742f15ae3e506ffab09c54b986",
+      "size": 2419407
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/f73ed4a7-c1b1-4660-9eba-00f2ba25977b.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2a21ace545e93160daac9dd6787595ed058a7bb9006b17ce3e0584e98f33a745",
+      "size": 1403870
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/f921b606-5363-41c2-aa93-dc8ec1475fda.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "83f768401648a1d3b9a8563db281427d1c72fda14d9b75061622d579d7e31796",
+      "size": 1790161
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/fc9c7e5a-7abb-4ff6-84f2-9fce43bc200f.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4b51c31b2825fbe27ee7ecc9120a51dbee78a8aa24610e8e3c40c7266f5776d3",
+      "size": 2218453
+    },
+    {
+      "path": "robocasa_assets/generative_textures/counter/fe8afe85-5153-48cb-80e0-88de2a577f0c.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2df8087138da74516defb28b3d0c12b1c728e61d93d7271aa1075fce77cc21b4",
+      "size": 2058557
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/0139f959-a4a8-4504-b6d2-f9351afd5941.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "00ea99559a624996ed54c8c177d73f63a00028ecfc33a943e8e9848d79aa76f4",
+      "size": 1786748
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/022ec5c1-324e-4217-9f03-92b0e2f9c74f.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "8df6a8512779620e3ffd0a23075db90eeb8716aad4d7292532c4782cc2ab6199",
+      "size": 2175443
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/02b897ed-2381-403a-aef1-095096993039.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "9e6e3f3ef8f4bb0e151b74865b2ca45bd73d9262d450f696f2e557ab159ae745",
+      "size": 1910567
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/05f75518-7b70-4098-8983-aca459f33ddb.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "94b9d42524943bc77504f100ccbb19585d9d85cc1bb0864a93ea2902d72b07c7",
+      "size": 2318586
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/07f74135-07ab-4e29-bb00-4782f15ab59f.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "37b2ace930b30bfb507f89f5b852b3b26d009e920206d7f23c0d139649d3c3d1",
+      "size": 1717212
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/0b5b5a9a-1435-4dfe-b6f4-19f4dbae1e8e.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "f66236780c6ec0412b4cd109731de82bc3c8ecc4d5bb7aaca26c041bef4cd64f",
+      "size": 2397724
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/0c01c256-4779-4093-a0b9-3347c31ef53f.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "5d970d73d1448cecc1338eed526579fff2291ff5c218586f33e182e4ca3f1af2",
+      "size": 1876895
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/0df28fee-6cef-48ae-9e8e-c0f0f3482412.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "86c81df3027a3999b97615ac00e66199a99b8ee8dffbbf60d1416a341e1bca5b",
+      "size": 2027596
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/11f6a3bb-c36c-45c2-a429-501ac0cabc02.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "db0f6c9abbc542b6a3c3b53c080e61f74020ac17182653c7d69f8fe382bc73a4",
+      "size": 2067946
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/11fa953e-c11d-4dad-8e51-47cc6dc67aeb.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "f84157aca7d0dae6227372d6b05a987021cbc2bf64fb5b0602b58c87ecfd7754",
+      "size": 1570344
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/14b4a5c3-69e0-425c-b8c5-ce495ab87409.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "f7704e36f59d8c9e709d3e4165cd5408c4e82a8a80da55f81114bf73d6ee0df2",
+      "size": 2533280
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/1671701f-60d2-4c71-95cc-8bdbb9f57ff9.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "9a19722934294e5619a38800ccbbd1339fdccc949a92f189fac17232eeaeeb93",
+      "size": 2606484
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/1e6da165-23cb-4426-91cf-450b3ac74e49.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "ece01d751ad05c6281de9000aa5b4287602b83cab24cb0a9a7d9f75ef006cf1e",
+      "size": 1661746
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/1ef4cfa4-cf52-4efd-9fb3-6698650ee239.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "64eb2f27537355381ff98704b843c81a7dcea42fa11746e34481ad8897a85974",
+      "size": 1992627
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/1f13ee23-d3f8-4fe4-b24d-97c4dece35c5.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "07375538626b0d488ce0d0b3b8596cb9e540354291d916509f67b1b5e065b94c",
+      "size": 2153744
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/2066e385-7798-47b3-89cc-1eaad15c75c4.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "30bc037b7c63103b161089e4a575a1387c08d344997e361ae399a63443136b58",
+      "size": 2040332
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/22c6be8e-a027-47dc-b2a1-3284cf5baad0.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "3185d9b8111d552b5ed7f8d15a4fc3237abfe73d6179aa945fb529bf3cf8396c",
+      "size": 2087333
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/28359684-bb12-4b99-86b2-8c0998ee8fec.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "6c0f961b9f9449764753495d207729489fc567653cad115c5ebb547c848c9b70",
+      "size": 2192411
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/28f34ad5-b4f1-4b81-99cc-b04ed28d653b.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "7ed181b9020c4bd1cb87ac65bc8b7cd41b7cb58d3e702e62c339e8c4b0ba28c5",
+      "size": 1757865
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/2aa2a926-fe72-4221-bd30-16e0a0cc9324.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "aa2407eeea5093798407b7dda3d7772c6e0944ddcb41e6ce31ea5602692297f1",
+      "size": 1825076
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/2afa8673-57cc-4953-b178-b57eedd9ad0a.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "93702fcb83a874b3a626d1bd1e0317f2a2cb08774de4af7ca86e40cfc486e53d",
+      "size": 2192834
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/310661bb-e74a-4b55-b999-ae1e2855990f.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "dae5d3107b704b3461d50c69fc8dbf1d5127b2959b225c749354f3d304ef892d",
+      "size": 2336580
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/32a18f41-8e7c-4a9d-b5ac-a7ba19a9ed35.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "8875417b5f09dd6b46dea5f10e4947db4f810d49ff9650f0339f349e11b8d7d8",
+      "size": 2158848
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/3a34566d-b31f-4d3d-a86a-8038fde33b8c.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "fbf69b1aa42a62ea93d0c49808a1858062d7bc50f4e62ebb49c69c8bf068ca4b",
+      "size": 2442847
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/3b70d093-e264-4550-b5e5-f750ba577b78.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "ff38088c0f2a849061d26df6e2bf3316a1c4356c6dd4da93eabe1943d38e3ff0",
+      "size": 1837657
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/41c3dbec-db54-4417-bb76-f51a4349943e.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "63716aaf494b689ffeda13ba05ba2ded72ccc2e9b14f6607abcbd840c6a78420",
+      "size": 2002440
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/447fc81b-73c3-4502-8de7-9db654e62902.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "d76fe2c7b91006095a0d2ced0607e76862d30a2c55d721159d253776f64effa8",
+      "size": 1522287
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/45639cb9-7ac7-4d8c-a8a1-719d3a53d531.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "b9dd3b2c58f8861f67753873beda42389a61c9f80d6e37be12b07593f55c83e6",
+      "size": 2167416
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/49de13f1-9488-4893-8398-48b0a5f27453.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "01bcdb21c21bfaa3bf96fe70b4eb6e19cf99abee5cb2bcf71f7ca6f39af6a579",
+      "size": 1544024
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/4d8ea3e7-4a0b-4015-802c-cbbd0b12ba2e.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "177a7eef2bf4cfab99189199adf864c9b6b22dfb1067b59d9c8fa5213d5015c3",
+      "size": 2193296
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/4d974231-cd17-4da5-ad9a-7faf83c2d683.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "e09fe64d794498196fba0448c6bfb3addf2b8ea514ed213c6f447b1194dfeb0c",
+      "size": 1475030
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/4e53b13b-317a-484c-9b8b-7417453e45ff.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "96cfa4a4c5e9e52383be1f0aba3b623e481392bb5392591a56d768ebeefede4f",
+      "size": 2540401
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/50578da0-60d8-4e12-800e-3df2fbf1bd5a.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "a877c0f152085abdfecbbaa27c6a69e3660e787825a3cd8dc2ccadda02ef2c0e",
+      "size": 1772006
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/56c9fb44-a8ee-469d-85d4-6d419f9dcba3.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "8bce7816a02fe9ede1f83bb6c1a97ffdfed16aa43d2a4bd1334bc21a123d1d92",
+      "size": 1277727
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/5729f1d0-0796-4d82-99f7-76a171266fae.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "8354e91c66da42cdb3f9ff3a74a11b08f815c84ac78e9f46dac5f300c505b66a",
+      "size": 2486277
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/573d34d2-a045-455c-b525-34a8571808eb.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "5d3947e8fbb52f091ae3e445662d28a1737dafda49b1ebee424f22cd7f53c68b",
+      "size": 1899940
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/5ccc395f-efd5-44af-b5f9-885789e26661.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "16b974f6f190b27b2fd1cfdca3a8d4a62c335972d9a561efba1827ce170e2139",
+      "size": 1968663
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/5daabcbd-0ce4-4dba-9342-c74d3da4fadf.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "526feb8fa90d815218ac9b5988c4bbb06bd0fcaafee238b8b21d28615be0abb9",
+      "size": 2251355
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/612b00d2-819f-46ac-a599-38672184c842.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "3cb6f76f12e1eed214b6d7b1c500a01e4039f6222dcb1ab28f12acdbd2681d55",
+      "size": 2555591
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/67837bbb-05ae-4665-90e5-572130b7fc86.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "361dde08e913f7ef6e044012880da7703b25f412e13eddedf18bc33a1ea5e6a5",
+      "size": 2304615
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/67a6f678-5f4b-4999-88fd-d0587299eb90.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "716aad6c5bf2019cf14de42b8b425192ba089703a3441e33d949aa6719ceb806",
+      "size": 1999413
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/6d58d55a-34cc-455f-8b4c-004fabef6e11.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "08828b4fdba36752c5e8df2c47a757b5e65e62879941a1f23b67153412d60789",
+      "size": 1823744
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/7c411449-a3c6-48e4-ab30-d08bca5938d6.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "16f76516401a5d50efd19b81f4659b67fc42b615bd42df0ada3c4d2cd57a040d",
+      "size": 1804430
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/7c935010-badd-4fa4-8089-4fc9728dfe96.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "337ae9b8a0f0c1b87efe09fd2af807a7ec6f77ec439818a501dd280d48bed5a3",
+      "size": 1723819
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/7ff039e9-7563-4ef0-b2ec-ce3d0d259a99.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "963512a466544333482346525074b7a168b7f0358626eb105f181c80f072e235",
+      "size": 1981259
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/808ec0fb-fcf8-4629-9296-38530521a95e.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "3ee6b350a375a7176b39d1e410fc06ff3fe2d69c3e7e0221d5a60539d609d184",
+      "size": 1558819
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8184ce85-7db2-4b23-908b-1170cc6830cf.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "26059a89e5fd3293d5747d6b9fbcc97a2d19b8394c3a30dd0cb710bfc7c13f19",
+      "size": 2028805
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/81d9e9f2-8ff4-4d45-b1dd-d3afd3c62fb0.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "86fa48c0f63fce052f6b47c47830328bfe637e347f82bb6d2e32f5379d96045b",
+      "size": 1576637
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/81ea9eea-29ea-4516-9e0d-e7ed0df98f5d.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "3e96f1668b751098e851eb14f98001da46976f118035627df7648f7abc8cd601",
+      "size": 2351410
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/82036c07-5321-47c8-974c-27d58e526ba1.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "2eb1311cdc7c8af838339b648d5213fa67824a98679a8a73b4892b92c8dff0cc",
+      "size": 1771491
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8373a547-a792-438e-b941-f01ca1f0fb5d.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "ba7bf555a5b8fa7ccabb05db7abe230e5013dd5abafefb020bcff1a54d247ab2",
+      "size": 2367794
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/83c6fd2f-caa2-4d53-b4d2-e19a7f12e6b4.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "3934053158c43197420d9b38632ae770831c08426a5de87f04aedfe9bbabe51b",
+      "size": 1509631
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/83c7c8bf-9277-4f59-88bd-1a4f428262ef.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "278ddb05a5c4291f30fd81e6a7c2684bcba13f73594e706aedb596b91b43eacd",
+      "size": 2137724
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/86ae5f3b-1a9c-4895-87eb-b526b403f332.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "b1b9afdd61cb6d74ff9daea39a23066b6313b01b3760cfb2778d8e8c2c783661",
+      "size": 1188148
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8776902b-74c1-4a54-94f2-320b4e89b5df.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "d723d11c80b6801103586a74ff5de9a31fe4dbb17a22b571816fd3e490dde348",
+      "size": 1684777
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8a12dcf7-fc25-4341-9ea0-e583f1cc3d71.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "f140beece51135820be002c769d52bd3c2b8b70108820fc7d7ceb508cf779a57",
+      "size": 1876401
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8b24233c-7658-4d52-809d-a6fc71f37554.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "fb4f6cdc3c82477c75f8caf7753d22687f5ccaa8e5001ce82c8df74096df9068",
+      "size": 1553324
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8ddb08c1-facb-4fb1-841b-bde4e47fe584.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "34ff1fd39ed5dca4dc98467e277374507fdd01f4dc897a81018e591276aac2dc",
+      "size": 2140900
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8e4ea598-7170-4d24-ad12-42d45ef17a3b.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "fed3aa3ce77a9f980d747d66bdc7972edfd02f51cecf1ae66aa11be3547c001c",
+      "size": 2436531
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8ebc0bbe-1656-465e-b31e-766d1aceaec2.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "b3f3fc51d276d4fce83866b8a7e5aa7ad29a6674f6bb3da03ac4576f4b805a16",
+      "size": 1739167
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8f51e06a-7bd0-4d2f-9a20-7821a975559a.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "ce62ead04ba21aa1d0c1d7df82347051f0a5fa93db63663713724dd8faac26d0",
+      "size": 1823664
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/8f7fabcb-6875-4437-9d9c-27a2552c10dd.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "a5af97187dfa01fc352049cbc0b2a48f77fb2ccbf65a92b86abb5e6875910a6f",
+      "size": 1768966
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/9354be03-5a87-4ce8-85bc-8b0157abeb1c.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "1dac0091e4edd8e40938a63015efa0ae225ca72a17e6bb6218bf7de6a182effd",
+      "size": 2288355
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/9582e8cc-89f5-464f-b183-2f21b8f0f267.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "834719e1713dc8f91a3fbcf6143ef0d7de8c209508b1b9054e8994114bcf712e",
+      "size": 1866330
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/9aa36664-4ac6-4a50-b0e0-05c96f52c58e.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "9edd89869df296c29fab98302c78d43ed55d4e610dd3e1cb3d6cef949166047c",
+      "size": 2457107
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/9bfe963b-6d17-4704-8a9f-c2de48491b70.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "df0a691487c3f98fed7b3b441781636fa99abf9345bb4b2fb8b91439f2716eae",
+      "size": 1410785
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/9d7e7eac-9d81-4b04-8a07-ec35f9e7b58d.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "f3a95182164e0125ba8bf0d7d6a89e8d2606e4cc4db29a70d9a51f5149b05f8f",
+      "size": 1711961
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/9db099e2-56cb-4bec-becc-eb69c298866e.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "722d5a34849bab9d6529654cef6473bae1af91bc70de0683b613f04ea343ea79",
+      "size": 1455700
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/9f345d0f-a768-4def-bebf-b818cf0c68dc.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "e208308ab5a45adf076e23edcd177331775562b360198d1f18ae804f209a5d8e",
+      "size": 1723444
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/a2881fcf-1af3-46e9-87b0-c198fad703d1.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "6997621e8543fd3f31c0154e022ce1616a560eed94f9afac2a67a2750379814b",
+      "size": 2287344
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/a938167f-6cb2-4e87-94f5-185eac06ff21.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "3a52a88c2a44bdc52f1f988d801c9be3af6eee4be341092618ba37f7c21a5e54",
+      "size": 1623407
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/ada4e736-880d-4372-b148-218dc114c7fe.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "ecf4d9855680ce3513e733774b38acb756b10904ad7a6249516534e07dac0ad3",
+      "size": 1808357
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/b37ff2ac-f755-42f1-bdd4-a3a0f30fbfc6.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "3f8826e674369192f4ff3ee13ea58f99ee5ab241edfa7715cb29480f3c8629b1",
+      "size": 2409431
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/b5350f4e-9521-4af1-a03f-a39e5d8b1796.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "02186e3ecd7db06a5fdabc23ebde3e1c3ecc3db245d8bc1e64410fd30220940a",
+      "size": 2038245
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/b588fa60-819c-4ae7-84bb-8f3de009ee1b.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "8e913f2287d2b64907e8d726dd82e2b619e076cfb8a56cf1c575210cf7ddc9a6",
+      "size": 2449497
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/b6c12637-3bd8-41d4-a787-3c2c271f4221.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "d91b21ea2c9e2d9ad4a615a6a1d8fafd567a5aa5ff7466c68f639db9b06e77ec",
+      "size": 2300912
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/bb9ea1a0-7bfb-4aa2-85ee-0dbdb5001fa3.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "b9777b6efb4c048e6e17590876a0bf2a8dd60e3c0173a73e4e1a53f3181e0f56",
+      "size": 1445119
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/bdddfbd0-acc5-4e73-becb-c91f69986201.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "d3f50be8262f7e253c3294569973cee922e86ef71f008404d2ae499c33f72ab8",
+      "size": 1995813
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/bec253e6-b2f0-48f2-afba-9207388a7937.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "475b2341cf07202df27599b9ffc9e5ae55cfbbeabb1ccfd9a6089764a0b11a35",
+      "size": 2514928
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/c327867a-02ea-4629-8059-181d3f341dc2.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "b02f433c46314643bcff1668c4e0b5b31c7ac702082c7d8f4025924acec44297",
+      "size": 1679793
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/c65c9338-2903-4c6a-8015-dc606d24e659.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "9138d296a4b27ad42c0af9c550c092fcef2546873370189e46e7cbd0ffd1d039",
+      "size": 1703056
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/c707d14d-3089-4a3e-a5b2-1088eda621bc.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "183db0ddbf4ac6316fe65fdddf958f35268f94aeeebdfcbb6e8b5bb4dd2af93b",
+      "size": 2105948
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/c82d1a06-f78d-4e79-9b3e-23c4756d555d.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "6733e1cd08a3d81499864741d0d401f359e56c2bc8cbba21bd9226a28f2eed05",
+      "size": 2313568
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/c85db92d-b5a4-4fc8-aabd-9d4c82f3f444.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "8feac43e74768a2a6c86a1f0ad9a5ec2d2a51254da151a5d1138e0a895c98fa5",
+      "size": 1317528
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/cadaada3-e8f1-4bc7-af71-342215edbbb1.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "ad1d6d88cf1d2ef353f46d42f52365afec5a228725d089f03ed44d45d4a6abdf",
+      "size": 2071262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/ce8ccc5f-20b9-4d06-aee6-fe85a6c02eaa.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "445431e6247e6a8961b7a62dc1c80193ea1570c6252a7a3f46fc77931e1229de",
+      "size": 1558150
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/cedd99bd-8f8f-4d60-98e8-75e0af9b7e4f.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "420ef542225d2466fc99d039cf9fe82fb72bf965535a01dd60b27b41379d3739",
+      "size": 2314032
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/cf96c697-41f0-4d3c-a1d4-17d0d82719d0.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "10c359e4b6d96dccc38f9a536df1a600833c302b16dd54b673d18fc387ef1879",
+      "size": 2437866
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/d339c422-36d0-40f3-8393-24076abb279c.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "313e8cc91a796a036276e8f755d5785ec80df7b2df2e5c89ae716f0286fd0006",
+      "size": 1727987
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/dbdd0778-8700-4967-bb52-75bbfa7eb29c.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "68ce597b498a3951778383de3e5b4cabaf187543e1f9fc2b40dc1dcb80313f16",
+      "size": 2123068
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/df431f5c-699e-47ff-9161-b6e264a82163.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "c4ad3930d1a2069d655711a6320b1380362e6a250dc069e0bc771fee9bffb655",
+      "size": 1659150
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/e584ce4a-ff4d-461f-989e-5e4d21da42de.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "6a5650ace781d278da5f5a55fe2399cf169cf5d760efa1a1f5a2e55dd693fd77",
+      "size": 1495185
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/e793023f-7e5f-4211-9724-9022d3c8f920.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "deae0ac6320bfffdb8ed8dcf5cb614893a6113a9b0a3691e812c018b3d6b8cdb",
+      "size": 1985094
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/ed301cb6-fc33-4a6a-a2fd-4ce27a1f5bac.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "82636696f3979547cc7d4a24b8d549f84bc69626a018e0f3c57cf873f910ab39",
+      "size": 1796350
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/ef044eea-9ebe-475e-bc05-d4e9d9255e39.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "306392fa5c2d90191edceaa077227fb6e8f3e0567fd8dceb07a8fa1572a538a6",
+      "size": 1948064
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/f068688f-4b20-4d2f-b33a-9732b5050f72.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "ffe7796019d37798cb5391553b74f315f3ee99593915379488aba8629d6953e2",
+      "size": 2340169
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/f78f9be1-385c-43ed-a89b-a4f11d45695f.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "29ceb794583241766f895f52abb6ff06fcc3fa81627d25dc53cc5520416263b2",
+      "size": 1651249
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/f9d057b1-5843-4b68-a58b-9fe87291a72f.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "2d076c09374c9d48748141d25bac682369b0687127356c26f550b2870d044e7a",
+      "size": 2152864
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/fb9b36a4-d87a-4c7f-a06c-a1e94869b96b.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "fa6182722be00186a0500c2388d9c014d481ec8b3ce2c52cd567c70a499f64bb",
+      "size": 2043404
+    },
+    {
+      "path": "robocasa_assets/generative_textures/floor/fc6bffaf-b9fd-4d51-a795-cb95d280dcab.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "a8e4c69f69f0003b78d7cd94d691595b3a81d3a612aeb2b43ce391a28367d3dc",
+      "size": 2365350
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/0882d081-d8be-49c0-aad6-3f5eff92265b.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "81b5bcfc9edf69a35afe962fafe59affdbe3807cb70a8a9d3c9bb0d99994e36d",
+      "size": 2510261
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/0906d773-7c22-4173-9edc-efc6e2da88e0.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "769443ddba5aaed5bbe3e059d6f997856b22c4cf4c41b409a60a11e4104c3601",
+      "size": 2501868
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/0aa2c331-8025-4417-a157-91467143c85b.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "402fc23275e7becd8fc729f1e7fef3081e0c0f8f812b338f85719796c36c0506",
+      "size": 2510245
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/0adf5feb-6a2f-4417-811a-b7d70d42fb34.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "e86874b3654ec7f693d7fb8b8f9d929f05b753de7738b83156e5dd1a01753411",
+      "size": 2145310
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/0af727bd-14b4-4f7d-9fee-19f7f001ad34.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "1d17547654763b3568b66afa778492a4eabf9bb75f17e5611a40a3496c5f3667",
+      "size": 2275295
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/0d7afefe-58c8-4161-bf56-0974c7e806a2.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "307b5d468e56e6f796eddff1aad20004d40bfdd3ba270f4572a2260c223c7c2b",
+      "size": 2379149
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/0dd40625-0cf8-4523-92cd-063c96108a23.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "2e5a6557ca6fa78ed6137d9039b15e8c27ca31de9fc889f2a3029e9e522ce919",
+      "size": 2071026
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/11760e4b-5f86-46cb-82ae-c87cc6f434d1.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "f166b79258260112f24a1575fd44630e1576629ecbda3c628a3e6971681c20ed",
+      "size": 2014176
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/18a6abbd-8ca1-43d9-9a0a-8424a7d1e016.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "415ea47afbab60d14597c898da19843bae7186d767df0c2134066ea8063d4b02",
+      "size": 2319234
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/1b8b8a44-ce4e-4156-978b-ad66bf4a6f45.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "468a0969fb4b9d13ae92d873ec15782cb5a4369fbf24983def73f37b970b2db8",
+      "size": 2199695
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/2149f068-ca27-40ed-b53d-07e53210e678.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "7db050c3e691b8ca34b8fc19945710fa0cb2289f15d7067d88ecab5c1e9642e6",
+      "size": 2450805
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/314f4070-0b2f-4433-98e7-dbdf18a8bff2.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "446a9ce688540f8e7a56c36da33c75ef296fd83eeb3beb0d502cc43395f934f1",
+      "size": 2551262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/35ded0fe-73a7-4e82-8c01-32f79f5214a3.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "1ab01327c79b27631aaaf6ac90924a9bb3d947409b453cf4ef6772406f44c2df",
+      "size": 2315768
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/4874a0d3-f5f2-46ea-a1d3-824b2f56f8ce.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "f8f8cf6fb7ab1f8e6da949690ab5fac4d9901a7821909eda50672313f1e4e634",
+      "size": 2460398
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/497cbc0b-a80a-42b3-8f5e-3bc97c145255.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "10eaa96655f2d5d3ddd41e31b48894452f29e87b0740b133f609f01b90fe5a52",
+      "size": 2199260
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/4b9d5219-38a0-4303-8837-29c4c51eed54.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "57c6546c54b14c739c9c1fabfa10847f599d6b4daf27c4630ca916e7f13ffc1f",
+      "size": 2302846
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/4bb0ad30-b60a-44a6-a259-058fab19b422.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "b5a1ba40cea6d6d96c51b470315543a526a298c7b4a46b473225db7f8eb3b112",
+      "size": 2343476
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/4fe97e2e-ae88-4dc9-8321-3529a2108508.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "71849faa90b9f9419fe85bcac0219a927dc6a50c87f95effec2756cfc73f1668",
+      "size": 2431544
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/536410ee-0460-43b0-9e8e-799e96439a0d.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "506e0fd8376aa3b3b3ff42550d6ed80a17e67f4844796e3ea3a0b6917604def0",
+      "size": 1746031
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/67d1229f-7689-4dd6-ab2b-d003e0cd3cb7.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "ddf4e25eed74492f83c2a3874fc4f5760929416895eb1c748e7b8c5b4abff31b",
+      "size": 2181140
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/6b215002-fd31-4f1a-859a-d5d98a2a0c52.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "003557af5a062fa32d7914e8c21ccf7afb51bcea6b93e116622405460e8d7823",
+      "size": 2366096
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/6e961263-5c90-41f9-87d3-b9e132c9583a.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "3569b55e6bd819bba76dfa05d646726c59c36e94a232f0f8bfd04d3d754266c0",
+      "size": 2188468
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/738a1240-97f3-4fa6-97df-0ecc4b7aac26.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "3d4bba7056639ee69b0bb84a2eec819d0ae689750255d244ac56775396fcc04e",
+      "size": 2514759
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/77abb443-a1b8-4b02-96de-1a7bc68d4f3f.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "7208a3d997437c3715b3163a3feaaaa036cad664a193aa6db3a8b496ce964a0a",
+      "size": 2613081
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/7844f4b6-7d34-46b4-8ea4-19ab954ca58f.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "cfd84dc804c24480a9ae198969b7a071511ea7a8138428503299cff87a8f8700",
+      "size": 2442396
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/7a19bf00-4f43-4e39-8fe6-977df7c6d147.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5d14ce70b34c93f0004c19067ab11a91be1861ba9a4ba631f4c27b2c16e7a03d",
+      "size": 2307615
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/7c7c9950-576a-45fd-b3d1-74cca30f6fe7.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "4e352db66e638cc7a821d5275028f04cd54b96f1bcffa4fc7aadb5891f4d2a03",
+      "size": 2350911
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/845424a1-4603-47d7-892c-426c2d427f0d.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "17efc5b5c911af19a7cc1c76099c81919c230b7175f98dc2f08e388ab11eed71",
+      "size": 1977922
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/8474c563-65b7-408b-976f-b19b38a44f90.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "b4ff24516277c040c1d5ceddab0ec4b25826717ca71c67e08adbf893e9da8bc9",
+      "size": 2431926
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/8949ad7c-2b89-444c-a758-b513f25937e1.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "253126b9db91ba6fb87551829e7cff1f292f9c2fc9c26343220524b836a483fc",
+      "size": 2263380
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/8995f82f-2435-4395-8ecd-a00824edd923.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5a7db9ec03536bbf958266e0fe2b98311a6673d3e322b05df4e17e880e001d13",
+      "size": 2216720
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/9b6f9830-a89d-4a42-965f-581dd0a12617.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "f59d366ddb30b4bb0c3417a3cd223089eb88a37325f1357f9f336a227bf597c6",
+      "size": 1935016
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/9ec0b130-598a-4471-99ee-f68ee49a4a9f.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "9a4082062d7777454d2c6bdcc719e286cf8daa73901478ec23cb18c8bb5e33f2",
+      "size": 2467729
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/Lance_Z._white_square_tiles_ikea_high_quality_realistic_ec4bd31e-d76d-4512-8b0d-a86dd8dd6aad.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "975a39513b4c88c78da6c7cc1a92cb8ccee7710a5796ff2558580fa265963537",
+      "size": 1220611
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/Lance_Z._white_square_tiles_texture_image_ikea_high_quality_rea_ce2dcd92-29d7-4176-b7fa-79d91dab133b.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "3581cc178318c7f559d705d2adbdeb494565f3550c346ce0cc603acb1a803237",
+      "size": 1073153
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/Lance_Z._white_square_tiles_texture_image_ikea_high_quality_rea_f41b5937-af3e-4df8-b19d-ae4fa942f741.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "c40ff758370641caecf743cbc80f9ba437f3c9e69afec8232e3e8b6435aa9c25",
+      "size": 1470434
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/a4046f8f-a2d6-4ef4-aa39-2ec541cbd246.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "2488f16e4c7bc382ee0fae5b244ed85825e1fc9efd44ddcd09914c5691fa1e96",
+      "size": 2194126
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/b1a7c75f-6b03-4b10-99cd-3299d7b6beb5.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "14b1a285dc01b896cf4b928bf54bba9a9d593935b812fd83b12f18c8f92912d6",
+      "size": 2187088
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/b1dcb5d2-434e-4bd1-9329-eb1c2a6c039d.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "2246fef4d0251dd8e81975ac339dff21c43b8b69b96a97352486528fb7002c97",
+      "size": 2252840
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/bcf9bf9b-ac75-408e-ab2e-516391c39d8e.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "f1046ac32aabf8383b8e1aac595a18df9d259f509634ff5f8d32e692ddbd6e12",
+      "size": 1788672
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/c72ea705-e088-4665-9683-6a8685758aef.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "29aa370d6e1d0b355b566fa5b27ca5434917de48afdec814fdf88ba47042f813",
+      "size": 2129829
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/cbf05cdc-5d1c-472b-9891-0e4802553359.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "d59b176ed1763daf1cab5999cab5ad46af7d37606e2eb68655d1d0b0b9a60c71",
+      "size": 2393862
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/cf0d9763-3596-48de-af34-5f3647d812df.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "11cf95cb9edf6e1e5e8cabac504537e49bbde1c98088ab4903d84a1086515d14",
+      "size": 2522496
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/d208d65f-4d99-4963-8140-d54180844c8c.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "009dc542ed5d24f6bd6a498038c5c7d3edbae79fce4fd641ac1bae22c2a710c6",
+      "size": 2321419
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/d4775c13-15ea-496d-b5fc-19d2a9cab128.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "8fcdc1406071eeec41c95aa51640d7f496470f3d195535688bc09a65c3a4fe36",
+      "size": 1916912
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/dae6863d-b653-4998-8239-c6a6bb24362c.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "d3f747b49b54a39cf2ac0e6100df66cdcee0401017b7b8694dc2e230679d1a4d",
+      "size": 2451635
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/df17f0f3-68bb-46e2-ae9f-86cf84f48b04.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "48ce406d30b6bce8f8ccd6acaeb17272685e02b8045e729b2bc94e5dfc84e9c6",
+      "size": 2488506
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/f6353155-1a10-41a1-be1d-149368938757.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "6a5dbd419aa907bc19dcc61e975f5ae8c5850e5d622331fc8595885a29550922",
+      "size": 2108033
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/f7c0d850-4b56-484f-85ce-e9c4bd01ec22.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "d27583ad27b7010f3f6476750305172d2733ae7f1c6947b9c5313a79ce18fd0c",
+      "size": 2288574
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/fda88519-7a09-466d-84a2-19b216562dcb.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "bb3550e9df91a38ff00eb554b24b757977513964cd154119e83ce91745e0ba32",
+      "size": 2431939
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 10.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "37c693e0412e19e20cdce9df41089f90929b5738f76c307bf7eb8ccd8971bf31",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 11.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "ab80e9669200dd3a61c7a5c9731129a02f75669029d607fb9a6889cca19c829a",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 12.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "542fd397b132c952f64c25bbeec14275023be08e4014e08c42fd7c16001dfc42",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 13.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "8ecb572e9da3e064adacce8f79aecd743ac7ffff1472cb315c54c834bbec4ab6",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 14.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "1987fdece22863144c252a6a74e56ded7519d9ef37d09138f926c5e46654dabf",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 16.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "830211c4e93e3c1484911da040ad973d015400d8fee4d1de68f6d37bc79affd2",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 17.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "8fd4d90b3ff793819d183c373c857e2193bdf6a78c50e1ebcd4f9f71d08488e3",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 18.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "b5e4c9a5a03f6c8da0a6ee53a84239d15c898a2a05e14ae725808a3f9d5caee2",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 19.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5b5d47cef0836d44abe02a040d2a7de20860662983f7c678908e96b2798e4da9",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 2.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "0cf1a65c45bf7f1bb29bff4d993989d8d286d7a50d29ea3f09a09a5948f9015a",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 20.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "3c93bba922859441faf8081ce017883fdf714f219a21113c051791769d72c4ee",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 21.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "04a1bff7130470a04b7cb3cbe0d57317ead9ef51bc29c5a36696403e577fb5f7",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 22.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "1b14dadd8eec2988962378e99eab19adaa69ee0b89d9e34b96f98ae4fe18c605",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 23.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "e617a429c8c473da42c86573388041508ae2cbfd83579646a9a52de5f3ed4b04",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 24.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "a4f1449650442bcf15430c2708fea74d2c9be186974d8461c21b68ac5904a941",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 25.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "8c27269a5c9ece42328f49838f67f6840cd968716bce9ea6a76ae91d57200395",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 26.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "b542f675332cb68f042ff2141b460669195022887e9896afbae6285c33822c11",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 27.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "c733fda41e7ede0b5e7197748bd154c6691f1cecb68324cdfc101b7ac2e81605",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 28.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "85195ffbe48b8b4f98ddea7ebba2ef94a57506ab3d0fe58c1135f563d138859e",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 29.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "de935f2cf7c71e6e54a85fd6b81b6f21e94586452b9ecc13d4edeeb9cb145e28",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 3.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "c8b8812e155b4deea06d6ee5f81c23c85f400175efb9e448edf254c38c5ba207",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 30.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "d018dfa6ada8636587fa0e28a615d384e7a043329cbf305f5f67fe430f2c5ffe",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 31.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "fd6ea227cab4c16c07ce25d008b1b6b361d36f60e9b6363ca98fe9a3d06d35b6",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 32.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "30f7ed8b68df8ab82df5227bb64f28a1b3ba8ad471bacdae5fad0f6ed259b227",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 33.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "eb6f9c614e5ed6d5507f724d3c84799ad7785ba277cb3437a16b0bc1f1a7fb2c",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 35.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "135ee38c39aeb2b8adcc9349ef8eae18a6384b19c52de1a8f766be904713033e",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 36.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "eadc71f13597c9338310c5aaa188874a46540c6aae0c84894583ae34f26957eb",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 37.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "f22ea931319a14e1b6c5b9f897722b437498c67333c137fd92fe3c44506c10f7",
+      "size": 21260
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 38.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5cc50631c902d66587edb764749b66b63b80c77f50ddcd45b671358fa248b6b4",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 39.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5df0472778fb91fb89dbda2ad9493474cc38ee4cc6549b8f93fa4ed8ee53a686",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 4.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "77d3683d5f54fa26703b7e99e80c1d41eefb504c56c787023f2e1090fbe64007",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 40.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "23644a1ebc0c6fc2586de97ce8cb831f9da1f6e932a2442ab6807918e48e662e",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 41.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "4bb4e92eabf1c692aea62df1fb9de9d37e00efa006e35624a055030898c8237e",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 42.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "52459657798ea3c5f1618c4ce01e3e18e7081fecd84ef12b7f2c657bbb76dcb0",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 43.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "30177d560c4521b98e92f24d93e53717d509908479ff94a42c64cf006772461d",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 44.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "d9264470648eb60cc1f444494422d2c41eb0ddd9cb07033869c333464d0c75ed",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 45.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "5e874ccad98c31dab11b4ea0a4e16fa21fd8cfe014c0e3421369520ff95aca64",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 46.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "205749234547551a3af5d52ed4a8a700b097707aa54c6ae7c6add9b7af349c7d",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 47.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "efc0ba109c7231c607afc5652d93835c86756fab33531b9442320a7f01005b13",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 48.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "9d9da2bdaa5a59c3c3f658f8e13b9a3d73a7b6665d33643f6077d96561cfb0c5",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 49.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "477b5a664cb31a439b08dd26a3af84f2c09463af23b3133244c4cafeb1b767dc",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 5.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "eefa65b8690cb19e0e22d1d35cf9049cfd054da87e0c4bf7e045286a859bd83d",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 50.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "346ce8d967a18b29fd0433ed2e6478e44e806c6d87a4a647cce55778e7071d18",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 51.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "0facdcfe7e18cb242bbaaa30383096878adb8f2344505b4d7b784240f3821a9c",
+      "size": 21261
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 52.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "a29d8a2cdcc76d72a584ab647431bbfd34058f97b7ea6b489447af47521f6ae4",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 53.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "3639490e7c3dc2db50332f323055cace43408e5e4d1812da2d0338b572641faf",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 8.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "ac5102eb5fcc3d1c564c2dfc4a7ba9cc23ce4f8cfd93ecc44211b753d9b267a0",
+      "size": 21263
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy 9.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "f41f24980b70a8b601933d341090fd1c8eb7667710858a0d7970c37a1e0351ef",
+      "size": 21262
+    },
+    {
+      "path": "robocasa_assets/generative_textures/wall/plain copy.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "791eb3b697427aab1b7ae4ee4903b9e985b841d0292a7350087ac1fb530b918f",
+      "size": 21264
+    },
+    {
+      "path": "robocasa_assets/textures/bricks/option1.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "24880347aac8cf3aa893e54f006fae00f9cf4cbad1f77301ec5ed65034e3408f",
+      "size": 7666331
+    },
+    {
+      "path": "robocasa_assets/textures/bricks/option2.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "4ec5cf11e4914e4d807aaf306e668a92c388d4c96bd28727c8514856bb421dd0",
+      "size": 7347502
+    },
+    {
+      "path": "robocasa_assets/textures/bricks/option3.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "f1665dd5152e7513d7787b517e7e23af3dd3fd30b22231e2c4a76f2a37db22ef",
+      "size": 5117066
+    },
+    {
+      "path": "robocasa_assets/textures/bricks/red_bricks.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "7ea694d84288556cdee1843799f5fb2cc7cd1507012de251d00c7adea7401e49",
+      "size": 2049422
+    },
+    {
+      "path": "robocasa_assets/textures/bricks/stone_bricks.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "c2c362a932a5f3244e5f9e088c921f3f4742d784166cb5ea6e5653f2e31f5443",
+      "size": 5709487
+    },
+    {
+      "path": "robocasa_assets/textures/bricks/white_bricks.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "864e2bfb462939212c4141a060eb4c3f34c891b6909873797b08f8c4185433d1",
+      "size": 1458770
+    },
+    {
+      "path": "robocasa_assets/textures/bricks/white_bricks_2.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "e472ee2a5898345e0a3de45e3e12cba9aa6a672186b34767c0881c8703ba048c",
+      "size": 1848580
+    },
+    {
+      "path": "robocasa_assets/textures/ceramic.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "3785e9b76ddd76362f39ca84c2b13aee870b07e3d39c7223fefd6af5fe47e0aa",
+      "size": 14961
+    },
+    {
+      "path": "robocasa_assets/textures/flat/black.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "89764e5d7840cf97922955b3f05bed6ab00c8959b39569d8b314401232d54569",
+      "size": 9808
+    },
+    {
+      "path": "robocasa_assets/textures/flat/blue_gray.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "01f9637b50290adbfaccd9c2ea59488f2ba52ef51a93b5ed8786c90d08279d0a",
+      "size": 79683
+    },
+    {
+      "path": "robocasa_assets/textures/flat/cream.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "a5cef27a193f17c37c6f96846d5fc843ffaf45fae1eb1f4d8552c1c88ed1518a",
+      "size": 80008
+    },
+    {
+      "path": "robocasa_assets/textures/flat/dark_blue.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "45ba340ea7cd19b9bdfc9a64a11139e69aec0bcf680b413f0c96d5e40e6291f7",
+      "size": 10135
+    },
+    {
+      "path": "robocasa_assets/textures/flat/dark_gray.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "6e98e224870004dbffdbd5d784bfb1a6a08eb53454e2e4894a5ef6392074c5ac",
+      "size": 80008
+    },
+    {
+      "path": "robocasa_assets/textures/flat/gray.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "e4f69a8ffb2589838bd88b536baf98abc2ca1902177b21c636e9c871c1cefb5b",
+      "size": 1968510
+    },
+    {
+      "path": "robocasa_assets/textures/flat/green.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "c44fb82ba4c2f9b2f480a144d07ae66a530f92e29bce56409d1a9d7ddfd14d24",
+      "size": 762
+    },
+    {
+      "path": "robocasa_assets/textures/flat/light_blue.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "1f76f3ed7f242c52f241823ff43fc79204818e78a31bf611beb517605c603798",
+      "size": 9808
+    },
+    {
+      "path": "robocasa_assets/textures/flat/light_gray.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "ca6de55ddc7a3187825454839e477d783ace86ec964ebc8db84d7e425f955638",
+      "size": 79680
+    },
+    {
+      "path": "robocasa_assets/textures/flat/light_green.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "d046058e5f73fedfd15719abff44601184af5d5d5ff3f89272ffabe80b2d1aad",
+      "size": 10134
+    },
+    {
+      "path": "robocasa_assets/textures/flat/lighter_gray.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "a4ba7cad91cc6bc349344b40b3742c2abeea1da68f0bc5c770afe47710baac8f",
+      "size": 80008
+    },
+    {
+      "path": "robocasa_assets/textures/flat/plaster.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "1e6efe191b23bbd9e72cecf43768a24e503e81cb8cf3f1b4d09d3ceab08e1d77",
+      "size": 2713326
+    },
+    {
+      "path": "robocasa_assets/textures/flat/warm_white.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "04d4eda3764b34c48340feb785d38271eb6a30f144821bb0fbd0a14b2d648555",
+      "size": 9811
+    },
+    {
+      "path": "robocasa_assets/textures/flat/warm_white_2.png",
+      "roles": [
+        "table",
+        "wall"
+      ],
+      "sha256": "7b624a2d3ef735a1f673ed71d798078cf3fc36d25d14efe73682cc5692ac0311",
+      "size": 10132
+    },
+    {
+      "path": "robocasa_assets/textures/marble/dark_marble.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "d12bab5e2467f44fe80386b23bf9bc7aff27c5ab8680f100e4b5cd77510814ce",
+      "size": 5725764
+    },
+    {
+      "path": "robocasa_assets/textures/marble/darker_marble.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "ff2b782afcf1f7433bc6d654f38edeab581cbec35212d5f39b42b628e93a1eca",
+      "size": 5923295
+    },
+    {
+      "path": "robocasa_assets/textures/marble/granite.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "3b1f3ac3d72c557a11812f0d86b2b3b1adbdf493dbe22944d32350cd747eac3e",
+      "size": 27046541
+    },
+    {
+      "path": "robocasa_assets/textures/marble/granite_2.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "d80bc56bc813ff560ae029410a6165bb6974e1c81b8992f2ce8517b39a03909b",
+      "size": 8549968
+    },
+    {
+      "path": "robocasa_assets/textures/marble/marble.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "64ae0c9da38943e9177d8267e2ed2cd6e6c0cf83169749a2dc13135b2c8336c0",
+      "size": 4153794
+    },
+    {
+      "path": "robocasa_assets/textures/marble/marble_2.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "a7a6ea553af3268558f9b0fba2dccaf3496a5bedd90da11c65acaa46ecff7daf",
+      "size": 3750705
+    },
+    {
+      "path": "robocasa_assets/textures/marble/marble_3.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "730a0296b8707933a70b4d0b2e76e3a40588d19d086e5705dc401b019201a9b7",
+      "size": 1966292
+    },
+    {
+      "path": "robocasa_assets/textures/marble/marble_4.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "e56ecc0ca0a3e08e400ce6cb65424e640c1fa0cbce5295fc0288450b1cfdcd0e",
+      "size": 5719533
+    },
+    {
+      "path": "robocasa_assets/textures/marble/marble_5.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "b733ec2841461c3713c505b39ba47a22642044cbb607d7cac4116ba643732d0b",
+      "size": 7808584
+    },
+    {
+      "path": "robocasa_assets/textures/marble/marble_6.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "19d36b4fe33b2139287e3af57a0e2569eded4d1d1ffabcc2c90083198c92a557",
+      "size": 7450355
+    },
+    {
+      "path": "robocasa_assets/textures/metals/brass.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "246007818045b92276631294bb61d797806f2381d7044e98b6e3c4465f8e085c",
+      "size": 1720843
+    },
+    {
+      "path": "robocasa_assets/textures/metals/bright_metal.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e67c23a272f98890b485c5e2ae2ef1088080067954c676cb70170252ab931bf4",
+      "size": 1998226
+    },
+    {
+      "path": "robocasa_assets/textures/metals/brighter_metal.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "33130d042841a9b84509432504147c3a4f89cf8e5db8ab6caece99742982b869",
+      "size": 2201902
+    },
+    {
+      "path": "robocasa_assets/textures/metals/metal.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "0d25fa8affbb0f579220f0cdad6ee74f875495822ee79bb5afd23d73671f6363",
+      "size": 289552
+    },
+    {
+      "path": "robocasa_assets/textures/others/concrete.png",
+      "roles": [
+        "floor"
+      ],
+      "sha256": "dcb1c94378f499be69b38a2362c5d0148e67e95840ccbe1e65c9d164969fdb3b",
+      "size": 4741945
+    },
+    {
+      "path": "robocasa_assets/textures/red-wood.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d42411e594d6be26c4876ada623b163af6621402462b244d86eaf6e72aca6494",
+      "size": 1797019
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/blue_ceramic_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d60d2a0e0911b502d0f354a0b2d50385791c2f0d2ad66ae0aea712daa292ab17",
+      "size": 2215607
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/blue_ceramic_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "de0d410fcc85d97f0188164939f54c488a6f6b6b5790c9d4726983d7028fd409",
+      "size": 2010746
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/blue_marble_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "16fec0b30df5119f417344d21723379f9832276d352b8301bd5b50a512a761d8",
+      "size": 300901
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/blue_marble_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "ed33a50bc53ee09288380c17336dcb524a0c38f73e50185e397116a8499d8532",
+      "size": 300676
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/bright_metal_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2f586bd07e9957133b565abe98fb1de20a6e5cb7f4bdb9676ae9134513bfb5db",
+      "size": 2026666
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/bright_metal_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "59be8b07ecc0cdf7863082bda353f7a7d7daf93cf6eb7de13b71f3b256285ce9",
+      "size": 2011989
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/brighter_metal_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "59f5a023ad4a702ee5f17d2cbb831fe77c8e3d9d49017c499b8ccfe68bb2a853",
+      "size": 2217172
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/brighter_metal_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "12bd19e21fb99163b1c66ff526c5b70ee29fea9e6c0562a4b08ce873b2d940b8",
+      "size": 2212987
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/colored_bricks_rot.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "7d97819429b3ef5029993e5ef67a5a69bd727726484ac3dbb71ed93ab59a6f9f",
+      "size": 4032721
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/colored_bricks_rot_rot.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "bb643ef161cd900e5e9b996b8ac534e4b0bdede9ab093cb472086656cd298102",
+      "size": 3939894
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/cream-plaster_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "da847b70bf9a12d3bcc0b19a187bf3d31f7aeb2bf40818a959c1f27e85226c2b",
+      "size": 793272
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/cream-plaster_rot_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "e11f9a7de1a80cb4fcab7ea9d9a28ea7a9445ec3ad654961777afa552d62496b",
+      "size": 778111
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/dark-wood_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "398a52ac071b9f313a403e6472d1c3b895586341d29a136b64efcc1ded00fb3b",
+      "size": 238101
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/dark-wood_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "c6446a454decd84a9d7f16c4567aafdd9ed310dba9440e2b2ba3be08e734dc07",
+      "size": 242301
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/dark_wood_parquet_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "9789a40387451a56aa197b5f5f2967055f0d5eb7e6f2526869d5eae1348dcf58",
+      "size": 1884063
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/dark_wood_parquet_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "2cbb456edbe04c1db7bb655136c4091176545fbe0a0a225d100b65f70bd46e25",
+      "size": 1884626
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/dark_wood_planks_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "ad9683dd7e2335c23063d6b1a1eb7838fea740cfa51e645880a5ea2cf7358e82",
+      "size": 4024758
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/dark_wood_planks_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "59aa23526ae9148098e885d72c374d2105c6a11d446444f82b654ef27f23c8ff",
+      "size": 4143512
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/flower_ceramic_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "e0ac19ea3e11961a6172e40b776f09a534953a81929d503bda33d3d71781e99d",
+      "size": 213754
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/flower_ceramic_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "25e1dde138f60c78e2f11a0665c9b4a996d6ed475fa6b0dcab5c0d41efbb7619",
+      "size": 214117
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/granite_2_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "8cbbc1d7268ba52543a7714d8cacdfd108ae471f723302b8b75c1f8883c39cac",
+      "size": 645159
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/granite_2_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a3b45163d7770d6283dce81e89cd999596c4420660068424b1bd45bd94316ed8",
+      "size": 639736
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/granite_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "fa56f661a0fbc603921171ebf2a3f7793425521c29e13c3a9d0cc08a5335fcb2",
+      "size": 306073
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/granite_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1e3c7c4eaaccff829233789d0d326213f9fb6355a03d52dec28ada6565d311d3",
+      "size": 308235
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/gray-plaster_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "67fb86da1ce55572b4f253911dc5bbece1a7a5d2b8eded24f1bbedb6c1b52e64",
+      "size": 474254
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/gray-plaster_rot_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "6e871f9a5362df4f8b88b2b16e50ccc687259a81903f59fbd69e698c18c2ed71",
+      "size": 473645
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/gray-woodgrain_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "210402dd4e08d3c7c78663c66d07bbb88a8e16cc982a315b5c4e9a7eb5b3fb72",
+      "size": 322104
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/gray-woodgrain_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "ed1410fe7856ed332f26ab7939f7cce3eebd80fcabc0ff670ed32c9f99e36c10",
+      "size": 300387
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/gray_plaster_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "7b8f10c544d96e055d7dafa20e57f8aa2d6d215d758d83a4761f9c55707ab052",
+      "size": 230089
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/gray_plaster_rot_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "bd43f4c993e5bdb63d23baaeb6d0c60e8e50a8f8b1d84ad11ef94ec343ea621c",
+      "size": 230148
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/gray_wood_planks_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "8a443eadb41313e3995adb0aae64544298d9869d0e87c8542a2933df24da6cec",
+      "size": 64175
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/gray_wood_planks_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "ed99ec9c975d39b36339e671e9400cd9cb1b022bf8716565fa0becf568663bc0",
+      "size": 64392
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/green_marble_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "30189ef05d4e4cee2963d8eb166b00e4608ad4adbcebca68c1f66cf7b93dd395",
+      "size": 2217967
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/green_marble_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "ed7e0c677cf3487c21c7ec0931c09a09bb49b540d7ef374ecff0c1909d2b25e0",
+      "size": 2218944
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/light_wood_parquet_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "325b79e7b66955bce0e0c9f25dcc677431efdae0037687de36a5c7c001a3cb83",
+      "size": 1655643
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/light_wood_parquet_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "2e699b05e828ab055342465c20693a88189563c0e9932480417d9e4c84176fbe",
+      "size": 1654001
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/light_wood_planks_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "9c42ae3bfff270f5455c0965576fe4fe2c9268eeb496cd994cc72ac393aa9cf4",
+      "size": 793308
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/light_wood_planks_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "fd28acb14ae815181f840311083e26fbdd3ae7e5461d6fbcf62480ffb1366113",
+      "size": 820241
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/marble_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "a82bd6ad3445d880d88b9f5380388fa50b28e462e7d7fbc2436408243515d2a0",
+      "size": 77092
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/marble_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "df0e6128c95136d8986dcbf8667aec03e07d74868967ff8d92df936b74f36c57",
+      "size": 76642
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/marble_tiles_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "94430ef00885c33449d33f7149b4ca251a705e20e5f8deb5dc66c8d6e78a09c3",
+      "size": 1216012
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/marble_tiles_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "1241707871f148a424bab747bbb4c7d9f3ffd4807204aaeefb413a26ed0e927e",
+      "size": 1211269
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/metal_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "59b1bb124a6a34e0bf724cc5b774c8c2f6b6208c82dd467cd546fbdaa869182d",
+      "size": 310215
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/metal_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9d1c026cc744c7ddc6b2986e30a1904a9c9f960fdeb50f2f257cf2966a6196bc",
+      "size": 309027
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/pink-plaster_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "f66dbe6a819fce14f574d40eb287c7b4dce92ca27c733ab9394b964f94eb9e41",
+      "size": 584072
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/pink-plaster_rot_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "4a2dae74bf4b1a26b4aa59f56eae851fbf68ea70a06e602157ce48b6789dc90c",
+      "size": 586744
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/plywood_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "77a11c97576a52719c43c16fc24ec65e547ef7e62ee2310e6a86d44116026746",
+      "size": 37048281
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/plywood_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "47d1e752eaa3ce6513d2c4a043bf4d4616fe0ae9064b96cb0908ffca99cd58b7",
+      "size": 37118435
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/red-wood_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b50657db29a82f35dbf3c750e375910ec25dbc31658c51e61fca6c08a6688788",
+      "size": 868709
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/red-wood_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b782f3c3456c7698374d48fd8fdbacef79b1b3cd6bd1e467dfbc895d88c3f87f",
+      "size": 791184
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/red_bricks_rot.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "76d0326c8cb3c6766d4850b7194e8cef3bc1c62f6c5158ace92fc563a41d4489",
+      "size": 1944753
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/red_bricks_rot_rot.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "c3c735d23c4340b1921f16b369ca946e53f26de95ba0c2fc36ba698cf87b6193",
+      "size": 1927137
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/red_wood_planks_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "61519c104a7971b3f5e763f6d3879692a609f68a403d16bcf5854e1e625e9c93",
+      "size": 5301816
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/red_wood_planks_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "e07b7194517ee5b10d311a5936287f273fff5dc4e48926c1137901be7d664ed9",
+      "size": 5279261
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/steel-brushed_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "165209ad6a00f836e683cc958a065059ccca06d53d452e04b19a507bf36f291b",
+      "size": 277159
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/steel-brushed_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "da09bd90aae88c382e96a57b57edbc5106d96869940e1f6bd86d7873c1355902",
+      "size": 275467
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/steel-scratched_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "92a97cf6be1c93226446ebd6c4aa5d93733170ff009ee5c75d0f6270dc64e526",
+      "size": 426045
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/steel-scratched_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "890ea65f1c34a88db9c988600ec8d661c5ee9ccd8414941260f8d5443947d0ab",
+      "size": 425557
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/stone_wall_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "dceef9992c8fd0ef0f534df7b282a1a395dc0212d1cae624f7619766e37a088e",
+      "size": 4834232
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/stone_wall_rot_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "4db6001b270e8f3c835f85ddeaa291b5fd0f3a08613cb76c8a827f9fe21221ee",
+      "size": 4808304
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/varnished_wood_planks_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "de130e1d056c9441588732eb278c1833922b9cad2aaba9fd2213f76062835b7c",
+      "size": 468236
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/varnished_wood_planks_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "3c8283abb75ac98b6c33d4038083059bb5aabed8edc0fe4fbcba2c7a4e33cf25",
+      "size": 469425
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/white-plaster_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "0906d8e4dc7984fe7188f5951dc47773cc1dab9b27f0b5cab6dbb3936bb84649",
+      "size": 648741
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/white-plaster_rot_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "4aa9e1eed06b106a221504302fc1338017a5e6629aec979216c9585e4cc2c3a2",
+      "size": 646571
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/white_bricks_rot.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "459354ad98b7a22daf195b1ecc067c96456e04dc97df00d8dd8a921428d7a038",
+      "size": 1418035
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/white_bricks_rot_rot.png",
+      "roles": [
+        "floor",
+        "wall"
+      ],
+      "sha256": "637f4ce89ea74b10f7b49312ca79663866f629c8fed024726d15769482fa9398",
+      "size": 1415119
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/white_laminate_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "4cd023f80b0790b0394bee32932902146c7e5ddef4b3ff580e2f4de3a664d334",
+      "size": 15731
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/white_laminate_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "2b8ab12cfcd998062873021f7b10d71e2c084ef305c3221b873e3392134200f0",
+      "size": 16191
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood-tiles_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "a437bdeb2fd6d0d0b7505de5dac3682dbd9a1b09a2e958f7495685f6c43b9f8b",
+      "size": 1460673
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood-tiles_rot_rot.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "9a3c2e23bcbf0b1172248aae38c84672c6dee65db8c896a782955db9d15ce540",
+      "size": 1459161
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood3_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "1bc592e2eb3a3eecffc5ec741994ff2725e2b725dfeaf09b05eaa21947eaf8a7",
+      "size": 607401
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood3_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d4bc7a59dc40adb2a0261d0898c5fe6e4f6eb17db7b1ba935a498b54d02e9812",
+      "size": 603398
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood4_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "d19e538aae0f3df22cc1fe14c1db4be37343d59d896b6093a9d3d1e4cdec1b84",
+      "size": 345665
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood4_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b0d7d3940e56ab2e00ce12f8197b68d6d58989db8c3e396efb57ff13a9a47af5",
+      "size": 345849
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood_grain_1_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "f3b5a89ac55806d60a9ce10daade3133abf4c64caddf0c088a3f04c8b43eb57b",
+      "size": 637196
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood_grain_1_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "82d1aede47ed9dc01c357b553bc40f0d50c60d86d85ffbc0d104a1c914d16b81",
+      "size": 634145
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood_grain_2_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "83322dfebdc4f2eb64ded5581e7c573c820970c6b3011f113f55845207ef5940",
+      "size": 452994
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/wood_grain_2_rot_rot.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "b77b82a1b36ddc1949ffddabeb30d7da6de92c29df4857dd00723abb745ed509",
+      "size": 442964
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/yellow-plaster_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "08f6a087e6dcb2c21f44e04db097e1fa436611e10abd5019ede0c7de86f4bcd5",
+      "size": 577635
+    },
+    {
+      "path": "robocasa_assets/textures/rotated/yellow-plaster_rot_rot.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "3bf292960717d59b03be3889a13a0ad9bd60e4f9dc8e46006e3df7d5ae56e64e",
+      "size": 543750
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/black_marble_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "9645475ede9b6cb2a6cb9eeba8cfeb5fab9ac620f889ae781ccd590a6fcf50f8",
+      "size": 6527850
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/black_square_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "64338c6ec86245c2f055de17a4ef10edffdd1302d5a1a05ca3241225c626b965",
+      "size": 794552
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/blue_ceramic.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "c897af9020f5ca7905e5a3c72e98ff2c069fa4d5d70ff90435c1139c28ae9406",
+      "size": 2228705
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/blue_dots.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "b51d820be5e2cfc81159b59711a3e840cf185daacd2a5af6ad300a4c00a7fabb",
+      "size": 3990155
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/checkers.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "a29d18a2ede1dd4c04237e35c029a475e8d60bad357d970ba2a54f504405f9c8",
+      "size": 3778944
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/concrete_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "188ca7f14e58f7ea64459f75a3cbea7e0e47a9f00976811a00202c65f2b36667",
+      "size": 5031344
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/diamond_marble_parquet.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "9bf1bc7aa0ff0d0515923d2bc7355c13f9ef69cc9e8b68f9cfb48c4ae8f9bccf",
+      "size": 452126
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/diamond_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "e195155cfd20482197026ee3e6e7d43b91f9b3a1ba339422fc6ed466db421500",
+      "size": 5610616
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/diamond_tiles_bak.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "fc85b8645277aead734454409427f46cd6f4c634eb5702931cf6e592610c34cb",
+      "size": 4497945
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/diamond_white_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "1101fd69df20d54855f0feb6c9b561e4910a576e2679355cf69635f6f42023eb",
+      "size": 188312
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/flower_ceramic.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "a9d6448561bf814cdd38a5ea52605f1a4382dd6979be3827f540628bd33fda72",
+      "size": 434680
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/marble_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "54b04641b62c21b5d167d4c97689718f92e9e603694277d140d9fb48e1e19f6c",
+      "size": 5194888
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/orange_square_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "bbff51ea1c64f54b188ee7f4f39d376ed5d912fb3c48f3426f339a7f32ef607b",
+      "size": 7481719
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/orange_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "5901adaeeb0d8d8a8deb7f5fac0341b926ce853dc7a5bac79742ed89f5695062",
+      "size": 4556120
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/varied_marble_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "0ec40bbb1b3b887ac79a7e7303cb02b3b35b57193401096c242be9bce9a399e7",
+      "size": 1084671
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/white_square_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "a8e538959981490c1e1cf508403d8a5a66e2c6ab49e0e0e509179133606a1fcd",
+      "size": 790496
+    },
+    {
+      "path": "robocasa_assets/textures/tiles/white_tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "1698857dc06d1a7c7cd5e85ea5b0d38ca08950fbd65e023f7ddce0b2324f74e5",
+      "size": 1540282
+    },
+    {
+      "path": "robocasa_assets/textures/wood-tiles.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "18d87069529422d832559ce969858576dd46f83efc3dfd9e5ffbf26d740be123",
+      "size": 1460776
+    },
+    {
+      "path": "robocasa_assets/textures/wood/bamboo.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "a39fbea7e52f7988753424d135bbf36e696087bd267cc362cfbbd6725eb36dbe",
+      "size": 4672099
+    },
+    {
+      "path": "robocasa_assets/textures/wood/dark_wood_parquet.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "32ca487ca49b0b656bbaaa437fe2c2f7f3487a28efde95559484e8108aea3d8d",
+      "size": 6022638
+    },
+    {
+      "path": "robocasa_assets/textures/wood/dark_wood_planks.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "66d510cc1946931648d93df6d790355ffa1eed00a7af63270020fd293687dde1",
+      "size": 5104863
+    },
+    {
+      "path": "robocasa_assets/textures/wood/gray_wood_grain.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "62efa660eb1014116f11939a6574e8de60634a1986c3493f37d6e1a438e39109",
+      "size": 7794707
+    },
+    {
+      "path": "robocasa_assets/textures/wood/greenheart_wood_grain.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "9820022e2443c589df257f690a1be84c6f62986e55ac2e00b8975f435b28f9b1",
+      "size": 6725798
+    },
+    {
+      "path": "robocasa_assets/textures/wood/light_wood_parquet.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "2e763e16be0e86cb79c39562c01ef4ab3ba0cf1e07d7319dd38964a7d247b5e4",
+      "size": 5846834
+    },
+    {
+      "path": "robocasa_assets/textures/wood/light_wood_planks_2.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "894e764a9d20e2f9223b4470c9860d5e83441325e85ee3d23638b45c358e9ac0",
+      "size": 3961630
+    },
+    {
+      "path": "robocasa_assets/textures/wood/light_wood_planks_long.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "a7083ce7178f290453c55ffbe8ce11eb4f52cd4a444a81ff705dbe7c31396978",
+      "size": 3900493
+    },
+    {
+      "path": "robocasa_assets/textures/wood/red_wood_planks.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "084ed82dedb653bcbd6767e50cc4a0532af0a1d6eeec2ac14d5738806393a0ff",
+      "size": 6218764
+    },
+    {
+      "path": "robocasa_assets/textures/wood/varnished_wood_planks.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "67b48dc99b89004d98cb0811f170d39993e7e205cc8d5bd3d01a4be137e33a85",
+      "size": 466710
+    },
+    {
+      "path": "robocasa_assets/textures/wood/warm_wood_grain.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "239dd349f82dda487ff71dd3af451315d266b4a35444930d5a2d6ae9fb7c13a7",
+      "size": 6503094
+    },
+    {
+      "path": "robocasa_assets/textures/wood/warm_wood_parquet.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "2f0173e36065c0f7eb5f21e78f0751382c570ebb395721445a4a06cdf1833c35",
+      "size": 7792760
+    },
+    {
+      "path": "robocasa_assets/textures/wood/warm_wood_planks.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "aea6473e8204de2bd90b55c9340dab6ea91d9cacf9764807f744d18c412a2c6e",
+      "size": 5123557
+    },
+    {
+      "path": "robocasa_assets/textures/wood/wood_grain_2.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "5de8161ce1c8ced6071182160ea25d7932dc81f73db31920d61f8777e5ce2a92",
+      "size": 414574
+    },
+    {
+      "path": "robocasa_assets/textures/wood/wood_grain_3.png",
+      "roles": [
+        "table"
+      ],
+      "sha256": "719185e5cf0cd0a74c121adf7820456c491480f0388499b118bcad63154bf3a5",
+      "size": 9765279
+    },
+    {
+      "path": "robocasa_assets/textures/wood/wood_planks.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "54986f6609bba6e44d49d8834f2e9e8282dd5f0cf0ce93269698fe193542ef7a",
+      "size": 5849325
+    },
+    {
+      "path": "robocasa_assets/textures/wood/wood_planks_2.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "c0d42cf35f5a371240080e2d4473c929a9d9103186acd183ab123bf8005093b9",
+      "size": 5213413
+    },
+    {
+      "path": "robocasa_assets/textures/wood/wood_planks_3.png",
+      "roles": [
+        "floor",
+        "table"
+      ],
+      "sha256": "396f78d951efb66a1091d91a2225d177cfc43409c42b7113496bd70a324cba54",
+      "size": 2816062
+    },
+    {
+      "path": "robocasa_assets/textures/wood/wood_planks_wall.png",
+      "roles": [
+        "wall"
+      ],
+      "sha256": "c64ecbaa3519925de54ff1fa8fce106b54bb2178830a4c594b504d0c1b92710a",
+      "size": 971310
+    }
+  ],
+  "fingerprint": "5d16b94551b07d4d8668cd4f1c864b7226b118024d38c858f94618638e59dd01",
+  "schema": 1
+}

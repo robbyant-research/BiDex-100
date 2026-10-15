@@ -1,0 +1,86 @@
+name: put_marshmallow_and_cookie_dough_ball_in_bowl
+language: Put the marshmallow and the cookie dough ball in the bowl.
+subtasks:
+- name: Pick up the marshmallow
+  score: 25
+- name: Put the marshmallow in the bowl
+  score: 25
+- name: Put the cookie dough ball in the bowl
+  score: 50
+robot_type: astribot_s1_fixed_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - 0.0
+  - 0.0
+  quat:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+regions:
+  marshmallow_zone:
+    center:
+    - 0.3
+    - -0.15
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+  cookie_dough_ball_zone:
+    center:
+    - 0.3
+    - 0.15
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+  bowl_zone:
+    center:
+    - 0.55
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: marshmallow
+  region: marshmallow_zone
+- name: cookie_dough_ball
+  region: cookie_dough_ball_zone
+- name: bowl
+  region: bowl_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - marshmallow
+  subtask: Pick up the marshmallow
+- type: inside
+  args:
+  - marshmallow
+  - bowl
+  threshold: 0.1
+  subtask: Put the marshmallow in the bowl
+  must_hold: true
+- type: inside
+  args:
+  - cookie_dough_ball
+  - bowl
+  threshold: 0.1
+  subtask: Put the cookie dough ball in the bowl
+  must_hold: true
+obj_of_interest:
+- marshmallow
+- cookie_dough_ball
+- bowl

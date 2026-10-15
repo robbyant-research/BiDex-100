@@ -1,0 +1,99 @@
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - sugar_cube
+  subtask: Pick up the sugar cube
+- type: inside
+  args:
+  - sugar_cube
+  - rc/lightwheel/glass_cup/GlassCup003
+  subtask: Drop the sugar cube into the cup
+  threshold: 0.05
+  must_hold: true
+- type: lifted
+  args:
+  - rc/lightwheel/glass_cup/GlassCup003
+  subtask: Pick up the cup
+- type: inside
+  args:
+  - rc/lightwheel/glass_cup/GlassCup003
+  - espresso_machine_with_articulated_components
+  subtask: Place the cup in the espresso machine front slot
+  threshold: 0.2
+  must_hold: true
+language: Put the sugar cube into the cup, then place the cup in the espresso machine's
+  front slot.
+subtasks:
+- name: Pick up the sugar cube
+  score: 25
+- name: Drop the sugar cube into the cup
+  score: 25
+- name: Pick up the cup
+  score: 25
+- name: Place the cup in the espresso machine front slot
+  score: 25
+name: make_espresso
+obj_of_interest:
+- espresso_machine_with_articulated_components
+- rc/lightwheel/glass_cup/GlassCup003
+- sugar_cube
+objects:
+- name: espresso_machine_with_articulated_components
+  region: espresso_machine_zone
+  scale: 1.0
+  freejoint: false
+- name: rc/lightwheel/glass_cup/GlassCup003
+  region: cup_zone
+  scale: 1
+  freejoint: true
+- name: sugar_cube
+  region: sugar_cube_zone
+  scale: 3
+  freejoint: true
+regions:
+  espresso_machine_zone:
+    center:
+    - -0.2
+    - 0.15
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.1
+    yaw_range:
+    - 0.5
+    - 0.6
+  cup_zone:
+    center:
+    - 0.25
+    - 0
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.08
+    yaw_range:
+    - 1.57
+    - 1.59
+  sugar_cube_zone:
+    center:
+    - 0.25
+    - -0.3
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style

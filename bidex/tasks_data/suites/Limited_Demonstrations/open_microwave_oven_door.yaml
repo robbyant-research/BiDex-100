@@ -1,0 +1,48 @@
+name: open_microwave_oven_door
+language: Open the microwave oven door.
+subtasks:
+- name: Open the microwave oven door
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - -0.45
+  - 0.7
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  microwave_oven_zone:
+    center:
+    - 0.3
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: microwave_oven
+  region: microwave_oven_zone
+  scale: 0.7
+fixtures: []
+articulations:
+- object: microwave_oven
+  joint: door_hinge
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - microwave_oven
+  - door_hinge
+  threshold: 1.15
+  subtask: Open the microwave oven door
+obj_of_interest:
+- microwave_oven
+max_seconds: 60

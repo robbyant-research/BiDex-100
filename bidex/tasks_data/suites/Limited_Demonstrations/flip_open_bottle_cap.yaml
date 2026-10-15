@@ -1,0 +1,48 @@
+name: flip_open_bottle_cap
+language: Flip open the bottle's articulated cap.
+subtasks:
+- name: Flip open the bottle's articulated cap
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - -0.45
+  - 0.7
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  a_classic_occ_bottle_with_articulated_cap_zone:
+    center:
+    - 0.3
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: a_classic_occ_bottle_with_articulated_cap
+  region: a_classic_occ_bottle_with_articulated_cap_zone
+  scale: 0.5
+fixtures: []
+articulations:
+- object: a_classic_occ_bottle_with_articulated_cap
+  joint: cap_hinge
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - a_classic_occ_bottle_with_articulated_cap
+  - cap_hinge
+  threshold: 1.26
+  subtask: Flip open the bottle's articulated cap
+obj_of_interest:
+- a_classic_occ_bottle_with_articulated_cap
+max_seconds: 60

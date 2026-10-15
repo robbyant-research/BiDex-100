@@ -1,0 +1,48 @@
+name: pull_open_cabinet_drawer
+language: Pull open the drawer of the cabinet.
+subtasks:
+- name: Pull open the drawer of the cabinet
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - -0.45
+  - 0.7
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  drawer_cabinet_with_sliding_drawers_zone:
+    center:
+    - 0.3
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: drawer_cabinet_with_sliding_drawers
+  region: drawer_cabinet_with_sliding_drawers_zone
+  scale: 0.75
+fixtures: []
+articulations:
+- object: drawer_cabinet_with_sliding_drawers
+  joint: body_to_drawer
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - drawer_cabinet_with_sliding_drawers
+  - body_to_drawer
+  threshold: 0.036
+  subtask: Pull open the drawer of the cabinet
+obj_of_interest:
+- drawer_cabinet_with_sliding_drawers
+max_seconds: 60

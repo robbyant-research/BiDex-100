@@ -1,0 +1,25 @@
+# BiDex-100 — minimal simulation-only dependencies.
+# Install: pip install -r requirements.txt
+#
+# Optional (only for robocasa_kitchen tasks): pip install robocasa robosuite
+#   The env spoofs upstream robocasa's mujoco/numpy version asserts at import
+#   time (see bidex/robocasa/scene_factory.py), so newer versions work.
+
+# Core simulation
+numpy>=1.21
+mujoco>=3.8.0
+PyYAML>=5.4
+
+# IK backend (QP-based; lazy-imported by the vendored solver)
+mink
+
+# Math (vendored solver + scene_builder euler->quat + astribot retarget)
+scipy>=1.7
+quaternionic>=1.0
+
+# Replay: parquet episode loading (only needed for parquet replay)
+pandas>=1.3
+pyarrow>=10
+
+# Rendering: only if record_video=True in replay
+imageio>=2.20

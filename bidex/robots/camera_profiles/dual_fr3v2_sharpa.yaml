@@ -1,0 +1,32 @@
+# Camera profile for dual_fr3v2_sharpa. Ported verbatim from scripts/config.yaml
+# (where this used to live). The `head` pose comes from
+# franka_sharpa_sim_assets/calibration_results/calibration_right_front_color.json
+# (T_camera_in_right_link0, OpenCV convention) converted to MuJoCo camera frame
+# (+X right, +Y up, -Z forward) by post-multiplying the rotation by
+# diag(1,-1,-1), then decomposed to intrinsic XYZ euler.
+num_cameras: 3
+width: 640
+height: 480
+fps: 30
+cameras:
+  - name: head
+    type: sim
+    serial_number: SIM_HEAD_CAM
+    attach: right_fr3v2_link0
+    pos: [0.349795, 0.280797, 0.819674]
+    euler: [-0.620854, -0.523422, -2.540853]
+    fovy: 80
+  - name: left_wrist
+    type: sim
+    serial_number: SIM_LEFT_WRIST
+    attach: left_fr3v2_link8
+    pos: [0.0, 0.0, 0.1]
+    euler: [-2.0, 0.0, 0.0]
+    fovy: 80
+  - name: right_wrist
+    type: sim
+    serial_number: SIM_RIGHT_WRIST
+    attach: right_fr3v2_link8
+    pos: [0.0, 0.0, 0.1]
+    euler: [-2.0, 0.0, 0.0]
+    fovy: 80

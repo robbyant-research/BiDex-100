@@ -1,0 +1,173 @@
+articulations:
+# Drawers start at qpos 0.0 (1.2 cm shy of the fully-closed endpoint 0.012), NOT
+# `closed`. At fully-closed the drawer front collides 1-2 mm into the cabinet
+# face frame; with the cabinet WELDED (can't micro-shift to relieve that
+# penetration) the drawer jams -- 500 N can't open it (only the looser-fitting
+# bottom drawer opens). Starting 1.2 cm out clears the face frame (0 contacts),
+# so 30 N pulls the drawer open smoothly. `closed` predicate threshold is
+# qpos >= midpoint(-0.09), so 0.0 still reads as closed. freejoint cabinets
+# relieved this jam by shifting -- the welded cabinet cannot.
+- joint: top_level
+  object: white_cabinet
+  qpos: 0.0
+- joint: middle_level
+  object: white_cabinet
+  qpos: 0.0
+fixtures: []
+ordered_subtasks: true
+goal:
+# Order: open middle drawer -> place BOTH items in the middle drawer -> close
+# middle -> open top -> close top. Placement uses inside_site_any over the
+# drawer sites (see the cheese subtask) -- the SITE moves with the sliding
+# drawer and a contact gate is required, so an item on the table UNDER the open
+# drawer (which the old position `inside` radius-0.25 counted) no longer latches.
+- type: open
+  args:
+  - white_cabinet
+  - middle_level
+  subtask: Open the white cabinet middle drawer
+- type: lifted
+  args:
+  - cheese
+  subtask: Pick up the cheese
+  order_group: food
+# inside_site_any (NOT `inside`), mirroring tabletop_store_condiments_in_short_cabinet:
+# the cabinet is WELDED but the middle drawer SLIDES ~0.16 m out, so `inside` (xy
+# radius 0.25 + z window 0.25 from the body origin) counted an item resting on the
+# table UNDER the open drawer (within the radius + z window) -- a false success.
+# The drawer's middle_region / top_region <site> moves WITH the drawer, and
+# inside_site's CONTACT gate requires the item to rest ON the drawer floor, so an
+# item under / beside the open drawer never latches. must_hold rejects an item
+# that later falls out.
+- type: inside_site_any
+  args:
+  - cheese
+  - white_cabinet
+  - middle_region
+  - top_region
+  threshold: 0.02
+  subtask: Put the cheese inside the white cabinet
+  must_hold: true
+  order_group: food
+- type: lifted
+  args:
+  - jam
+  subtask: Pick up the jam
+  order_group: food
+- type: inside_site_any
+  args:
+  - jam
+  - white_cabinet
+  - middle_region
+  - top_region
+  threshold: 0.02
+  subtask: Put the jam inside the white cabinet
+  must_hold: true
+  order_group: food
+- type: closed
+  args:
+  - white_cabinet
+  - middle_level
+  subtask: Close the white cabinet middle drawer
+- type: open
+  args:
+  - white_cabinet
+  - top_level
+  subtask: Open the white cabinet top drawer
+- type: closed
+  args:
+  - white_cabinet
+  - top_level
+  subtask: Close the white cabinet top drawer
+language: Open the white cabinet middle drawer, put the cheese and the jam inside, then close the middle drawer and open the top drawer.
+subtasks:
+- name: Open the white cabinet middle drawer
+  score: 20
+- name: Pick up the cheese
+  score: 10
+- name: Put the cheese inside the white cabinet
+  score: 15
+- name: Pick up the jam
+  score: 10
+- name: Put the jam inside the white cabinet
+  score: 15
+- name: Close the white cabinet middle drawer
+  score: 15
+- name: Open the white cabinet top drawer
+  score: 15
+- name: Close the white cabinet top drawer
+  score: 0
+name: store_items_in_white_cabinet
+obj_of_interest:
+- white_cabinet
+- cheese
+- jam
+objects:
+# White cabinet: WELDED (freejoint: false) so it cannot slide/tip during the
+# episode, but still placed from `white_cabinet_zone` so its init pose
+# randomizes per episode (apply_task_initial_state re-poses welded+region
+# objects via model.body_pos/quat). The cabinet's VISUAL mesh base sits 0.0055 m
+# above its body origin while its collision box extends 0.139 m BELOW, so the
+# body-origin z that puts the visual base on the table (0.8) is 0.795 (the
+# collision then embeds into the table, but the cabinet is welded -> no launch,
+# and the embed is invisible). z=0.85 left it sunk/launched; z=0.94 floated it
+# 15 cm above the table. Drawers slide via top_level / middle_level joints; only
+# the base is locked.
+- name: white_cabinet
+  region: white_cabinet_zone
+  scale: 1.2
+  freejoint: false
+- name: cheese
+  region: cheese_zone
+  scale: 0.7
+  freejoint: true
+- name: jam
+  region: jam_zone
+  scale: 0.7
+  freejoint: true
+regions:
+  cheese_zone:
+    center:
+    - 0.15
+    - -0.05
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  jam_zone:
+    center:
+    - 0.15
+    - -0.22
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  white_cabinet_zone:
+    center:
+    - -0.2
+    - 0.17
+    - 0.795
+    xy_range:
+    - 0.05
+    - -0.01
+    yaw_range:
+    - 1.2
+    - 1.25
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style

@@ -1,0 +1,63 @@
+name: put_peach_in_fruit_bowl
+language: Pick up the peach and put it in the fruit bowl.
+subtasks:
+- name: Pick up the peach
+  score: 50
+- name: Place the peach in the fruit_bowl
+  score: 50
+robot_type: astribot_s1_fixed_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - 0.0
+  - 0.0
+  quat:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+regions:
+  peach_zone:
+    center:
+    - 0.4
+    - -0.15
+    - 0.8775
+    xy_range:
+    - 0.12
+    - 0.12
+    yaw_range:
+    - -3.14
+    - 3.14
+  fruit_bowl_zone:
+    center:
+    - 0.4
+    - 0.15
+    - 0.8775
+    xy_range:
+    - 0.12
+    - 0.12
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: peach
+  region: peach_zone
+- name: fruit_bowl
+  region: fruit_bowl_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - peach
+  subtask: Pick up the peach
+- type: inside
+  args:
+  - peach
+  - fruit_bowl
+  threshold: 0.1
+  subtask: Place the peach in the fruit_bowl
+  must_hold: true
+obj_of_interest:
+- peach
+- fruit_bowl

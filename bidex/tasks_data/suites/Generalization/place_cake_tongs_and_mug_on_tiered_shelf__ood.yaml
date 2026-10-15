@@ -1,0 +1,205 @@
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - cake
+  subtask: Pick up the cake
+  threshold: 0.9
+# stacked_on z window 0.05..0.45 covers BOTH shelf tiers (lower ~0.09, upper
+# ~0.39 delta-z above the shelf base) -- the old 0.05..0.16 only accepted the
+# lower tier. 0.05 lower bound still rejects a table-resting object (~0.04).
+- type: stacked_on
+  args:
+  - cake
+  - tiered_shelf
+  - 0.05
+  - 0.45
+  threshold: 0.1
+  subtask: Place the cake on the tiered shelf
+  must_hold: true
+- type: lifted
+  args:
+  - white_yellow_mug
+  subtask: Pick up the mug
+  threshold: 0.9
+- type: stacked_on
+  args:
+  - white_yellow_mug
+  - tiered_shelf
+  - 0.05
+  - 0.45
+  threshold: 0.1
+  subtask: Place the mug on the tiered shelf
+  must_hold: true
+- type: lifted
+  args:
+  - tongs
+  subtask: Pick up the tongs
+  threshold: 0.9
+- type: stacked_on
+  args:
+  - tongs
+  - tiered_shelf
+  - 0.05
+  - 0.45
+  threshold: 0.1
+  subtask: Place the tongs on the tiered shelf
+  must_hold: true
+language: Place the cake, the tongs, and the mug on the tiered shelf.
+subtasks:
+- name: Pick up the cake
+  score: 15
+- name: Place the cake on the tiered shelf
+  score: 15
+- name: Pick up the mug
+  score: 15
+- name: Place the mug on the tiered shelf
+  score: 20
+- name: Pick up the tongs
+  score: 15
+- name: Place the tongs on the tiered shelf
+  score: 20
+ood:
+  base_task: tabletop_serve_cake_with_mug
+  scene_randomize: true
+  baked_layout: true
+  arm_mirror: true
+name: place_cake_tongs_and_mug_on_tiered_shelf
+obj_of_interest:
+- cake
+- white_yellow_mug
+- tongs
+- tiered_shelf
+objects:
+- name: cake
+  region: cake_zone
+  scale: 1
+  freejoint: true
+- name: white_yellow_mug
+  region: white_yellow_mug_zone
+  scale: 1
+  freejoint: true
+- name: tongs
+  region: tongs_zone
+  scale: 1
+  freejoint: true
+- name: tiered_shelf
+  region: tiered_shelf_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/apple/apple_13
+  region: ood_apple_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/canned_food/canned_food_4
+  region: ood_can_zone
+  scale: 1
+  freejoint: true
+- name: rc/lightwheel/glass_cup/GlassCup003
+  region: ood_glass_zone
+  scale: 1
+  freejoint: true
+regions:
+  cake_zone:
+    center:
+    - 0.25
+    - 0.1
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - -0.2
+    - 0.2
+  tiered_shelf_zone:
+    center:
+    - -0.059
+    - 0.08
+    - 0.85
+    xy_range:
+    - 0.01
+    - -0.02
+    # Rotated 180 deg from the mirrored orientation (yaw + pi -> faces the robot
+    # again, matching the ID task's world direction for the shelf opening).
+    yaw_range:
+    - 1.29
+    - 1.94
+  # Baked OOD distractors (random 5.3 injection disabled -- injected cups/tongs
+  # kept embedding the mug / tongs / shelf). Worst-case spawn boxes, all disjoint
+  # from cake x[0.165,0.335] y[0.016,0.184], shelf x[-0.23,0.15] y[-0.01,0.31],
+  # mug x[0.129,0.371] y[-0.219,-0.013], tongs x[0.045,0.195] y[-0.485,-0.111]:
+  #   apple x[0.181,0.320] y[0.211,0.350]   (above cake)
+  #   can   x[-0.345,-0.225] y[-0.060,0.060] (left of shelf)
+  #   cup   x[-0.132,0.032] y[-0.332,-0.169] (below shelf, clear of tongs x min 0.045)
+  ood_apple_zone:
+    center:
+    - 0.25
+    - 0.28
+    - 0.8
+    xy_range:
+    - 0.02
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  ood_can_zone:
+    center:
+    - -0.285
+    - 0.0
+    - 0.8
+    xy_range:
+    - 0.015
+    - 0.015
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  ood_glass_zone:
+    center:
+    - -0.05
+    - -0.25
+    - 0.8
+    xy_range:
+    - 0.015
+    - 0.015
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  tongs_zone:
+    center:
+    - 0.12
+    - -0.3
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -0.4
+    - 0.4
+  white_yellow_mug_zone:
+    center:
+    - 0.25
+    - -0.116
+    - 0.85
+    # Jitter tightened 0.05 -> 0.04 so the mug's worst-case box (x min ~0.127)
+    # stays clear of the rotated tiered shelf's worst-case x max (~0.121).
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -0.3
+    - 0.3
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style

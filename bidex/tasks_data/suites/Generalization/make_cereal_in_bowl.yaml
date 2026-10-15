@@ -1,0 +1,129 @@
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - cereal
+  subtask: Pick up the cereal box
+- type: inside
+  args:
+  - cereal
+  - red_bowl
+  subtask: Put the cereal into the red bowl
+  threshold: 0.08
+  must_hold: true
+- type: lifted
+  args:
+  - banana
+  subtask: Pick up the banana
+- type: inside
+  args:
+  - banana
+  - red_bowl
+  subtask: Put the banana into the red bowl
+  threshold: 0.08
+  must_hold: true
+- type: lifted
+  args:
+  - spoon
+  subtask: Pick up the spoon
+- type: inside
+  args:
+  - spoon
+  - red_bowl
+  subtask: Put the spoon inside the red bowl
+  threshold: 0.08
+  must_hold: true
+language: Pick up the cereal box and put it into the red bowl, then add the banana, and place the spoon inside the bowl.
+subtasks:
+- name: Pick up the cereal box
+  score: 15
+- name: Put the cereal into the red bowl
+  score: 15
+- name: Pick up the banana
+  score: 15
+- name: Put the banana into the red bowl
+  score: 20
+- name: Pick up the spoon
+  score: 15
+- name: Put the spoon inside the red bowl
+  score: 20
+name: make_cereal_in_bowl
+obj_of_interest:
+- red_bowl
+- cereal
+- banana
+- spoon
+objects:
+- name: red_bowl
+  region: red_bowl_zone
+  scale: 2.8
+  freejoint: true
+- name: cereal
+  region: cereal_zone
+  scale: 0.7
+  freejoint: true
+- name: banana
+  region: banana_zone
+  scale: 1
+  freejoint: true
+- name: spoon
+  region: spoon_zone
+  scale: 1
+  freejoint: true
+regions:
+  banana_zone:
+    center:
+    - 0.2
+    - 0.1
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  cereal_zone:
+    center:
+    - 0.02
+    - -0.1
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.2
+    - 0.2
+  red_bowl_zone:
+    center:
+    - 0.02
+    - 0.2
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  spoon_zone:
+    center:
+    - 0.2
+    - -0.15
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.4
+    - 0.4
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style

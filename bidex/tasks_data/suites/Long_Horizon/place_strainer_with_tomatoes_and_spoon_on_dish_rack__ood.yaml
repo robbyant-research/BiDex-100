@@ -1,0 +1,181 @@
+name: place_strainer_with_tomatoes_and_spoon_on_dish_rack
+language: Pick up the strainer, put the two tomatoes into it, lift it onto the dish
+  rack, then place the spoon onto the dish rack as well.
+subtasks:
+- name: Pick up the strainer
+  score: 10
+- name: Pick up the first tomato
+  score: 10
+- name: Place the first tomato into the strainer
+  score: 10
+- name: Pick up the second tomato
+  score: 10
+- name: Place the second tomato into the strainer
+  score: 10
+- name: Place the strainer onto the dish rack
+  score: 15
+- name: Pick up the spoon
+  score: 15
+- name: Place the spoon onto the dish rack
+  score: 20
+ood:
+  base_task: tabletop_long_strainer_fruits_spoon_dish_rack
+  scene_randomize: true
+  baked_layout: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 200
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions:
+  dish_rack_zone:
+    center:
+    - -0.18
+    - 0.0
+    - 0.95
+    xy_range:
+    - 0.02
+    - 0.02
+    yaw_range:
+    - 0.0
+    - 0.01
+  strainer_zone:
+    center:
+    - 0.2792
+    - -0.1994
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -0.1
+    - 0.1
+    rest_on_surface: true
+  tomato_a_zone:
+    center:
+    - 0.2
+    - 0.28
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - -3.14
+    - 3.14
+  tomato_b_zone:
+    center:
+    - 0.2185
+    - 0.1
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.04
+    yaw_range:
+    - -3.14
+    - 3.14
+  spoon_zone:
+    center:
+    - -0.1
+    - 0.29
+    - 0.85
+    xy_range:
+    - 0.025
+    - 0.025
+    yaw_range:
+    - 0.77
+    - 2.37
+objects:
+- name: rc/lightwheel/dish_rack/DishRack026
+  region: dish_rack_zone
+  scale: 1.1
+  freejoint: true
+  mass: 5
+- name: rc/lightwheel/strainer/Strainer002
+  region: strainer_zone
+  scale: 1.5
+  freejoint: true
+  rest_on_surface: true
+- name: rc/objaverse/tomato/tomato_0
+  region: tomato_a_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/tomato/tomato_1
+  region: tomato_b_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/spoon/spoon_5
+  region: spoon_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/lightwheel/strainer/Strainer002
+  subtask: Pick up the strainer
+  threshold: 0.92
+- type: lifted
+  args:
+  - rc/objaverse/tomato/tomato_0
+  subtask: Pick up the first tomato
+  threshold: 0.91
+# inside_site(bowl_region) -- NOT inside_box: the strainer's reg_bbox footprint
+# covers the bowl (+y) AND the handle (-y), so inside_box counted a tomato that
+# landed ON the handle. bowl_region (a site at the bowl interior, +y) restricts
+# the xy test to the bowl lobe only; the contact gate + must_hold finish the
+# check. (Strainer002 model.xml carries the bowl_region site; drain_three_tomatoes
+# uses the same gate.)
+- type: inside_site
+  args:
+  - rc/objaverse/tomato/tomato_0
+  - rc/lightwheel/strainer/Strainer002
+  - bowl_region
+  threshold: 0.02
+  subtask: Place the first tomato into the strainer
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/tomato/tomato_1
+  subtask: Pick up the second tomato
+  threshold: 0.91
+- type: inside_site
+  args:
+  - rc/objaverse/tomato/tomato_1
+  - rc/lightwheel/strainer/Strainer002
+  - bowl_region
+  threshold: 0.02
+  subtask: Place the second tomato into the strainer
+  must_hold: true
+- type: inside_box
+  args:
+  - rc/lightwheel/strainer/Strainer002
+  - rc/lightwheel/dish_rack/DishRack026
+  subtask: Place the strainer onto the dish rack
+  threshold: 0.04
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/spoon/spoon_5
+  subtask: Pick up the spoon
+  threshold: 0.89
+- type: inside_box
+  args:
+  - rc/objaverse/spoon/spoon_5
+  - rc/lightwheel/dish_rack/DishRack026
+  subtask: Place the spoon onto the dish rack
+  threshold: 0.04
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/dish_rack/DishRack026
+- rc/lightwheel/strainer/Strainer002
+- rc/objaverse/tomato/tomato_0
+- rc/objaverse/tomato/tomato_1
+- rc/objaverse/spoon/spoon_5

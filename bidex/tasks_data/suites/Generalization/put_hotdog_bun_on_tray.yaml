@@ -1,0 +1,68 @@
+name: put_hotdog_bun_on_tray
+language: Pick up the hotdog bun and place it on the tray.
+subtasks:
+- name: Pick up the hotdog_bun
+  score: 50
+- name: Place the hotdog_bun on the tray
+  score: 50
+robot_type: astribot_s1_fixed_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - 0.0
+  - 0.0
+  quat:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+regions:
+  hotdog_bun_zone:
+    center:
+    - 0.4
+    - -0.15
+    - 0.8775
+    xy_range:
+    - 0.12
+    - 0.12
+    yaw_range:
+    - -3.14
+    - 3.14
+  # The tray's physical footprint is 0.13 x 0.22 m (rotated radius ~0.13 m);
+  # with the old centre at y 0.15 and +-0.12 jitter the bun (max y -0.03) and
+  # tray (min y 0.03) could spawn 0.06 m apart -- embedded. Moving the tray
+  # centre to y 0.24 with y jitter +-0.05 guarantees a centre gap >= 0.20 m
+  # (tray y in [0.19,0.29], bun y in [-0.27,-0.03]) -> no spawn overlap.
+  tray_zone:
+    center:
+    - 0.4
+    - 0.24
+    - 0.8775
+    xy_range:
+    - 0.12
+    - 0.05
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: hotdog_bun
+  region: hotdog_bun_zone
+- name: tray
+  region: tray_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - hotdog_bun
+  subtask: Pick up the hotdog_bun
+- type: 'on'
+  args:
+  - hotdog_bun
+  - tray
+  threshold: 0.08
+  subtask: Place the hotdog_bun on the tray
+  must_hold: true
+obj_of_interest:
+- hotdog_bun
+- tray

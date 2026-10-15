@@ -1,0 +1,150 @@
+name: swap_cup_colors_with_cube
+language: With the right arm press the yellow button three times, pick up the cube
+  and swing it over the two cups five times to swap their colors, then place it in
+  the matching-color cup.
+subtasks:
+- name: Right arm presses the yellow button exactly three times, the cube's color
+    disappears
+  score: 25
+- name: Pick up the cube
+  score: 5
+- name: Pass over the cups so the two cups swap colors five times
+  score: 25
+- name: Place the cube into the cup whose color matches it
+  score: 45
+ood:
+  base_task: tabletop_color_swap_cube_cups
+  scene_randomize: true
+  baked_layout: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+ordered_subtasks: true
+regions:
+  anchor_zone:
+    center:
+    - 0.02
+    - -0.0224
+    - 0.8
+    xy_range:
+    - 0.05
+    - 0.04
+    yaw_range:
+    - 0.0
+    - 0.01
+  red_cup_zone:
+    target: obj1_root
+    center:
+    - -0.05
+    - -0.06
+    - 0.002
+    xy_range:
+    - 0.0
+    - 0.0
+    yaw_range:
+    - -3.14
+    - 3.14
+  blue_cup_zone:
+    target: obj1_root
+    center:
+    - -0.05
+    - 0.06
+    - 0.002
+    xy_range:
+    - 0.0
+    - 0.0
+    yaw_range:
+    - -3.14
+    - 3.14
+  cube_zone:
+    target: obj1_root
+    center:
+    - 0.12
+    - 0.0
+    - 0.0
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  yellow_button_zone:
+    center:
+    - 0.2
+    - 0.14
+    - 0.8
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -0.3
+    - 0.3
+objects:
+- name: assembly_anchor
+  region: anchor_zone
+  freejoint: false
+- name: assembly_cup_red
+  region: red_cup_zone
+  mass: 200.0
+  color_cup: true
+- name: bowl_a
+  region: blue_cup_zone
+  mass: 200.0
+  color_cup: true
+- name: cube_a
+  region: cube_zone
+  color_cube: true
+- name: dexjoco_button_yellow
+  region: yellow_button_zone
+  pos:
+  - 0.2
+  - 0.14
+  - 0.8
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+  button: true
+fixtures: []
+goal:
+- type: pressed_exact
+  args:
+  - dexjoco_button_yellow
+  - 3
+  subtask: Right arm presses the yellow button exactly three times, the cube's color
+    disappears
+  must_hold: true
+- type: lifted
+  args:
+  - cube_a
+  subtask: Pick up the cube
+  threshold: 0.85
+- type: swaps_n
+  args:
+  - cube_a
+  - 5
+  subtask: Pass over the cups so the two cups swap colors five times
+- type: color_match_place
+  args:
+  - cube_a
+  subtask: Place the cube into the cup whose color matches it
+  must_hold: true
+obj_of_interest:
+- assembly_cup_red
+- bowl_a
+- cube_a
+- dexjoco_button_yellow

@@ -1,0 +1,32 @@
+# Camera profile for GR1 (full / fixed_lower / arms_only variants share this).
+# Body names come from assembly/gr1/shared/gr1_body_subtree.xml. Wrist
+# cameras hang off the wrist-pitch link with the same -2.0 rad pitch as the
+# fr3v2 wrist cams (chosen so the palm is visible from above as the hand
+# closes); the head cam clips onto the head_pitch link looking forward.
+# Pose values are sensible defaults — re-calibrate per real setup.
+num_cameras: 3
+width: 640
+height: 480
+fps: 30
+cameras:
+  - name: head
+    type: sim
+    serial_number: SIM_HEAD_CAM
+    attach: head_pitch
+    pos: [0.08, 0.0, 0.03]
+    euler: [-1.5707963, 0.0, -1.5707963]
+    fovy: 80
+  - name: left_wrist
+    type: sim
+    serial_number: SIM_LEFT_WRIST
+    attach: l_hand_pitch
+    pos: [0.0, 0.0, -0.06]
+    euler: [3.1415927, 0.0, 0.0]
+    fovy: 80
+  - name: right_wrist
+    type: sim
+    serial_number: SIM_RIGHT_WRIST
+    attach: r_hand_pitch
+    pos: [0.0, 0.0, -0.06]
+    euler: [3.1415927, 0.0, 0.0]
+    fovy: 80

@@ -1,0 +1,198 @@
+# FIND-THE-TARGET task. From the tray of mixed utensils, pick up the one target
+# fork and drop it into the cup.
+name: pick_up_fork_from_tray_into_cup
+language: From the tray of mixed utensils, pick up the one fork and drop it into the cup.
+subtasks:
+- name: Pick up the target utensil and drop it into the cup
+  score: 100
+- name: Another utensil is not picked up
+  score: 0
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# FIND-THE-TARGET task. Five utensils lie in the welded tray (OvenTray004) and the
+# robot must pick up ONLY the target (fork_3) and drop it into the cup; the
+# other four (knife_13, spoon_14, ladle_2, spoon_15) are guarded by `not_lifted`
+# latch_violation, so touching any of them fails the episode.
+#
+# Utensil initial height: the five tray-relative utensil slots (u0..u4) rest at
+# z = 0.02 above the tray root (target: obj1_root, rest_on_surface), matching the
+# spoon sibling task -- utensils sit on the tray floor rather than floating at
+# the old 0.08 m.
+#
+# shuffle_regions (opt-in, see Task.shuffle_regions / region_sampler): the five
+# utensils' region assignment is randomly PERMUTED each reset, so the target
+# fork and the decoys swap tray slots every episode. The slots (u0..u4) are
+# pinned (xy_range 0), tray-relative (`target: obj1_root`), and 8 cm apart along
+# the tray's x -- any permutation keeps them in distinct, non-overlapping slots
+# (the permutation only changes WHO is in which slot, not the slot geometry;
+# rejection across swapped regions is not re-run because the slots are
+# themselves pinned disjoint boxes). The tray (welded tray_zone) and the cup
+# (cup_zone) are NOT in the shuffle group, so their placement is unchanged; only
+# the utensil order in the tray shuffles. Default-off for every other task
+# (shuffle_regions absent), so previously-collected tasks are unaffected.
+regions:
+  tray_zone:
+    center:
+    - -0.05
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.02
+    - 0.02
+    yaw_range:
+    - 0.0
+    - 0.01
+    rest_on_surface: true
+  cup_zone:
+    center:
+    - 0.22
+    - 0.2
+    - 0.85
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  u0_zone:
+    center:
+    - -0.16
+    - 0.0
+    - 0.02
+    xy_range:
+    - 0
+    - 0
+    yaw_range:
+    - 3.09159
+    - 3.19159
+    target: obj1_root
+    rest_on_surface: true
+  u1_zone:
+    center:
+    - -0.08
+    - 0.0
+    - 0.02
+    xy_range:
+    - 0
+    - 0
+    yaw_range:
+    - 3.09159
+    - 3.19159
+    target: obj1_root
+    rest_on_surface: true
+  u2_zone:
+    center:
+    - 0.0
+    - 0.0
+    - 0.02
+    xy_range:
+    - 0
+    - 0
+    yaw_range:
+    - 3.09159
+    - 3.19159
+    target: obj1_root
+    rest_on_surface: true
+  u3_zone:
+    center:
+    - 0.08
+    - 0.0
+    - 0.02
+    xy_range:
+    - 0
+    - 0
+    yaw_range:
+    - 3.09159
+    - 3.19159
+    target: obj1_root
+    rest_on_surface: true
+  u4_zone:
+    center:
+    - 0.16
+    - 0.0
+    - 0.02
+    xy_range:
+    - 0
+    - 0
+    yaw_range:
+    - 3.09159
+    - 3.19159
+    target: obj1_root
+    rest_on_surface: true
+shuffle_regions:
+- rc/objaverse/spoon/spoon_16
+- rc/objaverse/spoon/spoon_14
+- rc/objaverse/fork/fork_3
+- rc/objaverse/fork/fork_4
+- rc/objaverse/spoon/spoon_15
+objects:
+- name: rc/lightwheel/oven_tray/OvenTray004
+  region: tray_zone
+  freejoint: false
+  scale: 1.3
+- name: rc/objaverse/spoon/spoon_16
+  region: u0_zone
+  freejoint: true
+- name: rc/objaverse/spoon/spoon_14
+  region: u1_zone
+  freejoint: true
+- name: rc/objaverse/fork/fork_3
+  region: u2_zone
+  freejoint: true
+- name: rc/objaverse/fork/fork_4
+  region: u3_zone
+  freejoint: true
+- name: rc/objaverse/spoon/spoon_15
+  region: u4_zone
+  freejoint: true
+- name: rc/lightwheel/glass_cup/GlassCup009
+  region: cup_zone
+  freejoint: true
+fixtures: []
+goal:
+- type: inside_contact
+  args:
+  - rc/objaverse/fork/fork_4
+  - rc/lightwheel/glass_cup/GlassCup009
+  subtask: Pick up the target utensil and drop it into the cup
+  must_hold: true
+- type: not_lifted
+  args:
+  - rc/objaverse/spoon/spoon_16
+  subtask: Another utensil is not picked up
+  latch_violation: true
+- type: not_lifted
+  args:
+  - rc/objaverse/spoon/spoon_14
+  subtask: Another utensil is not picked up
+  latch_violation: true
+- type: not_lifted
+  args:
+  - rc/objaverse/fork/fork_3
+  subtask: Another utensil is not picked up
+  latch_violation: true
+- type: not_lifted
+  args:
+  - rc/objaverse/spoon/spoon_15
+  subtask: Another utensil is not picked up
+  latch_violation: true
+obj_of_interest:
+- rc/lightwheel/oven_tray/OvenTray004
+- rc/objaverse/fork/fork_3
+- rc/lightwheel/glass_cup/GlassCup009
+- rc/objaverse/spoon/spoon_16
+- rc/objaverse/spoon/spoon_14
+- rc/objaverse/fork/fork_4
+- rc/objaverse/spoon/spoon_15

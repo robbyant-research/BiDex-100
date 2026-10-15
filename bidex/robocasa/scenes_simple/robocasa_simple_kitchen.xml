@@ -1,0 +1,37 @@
+<mujoco model="robocasa_simple_kitchen">
+  <compiler angle="radian"/>
+
+  <asset>
+    <texture builtin="gradient" height="256" rgb1="0.98 0.98 1.00" rgb2="0.40 0.45 0.55" type="skybox" width="256"/>
+
+    <texture file="../assets/textures/wood/wood_grain_1.png" type="cube" name="rc_tex-table"/>
+    <material name="rc_table_mat" reflectance="0.0" shininess="0.1" specular="0.2" texrepeat="2 2" texture="rc_tex-table" texuniform="false"/>
+
+    <texture file="../assets/textures/wood/dark_wood_parquet.png" type="2d" name="rc_tex-floor"/>
+    <material name="rc_floor_mat" reflectance="0.0" shininess="0.0" specular="0.05" texrepeat="4 4" texture="rc_tex-floor" texuniform="true"/>
+
+    <texture file="../assets/textures/flat/warm_white.png" type="2d" name="rc_tex-wall"/>
+    <material name="rc_wall_mat" reflectance="0.0" shininess="0.0" specular="0.0" texrepeat="3 2" texture="rc_tex-wall" texuniform="true"/>
+
+    <material name="rc_skirt_mat" reflectance="0.0" rgba="0.55 0.4 0.28 1"/>
+  </asset>
+
+  <visual>
+    <map znear="0.0002" zfar="50"/>
+  </visual>
+
+  <worldbody>
+    <light pos="0 0 3" dir="0 0 -1" diffuse="0.6 0.6 0.6" specular="0.2 0.2 0.2" directional="true" castshadow="false"/>
+    <light pos="1.0 -0.6 2.4" dir="-0.3 0.3 -1" diffuse="0.4 0.4 0.4"/>
+    <light pos="-1.0 0.6 2.4" dir="0.3 -0.3 -1" diffuse="0.4 0.4 0.4"/>
+
+    <geom name="rc_floor" type="plane" pos="0 0 0" size="3 3 0.05" material="rc_floor_mat" conaffinity="1" contype="1" group="1"/>
+
+    <geom name="rc_wall_back" type="box" pos="0 0.9 1.2" size="2.4 0.02 1.2" material="rc_wall_mat" conaffinity="1" contype="1" group="1"/>
+    <geom name="rc_wall_left" type="box" pos="-2.0 0 1.2" size="0.02 0.9 1.2" material="rc_wall_mat" conaffinity="1" contype="1" group="1"/>
+    <geom name="rc_wall_right" type="box" pos="2.0 0 1.2" size="0.02 0.9 1.2" material="rc_wall_mat" conaffinity="1" contype="1" group="1"/>
+
+    <geom name="rc_counter_top" type="box" pos="0 0.45 0.79" size="1.6 0.35 0.025" material="rc_table_mat" conaffinity="1" contype="1" group="1"/>
+    <geom name="rc_counter_skirt" type="box" pos="0 0.45 0.38" size="1.6 0.34 0.38" material="rc_skirt_mat" conaffinity="1" contype="1" group="1"/>
+  </worldbody>
+</mujoco>

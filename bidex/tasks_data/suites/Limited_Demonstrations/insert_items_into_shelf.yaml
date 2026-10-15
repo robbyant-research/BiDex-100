@@ -1,0 +1,153 @@
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - alphabet_soup
+  subtask: Pick up the alphabet soup
+# inside_contact counts the soup as inserted when it is SUPPORTED by the shelf
+# -- a contact whose normal is vertical (the shelf holds the soup up from
+# underneath, as a slab does a resting item). The wooden shelf at scale 2 is
+# large and yaw-rotated with an off-centre body origin, so the old `inside
+# threshold:0.15` (a 0.15 m xy radius from the body origin) missed items toward
+# the slab edges, and its hardcoded 0.25 m z window rejected the upper slabs
+# (which sit ~0.30-0.44 m above the body origin). The normal-based support gate
+# (not bare contact) rejects a soup that merely BUMPS the shelf EXTERIOR (a
+# side panel / wall) while being carried past -- a side bump's normal is
+# horizontal, a slab's is vertical, independent of the soup's size.
+# `must_hold: true` rejects a soup that landed on a slab but ROLLED OFF onto the
+# table (no support contact at episode end).
+- type: inside_contact
+  args:
+  - alphabet_soup
+  - wooden_shelf
+  subtask: Insert the alphabet soup into the shelf
+  must_hold: true
+- type: lifted
+  args:
+  - bbq_sauce
+  subtask: Pick up the BBQ sauce
+- type: inside_contact
+  args:
+  - bbq_sauce
+  - wooden_shelf
+  subtask: Insert the BBQ sauce into the shelf
+  must_hold: true
+- type: lifted
+  args:
+  - white_storage_box
+  subtask: Pick up the storage box
+# inside_contact (NOT `on`): the wooden shelf at scale 2 is large, yaw-rotated
+# with an off-centre body origin, so `on` (xy 0.1 from the body origin + z >
+# tgt_z-0.02) sometimes missed a storage box correctly placed on a slab toward
+# the shelf edge, and accepted one merely hovering above. inside_contact requires
+# a SUPPORT contact (vertical-normal, a slab beneath the box) -- rotation/offset
+# invariant -- so a box resting on any shelf slab latches (same gate the soup /
+# bbq_sauce use); must_hold rejects a box that slid off onto the table.
+- type: inside_contact
+  args:
+  - white_storage_box
+  - wooden_shelf
+  subtask: Place the storage box on the shelf
+  must_hold: true
+language: Pick up the alphabet soup and the BBQ sauce and insert them into the wooden shelf, then place the white storage box on the shelf.
+subtasks:
+- name: Pick up the alphabet soup
+  score: 15
+- name: Insert the alphabet soup into the shelf
+  score: 20
+- name: Pick up the BBQ sauce
+  score: 15
+- name: Insert the BBQ sauce into the shelf
+  score: 20
+- name: Pick up the storage box
+  score: 15
+- name: Place the storage box on the shelf
+  score: 15
+name: insert_items_into_shelf
+obj_of_interest:
+- wooden_shelf
+- alphabet_soup
+- bbq_sauce
+- white_storage_box
+objects:
+- name: wooden_shelf
+  region: shelf_zone
+  scale: 2
+  freejoint: true
+  mass: 5
+- name: alphabet_soup
+  region: alphabet_soup_zone
+  scale: 1
+  freejoint: true
+- name: bbq_sauce
+  region: bbq_sauce_zone
+  scale: 1
+  freejoint: true
+- name: white_storage_box
+  region: white_storage_box_zone
+  scale: 1
+  freejoint: true
+regions:
+  alphabet_soup_zone:
+    center:
+    - 0.15
+    - 0.1
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  bbq_sauce_zone:
+    center:
+    - 0.15
+    - -0.1
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  shelf_zone:
+    center:
+    - -0.18
+    - 0.18
+    - 0.85
+    # Tightened from xy_range 0.12 / yaw_range [1, 1.8]. The shelf (scale 2,
+    # ~0.46 m x 0.19 m) is long: at yaw ~= 1.57 (90 deg) its long axis swings
+    # straight down -y toward the white_storage_box and clips it, knocking the
+    # box (and sometimes the shelf) off the table -- the two also embedded when
+    # xy jitter placed them on top of each other. xy 0.04 keeps each near its
+    # (safe-at-center) spot; yaw [1.0, 1.3] stays clear of the 1.57 danger
+    # (verified stable at yaw 1.0, 1.4, 1.8; only ~1.57 topples).
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - 1.0
+    - 1.2
+  white_storage_box_zone:
+    center:
+    - -0.05
+    - -0.15
+    - 0.85
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - 1.0
+    - 1.2
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style

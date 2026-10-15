@@ -1,0 +1,209 @@
+name: sort_mixed_food_into_boxes
+language: Put the mushrooms into the middle vegetable basket, the hot dogs into the
+  front meat basket, and the drink cartons into the back drinks basket.
+subtasks:
+- name: Drop the first mushroom into the middle vegetable basket
+  score: 10
+- name: Drop the second mushroom into the middle vegetable basket
+  score: 10
+- name: Drop the first hot dog into the front meat basket
+  score: 20
+- name: Drop the second hot dog into the front meat basket
+  score: 20
+- name: Drop the first drink carton into the back drinks basket
+  score: 20
+- name: Drop the second drink carton into the back drinks basket
+  score: 20
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+max_seconds: 180
+regions:
+  mushroom_a_zone:
+    center:
+    - 0.22
+    - -0.18
+    - 0.87
+    xy_range:
+    - 0.1
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+  hot_dog_a_zone:
+    center:
+    - 0.22
+    - -0.06
+    - 0.85
+    xy_range:
+    - 0.1
+    - 0.02
+    yaw_range:
+    - 1.5708
+    - 1.5708
+  drink_a_zone:
+    center:
+    - 0.22
+    - -0.25
+    - 0.88
+    xy_range:
+    - 0.1
+    - 0.02
+    yaw_range:
+    - 0.0
+    - 0.0
+  mushroom_b_zone:
+    center:
+    - 0.22
+    - 0.06
+    - 0.87
+    xy_range:
+    - 0.1
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+  hot_dog_b_zone:
+    center:
+    - 0.22
+    - 0.18
+    - 0.85
+    xy_range:
+    - 0.1
+    - 0.02
+    yaw_range:
+    - 1.5708
+    - 1.5708
+  drink_b_zone:
+    center:
+    - 0.22
+    - 0.3
+    - 0.88
+    xy_range:
+    - 0.1
+    - 0.02
+    yaw_range:
+    - 0.0
+    - 0.0
+objects:
+- name: rc/lightwheel/basket/Basket027
+  pos:
+  - -0.15
+  - 0.26
+  - 0.8
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+- name: rc/lightwheel/basket/Basket037
+  pos:
+  - -0.15
+  - 0.0
+  - 0.8
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+- name: rc/lightwheel/basket/Basket046
+  pos:
+  - -0.15
+  - -0.26
+  - 0.8
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+- name: rc/objaverse/mushroom/mushroom_3
+  region: mushroom_a_zone
+  scale: 1.5
+  freejoint: true
+- name: rc/objaverse/mushroom/mushroom_2
+  region: mushroom_b_zone
+  scale: 1.5
+  freejoint: true
+- name: rc/objaverse/hot_dog/hot_dog_0
+  region: hot_dog_a_zone
+  scale: 0.85
+  freejoint: true
+- name: rc/objaverse/hot_dog/hot_dog_2
+  region: hot_dog_b_zone
+  scale: 0.85
+  freejoint: true
+- name: rc/objaverse/boxed_drink/boxed_drink_0
+  region: drink_a_zone
+  freejoint: true
+- name: rc/objaverse/boxed_drink/boxed_drink_1
+  region: drink_b_zone
+  freejoint: true
+fixtures: []
+goal:
+- type: inside
+  args:
+  - rc/objaverse/mushroom/mushroom_3
+  - rc/lightwheel/basket/Basket037
+  subtask: Drop the first mushroom into the middle vegetable basket
+  threshold: 0.2
+  must_hold: true
+- type: inside
+  args:
+  - rc/objaverse/mushroom/mushroom_2
+  - rc/lightwheel/basket/Basket037
+  subtask: Drop the second mushroom into the middle vegetable basket
+  threshold: 0.2
+  must_hold: true
+- type: inside
+  args:
+  - rc/objaverse/hot_dog/hot_dog_0
+  - rc/lightwheel/basket/Basket046
+  subtask: Drop the first hot dog into the front meat basket
+  threshold: 0.2
+  must_hold: true
+- type: inside
+  args:
+  - rc/objaverse/hot_dog/hot_dog_2
+  - rc/lightwheel/basket/Basket046
+  subtask: Drop the second hot dog into the front meat basket
+  threshold: 0.2
+  must_hold: true
+- type: inside
+  args:
+  - rc/objaverse/boxed_drink/boxed_drink_0
+  - rc/lightwheel/basket/Basket027
+  subtask: Drop the first drink carton into the back drinks basket
+  threshold: 0.2
+  must_hold: true
+- type: inside
+  args:
+  - rc/objaverse/boxed_drink/boxed_drink_1
+  - rc/lightwheel/basket/Basket027
+  subtask: Drop the second drink carton into the back drinks basket
+  threshold: 0.2
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/basket/Basket027
+- rc/lightwheel/basket/Basket037
+- rc/lightwheel/basket/Basket046
+- rc/objaverse/mushroom/mushroom_3
+- rc/objaverse/mushroom/mushroom_2
+- rc/objaverse/hot_dog/hot_dog_0
+- rc/objaverse/hot_dog/hot_dog_2
+- rc/objaverse/boxed_drink/boxed_drink_0
+- rc/objaverse/boxed_drink/boxed_drink_1

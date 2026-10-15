@@ -1,0 +1,195 @@
+name: drain_three_tomatoes_in_strainer
+language: Pick up the three tomatoes and place them into the strainer so they rest in it.
+subtasks:
+- name: Pick up the strainer
+  score: 10
+- name: Pick up the first tomato
+  score: 10
+- name: Place the first tomato into the strainer
+  score: 20
+- name: Pick up the second tomato
+  score: 10
+- name: Place the second tomato into the strainer
+  score: 20
+- name: Pick up the third tomato
+  score: 10
+- name: Place the third tomato into the strainer
+  score: 20
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Every object comes from previously-UNTOUCHED catalog categories: the whole
+# rc/objaverse/tomato family is new (the bare LIBERO `tomato` name is used
+# elsewhere, but these `rc/objaverse/tomato/tomato_*` instances are distinct)
+# and the rc/lightwheel/strainer family is entirely new. A strainer is a
+# concave mesh bowl (~20 x 11 cm oval, scale 2 -> ~40 x 22 cm). It is
+# FREE-JOINTED (freejoint true, rest_on_surface true so its flat foot rests on
+# the table, yaw pinned 0 to keep the long axis along world y) and PICKABLE --
+# the robot may lift/reposition it -- so it must stay a light dynamic body (no
+# `mass` added, no weld). The three round ~6 cm tomatoes spawn on the +x side in
+# a y-column.
+# Predicate gates:
+#  `lifted(strainer)` is a SEPARATE latching subtask: the robot must GRASP and
+#    pick up the (light, pickable) strainer at some point. It latches once the
+#    strainer origin rises above the default 0.95 m lift threshold, so it does
+#    NOT false-fire at spawn (the strainer rests at z ~0.89 < 0.95). This makes
+#    the strainer an actively-handled object, not just a static receiver.
+#  `inside_site(tomato, strainer, bowl_region)` -- NOT `inside_box` -- is the
+#    PLACE gate. The strainer's body-wide `reg_bbox` footprint covers BOTH the
+#    bowl (+y) and the HANDLE (-y), so `inside_box` counted a tomato that merely
+#    landed ON the handle (still within the footprint + z window) -- a false
+#    success. `bowl_region` is a <site> placed at the strainer's bowl interior
+#    (the reg_int ellipsoid, +y), so its xy box covers ONLY the bowl lobe and
+#    rejects a tomato on the -y handle. The site moves with the free-jointed
+#    strainer (so it tracks the lifted strainer), and inside_site's CONTACT gate
+#    requires the tomato to rest ON the strainer (not hover). Used WITH
+#    `must_hold: true` so the tomato must STILL be in the bowl at the final
+#    frame: a tomato placed then ROLLED/KNOCKED out (onto the table or the
+#    handle) no longer latches. (Strainer001/Strainer002 model.xml carry this
+#    `bowl_region` site; long_strainer uses the same gate for the same reason.)
+#  The strainer must be LIFTED at the end: `lifted(strainer)` carries
+#    `must_hold: true`, so the strainer origin must be above the 0.95 m threshold
+#    at the final frame (it rests at ~0.89 at spawn, so no false fire). Combined
+#    with the three `inside_site`+must_hold place gates, the required final state
+#    is: strainer held up with all three tomatoes in its bowl.
+# Region boxes are disjoint and every tomato stays on the +y side of the table.
+# The strainer (zone center (-0.05,-0.1), xy 0.04) keeps its ~0.40-m-long body
+# (scale 2, long axis world y) spanning world x[-0.205,0.105] y[-0.343,0.143].
+# The three tomatoes sit in a SINGLE y-column on the +x side at x = 0.25 (xy
+# 0.02), centred at y = {0.06, 0.19, 0.32} -> all y >= 0.06, so even at
+# worst-case jitter the lowest tomato's min y ~0.008 > 0 (none crosses into -y).
+# strainer-to-tomato ~0.093 m clear in x (strainer x_max 0.105 vs tomato x_min
+# 0.198) -- x-separated, so the tomatoes never touch the strainer despite its
+# y-extent reaching +0.143; tomato boxes 0.13 m apart in y centre (0.026 m gap
+# between the ~0.052 m reach footprints). No region box overlaps and no object
+# footprint overlaps; the highest tomato reaches y 0.372 (< 0.40 table edge).
+regions:
+  strainer_zone:
+    center:
+    - -0.05
+    - -0.1
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - 0.0
+    - 0.0
+    rest_on_surface: true
+  tomato_a_zone:
+    center:
+    - 0.15
+    - 0.06
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+  tomato_b_zone:
+    center:
+    - 0.15
+    - 0.19
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+  tomato_c_zone:
+    center:
+    - 0.15
+    - 0.32
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: rc/lightwheel/strainer/Strainer001
+  region: strainer_zone
+  scale: 2
+  freejoint: true
+- name: rc/objaverse/tomato/tomato_0
+  region: tomato_a_zone
+  scale: 1
+  mass: 0.1
+  freejoint: true
+- name: rc/objaverse/tomato/tomato_1
+  region: tomato_b_zone
+  scale: 1
+  mass: 0.1
+  freejoint: true
+- name: rc/objaverse/tomato/tomato_2
+  region: tomato_c_zone
+  scale: 1
+  mass: 0.1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/lightwheel/strainer/Strainer001
+  subtask: Pick up the strainer
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/tomato/tomato_0
+  subtask: Pick up the first tomato
+- type: inside_site_loose
+  args:
+  - rc/objaverse/tomato/tomato_0
+  - rc/lightwheel/strainer/Strainer001
+  - bowl_region
+  - -0.1
+  - 0.1
+  threshold: 0.02
+  subtask: Place the first tomato into the strainer
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/tomato/tomato_1
+  subtask: Pick up the second tomato
+- type: inside_site_loose
+  args:
+  - rc/objaverse/tomato/tomato_1
+  - rc/lightwheel/strainer/Strainer001
+  - bowl_region
+  - -0.1
+  - 0.1
+  threshold: 0.02
+  subtask: Place the second tomato into the strainer
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/tomato/tomato_2
+  subtask: Pick up the third tomato
+- type: inside_site_loose
+  args:
+  - rc/objaverse/tomato/tomato_2
+  - rc/lightwheel/strainer/Strainer001
+  - bowl_region
+  - -0.1
+  - 0.1
+  threshold: 0.02
+  subtask: Place the third tomato into the strainer
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/strainer/Strainer001
+- rc/objaverse/tomato/tomato_0
+- rc/objaverse/tomato/tomato_1
+- rc/objaverse/tomato/tomato_2

@@ -1,0 +1,242 @@
+name: fill_jar_with_snacks
+language: Take the jar off the shelf and set it on the table, put all the snacks into
+  the jar, and place the jar back on the shelf.
+subtasks:
+- name: Take the jar off the shelf
+  score: 20
+- name: Place the first donut into the jar
+  score: 10
+- name: Place the second donut into the jar
+  score: 10
+- name: Drops the first marshmallow into the jar
+  score: 10
+- name: Place the first cupcake into the jar
+  score: 10
+- name: Place the second cupcake into the jar
+  score: 10
+- name: Drop the second marshmallow into the jar
+  score: 10
+- name: Place the jar back on the shelf
+  score: 20
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+max_seconds: 180
+ordered_subtasks: true
+regions:
+  shelf_zone:
+    center:
+    - -0.05
+    - 0.2
+    - 0.86
+    xy_range:
+    - 0.0
+    - 0.0
+    yaw_range:
+    - 0.0
+    - 0.0
+  jar_zone:
+    center:
+    - -0.1
+    - 0.2
+    - 1.05
+    xy_range:
+    - 0.02
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: false
+  shelf_top_zone:
+    center:
+    - -0.05
+    - 0.2
+    - 0.97
+    xy_range:
+    - 0.0
+    - 0.0
+  donut_plate_zone:
+    center:
+    - 0.2
+    - -0.2
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.11
+  cupcake_plate_zone:
+    center:
+    - 0.2
+    - 0.2
+    - 0.9
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.11
+objects:
+- name: wooden_two_layer_shelf
+  pos:
+  - -0.1
+  - 0.2
+  - 0.8
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.8
+  freejoint: false
+- name: rc/lightwheel/jar/Jar013
+  region: jar_zone
+  mass: 0.1
+  freejoint: true
+- name: rc/objaverse/plate/plate_8
+  pos:
+  - 0.2
+  - -0.2
+  - 0.82
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.5
+  freejoint: false
+- name: rc/objaverse/plate/plate_8
+  pos:
+  - 0.2
+  - 0.2
+  - 0.82
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.5
+  freejoint: false
+- name: rc/objaverse/donut/donut_0
+  region: donut_plate_zone
+  scale: 0.9
+  mass: 0.05
+  freejoint: true
+- name: rc/objaverse/donut/donut_1
+  region: donut_plate_zone
+  scale: 0.9
+  mass: 0.05
+  freejoint: true
+- name: rc/lightwheel/marshmallow/Marshmallow001
+  region: donut_plate_zone
+  scale: 1.0
+  mass: 0.05
+  freejoint: true
+- name: rc/objaverse/cupcake/cupcake_11
+  region: cupcake_plate_zone
+  scale: 0.8
+  mass: 0.05
+  freejoint: true
+- name: rc/objaverse/cupcake/cupcake_12
+  region: cupcake_plate_zone
+  scale: 0.8
+  mass: 0.05
+  freejoint: true
+- name: rc/lightwheel/marshmallow/Marshmallow002
+  region: cupcake_plate_zone
+  scale: 1.0
+  mass: 0.05
+  freejoint: true
+fixtures: []
+goal:
+- type: not_lifted
+  args:
+  - rc/lightwheel/jar/Jar013
+  subtask: Take the jar off the shelf
+  threshold: 1.0
+  order_group: fetch
+- type: in_bottle
+  args:
+  - rc/objaverse/donut/donut_0
+  - rc/lightwheel/jar/Jar013
+  subtask: Place the first donut into the jar
+  threshold: 0.1
+  must_hold: true
+  order_group: fill
+- type: in_bottle
+  args:
+  - rc/objaverse/donut/donut_1
+  - rc/lightwheel/jar/Jar013
+  subtask: Place the second donut into the jar
+  threshold: 0.1
+  must_hold: true
+  order_group: fill
+- type: in_bottle
+  args:
+  - rc/lightwheel/marshmallow/Marshmallow001
+  - rc/lightwheel/jar/Jar013
+  subtask: Drops the first marshmallow into the jar
+  threshold: 0.1
+  must_hold: true
+  order_group: fill
+- type: in_bottle
+  args:
+  - rc/objaverse/cupcake/cupcake_11
+  - rc/lightwheel/jar/Jar013
+  subtask: Place the first cupcake into the jar
+  threshold: 0.1
+  must_hold: true
+  order_group: fill
+- type: in_bottle
+  args:
+  - rc/objaverse/cupcake/cupcake_12
+  - rc/lightwheel/jar/Jar013
+  subtask: Place the second cupcake into the jar
+  threshold: 0.1
+  must_hold: true
+  order_group: fill
+- type: in_bottle
+  args:
+  - rc/lightwheel/marshmallow/Marshmallow002
+  - rc/lightwheel/jar/Jar013
+  subtask: Drop the second marshmallow into the jar
+  threshold: 0.1
+  must_hold: true
+  order_group: fill
+- type: 'on'
+  args:
+  - rc/lightwheel/jar/Jar013
+  - shelf_top_zone
+  subtask: Place the jar back on the shelf
+  threshold: 0.2
+  must_hold: true
+  order_group: replace
+- type: not_lifted
+  args:
+  - rc/lightwheel/jar/Jar013
+  subtask: Place the jar back on the shelf
+  threshold: 1.1
+  must_hold: true
+  order_group: replace
+obj_of_interest:
+- wooden_two_layer_shelf
+- rc/lightwheel/jar/Jar013
+- rc/objaverse/plate/plate_8
+- rc/objaverse/donut/donut_0
+- rc/objaverse/donut/donut_1
+- rc/objaverse/cupcake/cupcake_11
+- rc/objaverse/cupcake/cupcake_12
+- rc/lightwheel/marshmallow/Marshmallow001
+- rc/lightwheel/marshmallow/Marshmallow002
