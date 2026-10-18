@@ -43,7 +43,7 @@ robot_pose:
   - 0
   - 0
   - 0.92388
-ordered_subtasks: true
+ordered_subtasks: false
 regions:
   tray_zone:
     center:
@@ -126,16 +126,20 @@ objects:
   freejoint: true
 fixtures: []
 goal:
-- type: inside_contact
+- type: axis_in_region
   args:
   - rc/objaverse/spoon/spoon_22
   - rc/objaverse/mug/mug_9
+  - reg_int
+  - reg_bbox
   subtask: Drop the first spoon into a cup
   must_hold: true
-- type: inside_contact
+- type: axis_in_region
   args:
   - rc/objaverse/spoon/spoon_23
   - rc/objaverse/mug/mug_8
+  - reg_int
+  - reg_bbox
   subtask: Drop the second spoon into a cup
   must_hold: true
 obj_of_interest:

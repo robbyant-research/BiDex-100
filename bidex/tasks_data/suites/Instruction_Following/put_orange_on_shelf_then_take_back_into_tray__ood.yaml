@@ -146,10 +146,11 @@ objects:
   freejoint: true
 fixtures: []
 goal:
-- type: inside_contact
+- type: supported_in_region
   args:
   - rc/objaverse/orange/orange_3
   - rc/lightwheel/tiered_basket/TieredBasket007
+  - spawn_2
   must_hold: false
   subtask: Put the orange onto the shelf
 - type: inside_contact

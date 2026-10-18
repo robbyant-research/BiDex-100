@@ -1,13 +1,13 @@
 name: thread_bagel_and_donut_onto_side_rods
 language: Thread the bagel onto the right rod and the donut onto the left rod.
 subtasks:
-- name: Left arm picks up the donut
+- name: Right arm picks up the donut
   score: 10
-- name: Left arm threads the donut onto the left rod
+- name: Right arm threads the donut onto the left rod
   score: 40
-- name: Right arm picks up the bagel
+- name: Left arm picks up the bagel
   score: 10
-- name: Right arm threads the bagel onto the right rod
+- name: Left arm threads the bagel onto the right rod
   score: 40
 ood:
   base_task: tabletop_thread_bagel_donut_onto_side_rods
@@ -111,34 +111,34 @@ goal:
 - type: lifted
   args:
   - rc/objaverse/bagel/bagel_4
-  subtask: Left arm picks up the donut
+  subtask: Left arm picks up the bagel
 - type: inside
   args:
   - rc/objaverse/bagel/bagel_4
   - threading_rod_right
-  subtask: Left arm threads the donut onto the left rod
+  subtask: Left arm threads the bagel onto the right rod
   threshold: 0.015
   must_hold: true
 - type: upright
   args:
   - rc/objaverse/bagel/bagel_4
-  subtask: Left arm threads the donut onto the left rod
+  subtask: Left arm threads the bagel onto the right rod
   must_hold: true
 - type: lifted
   args:
   - rc/objaverse/donut/donut_2
-  subtask: Right arm picks up the bagel
+  subtask: Right arm picks up the donut
 - type: inside
   args:
   - rc/objaverse/donut/donut_2
   - threading_rod_left
-  subtask: Right arm threads the bagel onto the right rod
+  subtask: Right arm threads the donut onto the left rod
   threshold: 0.015
   must_hold: true
 - type: upright
   args:
   - rc/objaverse/donut/donut_2
-  subtask: Right arm threads the bagel onto the right rod
+  subtask: Right arm threads the donut onto the left rod
   must_hold: true
 obj_of_interest:
 - threading_rod_left

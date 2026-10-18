@@ -13,6 +13,7 @@ goal:
   - chest_freezer_with_hinged_lid
   - body_to_lid
   subtask: Open the chest freezer lid
+  order_group: food
 - type: lifted
   args:
   - ice_cube

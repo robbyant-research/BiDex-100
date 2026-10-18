@@ -2,7 +2,7 @@
 # Active OOD features: scene_randomize(5.1) + arm_mirror(5.4) + distractors(5.3)
 # ID evaluation uses the base yaml; this file is only loaded for --domain out_of_domain (seeds 2,3).
 name: pick_up_whisk
-language: Pick up the whisk and place it on the frying pan.
+language: Pick up the whisk.
 subtasks:
 - name: Pick up the whisk
   score: 100

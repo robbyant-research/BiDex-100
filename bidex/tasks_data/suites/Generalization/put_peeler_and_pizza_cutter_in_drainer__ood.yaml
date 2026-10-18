@@ -4,23 +4,31 @@ goal:
   args:
   - pizza_cutter
   subtask: Pick up the pizza cutter
-- type: inside
+- type: inside_site_any_loose
   args:
   - pizza_cutter
   - bowl_drainer
+  - left_region
+  - right_region
+  - -0.10
+  - 0.12
   subtask: Put the pizza cutter in the drainer
-  threshold: 0.12
+  threshold: 0.005
   must_hold: true
 - type: lifted
   args:
   - peeler
   subtask: Pick up the peeler
-- type: inside
+- type: inside_site_any_loose
   args:
   - peeler
   - bowl_drainer
+  - left_region
+  - right_region
+  - -0.10
+  - 0.12
   subtask: Put the peeler in the drainer
-  threshold: 0.14
+  threshold: 0.005
   must_hold: true
 language: Pick up the peeler and the pizza cutter and put them in the drainer.
 subtasks:

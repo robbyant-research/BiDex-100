@@ -162,47 +162,59 @@ objects:
   freejoint: true
 fixtures: []
 goal:
-- type: inside
+- type: supported_in_region_band
   args:
   - rc/objaverse/mushroom/mushroom_3
   - rc/lightwheel/basket/Basket037
+  - reg_bbox
+  - -0.08
+  - 0.02
   subtask: Drop the first mushroom into the middle vegetable basket
-  threshold: 0.2
   must_hold: true
-- type: inside
+- type: supported_in_region_band
   args:
   - rc/objaverse/mushroom/mushroom_2
   - rc/lightwheel/basket/Basket037
+  - reg_bbox
+  - -0.08
+  - 0.02
   subtask: Drop the second mushroom into the middle vegetable basket
-  threshold: 0.2
   must_hold: true
-- type: inside
+- type: supported_in_region_band
   args:
   - rc/objaverse/hot_dog/hot_dog_0
   - rc/lightwheel/basket/Basket046
+  - reg_bbox
+  - -0.09
+  - 0.04
   subtask: Drop the first hot dog into the front meat basket
-  threshold: 0.2
   must_hold: true
-- type: inside
+- type: supported_in_region_band
   args:
   - rc/objaverse/hot_dog/hot_dog_2
   - rc/lightwheel/basket/Basket046
+  - reg_bbox
+  - -0.09
+  - 0.04
   subtask: Drop the second hot dog into the front meat basket
-  threshold: 0.2
   must_hold: true
-- type: inside
+- type: supported_in_region_band
   args:
   - rc/objaverse/boxed_drink/boxed_drink_0
   - rc/lightwheel/basket/Basket027
+  - reg_bbox
+  - -0.09
+  - 0.055
   subtask: Drop the first drink carton into the back drinks basket
-  threshold: 0.2
   must_hold: true
-- type: inside
+- type: supported_in_region_band
   args:
   - rc/objaverse/boxed_drink/boxed_drink_1
   - rc/lightwheel/basket/Basket027
+  - reg_bbox
+  - -0.09
+  - 0.055
   subtask: Drop the second drink carton into the back drinks basket
-  threshold: 0.2
   must_hold: true
 obj_of_interest:
 - rc/lightwheel/basket/Basket027

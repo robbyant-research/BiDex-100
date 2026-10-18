@@ -1,14 +1,18 @@
 name: rotate_two_cubes_around_plates
 language: Move the two cubes clockwise around the three triangle plates one move at a time, always moving the cube before the empty plate onto it, until each returns to its start.
 subtasks:
-- name: Right arm moves the cube before the empty plate onto it
-  score: 50
-- name: Left arm moves the cube before the empty plate onto it
-  score: 30
-- name: Left arm moves the last cube back to its start
-  score: 20
-- name: Second cube restored on its own plate
-  score: 0
+- name: Move 1 - right arm moves cube B onto the empty plate
+  score: 17
+- name: Move 2 - left arm moves cube A onto the vacated plate
+  score: 17
+- name: Move 3 - right arm moves cube B clockwise again
+  score: 16
+- name: Move 4 - left arm moves cube A clockwise again
+  score: 17
+- name: Move 5 - right arm returns cube B to its start
+  score: 16
+- name: Move 6 - left arm returns cube A to its start
+  score: 17
 - name: The plate that started empty is empty again
   score: 0
 robot_type: dual_fr3v2_sharpa
@@ -73,11 +77,10 @@ robot_pose:
 # After move 3 the occupancy pattern is restored with the cubes swapped (the
 # memory trap); move 6 restores the instances. Final must_hold: cube_a@base_a,
 # cube_b@base_b, and base_c empty (not_inside for both cubes). ordered_subtasks
-# is required: steps 5-7 and both not_inside finals are already true at spawn.
+# is required: restored steps 5-6 and both not_inside finals are already true at spawn.
 #
-# `on(cube, plate, 0.08)` = cube within 8 cm xy of the plate's LIVE centre and
-# above it: accepts a cube placed anywhere sensible on the 14 cm plate, rejects
-# one on the table beside it (>= ~9 cm) and one on the next plate (27.7 cm).
+# `inside_contact(cube, plate)` requires the target plate to physically support
+# the cube from below. It rejects zero-contact hovers and nearby table support.
 # Cube spawn: plate root + 0.033 = 3 mm above the plate top, 2 cm xy jitter.
 # `not_inside(cube, plate, 0.08)` reuses the inside semantics (xy radius + the
 # +/-0.25 m z window), which works for the flat plates: a cube on the plate is
@@ -190,51 +193,39 @@ fixtures: []
 goal:
 # Moves 1-3 (first half-circle): transient milestones, no must_hold -- the
 # cubes leave these plates again in the second half.
-- type: "on"
+- type: inside_contact
   args:
   - cube_b
   - base_c
-  subtask: Right arm moves the cube before the empty plate onto it
-  threshold: 0.081
-- type: "on"
+  subtask: Move 1 - right arm moves cube B onto the empty plate
+- type: inside_contact
   args:
   - cube_a
   - base_b
-  subtask: Left arm moves the cube before the empty plate onto it
-  threshold: 0.081
-- type: "on"
+  subtask: Move 2 - left arm moves cube A onto the vacated plate
+- type: inside_contact
   args:
   - cube_b
   - base_a
-  subtask: Right arm moves the cube before the empty plate onto it
-  threshold: 0.081
+  subtask: Move 3 - right arm moves cube B clockwise again
 # Moves 4-6 (second half-circle back to the spawn configuration).
-- type: "on"
+- type: inside_contact
   args:
   - cube_a
   - base_c
-  subtask: Left arm moves the cube before the empty plate onto it
-  threshold: 0.081
-- type: "on"
+  subtask: Move 4 - left arm moves cube A clockwise again
+- type: inside_contact
   args:
   - cube_b
   - base_b
-  subtask: Right arm moves the cube before the empty plate onto it
-  threshold: 0.081
+  subtask: Move 5 - right arm returns cube B to its start
+  must_hold: true
 # Restored = spawn config; all four must HOLD at the final frame.
-- type: "on"
+- type: inside_contact
   args:
   - cube_a
   - base_a
-  subtask: Left arm moves the last cube back to its start
-  threshold: 0.081
-  must_hold: true
-- type: "on"
-  args:
-  - cube_b
-  - base_b
-  subtask: Second cube restored on its own plate
-  threshold: 0.081
+  subtask: Move 6 - left arm returns cube A to its start
   must_hold: true
 - type: not_inside
   args:

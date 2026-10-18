@@ -88,38 +88,43 @@ objects:
   region: lime_zone
 fixtures: []
 goal:
-- type: 'on'
+- type: supported_in_region
   args:
   - rc/objaverse/peach/peach_2
   - rc/objaverse/bowl/bowl_9
-  threshold: 0.08
+  - reg_int
   subtask: Left arm moves the peach to the right bowl
-- type: 'on'
+  order_group: swap_out
+- type: supported_in_region
   args:
   - rc/objaverse/lime/lime_1
   - rc/objaverse/bowl/bowl_15
-  threshold: 0.08
+  - reg_int
   subtask: Right arm moves the lime to the left bowl
-- type: 'on'
+  order_group: swap_out
+- type: supported_in_region
   args:
   - rc/objaverse/lime/lime_1
   - rc/objaverse/bowl/bowl_9
-  threshold: 0.08
+  - reg_int
   subtask: Left arm moves the lime back to the right bowl
-- type: 'on'
+  order_group: swap_back
+- type: supported_in_region
   args:
   - rc/objaverse/peach/peach_2
   - rc/objaverse/bowl/bowl_15
-  threshold: 0.08
+  - reg_int
   subtask: Right arm moves the peach back to the left bowl
   must_hold: true
-- type: 'on'
+  order_group: swap_back
+- type: supported_in_region
   args:
   - rc/objaverse/lime/lime_1
   - rc/objaverse/bowl/bowl_9
-  threshold: 0.08
+  - reg_int
   subtask: Right arm moves the peach back to the left bowl
   must_hold: true
+  order_group: swap_back
 obj_of_interest:
 - rc/objaverse/peach/peach_2
 - rc/objaverse/lime/lime_1

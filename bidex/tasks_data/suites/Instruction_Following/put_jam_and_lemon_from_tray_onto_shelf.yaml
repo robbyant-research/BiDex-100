@@ -130,16 +130,18 @@ objects:
   freejoint: true
 fixtures: []
 goal:
-- type: inside_contact
+- type: supported_in_region
   args:
   - rc/objaverse/jam/jam_0
   - rc/lightwheel/tiered_basket/TieredBasket007_c
+  - spawn_2
   must_hold: true
   subtask: Put the jam back onto the shelf
-- type: inside_contact
+- type: supported_in_region
   args:
   - rc/objaverse/lemon/lemon_2
   - rc/lightwheel/tiered_basket/TieredBasket007_b
+  - spawn_2
   must_hold: true
   subtask: Put the lemon back onto the shelf
 obj_of_interest:

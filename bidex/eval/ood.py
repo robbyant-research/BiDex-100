@@ -82,13 +82,13 @@ _GOLDEN_ANGLE = np.pi * (3.0 - np.sqrt(5.0))
 
 # Each consecutive five-episode block contains this exact multiset in a
 # deterministic task/seed-specific order.  Consequently the benchmark's two
-# OOD seeds (2 and 3), with 25 episodes each, contain exactly 10 nominal,
-# 10 head-only, 10 wrists-only and 20 head+wrists camera occurrences.
+# OOD seeds (2 and 3), with 25 episodes each, contain exactly 20 nominal,
+# 10 head-only, 10 wrists-only and 10 head+wrists camera occurrences.
 _CAMERA_OCCURRENCE_BLOCK = (
+    "nominal",
     "nominal",
     "head_only",
     "wrists_only",
-    "head_and_wrists",
     "head_and_wrists",
 )
 
@@ -258,7 +258,7 @@ def camera_occurrence_mode(suite: str, task: str, seed: int,
     """Choose an exact-ratio camera occurrence mode for one OOD episode.
 
     A fresh deterministic permutation is used for every five-episode block.
-    This preserves the requested 1:1:1:2 ratio in every complete block while
+    This preserves the requested 2:1:1:1 ratio in every complete block while
     avoiding a globally synchronized mode order across tasks and seeds.
     """
     episode = int(episode)

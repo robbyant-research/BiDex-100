@@ -162,10 +162,12 @@ objects:
   freejoint: true
 fixtures: []
 goal:
-- type: inside_contact
+- type: axis_in_region
   args:
   - rc/objaverse/fork/fork_4
   - rc/lightwheel/glass_cup/GlassCup009
+  - reg_int
+  - reg_bbox
   subtask: Pick up the target utensil and drop it into the cup
   must_hold: true
 - type: not_lifted

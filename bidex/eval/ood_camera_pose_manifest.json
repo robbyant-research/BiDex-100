@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "name": "bidex-camera-v4",
-  "description": "Finite collision-aware camera-local extrinsic perturbations with an exact 1:1:1:2 nominal/head-only/wrists-only/head-and-wrists occurrence schedule. Head cameras use at most 1.8 cm / 6 degrees; wrist cameras use at most 1.35 cm / 6 degrees and may only translate outward along their mount-clearance axis.",
+  "description": "Finite collision-aware camera-local extrinsic perturbations with an exact 2:1:1:1 nominal/head-only/wrists-only/head-and-wrists occurrence schedule. Head cameras use at most 1.8 cm / 6 degrees; wrist cameras use at most 1.35 cm / 6 degrees and may only translate outward along their mount-clearance axis.",
   "translation_limit_m": [0.018, 0.018, 0.018],
   "rotation_limit_deg": [6.0, 6.0, 6.0],
   "camera_scales": {
@@ -49,5 +49,5 @@
     {"id": "p10", "delta_pos": [0.015, 0.000, 0.018], "delta_euler_deg": [0.0, 6.0, -6.0]},
     {"id": "p11", "delta_pos": [-0.015, 0.000, -0.018], "delta_euler_deg": [0.0, -6.0, 6.0]}
   ],
-  "fingerprint": "2d308019f6585fb95e69a1046f371df582a7b2121e32f39170de1b3a7b5eb82c"
+  "fingerprint": "738c40c85c9f54f2dd585280ff168f17a56aaed94a0171e7622f9eb84a0c736e"
 }

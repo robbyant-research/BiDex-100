@@ -81,18 +81,18 @@ goal:
   args:
   - marshmallow
   subtask: Pick up the marshmallow
-- type: inside
+- type: supported_in_region
   args:
   - marshmallow
   - bowl
-  threshold: 0.1
+  - reg_int
   subtask: Put the marshmallow in the bowl
   must_hold: true
-- type: inside
+- type: supported_in_region
   args:
   - cookie_dough_ball
   - bowl
-  threshold: 0.1
+  - reg_int
   subtask: Put the cookie dough ball in the bowl
   must_hold: true
 obj_of_interest:

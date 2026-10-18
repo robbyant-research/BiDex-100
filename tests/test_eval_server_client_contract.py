@@ -81,6 +81,47 @@ def test_public_cli_exposes_only_server_client_evaluation():
     assert "--modality-config-path" not in help_text
 
 
+@pytest.mark.parametrize(
+    ("cli_args", "expected_domain", "expected_seeds"),
+    [
+        (["--domain", "in_domain"], "in_domain", [0, 1]),
+        (["--domain", "out_of_domain"], "out_of_domain", [2, 3]),
+        (
+            ["--domain", "out_of_domain", "--seeds", "7,8"],
+            "out_of_domain",
+            [7, 8],
+        ),
+    ],
+)
+def test_single_domain_cli_uses_domain_defaults_unless_seeds_are_explicit(
+    monkeypatch, cli_args, expected_domain, expected_seeds
+):
+    launches = []
+    monkeypatch.setattr(
+        evaluation.sys,
+        "argv",
+        [
+            "run_leaderboard_eval.py",
+            "--model",
+            "openpi",
+            "--ckpt",
+            "/tmp/model",
+            *cli_args,
+        ],
+    )
+    monkeypatch.setattr(evaluation, "resolve_checkpoint", lambda path: path)
+    monkeypatch.setattr(evaluation, "_eval_h5", lambda: {})
+    monkeypatch.setattr(
+        evaluation,
+        "launch_vector",
+        lambda *args, **_kwargs: launches.append((args[5], args[6])),
+    )
+
+    evaluation.main()
+
+    assert launches == [(expected_domain, expected_seeds)]
+
+
 def test_vector_rollout_resolves_episode_score_from_scoring_module():
     _restore, episode_score, _writer = vector_rollout._helpers()
 

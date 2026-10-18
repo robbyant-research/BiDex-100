@@ -41,8 +41,8 @@ robot_pose:
 # Predicate gates:
 #  `lifted(strainer)` is a SEPARATE latching subtask: the robot must GRASP and
 #    pick up the (light, pickable) strainer at some point. It latches once the
-#    strainer origin rises above the default 0.95 m lift threshold, so it does
-#    NOT false-fire at spawn (the strainer rests at z ~0.89 < 0.95). This makes
+#    strainer origin rises above 0.92 m, matching the related Long_Horizon
+#    strainer task while remaining above the tabletop spawn height. This makes
 #    the strainer an actively-handled object, not just a static receiver.
 #  `inside_site(tomato, strainer, bowl_region)` -- NOT `inside_box` -- is the
 #    PLACE gate. The strainer's body-wide `reg_bbox` footprint covers BOTH the
@@ -58,7 +58,7 @@ robot_pose:
 #    handle) no longer latches. (Strainer001/Strainer002 model.xml carry this
 #    `bowl_region` site; long_strainer uses the same gate for the same reason.)
 #  The strainer must be LIFTED at the end: `lifted(strainer)` carries
-#    `must_hold: true`, so the strainer origin must be above the 0.95 m threshold
+#    `must_hold: true`, so the strainer origin must be above the 0.92 m threshold
 #    at the final frame (it rests at ~0.89 at spawn, so no false fire). Combined
 #    with the three `inside_site`+must_hold place gates, the required final state
 #    is: strainer held up with all three tomatoes in its bowl.
@@ -145,11 +145,13 @@ goal:
   args:
   - rc/lightwheel/strainer/Strainer001
   subtask: Pick up the strainer
+  threshold: 0.92
   must_hold: true
 - type: lifted
   args:
   - rc/objaverse/tomato/tomato_0
   subtask: Pick up the first tomato
+  threshold: 0.91
 - type: inside_site_loose
   args:
   - rc/objaverse/tomato/tomato_0
@@ -164,6 +166,7 @@ goal:
   args:
   - rc/objaverse/tomato/tomato_1
   subtask: Pick up the second tomato
+  threshold: 0.91
 - type: inside_site_loose
   args:
   - rc/objaverse/tomato/tomato_1
@@ -178,6 +181,7 @@ goal:
   args:
   - rc/objaverse/tomato/tomato_2
   subtask: Pick up the third tomato
+  threshold: 0.91
 - type: inside_site_loose
   args:
   - rc/objaverse/tomato/tomato_2

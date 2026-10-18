@@ -107,34 +107,34 @@ goal:
 - type: lifted
   args:
   - rc/objaverse/bagel/bagel_4
-  subtask: Left arm picks up the donut
+  subtask: Left arm picks up the bagel
 - type: inside
   args:
   - rc/objaverse/bagel/bagel_4
   - threading_rod_right
-  subtask: Right arm threads the donut onto the left rod
+  subtask: Left arm threads the bagel onto the right rod
   threshold: 0.015
   must_hold: true
 - type: upright
   args:
   - rc/objaverse/bagel/bagel_4
-  subtask: Right arm threads the donut onto the left rod
+  subtask: Left arm threads the bagel onto the right rod
   must_hold: true
 - type: lifted
   args:
   - rc/objaverse/donut/donut_2
-  subtask: Right arm picks up the bagel
+  subtask: Right arm picks up the donut
 - type: inside
   args:
   - rc/objaverse/donut/donut_2
   - threading_rod_left
-  subtask: Left arm threads the bagel onto the right rod
+  subtask: Right arm threads the donut onto the left rod
   threshold: 0.015
   must_hold: true
 - type: upright
   args:
   - rc/objaverse/donut/donut_2
-  subtask: Left arm threads the bagel onto the right rod
+  subtask: Right arm threads the donut onto the left rod
   must_hold: true
 obj_of_interest:
 - threading_rod_left

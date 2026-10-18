@@ -1,7 +1,5 @@
 name: drop_items_into_picnic_basket_then_remove_in_order
-language: Drop the hotdog bun, baguette, juice carton and water bottle into the picnic
-  basket in any order, then take them out in the same order and stand the water bottle
-  upright on the mat.
+language: Drop the hotdog bun, baguette, juice carton and water bottle into the picnic basket in any order, then take them out in the same order.
 subtasks:
 - name: Both arms place all four items into the basket
   score: 50

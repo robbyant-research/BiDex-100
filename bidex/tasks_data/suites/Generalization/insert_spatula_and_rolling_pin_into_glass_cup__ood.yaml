@@ -10,12 +10,15 @@ goal:
   - glass_cup
   subtask: Pick up the glass cup
   threshold: 0.9
-- type: 'on'
+- type: supported_in_region_band
   args:
   - glass_cup
   - placemat
+  - reg_bbox
+  - -0.03
+  - 0.15
   subtask: Place the glass cup on the placemat
-  threshold: 0.1
+  threshold: 0.0
   must_hold: true
 - type: lifted
   args:

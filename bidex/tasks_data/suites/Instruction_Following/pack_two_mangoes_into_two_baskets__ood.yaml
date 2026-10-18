@@ -134,23 +134,23 @@ goal:
   args:
   - rc/objaverse/mango/mango_8
   subtask: Left arm picks up the first (leftmost) mango
-- type: inside
+- type: supported_in_region
   args:
   - rc/objaverse/mango/mango_8
   - rc/lightwheel/tiered_basket/TieredBasket004
+  - reg_bbox
   subtask: Left arm places the leftmost mango into the left basket
-  threshold: 0.2
   must_hold: true
 - type: lifted
   args:
   - rc/objaverse/mango/mango_1
   subtask: Right arm picks up the fourth (rightmost) mango
-- type: inside
+- type: supported_in_region
   args:
   - rc/objaverse/mango/mango_1
   - rc/lightwheel/tiered_basket/TieredBasket003
+  - reg_bbox
   subtask: Right arm places the rightmost mango into the right basket
-  threshold: 0.2
   must_hold: true
 # Exclusion constraints: each basket must hold EXACTLY one mango. The two
 # mangoes not assigned to a basket (mango_4, mango_5) must never end up in

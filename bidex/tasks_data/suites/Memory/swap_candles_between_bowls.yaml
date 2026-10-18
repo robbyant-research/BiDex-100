@@ -40,7 +40,7 @@ robot_pose:
 # Two-pass goal: steps 1-2 SWAP (candle_0 -> right bowl plate_8, candle_1 -> left
 # bowl plate_7); steps 3-5 swap them BACK so the final state equals the initial
 # (candle_0 in left bowl plate_7, candle_1 in right bowl plate_8). The last two
-# `inside` are must_hold (verify the restored config at episode end). The swap
+# supported placements are must_hold (verify the restored config at episode end). The swap
 # steps are NOT must_hold -- the candles leave their swapped bowls during the
 # restore pass, so must_hold there would fail. `ordered_subtasks: true` (set
 # below) gates the restore steps: they are ALREADY true at frame 0 (the candles
@@ -113,39 +113,59 @@ fixtures: []
 goal:
 # Pass 1 -- SWAP the candles (candle_0 -> right bowl plate_8, candle_1 -> left
 # bowl plate_7). Not must_hold: the candles leave these swapped bowls in pass 2.
-- type: inside
+- type: supported_in_region_band
   args:
   - rc/objaverse/candle/candle_0
   - rc/objaverse/plate/plate_8
+  - reg_bbox
+  - -0.02
+  - 0.18
   subtask: Left arm moves the left candle to the right bowl
-  threshold: 0.08
-- type: inside
+  threshold: 0.005
+  order_group: swap_out
+- type: supported_in_region_band
   args:
   - rc/objaverse/candle/candle_1
   - rc/objaverse/plate/plate_7
+  - reg_bbox
+  - -0.02
+  - 0.18
   subtask: Right arm moves the right candle to the left bowl
-  threshold: 0.08
+  threshold: 0.005
+  order_group: swap_out
 # Pass 2 -- swap them BACK so the final state equals the initial state.
-- type: inside
+- type: supported_in_region_band
   args:
   - rc/objaverse/candle/candle_1
   - rc/objaverse/plate/plate_8
+  - reg_bbox
+  - -0.02
+  - 0.18
   subtask: Left arm moves the right candle back to the right bowl
-  threshold: 0.08
-- type: inside
+  threshold: 0.005
+  order_group: swap_back
+- type: supported_in_region_band
   args:
   - rc/objaverse/candle/candle_0
   - rc/objaverse/plate/plate_7
+  - reg_bbox
+  - -0.02
+  - 0.18
   subtask: Right arm moves the left candle back to the left bowl (restored)
-  threshold: 0.08
+  threshold: 0.005
   must_hold: true
-- type: inside
+  order_group: swap_back
+- type: supported_in_region_band
   args:
   - rc/objaverse/candle/candle_1
   - rc/objaverse/plate/plate_8
+  - reg_bbox
+  - -0.02
+  - 0.18
   subtask: Right candle restored to the right bowl
-  threshold: 0.08
+  threshold: 0.005
   must_hold: true
+  order_group: swap_back
 obj_of_interest:
 - rc/objaverse/plate/plate_7
 - rc/objaverse/plate/plate_8

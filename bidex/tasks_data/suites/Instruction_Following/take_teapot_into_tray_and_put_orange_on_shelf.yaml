@@ -136,10 +136,11 @@ goal:
   - rc/lightwheel/oven_tray/OvenTray009
   must_hold: true
   subtask: Put the teapot into the tray
-- type: inside_contact
+- type: supported_in_region
   args:
   - rc/objaverse/orange/orange_3
   - rc/lightwheel/tiered_basket/TieredBasket007
+  - spawn_2
   must_hold: true
   subtask: Put the orange onto the shelf
 obj_of_interest:

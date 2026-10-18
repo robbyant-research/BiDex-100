@@ -5,7 +5,7 @@
 # a wine bottle + a can are baked in the clear bottom strip instead).
 # ID evaluation uses the base yaml; this file is only loaded for --domain out_of_domain (seeds 2,3).
 name: grill_steak_and_corn
-language: Open the grill lid, put the steak on the grill, then close the grill lid.
+language: Open the grill lid, put the steak and the corn on the grill, then close the grill lid.
 subtasks:
 - name: Open the grill lid
   score: 20
@@ -144,6 +144,7 @@ goal:
   - firebox_to_lid
   threshold: 1.2
   subtask: Open the grill lid
+  order_group: items
 - type: lifted
   args:
   - steak

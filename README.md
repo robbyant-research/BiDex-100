@@ -204,8 +204,8 @@ OOD appearance randomization is intentionally bounded but visually strong:
   are bounded to 1.35 cm and 6 degrees; the mount-clearance axis is restricted
   to outward motion for both Franka and Astribot so the robot connector cannot
   move in front of the lens. Across the canonical 50 OOD episodes per task,
-  camera occurrence counts are exactly 10 nominal, 10 head-only, 10
-  wrists-only, and 20 head-and-wrists.
+  camera occurrence counts are exactly 20 nominal, 10 head-only, 10
+  wrists-only, and 10 head-and-wrists.
 - Object/layout changes come from each task's committed OOD YAML. Distractor
   identity is fixed per task and OOD seed while placement is resampled per
   episode; task geometry and reachability constraints keep objects on usable,

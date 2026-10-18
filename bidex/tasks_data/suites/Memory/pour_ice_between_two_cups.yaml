@@ -68,38 +68,37 @@ objects:
   freejoint: true
 fixtures: []
 goal:
-# Subtask 1 ("pour into the LEFT cup"): ice must be IN GlassCup010 AND NO LONGER IN
-# GlassCup005. The bare in_bottle(ice, Cup010) latched the instant the ice entered
-# Cup010 -- even while it was still touching/in GlassCup005 mid-transfer (two cups
-# held rim-to-rim). Adding not_in_bottle(ice, Cup005) forces the pour to actually
-# complete (ice fully out of Cup005) before subtask 1 latches. No must_hold: it is
-# an intermediate milestone (subtask 2 then pours the ice back).
-- type: in_bottle
+# Subtask 1 ("pour into the LEFT cup"): the ice centre must enter GlassCup010's
+# live interior region and leave GlassCup005's. Physics keeps a settled ball
+# within the cup wall; requiring a full-radius inward clearance made valid
+# near-wall placements impossible. An exterior touch still lies outside reg_int.
+# No must_hold: this is an intermediate milestone before the reverse pour.
+- type: inside_region
   args:
   - dexjoco_ice_ball
   - rc/lightwheel/glass_cup/GlassCup010
-  threshold: 0.08
+  - reg_int
   subtask: Right arm pours the ice from the right cup into the left cup
-- type: not_in_bottle
+- type: not_inside_region
   args:
   - dexjoco_ice_ball
   - rc/lightwheel/glass_cup/GlassCup005
-  threshold: 0.08
+  - reg_int
   subtask: Right arm pours the ice from the right cup into the left cup
-- type: in_bottle
+- type: inside_region
   args:
   - dexjoco_ice_ball
   - rc/lightwheel/glass_cup/GlassCup005
-  threshold: 0.08
+  - reg_int
   subtask: Left arm pours the ice back into the right cup and sets both cups down
   must_hold: true
 # Subtask 2 ("pour back into the RIGHT cup"): symmetric -- ice IN GlassCup005 AND
 # NO LONGER IN GlassCup010, so the reverse pour must complete (not mid-transfer).
-- type: not_in_bottle
+- type: not_inside_region
   args:
   - dexjoco_ice_ball
   - rc/lightwheel/glass_cup/GlassCup010
-  threshold: 0.08
+  - reg_int
   subtask: Left arm pours the ice back into the right cup and sets both cups down
   must_hold: true
 - type: 'on'

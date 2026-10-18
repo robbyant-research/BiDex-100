@@ -3,6 +3,7 @@ goal:
 - type: lifted
   args:
   - scissors
+  threshold: 0.9
   subtask: Pick up the scissors
 # inside_site_any over the caddy's 4 compartment sites (right/left/back/front
 # _contain_region), NOT inside_box: inside_box accepts scissors merely LEANING
@@ -44,14 +45,14 @@ goal:
   args:
   - mug_tree
   - desk_caddy
-  subtask: Place the mug tree next to the desk caddy
+  subtask: Place the mug tree into the desk caddy
   threshold: 0.04
   must_hold: true
 - type: upright
   args:
   - mug_tree
   threshold: 0.7
-  subtask: Place the mug tree next to the desk caddy
+  subtask: Place the mug tree into the desk caddy
   must_hold: true
 language: Pick up the scissors and put them into the desk caddy, then place the soap
   into the desk caddy, and put the mug tree into the caddy.
@@ -66,7 +67,7 @@ subtasks:
   score: 15
 - name: Pick up the mug tree
   score: 15
-- name: Place the mug tree next to the desk caddy
+- name: Place the mug tree into the desk caddy
   score: 20
 ood:
   base_task: tabletop_organize_desk_with_caddy

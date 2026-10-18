@@ -86,44 +86,74 @@ goal:
   - shell_to_lid
   threshold: 0.71
   subtask: Left arm flips open the bin lid
-- type: inside
+- type: inside_local_box
   args:
   - rc/objaverse/can/can_0
   - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
   subtask: Left arm tosses the first can into the bin
-  threshold: 0.1
+  threshold: 0.0
   must_hold: true
   order_group: trash
-- type: inside
+- type: inside_local_box
   args:
   - rc/objaverse/can/can_2
   - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
   subtask: Left arm tosses the second can into the bin
-  threshold: 0.1
+  threshold: 0.0
   must_hold: true
   order_group: trash
-- type: inside
+- type: inside_local_box
   args:
   - rc/objaverse/can/can_3
   - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
   subtask: Left arm tosses the third can into the bin
-  threshold: 0.1
+  threshold: 0.0
   must_hold: true
   order_group: trash
-- type: inside
+- type: inside_local_box
   args:
   - rc/objaverse/can/can_4
   - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
   subtask: Right arm tosses the fourth can into the bin
-  threshold: 0.1
+  threshold: 0.0
   must_hold: true
   order_group: trash
-- type: inside
+- type: inside_local_box
   args:
   - rc/objaverse/can/can_6
   - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
   subtask: Right arm tosses the fifth can into the bin
-  threshold: 0.1
+  threshold: 0.0
   must_hold: true
   order_group: trash
 - type: closed

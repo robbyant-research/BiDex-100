@@ -1,6 +1,5 @@
 name: put_apple_and_orange_in_bowl
-language: Put the two apples into the bowl, and leave the two oranges on the table
-  untouched.
+language: Put one apple and one orange into the bowl, and leave one apple and one orange untouched on the table.
 subtasks:
 - name: Pick up the first apple
   score: 20

@@ -116,6 +116,7 @@ goal:
   - a_classic_occ_bottle_with_articulated_cap
   subtask: Right arm drops the first sugar cube into the bottle
   threshold: 0.13
+  must_hold: true
 - type: not_in_bottle
   args:
   - rc/lightwheel/sugar_cube/SugarCube001

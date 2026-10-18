@@ -90,24 +90,22 @@ goal:
   - rc/lightwheel/paprika/Paprika001
   subtask: Left arm picks up the first paprika shaker
   order_group: on_scale
-- type: inside
+- type: inside_contact
   args:
   - rc/lightwheel/paprika/Paprika001
   - rc/lightwheel/digital_scale/DigitalScale008
   subtask: Left arm places the first paprika shaker on the digital scale
-  threshold: 0.1
   order_group: on_scale
 - type: lifted
   args:
   - rc/lightwheel/paprika/Paprika003
   subtask: Right arm picks up the second paprika shaker
   order_group: on_scale
-- type: inside
+- type: inside_contact
   args:
   - rc/lightwheel/paprika/Paprika003
   - rc/lightwheel/digital_scale/DigitalScale008
   subtask: Right arm places the second paprika shaker on the digital scale
-  threshold: 0.1
   order_group: on_scale
 - type: not_inside
   args:

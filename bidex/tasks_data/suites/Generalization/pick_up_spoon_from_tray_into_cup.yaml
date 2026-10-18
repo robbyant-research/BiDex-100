@@ -160,18 +160,15 @@ objects:
   freejoint: true
 fixtures: []
 goal:
-# inside (position-based, NOT inside_contact): the spoon is thin (collision bbox
-# 0.017 x 0.10 x 0.010 m) and the cup is a thin glass mesh, so a resting spoon can
-# PENETRATE the cup wall and the support-contact inside_contact flickered -- a
-# genuinely-dropped spoon sometimes went undetected. `inside` (spoon centre within
-# 0.05 m xy of the cup centre, |dz| < 0.25) is contact-FREE (immune to mesh
-# penetration) and matches the tabletop_insert_utensils_into_mug pattern.
-# must_hold rejects a spoon that later bounces out.
-- type: inside
+# `axis_in_region` accepts any part of the spoon's long axis strictly inside the
+# cup's live 3-D `reg_int`. The geom itself supplies the floor and rim bounds,
+# so shallow insertion counts while crossing above or beside the cup does not.
+- type: axis_in_region
   args:
   - rc/objaverse/spoon/spoon_12
   - rc/lightwheel/glass_cup/GlassCup005
-  threshold: 0.05
+  - reg_int
+  - reg_bbox
   subtask: Pick up the target utensil and drop it into the cup
   must_hold: true
 - type: not_lifted

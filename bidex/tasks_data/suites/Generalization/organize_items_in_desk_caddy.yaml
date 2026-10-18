@@ -3,8 +3,8 @@ goal:
 - type: lifted
   args:
   - scissors
+  threshold: 0.9
   subtask: Pick up the scissors
-  threshold: 0.82
 # inside_site_any over the caddy's 4 compartment sites (right/left/back/front
 # _contain_region), NOT inside_box: inside_box accepts scissors merely LEANING
 # against the caddy's EXTERIOR (within the wall footprint + z window), so a

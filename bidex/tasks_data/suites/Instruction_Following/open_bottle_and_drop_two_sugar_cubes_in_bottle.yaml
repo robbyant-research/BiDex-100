@@ -83,7 +83,7 @@ objects:
   freejoint: true
 - name: rc/lightwheel/sugar_cube/SugarCube004
   region: sugar_zone
-  scale: 3
+  scale: 2.8
   freejoint: true
 fixtures: []
 articulations:
@@ -108,6 +108,7 @@ goal:
   - a_classic_occ_bottle_with_articulated_cap
   subtask: Right arm drops the first sugar cube into the bottle
   threshold: 0.13
+  must_hold: true
 - type: lifted
   args:
   - rc/lightwheel/sugar_cube/SugarCube004
@@ -118,6 +119,7 @@ goal:
   - a_classic_occ_bottle_with_articulated_cap
   subtask: Right arm drops the second sugar cube into the bottle
   threshold: 0.13
+  must_hold: true
 # Only the third and fourth cubes may enter the bottle; the other two (1, 2)
 # must never be dropped in nor picked up. `in_bottle` resolves the bottle's
 # live body xpos directly (no region/target) and counts a cube anywhere in the

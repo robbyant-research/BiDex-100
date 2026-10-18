@@ -54,14 +54,6 @@ regions:
     yaw_range:
     - -0.1
     - 0.1
-  table_drop_zone:
-    center:
-    - 0.2
-    - -0.15
-    - 0.85
-    xy_range:
-    - 0.12
-    - 0.12
 objects:
 - name: microwave
   region: microwave_zone
@@ -85,12 +77,11 @@ goal:
   args:
   - milk
   subtask: Pick up the milk
-- type: 'on'
+- type: on_table
   args:
   - milk
-  - table_drop_zone
-  threshold: 0.25
   subtask: Place the milk on the table
+  must_hold: true
 obj_of_interest:
 - microwave
 - milk

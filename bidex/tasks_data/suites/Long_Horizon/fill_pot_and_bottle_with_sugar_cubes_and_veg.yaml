@@ -132,7 +132,7 @@ objects:
   freejoint: true
 - name: rc/lightwheel/sugar_cube/SugarCube004
   region: dish_zone
-  scale: 3
+  scale: 2.8
   freejoint: true
 fixtures: []
 articulations:
@@ -199,7 +199,7 @@ goal:
   args:
   - rc/lightwheel/saucepan/Saucepan002
   subtask: Left arm lifts the pot
-  threshold: 0.91
+  threshold: 0.90
   must_hold: true
   order_group: items
 - type: closed

@@ -23,17 +23,22 @@ goal:
   args:
   - sandwich_bread
   subtask: Pick up the sandwich bread
-- type: inside
+- type: inside_site
   args:
   - sandwich_bread
   - microwave
+  - heating_region
+  - -0.12
+  - 0.08
   subtask: Put the sandwich bread inside the microwave
-  threshold: 0.12
+  threshold: 0.0
+  must_hold: true
 - type: closed
   args:
   - microwave
   - microjoint
   subtask: Close the microwave door
+  threshold: 0.15
 language: Open the microwave, put the sandwich bread inside, and close the microwave.
 subtasks:
 - name: Open the microwave door

@@ -83,18 +83,18 @@ goal:
   args:
   - sweet_potato
   subtask: Pick up the sweet potato
-- type: inside
+- type: supported_in_region
   args:
   - sweet_potato
   - bowl
-  threshold: 0.1
+  - reg_int
   subtask: Put the sweet potato in the bowl
   must_hold: true
-- type: inside
+- type: supported_in_region
   args:
   - onion
   - bowl
-  threshold: 0.1
+  - reg_int
   subtask: Put the onion in the bowl
   must_hold: true
 obj_of_interest:

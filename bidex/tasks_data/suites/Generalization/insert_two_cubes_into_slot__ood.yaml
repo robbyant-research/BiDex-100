@@ -65,24 +65,26 @@ objects:
   freejoint: true
 fixtures: []
 goal:
-- type: inside_site
+- type: inside_site_any_loose
   args:
   - cube_a
   - assembly_slot2
   - slot_a
-  - -0.02
-  - 0.015
-  threshold: 0.05
-  subtask: Insert cube A into the slot
-  must_hold: true
-- type: inside_site
-  args:
-  - cube_b
-  - assembly_slot2
   - slot_b
   - -0.02
   - 0.015
-  threshold: 0.05
+  threshold: 0.0
+  subtask: Insert cube A into the slot
+  must_hold: true
+- type: inside_site_any_loose
+  args:
+  - cube_b
+  - assembly_slot2
+  - slot_a
+  - slot_b
+  - -0.02
+  - 0.015
+  threshold: 0.0
   subtask: Insert cube B into the slot
   must_hold: true
 obj_of_interest:

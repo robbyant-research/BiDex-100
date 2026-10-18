@@ -16,12 +16,17 @@ goal:
   subtask: Pick up the popcorn
   threshold: 0.86
   order_group: snacks
-- type: inside
+- type: inside_local_box
   args:
   - popcorn
   - slide_cabinet
+  - -0.26
+  - -0.02
+  - -0.18
+  - 0.15
+  - -0.10
+  - 0.07
   subtask: Put the popcorn inside the slide cabinet
-  threshold: 0.22
   order_group: snacks
   must_hold: true
 - type: lifted
@@ -30,12 +35,17 @@ goal:
   subtask: Pick up the chips
   threshold: 0.88
   order_group: snacks
-- type: inside
+- type: inside_local_box
   args:
   - chips
   - slide_cabinet
+  - -0.26
+  - -0.02
+  - -0.18
+  - 0.15
+  - -0.10
+  - 0.07
   subtask: Put the chips inside the slide cabinet
-  threshold: 0.22
   order_group: snacks
   must_hold: true
 - type: closed

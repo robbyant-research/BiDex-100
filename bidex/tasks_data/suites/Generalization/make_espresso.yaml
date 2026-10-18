@@ -15,12 +15,22 @@ goal:
   args:
   - rc/lightwheel/glass_cup/GlassCup003
   subtask: Pick up the cup
-- type: inside
+# The front slot is a wide rectangular shelf in the machine-local frame.  A
+# root-distance circle rejects valid cups near its front edge, while accepting
+# unrelated positions at the same radius.  Require the released cup to remain
+# supported anywhere on the physical upper shelf; a cup that falls back to the
+# table or is merely held in the opening does not pass.
+- type: supported_in_local_box
   args:
   - rc/lightwheel/glass_cup/GlassCup003
   - espresso_machine_with_articulated_components
+  - 0.08
+  - 0.31
+  - -0.06
+  - 0.06
+  - 0.18
+  - 0.29
   subtask: Place the cup in the espresso machine front slot
-  threshold: 0.2
   must_hold: true
 language: Put the sugar cube into the cup, then place the cup in the espresso machine's
   front slot.

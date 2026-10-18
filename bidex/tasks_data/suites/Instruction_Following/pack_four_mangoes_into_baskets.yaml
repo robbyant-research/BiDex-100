@@ -123,45 +123,45 @@ goal:
   args:
   - rc/objaverse/mango/mango_8
   subtask: Left arm picks up the first (leftmost) mango
-- type: inside
+- type: supported_in_region
   args:
   - rc/objaverse/mango/mango_8
   - rc/lightwheel/tiered_basket/TieredBasket004
+  - reg_bbox
   subtask: Left arm places the first mango into the left basket
-  threshold: 0.2
   must_hold: true
 - type: lifted
   args:
   - rc/objaverse/mango/mango_5
   subtask: Left arm picks up the second mango
-- type: inside
+- type: supported_in_region
   args:
   - rc/objaverse/mango/mango_5
   - rc/lightwheel/tiered_basket/TieredBasket004
+  - reg_bbox
   subtask: Left arm places the second mango into the left basket
-  threshold: 0.2
   must_hold: true
 - type: lifted
   args:
   - rc/objaverse/mango/mango_1
   subtask: Right arm picks up the fourth (rightmost) mango
-- type: inside
+- type: supported_in_region
   args:
   - rc/objaverse/mango/mango_1
   - rc/lightwheel/tiered_basket/TieredBasket003
+  - reg_bbox
   subtask: Right arm places the fourth mango into the right basket
-  threshold: 0.2
   must_hold: true
 - type: lifted
   args:
   - rc/objaverse/mango/mango_4
   subtask: Right arm picks up the third mango
-- type: inside
+- type: supported_in_region
   args:
   - rc/objaverse/mango/mango_4
   - rc/lightwheel/tiered_basket/TieredBasket003
+  - reg_bbox
   subtask: Right arm places the third mango into the right basket
-  threshold: 0.2
   must_hold: true
 obj_of_interest:
 - rc/lightwheel/tiered_basket/TieredBasket003

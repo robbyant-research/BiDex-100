@@ -152,10 +152,11 @@ goal:
   - rc/lightwheel/oven_tray/OvenTray009
   must_hold: false
   subtask: Put the jam into the tray
-- type: inside_contact
+- type: supported_in_region
   args:
   - rc/objaverse/jam/jam_0
   - rc/lightwheel/tiered_basket/TieredBasket007_c
+  - spawn_2
   must_hold: true
   subtask: Put the jam back onto the shelf
 obj_of_interest:

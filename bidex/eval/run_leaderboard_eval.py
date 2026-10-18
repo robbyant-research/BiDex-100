@@ -2060,8 +2060,14 @@ def build_arg_parser():
     ap.add_argument("--control-mode", default="joint", choices=["joint", "robot_ee", "camera_ee"])
     ap.add_argument("--robot", default="astribot", choices=["astribot", "franka"])
     ap.add_argument("--domain", default="in_domain", choices=["in_domain", "out_of_domain", "both"])
-    ap.add_argument("--seeds", default="0,1",
-                    help="fixed seeds for a single-domain run (default: 0,1)")
+    ap.add_argument(
+        "--seeds",
+        default=None,
+        help=(
+            "explicit seed override for a single-domain run "
+            "(default: ID=0,1; OOD=2,3)"
+        ),
+    )
     ap.add_argument("--id-seeds", default="0,1",
                     help="in-domain seeds when --domain both (default: 0,1)")
     ap.add_argument("--ood-seeds", default="2,3",
@@ -2115,14 +2121,29 @@ def build_arg_parser():
 def main():
     args = build_arg_parser().parse_args()
     model_id = args.model_id or MODEL_ID_MAP.get(args.model, args.model)
-    seeds = [int(s) for s in args.seeds.split(",") if s != ""]
+    explicit_seeds = (
+        [int(s) for s in args.seeds.split(",") if s != ""]
+        if args.seeds is not None and args.seeds.strip()
+        else None
+    )
     # Per-domain seed sets for --domain both: ID tasks run --id-seeds, OOD tasks
     # run --ood-seeds (benchmark protocol: 2 seeds x 25 eps per domain = 100
-    # rollouts per task). A single concrete --domain keeps using --seeds.
+    # rollouts per task). A concrete domain uses its protocol seed set unless
+    # --seeds explicitly overrides it.
     id_seeds = ([int(s) for s in args.id_seeds.split(",") if s != ""]
-                if args.id_seeds.strip() else seeds)
+                if args.id_seeds.strip()
+                else (explicit_seeds if explicit_seeds is not None else [0, 1]))
     ood_seeds = ([int(s) for s in args.ood_seeds.split(",") if s != ""]
-                 if args.ood_seeds.strip() else seeds)
+                 if args.ood_seeds.strip()
+                 else (explicit_seeds if explicit_seeds is not None else [2, 3]))
+    if args.domain == "in_domain":
+        seeds = explicit_seeds if explicit_seeds is not None else id_seeds
+    elif args.domain == "out_of_domain":
+        seeds = explicit_seeds if explicit_seeds is not None else ood_seeds
+    else:
+        # Parent --domain both runs use _dom_seeds below. Keep a concrete list for
+        # defensive compatibility with direct/internal worker invocations.
+        seeds = explicit_seeds if explicit_seeds is not None else id_seeds
 
     def _dom_seeds(dom):
         if args.domain != "both":

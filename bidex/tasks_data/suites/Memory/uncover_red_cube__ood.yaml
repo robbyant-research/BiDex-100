@@ -2,9 +2,9 @@
 # Active OOD features: scene_randomize(5.1) + region_offset(5.2)
 # ID evaluation uses the base yaml; this file is only loaded for --domain out_of_domain (seeds 2,3).
 name: uncover_red_cube
-language: Press the yellow button once to lift only the cover concealing the red cube.
+language: Press the yellow button three times to lift only the cover concealing the red cube.
 subtasks:
-- name: Right arm presses the yellow button exactly once, the caps appear
+- name: Right arm presses the yellow button exactly three times, the caps appear
   score: 20
 - name: All three cubes are covered by the caps
   score: 0
@@ -227,14 +227,14 @@ objects:
   button: true
 fixtures: []
 goal:
-# Step 1 -- the ordering gate: press the button exactly once (must_hold: a
-# second press at any later point flips holds_now False). The press triggers
+# Step 1 -- the ordering gate: press the button exactly three times. A later
+# extra press flips holds_now False. The press sequence triggers
 # the cap reveal, so this must latch first.
 - type: pressed_exact
   args:
   - dexjoco_button_yellow
   - 3
-  subtask: Right arm presses the yellow button exactly once, the caps appear
+  subtask: Right arm presses the yellow button exactly three times, the caps appear
   must_hold: true
 # Step 2 -- all three cubes covered by the appeared caps (any cap on each).
 - type: inside_any

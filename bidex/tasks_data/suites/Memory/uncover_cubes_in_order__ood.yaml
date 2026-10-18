@@ -2,7 +2,7 @@
 # Active OOD features: scene_randomize(5.1) + region_offset(5.2)
 # ID evaluation uses the base yaml; this file is only loaded for --domain out_of_domain (seeds 2,3).
 name: uncover_cubes_in_order
-language: Press the yellow button once to cover the three cubes with caps, then lift the caps to uncover the red, green, and blue cubes in that order.
+language: Press the yellow button three times to cover the three cubes with caps, then lift the caps to uncover the red, green, and blue cubes in that order.
 subtasks:
 - name: Right arm presses the yellow button, the caps appear
   score: 10

@@ -3,12 +3,14 @@ import pyexpat
 import xml.etree.ElementTree as ET
 from collections import Counter
 from pathlib import Path
+from types import SimpleNamespace
 from unittest import mock
 
 import mujoco
 import numpy as np
 
 from bidex.eval import ood
+from bidex.eval import run_leaderboard_eval as evaluation
 from bidex.env import BiDexEnv
 
 
@@ -38,20 +40,20 @@ def test_camera_plan_is_stable_and_has_exact_occurrence_counts():
         for episode in range(25)
     ]
     assert Counter(plan["occurrence_mode"] for plan in plans) == {
-        "nominal": 10,
+        "nominal": 20,
         "head_only": 10,
         "wrists_only": 10,
-        "head_and_wrists": 20,
+        "head_and_wrists": 10,
     }
     for seed in (2, 3):
         assert Counter(
             ood.camera_randomization_plan(*args, seed, episode)["occurrence_mode"]
             for episode in range(25)
         ) == {
-            "nominal": 5,
+            "nominal": 10,
             "head_only": 5,
             "wrists_only": 5,
-            "head_and_wrists": 10,
+            "head_and_wrists": 5,
         }
     for plan in plans:
         mode = plan["occurrence_mode"]
@@ -84,6 +86,20 @@ def test_camera_plan_is_stable_and_has_exact_occurrence_counts():
         assert delta["delta_pos"][2] >= 0.0
         assert max(abs(v) for v in delta["delta_pos"]) <= 0.0135
         assert max(abs(v) for v in delta["delta_euler_deg"]) <= 6.0
+
+
+def test_id_domain_keeps_nominal_camera_extrinsics(monkeypatch):
+    task = SimpleNamespace()
+    monkeypatch.setattr(evaluation, "load_task", lambda *_args: task)
+
+    loaded, distractors, apply_offset = evaluation.load_task_for_domain(
+        "Memory", "task", "in_domain", 0, 0, episode=0
+    )
+
+    assert loaded is task
+    assert not hasattr(loaded, "_ood_camera_plan")
+    assert distractors == []
+    assert apply_offset is False
 
 
 def _minimal_scene(path: str):

@@ -107,6 +107,150 @@ def _resolve_xyz(model, data, task, ref) -> tuple:
     return (float("nan"),) * 3
 
 
+def _named_geom_id(model, task, object_name: str, geom_name: str) -> int:
+    """Resolve a named geom inside a task object instance."""
+    import mujoco
+
+    obj = task.find_object(object_name)
+    if obj is None:
+        return -1
+    return mujoco.mj_name2id(
+        model,
+        mujoco.mjtObj.mjOBJ_GEOM,
+        f"obj{obj.instance_id}_{geom_name}",
+    )
+
+
+def _named_site_id(model, task, object_name: str, site_name: str) -> int:
+    """Resolve a named site inside a task object instance."""
+    import mujoco
+
+    obj = task.find_object(object_name)
+    if obj is None:
+        return -1
+    return mujoco.mj_name2id(
+        model,
+        mujoco.mjtObj.mjOBJ_SITE,
+        f"obj{obj.instance_id}_{site_name}",
+    )
+
+
+def _point_inside_geom(
+    model, data, geom_id: int, point, clearance: float = 0.0
+) -> bool:
+    """Return whether a world point is inside a live box/cylinder/sphere geom.
+
+    ``clearance`` shrinks the horizontal boundary. It is useful when the point
+    is a spherical object's centre and its complete horizontal footprint must
+    fit in the region. Vertical bounds remain the receiver's valid centre-height
+    range at its floor and rim.
+    """
+    import mujoco
+    import numpy as np
+
+    if geom_id < 0:
+        return False
+    center = np.asarray(data.geom_xpos[geom_id], dtype=np.float64)
+    rotation = np.asarray(data.geom_xmat[geom_id], dtype=np.float64).reshape(3, 3)
+    local = rotation.T @ (np.asarray(point, dtype=np.float64) - center)
+    size = model.geom_size[geom_id]
+    margin = max(float(clearance), 0.0)
+    # MuJoCo exposes this as numpy.int32.  Tuple membership against mjtGeom
+    # IntEnums is asymmetric in some NumPy/MuJoCo combinations and can reject
+    # a cylinder even though ``geom_type == mjGEOM_CYLINDER`` is true.
+    geom_type = int(model.geom_type[geom_id])
+
+    if geom_type == mujoco.mjtGeom.mjGEOM_BOX:
+        bounds = np.asarray(size[:3], dtype=np.float64).copy()
+        bounds[:2] -= margin
+        return bool(np.all(bounds > 0.0) and np.all(np.abs(local) < bounds))
+    if geom_type == mujoco.mjtGeom.mjGEOM_CYLINDER:
+        radius = float(size[0]) - margin
+        half_height = float(size[1])
+        radial = float(np.hypot(local[0], local[1]))
+        return (
+            radius > 0.0
+            and half_height > 0.0
+            and radial < radius
+            and abs(float(local[2])) < half_height
+        )
+    if geom_type == mujoco.mjtGeom.mjGEOM_ELLIPSOID:
+        bounds = np.asarray(size[:3], dtype=np.float64).copy()
+        bounds[:2] -= margin
+        return bool(
+            np.all(bounds > 0.0)
+            and float(np.sum(np.square(local / bounds))) < 1.0
+        )
+    if geom_type == mujoco.mjtGeom.mjGEOM_SPHERE:
+        radius = float(size[0]) - margin
+        return radius > 0.0 and float(np.linalg.norm(local)) < radius
+    return False
+
+
+def _point_inside_site(model, data, site_id: int, point) -> bool:
+    """Return whether a world point is inside a live box/cylinder/sphere site."""
+    import mujoco
+    import numpy as np
+
+    if site_id < 0:
+        return False
+    center = np.asarray(data.site_xpos[site_id], dtype=np.float64)
+    rotation = np.asarray(data.site_xmat[site_id], dtype=np.float64).reshape(3, 3)
+    local = rotation.T @ (np.asarray(point, dtype=np.float64) - center)
+    size = model.site_size[site_id]
+    site_type = model.site_type[site_id]
+
+    if site_type == mujoco.mjtGeom.mjGEOM_BOX:
+        return bool(np.all(np.abs(local) < np.asarray(size[:3], dtype=np.float64)))
+    if site_type == mujoco.mjtGeom.mjGEOM_CYLINDER:
+        return (
+            float(np.hypot(local[0], local[1])) < float(size[0])
+            and abs(float(local[2])) < float(size[1])
+        )
+    if site_type == mujoco.mjtGeom.mjGEOM_SPHERE:
+        return float(np.linalg.norm(local)) < float(size[0])
+    return False
+
+
+def _body_subtree_ids(model, root_body_id: int) -> set[int]:
+    """Collect a body and all descendants."""
+    children = {}
+    for body_id in range(model.nbody):
+        parent_id = int(model.body_parentid[body_id])
+        if parent_id >= 0:
+            children.setdefault(parent_id, []).append(body_id)
+    subtree = set()
+    stack = [root_body_id]
+    while stack:
+        body_id = stack.pop()
+        if body_id < 0 or body_id in subtree:
+            continue
+        subtree.add(body_id)
+        stack.extend(children.get(body_id, []))
+    return subtree
+
+
+def _has_upward_support_contact(
+    model, data, object_body_id: int, support_body_id: int
+) -> bool:
+    """Return whether the support subtree is pushing the object upward."""
+    normal_z_min = 0.5
+    support_bodies = _body_subtree_ids(model, support_body_id)
+    for contact_index in range(data.ncon):
+        contact = data.contact[contact_index]
+        body_1 = int(model.geom_bodyid[contact.geom1])
+        body_2 = int(model.geom_bodyid[contact.geom2])
+        if body_1 == object_body_id and body_2 in support_bodies:
+            support_to_object_nz = -float(contact.frame[2])
+        elif body_2 == object_body_id and body_1 in support_bodies:
+            support_to_object_nz = float(contact.frame[2])
+        else:
+            continue
+        if support_to_object_nz > normal_z_min:
+            return True
+    return False
+
+
 def _pred_sunk(model, data, task, args, threshold) -> bool:
     """sunk(nail, [depth]): a mocap nail has been driven downward by >= `depth`.
 
@@ -578,6 +722,28 @@ def _pred_stacked_on(model, data, task, args, threshold) -> bool:
     return (dxy < radius) and one_layer_above
 
 
+def _pred_on_table(model, data, task, args, threshold) -> bool:
+    """on_table(obj): the scene table directly supports the object from below.
+
+    Direct support is used instead of an xy drop zone so every point on the
+    physical tabletop is valid, while an object held at tabletop height or
+    resting inside another object is not accepted.
+    """
+    if not args:
+        return False
+    import mujoco
+
+    object_body_id = _body_id_for_object(model, task, args[0])
+    table_body_id = mujoco.mj_name2id(
+        model, mujoco.mjtObj.mjOBJ_BODY, "table"
+    )
+    if object_body_id < 0 or table_body_id < 0:
+        return False
+    return _has_upward_support_contact(
+        model, data, object_body_id, table_body_id
+    )
+
+
 def _pred_inside(model, data, task, args, threshold) -> bool:
     """inside(obj, container): obj xy within container xy radius (default 0.1m), and z within +/-0.25m.
 
@@ -796,6 +962,473 @@ def _pred_inside_site_any(model, data, task, args, threshold) -> bool:
     return False
 
 
+def _pred_inside_site_any_loose(model, data, task, args, threshold) -> bool:
+    """inside_site_any_loose(obj, container, site..., [z_lo, z_hi]).
+
+    Accept an object whose centre is in any listed live site without requiring
+    direct floor contact.  The final two arguments may be numeric world-z
+    bounds relative to each site; otherwise ``inside_site_loose`` defaults are
+    used.  This is appropriate for true container interiors where an object
+    can be wedged against a wall or supported by another contained object.
+    Pair it with ``must_hold`` for final-state evaluation.
+    """
+    if len(args) < 3:
+        return False
+    obj_name, cont_name = args[0], args[1]
+    site_names = list(args[2:])
+    z_bounds = []
+    if len(site_names) >= 3:
+        try:
+            z_bounds = [float(site_names[-2]), float(site_names[-1])]
+        except (TypeError, ValueError):
+            z_bounds = []
+        else:
+            site_names = site_names[:-2]
+    for site_name in site_names:
+        call_args = [obj_name, cont_name, site_name, *z_bounds]
+        if _pred_inside_site_loose(model, data, task, call_args, threshold):
+            return True
+    return False
+
+
+def _pred_inside_region(model, data, task, args, threshold) -> bool:
+    """inside_region(obj, container, geom): obj centre is inside a named geom.
+
+    The geom is evaluated in its live frame, so the predicate follows a moving
+    or tilted container. ``threshold`` is an inward clearance from the geom
+    horizontal boundary. For a spherical object, setting it to the sphere
+    radius requires the complete horizontal footprint to be inside.
+    """
+    if len(args) < 3:
+        return False
+    object_xyz = _resolve_xyz(model, data, task, args[0])
+    if any(value != value for value in object_xyz):
+        return False
+    geom_id = _named_geom_id(model, task, args[1], args[2])
+    clearance = float(threshold) if threshold is not None else 0.0
+    return _point_inside_geom(model, data, geom_id, object_xyz, clearance)
+
+
+def _pred_not_inside_region(model, data, task, args, threshold) -> bool:
+    """Negation of :func:`_pred_inside_region`."""
+    return not _pred_inside_region(model, data, task, args, threshold)
+
+
+def _pred_keypoint_in_site(model, data, task, args, threshold) -> bool:
+    """keypoint_in_site(obj, container, site, source_geom, axis): test one end.
+
+    The keypoint starts at the source geom centre and moves along one local axis
+    by ``threshold`` times that geom's half-size. This supports elongated tools:
+    their functional end may be inside a receiver while the handle remains out.
+    Axis values are ``x+``, ``x-``, ``y+``, ``y-``, ``z+``, and ``z-``.
+    """
+    if len(args) < 5:
+        return False
+    import numpy as np
+
+    source_geom_id = _named_geom_id(model, task, args[0], args[3])
+    target_site_id = _named_site_id(model, task, args[1], args[2])
+    if source_geom_id < 0 or target_site_id < 0:
+        return False
+    axes = {
+        "x+": (0, 1.0),
+        "x-": (0, -1.0),
+        "y+": (1, 1.0),
+        "y-": (1, -1.0),
+        "z+": (2, 1.0),
+        "z-": (2, -1.0),
+    }
+    axis = axes.get(str(args[4]).lower())
+    if axis is None:
+        return False
+    axis_index, direction = axis
+    fraction = float(threshold) if threshold is not None else 0.75
+    local_offset = np.zeros(3, dtype=np.float64)
+    local_offset[axis_index] = (
+        direction * fraction * float(model.geom_size[source_geom_id][axis_index])
+    )
+    rotation = np.asarray(
+        data.geom_xmat[source_geom_id], dtype=np.float64
+    ).reshape(3, 3)
+    keypoint = (
+        np.asarray(data.geom_xpos[source_geom_id], dtype=np.float64)
+        + rotation @ local_offset
+    )
+    return _point_inside_site(model, data, target_site_id, keypoint)
+
+
+def _pred_supported_in_region(model, data, task, args, threshold) -> bool:
+    """supported_in_region(obj, container, region...): contained and supported.
+
+    The object centre must be inside at least one named live region geom and the
+    container must simultaneously provide an upward support contact. This
+    rejects side bumps and objects resting outside or on top of a shelf.
+    ``threshold`` optionally shrinks the region boundary.
+    """
+    if len(args) < 3:
+        return False
+    object_xyz = _resolve_xyz(model, data, task, args[0])
+    if any(value != value for value in object_xyz):
+        return False
+    clearance = float(threshold) if threshold is not None else 0.0
+    inside = any(
+        _point_inside_geom(
+            model,
+            data,
+            _named_geom_id(model, task, args[1], region_name),
+            object_xyz,
+            clearance,
+        )
+        for region_name in args[2:]
+    )
+    if not inside:
+        return False
+    object_body_id = _body_id_for_object(model, task, args[0])
+    container_body_id = _body_id_for_object(model, task, args[1])
+    if object_body_id < 0 or container_body_id < 0:
+        return False
+    return _has_upward_support_contact(
+        model, data, object_body_id, container_body_id
+    )
+
+
+def _point_inside_named_region_band(
+    model,
+    data,
+    task,
+    container_name: str,
+    region_name: str,
+    point,
+    z_lo: float,
+    z_hi: float,
+    clearance: float,
+) -> bool:
+    """Test an arbitrary world point against a named horizontal region."""
+    import mujoco
+    import numpy as np
+
+    point = np.asarray(point, dtype=np.float64)
+    if point.shape != (3,) or not np.all(np.isfinite(point)):
+        return False
+    geom_id = _named_geom_id(model, task, container_name, region_name)
+    if geom_id < 0:
+        return False
+    center = np.asarray(data.geom_xpos[geom_id], dtype=np.float64)
+    rotation = np.asarray(data.geom_xmat[geom_id], dtype=np.float64).reshape(3, 3)
+    local = rotation.T @ (point - center)
+    size = model.geom_size[geom_id]
+    # MuJoCo exposes this as numpy.int32. Tuple membership against mjtGeom
+    # IntEnums is asymmetric in some NumPy/MuJoCo combinations.
+    geom_type = int(model.geom_type[geom_id])
+    if geom_type == mujoco.mjtGeom.mjGEOM_BOX:
+        half_x = float(size[0]) - clearance
+        half_y = float(size[1]) - clearance
+        horizontal_inside = (
+            half_x > 0.0
+            and half_y > 0.0
+            and abs(float(local[0])) < half_x
+            and abs(float(local[1])) < half_y
+        )
+    elif geom_type in (mujoco.mjtGeom.mjGEOM_CYLINDER, mujoco.mjtGeom.mjGEOM_SPHERE):
+        radius = float(size[0]) - clearance
+        horizontal_inside = (
+            radius > 0.0
+            and float(np.hypot(local[0], local[1])) < radius
+        )
+    elif geom_type == mujoco.mjtGeom.mjGEOM_ELLIPSOID:
+        radius_x = float(size[0]) - clearance
+        radius_y = float(size[1]) - clearance
+        horizontal_inside = (
+            radius_x > 0.0
+            and radius_y > 0.0
+            and (float(local[0]) / radius_x) ** 2
+            + (float(local[1]) / radius_y) ** 2
+            < 1.0
+        )
+    else:
+        return False
+    return bool(
+        horizontal_inside
+        and float(z_lo) <= float(local[2]) <= float(z_hi)
+    )
+
+
+def _inside_named_region_band(model, data, task, args, clearance: float) -> bool:
+    """Shared object-origin implementation for named horizontal regions."""
+    if len(args) < 5:
+        return False
+    object_xyz = _resolve_xyz(model, data, task, args[0])
+    return _point_inside_named_region_band(
+        model,
+        data,
+        task,
+        args[1],
+        args[2],
+        object_xyz,
+        float(args[3]),
+        float(args[4]),
+        clearance,
+    )
+
+
+def _pred_inside_region_band(model, data, task, args, threshold) -> bool:
+    """inside_region_band(obj, container, geom, z_lo, z_hi).
+
+    Require the object's centre inside a named region's horizontal footprint
+    and an explicit local-height band, without requiring contact with the
+    container floor.  This handles planar ``reg_int`` opening geoms and true
+    container interiors where an object may be wedged against a wall or rest
+    on another contained object.  ``threshold`` shrinks the horizontal region.
+    """
+    clearance = max(float(threshold) if threshold is not None else 0.0, 0.0)
+    return _inside_named_region_band(model, data, task, args, clearance)
+
+
+def _pred_axis_in_region_band(model, data, task, args, threshold) -> bool:
+    """axis_in_region_band(obj, container, region, source_geom, z_lo, z_hi).
+
+    Accept an elongated object when any sampled point on its full long axis is
+    inside the receiver region and height band.  This models an inserted spoon
+    or fork whose lower end is in a cup while its centre and handle legitimately
+    remain outside.  Orientation remains a separate predicate so a horizontal
+    utensil laid across the rim cannot pass.
+    """
+    if len(args) < 6:
+        return False
+    import numpy as np
+
+    source_geom_id = _named_geom_id(model, task, args[0], args[3])
+    if source_geom_id < 0:
+        return False
+    sizes = np.asarray(model.geom_size[source_geom_id], dtype=np.float64)
+    if sizes.size < 3 or not np.all(np.isfinite(sizes[:3])):
+        return False
+    long_axis = int(np.argmax(sizes[:3]))
+    half_length = float(sizes[long_axis])
+    if half_length <= 0.0:
+        return False
+    center = np.asarray(data.geom_xpos[source_geom_id], dtype=np.float64)
+    rotation = np.asarray(
+        data.geom_xmat[source_geom_id], dtype=np.float64
+    ).reshape(3, 3)
+    axis = rotation[:, long_axis]
+    clearance = max(float(threshold) if threshold is not None else 0.0, 0.0)
+    for fraction in np.linspace(-1.0, 1.0, 21):
+        point = center + axis * (fraction * half_length)
+        if _point_inside_named_region_band(
+            model,
+            data,
+            task,
+            args[1],
+            args[2],
+            point,
+            float(args[4]),
+            float(args[5]),
+            clearance,
+        ):
+            return True
+    return False
+
+
+def _pred_axis_in_region(model, data, task, args, threshold) -> bool:
+    """axis_in_region(obj, container, region, source_geom).
+
+    Accept an elongated object when any sampled point on its full long axis is
+    strictly inside the receiver's live 3-D region geom.  Unlike the banded
+    variant, the receiver geom supplies the floor and rim bounds, so a shallow
+    insertion counts while a utensil crossing above or beside the opening does
+    not.  No orientation constraint is implied.
+    """
+    if len(args) < 4:
+        return False
+    import numpy as np
+
+    source_geom_id = _named_geom_id(model, task, args[0], args[3])
+    region_geom_id = _named_geom_id(model, task, args[1], args[2])
+    if source_geom_id < 0 or region_geom_id < 0:
+        return False
+    sizes = np.asarray(model.geom_size[source_geom_id], dtype=np.float64)
+    if sizes.size < 3 or not np.all(np.isfinite(sizes[:3])):
+        return False
+    long_axis = int(np.argmax(sizes[:3]))
+    half_length = float(sizes[long_axis])
+    if half_length <= 0.0:
+        return False
+    center = np.asarray(data.geom_xpos[source_geom_id], dtype=np.float64)
+    rotation = np.asarray(
+        data.geom_xmat[source_geom_id], dtype=np.float64
+    ).reshape(3, 3)
+    axis = rotation[:, long_axis]
+    clearance = max(float(threshold) if threshold is not None else 0.0, 0.0)
+    return any(
+        _point_inside_geom(
+            model,
+            data,
+            region_geom_id,
+            center + axis * (fraction * half_length),
+            clearance,
+        )
+        for fraction in np.linspace(-1.0, 1.0, 21)
+    )
+
+
+def _pred_supported_in_region_band(model, data, task, args, threshold) -> bool:
+    """supported_in_region_band(obj, container, geom, z_lo, z_hi).
+
+    Require :func:`_pred_inside_region_band` plus physical upward support from
+    the container.  Use this for exposed surfaces such as boards and trays;
+    use ``inside_region_band`` for a genuine container interior.
+    """
+    if not _pred_inside_region_band(model, data, task, args, threshold):
+        return False
+    object_body_id = _body_id_for_object(model, task, args[0])
+    container_body_id = _body_id_for_object(model, task, args[1])
+    if object_body_id < 0 or container_body_id < 0:
+        return False
+    return _has_upward_support_contact(
+        model, data, object_body_id, container_body_id
+    )
+
+
+def _pred_supported_geom_in_region_band(model, data, task, args, threshold) -> bool:
+    """supported_geom_in_region_band(obj, container, obj_geom, region, z_lo, z_hi).
+
+    Like ``supported_in_region_band``, but evaluates the visible object's named
+    geometry centre instead of its sometimes-offset root body origin.  This is
+    useful for asymmetric assets such as cheese wedges while retaining the
+    physical upward-support requirement for an exposed board.
+    """
+    if len(args) < 6:
+        return False
+    object_geom_id = _named_geom_id(model, task, args[0], args[2])
+    if object_geom_id < 0:
+        return False
+    clearance = max(float(threshold) if threshold is not None else 0.0, 0.0)
+    if not _point_inside_named_region_band(
+        model,
+        data,
+        task,
+        args[1],
+        args[3],
+        data.geom_xpos[object_geom_id],
+        float(args[4]),
+        float(args[5]),
+        clearance,
+    ):
+        return False
+    object_body_id = _body_id_for_object(model, task, args[0])
+    container_body_id = _body_id_for_object(model, task, args[1])
+    if object_body_id < 0 or container_body_id < 0:
+        return False
+    return _has_upward_support_contact(
+        model, data, object_body_id, container_body_id
+    )
+
+
+def _pred_supported_in_region_band_near(model, data, task, args, threshold) -> bool:
+    """supported_in_region_band_near(obj, container, geom, z_lo, z_hi, [slop]).
+
+    Require live named-region containment, upward support, and a coarse
+    horizontal distance from the container root. ``threshold`` is that
+    distance (default 0.2 m). ``slop`` (default 0.01 m) expands both the named
+    horizontal footprint and coarse radius for a released object that settles
+    a few millimetres over the nominal edge. The support and height gates stay
+    strict, so a cup on the nearby table still fails.
+    """
+    if len(args) < 5:
+        return False
+    slop = max(float(args[5]) if len(args) > 5 else 0.01, 0.0)
+    if not _inside_named_region_band(model, data, task, args[:5], -slop):
+        return False
+    object_body_id = _body_id_for_object(model, task, args[0])
+    container_body_id = _body_id_for_object(model, task, args[1])
+    if object_body_id < 0 or container_body_id < 0:
+        return False
+    if not _has_upward_support_contact(
+        model, data, object_body_id, container_body_id
+    ):
+        return False
+    object_xyz = _resolve_xyz(model, data, task, args[0])
+    container_xyz = _resolve_xyz(model, data, task, args[1])
+    if any(value != value for value in object_xyz + container_xyz):
+        return False
+    radius = float(threshold) if threshold is not None else 0.2
+    dxy = (
+        (object_xyz[0] - container_xyz[0]) ** 2
+        + (object_xyz[1] - container_xyz[1]) ** 2
+    ) ** 0.5
+    return dxy <= radius + slop
+
+
+def _pred_supported_in_local_box(model, data, task, args, threshold) -> bool:
+    """supported_in_local_box(obj, container, x0, x1, y0, y1, z0, z1).
+
+    Test an explicit box in the container root body's live local frame and
+    require upward support contact from that container's subtree. This is for
+    articulated fixtures whose assets expose no named interior region. The
+    explicit bounds exclude their exterior top, front face, and nearby table.
+
+    ``threshold`` optionally shrinks every face inward by that clearance.
+    """
+    if len(args) < 8:
+        return False
+    import numpy as np
+
+    object_xyz = _resolve_xyz(model, data, task, args[0])
+    object_body_id = _body_id_for_object(model, task, args[0])
+    container_body_id = _body_id_for_object(model, task, args[1])
+    if (
+        object_body_id < 0
+        or container_body_id < 0
+        or any(value != value for value in object_xyz)
+    ):
+        return False
+    center = np.asarray(data.xpos[container_body_id], dtype=np.float64)
+    rotation = np.asarray(data.xmat[container_body_id], dtype=np.float64).reshape(3, 3)
+    local = rotation.T @ (np.asarray(object_xyz, dtype=np.float64) - center)
+    clearance = max(float(threshold) if threshold is not None else 0.0, 0.0)
+    lows = np.asarray([float(args[2]), float(args[4]), float(args[6])]) + clearance
+    highs = np.asarray([float(args[3]), float(args[5]), float(args[7])]) - clearance
+    if not bool(np.all(lows < highs) and np.all(local >= lows) and np.all(local <= highs)):
+        return False
+    return _has_upward_support_contact(
+        model, data, object_body_id, container_body_id
+    )
+
+
+def _pred_inside_local_box(model, data, task, args, threshold) -> bool:
+    """inside_local_box(obj, container, x0, x1, y0, y1, z0, z1).
+
+    Test an explicit box in the container root body's live local frame without
+    requiring an upward contact.  This is intended for a narrow holder where a
+    long object can remain physically wedged against the side walls rather than
+    resting on a horizontal floor.  Pair it with ``must_hold`` and an
+    orientation predicate so a transient pass-through or a horizontal object
+    cannot count as the final state.
+
+    ``threshold`` optionally shrinks every face inward by that clearance.
+    """
+    if len(args) < 8:
+        return False
+    import numpy as np
+
+    object_xyz = _resolve_xyz(model, data, task, args[0])
+    container_body_id = _body_id_for_object(model, task, args[1])
+    if container_body_id < 0 or any(value != value for value in object_xyz):
+        return False
+    center = np.asarray(data.xpos[container_body_id], dtype=np.float64)
+    rotation = np.asarray(data.xmat[container_body_id], dtype=np.float64).reshape(3, 3)
+    local = rotation.T @ (np.asarray(object_xyz, dtype=np.float64) - center)
+    clearance = max(float(threshold) if threshold is not None else 0.0, 0.0)
+    lows = np.asarray([float(args[2]), float(args[4]), float(args[6])]) + clearance
+    highs = np.asarray([float(args[3]), float(args[5]), float(args[7])]) - clearance
+    return bool(
+        np.all(lows < highs)
+        and np.all(local >= lows)
+        and np.all(local <= highs)
+    )
+
+
 def _pred_inside_any(model, data, task, args, threshold) -> bool:
     """inside_any(obj, c1, c2, ...): obj is inside ANY of the listed containers.
 
@@ -839,7 +1472,6 @@ def _pred_inside_contact(model, data, task, args, threshold) -> bool:
     (the support contact must still exist at episode end). Rotation- and
     offset-invariant, unlike the xy-radius tests.
     """
-    NORMAL_Z_MIN = 0.5  # |normal z| above this => vertical (support) contact
     if len(args) < 2:
         return False
     obj_bid = _body_id_for_object(model, task, args[0])
@@ -850,39 +1482,7 @@ def _pred_inside_contact(model, data, task, args, threshold) -> bool:
     obj_xyz = _resolve_xyz(model, data, task, args[0])
     if obj_xyz[2] != obj_xyz[2] or obj_xyz[2] <= z_min:  # NaN or below z_min
         return False
-    # Container subtree (body + descendants) -- shelf walls/slabs may live on
-    # child bodies. An item supported by any of them counts as on the shelf.
-    children = {}
-    for b in range(model.nbody):
-        p = model.body_parentid[b]
-        if p >= 0:
-            children.setdefault(p, []).append(b)
-    subtree = set()
-    stack = [cbid]
-    while stack:
-        b = stack.pop()
-        if b < 0 or b in subtree:
-            continue
-        subtree.add(b)
-        stack.extend(children.get(b, []))
-    for c in range(data.ncon):
-        con = data.contact[c]
-        b1 = model.geom_bodyid[con.geom1]
-        b2 = model.geom_bodyid[con.geom2]
-        # con.frame[0:3] is the contact normal (world frame) pointing from
-        # geom1 to geom2. Compute the shelf->obj normal z; a support contact
-        # (shelf beneath obj) has it strongly positive.
-        if b1 == obj_bid and b2 in subtree:
-            # normal = obj->shelf; shelf->obj = -normal
-            shelf_to_obj_nz = -float(con.frame[2])
-        elif b2 == obj_bid and b1 in subtree:
-            # normal = shelf->obj
-            shelf_to_obj_nz = float(con.frame[2])
-        else:
-            continue
-        if shelf_to_obj_nz > NORMAL_Z_MIN:
-            return True
-    return False
+    return _has_upward_support_contact(model, data, obj_bid, cbid)
 
 
 def _pred_not_inside(model, data, task, args, threshold) -> bool:
@@ -1176,6 +1776,34 @@ def _pred_upright(model, data, task, args, threshold) -> bool:
     return obj_xyz[2] > 0.9
 
 
+def _pred_long_axis_vertical(model, data, task, args, threshold) -> bool:
+    """long_axis_vertical(obj, [geom]): an elongated object's long axis is raised.
+
+    The longest half-extent of the named geom (``reg_bbox`` by default) selects
+    the object's intrinsic length axis.  The absolute dot product between that
+    live axis and world up must exceed ``threshold`` (default 0.35).  Absolute
+    value intentionally accepts either end pointing upward.  A threshold of
+    0.35 allows roughly 70 degrees of tilt away from vertical while rejecting
+    a utensil that is horizontal or merely laid across a receiver's rim.
+    """
+    if not args:
+        return False
+    import numpy as np
+
+    geom_name = str(args[1]) if len(args) > 1 else "reg_bbox"
+    geom_id = _named_geom_id(model, task, args[0], geom_name)
+    if geom_id < 0:
+        return False
+    sizes = np.asarray(model.geom_size[geom_id], dtype=np.float64)
+    if sizes.size < 3 or not np.all(np.isfinite(sizes[:3])):
+        return False
+    long_axis = int(np.argmax(sizes[:3]))
+    rotation = np.asarray(data.geom_xmat[geom_id], dtype=np.float64).reshape(3, 3)
+    vertical_component = abs(float(rotation[2, long_axis]))
+    minimum = float(threshold) if threshold is not None else 0.35
+    return vertical_component > minimum
+
+
 def _pred_on_edge(model, data, task, args, threshold) -> bool:
     """on_edge(obj, [threshold]): object stands on its SIDE -- its local z-axis
     (the nominal up-axis, e.g. a plate's disk-normal) is approximately HORIZONTAL.
@@ -1210,6 +1838,7 @@ def _pred_on_edge(model, data, task, args, threshold) -> bool:
 PREDICATE_REGISTRY: Dict[str, Callable] = {
     "on": _pred_on,
     "stacked_on": _pred_stacked_on,  # cube directly on top of another (strict)
+    "on_table": _pred_on_table,  # direct support anywhere on the scene table
     "inside": _pred_inside,
     "in": _pred_inside,         # alias
     "inside_contact": _pred_inside_contact,  # contact + z_min (multi-level shelves)
@@ -1218,6 +1847,19 @@ PREDICATE_REGISTRY: Dict[str, Callable] = {
     "inside_site": _pred_inside_site,  # container's named <site> box (drawers)
     "inside_site_loose": _pred_inside_site_loose,  # same but no contact gate (mesh receivers, e.g. strainer bowl)
     "inside_site_any": _pred_inside_site_any,  # obj inside ANY of several drawer sites
+    "inside_site_any_loose": _pred_inside_site_any_loose,  # any named site, no floor-contact requirement
+    "inside_region": _pred_inside_region,  # inside a named live geom
+    "not_inside_region": _pred_not_inside_region,  # negation of inside_region
+    "keypoint_in_site": _pred_keypoint_in_site,  # one end of an elongated object inside a site
+    "supported_in_region": _pred_supported_in_region,  # named region plus upward support
+    "inside_region_band": _pred_inside_region_band,  # planar/3-D horizontal region + height band, no contact
+    "axis_in_region_band": _pred_axis_in_region_band,  # any point on an elongated object's axis inside region band
+    "axis_in_region": _pred_axis_in_region,  # any point on an elongated object's axis inside a live 3-D region
+    "supported_in_region_band": _pred_supported_in_region_band,  # planar/3-D region + height band + support
+    "supported_geom_in_region_band": _pred_supported_geom_in_region_band,  # visible geom centre in region + support
+    "supported_in_region_band_near": _pred_supported_in_region_band_near,  # region/support gate plus coarse radius with settling slop
+    "supported_in_local_box": _pred_supported_in_local_box,  # explicit container-local interior + support
+    "inside_local_box": _pred_inside_local_box,  # explicit container-local interior; side-wall wedging allowed
     "inside_any": _pred_inside_any,  # obj inside ANY of several containers (OR)
     "not_inside": _pred_not_inside,
     "outside": _pred_not_inside,  # alias
@@ -1233,6 +1875,7 @@ PREDICATE_REGISTRY: Dict[str, Callable] = {
     "not_in_bottle": _pred_not_in_bottle,  # negation; use with latch_violation
     "turned_on": _pred_turned_on,
     "upright": _pred_upright,
+    "long_axis_vertical": _pred_long_axis_vertical,
     "on_edge": _pred_on_edge,        # object on its side (local-z horizontal): plate vertical in a dish rack
     "vertical": _pred_on_edge,       # alias
     "sunk": _pred_sunk,           # dexjoco hammer-nail: mocap nail driven down
@@ -1380,7 +2023,14 @@ class SubtaskTracker:
         i = self._order_idx[subtask_name]
         my_grp = self._order_group[subtask_name]
         for j in range(i):
-            if self._order_group[self._names[j]] != my_grp and not self._latched[self._names[j]]:
+            if self._order_group[self._names[j]] == my_grp:
+                continue
+            latched_at = self._latched_at[self._names[j]]
+            # A predecessor that first becomes true in this same update must
+            # not unlock the next sequential milestone immediately. Without
+            # this frame boundary an ordered chain can cascade through several
+            # already-true states in one frame.
+            if latched_at is None or latched_at >= self._frame:
                 return False
         return True
 

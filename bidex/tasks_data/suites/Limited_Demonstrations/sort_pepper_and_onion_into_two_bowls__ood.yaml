@@ -2,7 +2,7 @@
 # Active OOD features: scene_randomize(5.1) + arm_mirror(5.4)
 # ID evaluation uses the base yaml; this file is only loaded for --domain out_of_domain (seeds 2,3).
 name: sort_pepper_and_onion_into_two_bowls
-language: Put the two bell peppers into one bowl and the two onions into the other bowl, keeping each kind separate.
+language: Put one bell pepper into one bowl and one onion into the other, keeping each kind separate.
 subtasks:
 - name: Pick up the first bell pepper
   score: 25

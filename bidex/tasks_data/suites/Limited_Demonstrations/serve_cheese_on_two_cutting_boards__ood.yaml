@@ -41,11 +41,10 @@ robot_pose:
 # is laid on it. The two cheese blocks spawn free-jointed on the +x side, one
 # per arm, each to be lifted and set onto its paired board on the -x side.
 #
-# `on(obj, target, threshold)` is the gate -- NOT inside_contact / stacked_on:
-# `on` tests the cheese's xy is within `threshold` (0.06 m) of the board's xy
-# centre AND the cheese sits at/above the board (cheese.z > board.z - 0.02). One
-# cheese per board keeps the single-centre radius test valid (two cheeses on one
-# board could not both sit within 0.06 m of the same centre without overlapping).
+# `supported_geom_in_region_band` requires the visible cheese bbox centre over the
+# board's live `reg_bbox`, in the board-relative height band, with the board
+# physically supporting it. This accepts a block that is mostly on the board
+# near an edge while rejecting one supported by the table beside the board.
 # `must_hold: true` rejects a cheese that slid back off the board by the final
 # frame. This is a parallel two-arm task (no ordered_subtasks): each arm completes
 # its own board independently.
@@ -176,24 +175,32 @@ goal:
   - rc/objaverse/cheese/cheese_0
   subtask: Pick up the first cheese block
   threshold: 0.85
-- type: 'on'
+- type: supported_geom_in_region_band
   args:
   - rc/objaverse/cheese/cheese_0
   - rc/objaverse/cutting_board/cutting_board_0
+  - reg_bbox
+  - reg_bbox
+  - -0.03
+  - 0.12
   subtask: Set the first cheese block on its cutting board
-  threshold: 0.06
+  threshold: 0.0
   must_hold: true
 - type: lifted
   args:
   - rc/objaverse/cheese/cheese_1
   subtask: Pick up the second cheese block
   threshold: 0.85
-- type: 'on'
+- type: supported_geom_in_region_band
   args:
   - rc/objaverse/cheese/cheese_1
   - rc/objaverse/cutting_board/cutting_board_1
+  - reg_bbox
+  - reg_bbox
+  - -0.03
+  - 0.12
   subtask: Set the second cheese block on its cutting board
-  threshold: 0.06
+  threshold: 0.0
   must_hold: true
 obj_of_interest:
 - rc/objaverse/cutting_board/cutting_board_0

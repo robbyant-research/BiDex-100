@@ -105,36 +105,56 @@ goal:
   - cabinet_to_door
   threshold: 1.15
   subtask: Left arm opens the fridge door
-- type: inside
+- type: inside_local_box
   args:
   - rc/objaverse/water_bottle/water_bottle_0
   - refrigerator_with_hinged_doors
+  - -0.13
+  - 0.11
+  - -0.16
+  - 0.16
+  - 0.02
+  - 0.45
   subtask: Right arm puts the water bottle into the fridge
-  threshold: 0.25
   must_hold: true
   order_group: stock
-- type: inside
+- type: inside_local_box
   args:
   - rc/objaverse/bottled_drink/bottled_drink_0
   - refrigerator_with_hinged_doors
+  - -0.13
+  - 0.11
+  - -0.16
+  - 0.16
+  - 0.02
+  - 0.45
   subtask: Right arm puts the bottled drink into the fridge
-  threshold: 0.25
   must_hold: true
   order_group: stock
-- type: inside
+- type: inside_local_box
   args:
   - rc/lightwheel/mayonnaise/Mayonnaise001
   - refrigerator_with_hinged_doors
+  - -0.13
+  - 0.11
+  - -0.16
+  - 0.16
+  - 0.02
+  - 0.45
   subtask: Left arm puts the mayonnaise into the fridge
-  threshold: 0.25
   must_hold: true
   order_group: stock
-- type: inside
+- type: inside_local_box
   args:
   - rc/lightwheel/mustard/Mustard001
   - refrigerator_with_hinged_doors
+  - -0.13
+  - 0.11
+  - -0.16
+  - 0.16
+  - 0.02
+  - 0.45
   subtask: Left arm puts the mustard into the fridge
-  threshold: 0.25
   must_hold: true
   order_group: stock
 - type: closed

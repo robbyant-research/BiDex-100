@@ -79,19 +79,16 @@ goal:
   args:
   - wooden_spoon
   subtask: Pick up the wooden spoon
-# stacked_on (NOT `on`): `on(spoon, tray)` has NO upper z bound, so a spoon on the
-# MUG (mug on the tray) -- one mug-height (~0.15 m) above the tray -- counted as
-# "on the tray". stacked_on's z window (0.0..0.08) accepts a spoon DIRECTLY on the
-# tray (~0.02-0.04 m above) and rejects the on-mug case (~0.15). inside_contact was
-# tried but the wooden tray is a mesh -> contact detection is flaky, so a
-# position-based gate is used. must_hold keeps it on the tray at the final frame.
-- type: stacked_on
+# The spoon head keypoint must be inside the tray's live 3D contain_region.
+# This allows the handle to extend out while rejecting a spoon resting on the mug.
+- type: keypoint_in_site
   args:
   - wooden_spoon
   - wooden_tray
-  - 0.0
-  - 0.08
-  threshold: 0.1
+  - contain_region
+  - reg_bbox
+  - y+
+  threshold: 0.75
   subtask: Put the wooden spoon on the wooden tray
   must_hold: true
 obj_of_interest:

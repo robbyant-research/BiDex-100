@@ -114,44 +114,77 @@ goal:
   - cookbox_to_lid
   threshold: 0.72
   subtask: Left arm opens the grill lid
-- type: 'on'
+# The cookbox wall ends near local z=0.39, but stacked food can sit above it
+# while remaining under the closed lid crown (~0.446). Use 0.45 for the root
+# envelope so physically contained stacks are not rejected.
+- type: inside_local_box
   args:
   - rc/lightwheel/chicken_drumstick/ChickenDrumstick001
   - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
   subtask: Left arm lays the first drumstick on the grill
-  threshold: 0.15
+  threshold: 0.0
   must_hold: true
   order_group: grill
-- type: 'on'
+- type: inside_local_box
   args:
   - rc/lightwheel/chicken_drumstick/ChickenDrumstick002
   - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
   subtask: Left arm lays the second drumstick on the grill
-  threshold: 0.15
+  threshold: 0.0
   must_hold: true
   order_group: grill
-- type: 'on'
+- type: inside_local_box
   args:
   - rc/objaverse/fish/fish_0
   - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
   subtask: Right arm lays the first fish on the grill
-  threshold: 0.15
+  threshold: 0.0
   must_hold: true
   order_group: grill
-- type: 'on'
+- type: inside_local_box
   args:
   - rc/objaverse/fish/fish_1
   - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
   subtask: Right arm lays the second fish on the grill
-  threshold: 0.15
+  threshold: 0.0
   must_hold: true
   order_group: grill
-- type: 'on'
+- type: inside_local_box
   args:
   - rc/objaverse/squash/squash_0
   - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
   subtask: Right arm lays the squash on the grill
-  threshold: 0.15
+  threshold: 0.0
   must_hold: true
   order_group: grill
 - type: closed
