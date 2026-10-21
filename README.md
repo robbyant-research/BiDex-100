@@ -7,17 +7,11 @@
 </p>
 
 <p align="center">
-  <a href="https://bidex-100.github.io/BiDex-100/">Website</a> ·
-  <a href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/datasets">Datasets</a> ·
-  <a href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100/tree/main/assets">3D Assets</a>
-</p>
-
-<p align="center">
-  <img alt="Python 3.10+" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white">
-  <img alt="MuJoCo" src="https://img.shields.io/badge/Engine-MuJoCo-475569?style=flat-square">
-  <img alt="LeRobot v2.1 and v3.0" src="https://img.shields.io/badge/Data-LeRobot_v2.1_%7C_v3.0-ffcc00?style=flat-square">
-  <img alt="Code: MIT" src="https://img.shields.io/badge/Code-MIT-blue?style=flat-square">
-  <img alt="Data and original assets: CC BY-NC 4.0" src="https://img.shields.io/badge/Data%20%26%20Original%20Assets-CC_BY--NC_4.0-8A2BE2?style=flat-square">
+  <a href="https://bidex-100.github.io/BiDex-100/"><img alt="Project Website" src="https://img.shields.io/badge/Project-Website-blue"></a>
+  <a href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100"><img alt="Dataset on Hugging Face" src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Dataset&message=HuggingFace&color=yellow"></a>
+  <a href="https://modelscope.cn/datasets/Robbyant-Research/BiDex-100"><img alt="Dataset on ModelScope" src="https://img.shields.io/static/v1?label=%F0%9F%A4%96%20Dataset&message=ModelScope&color=purple"></a>
+  <a href="LICENSE"><img alt="Code license: MIT" src="https://img.shields.io/badge/License-MIT-green"></a>
+  <a href="https://creativecommons.org/licenses/by-nc/4.0/"><img alt="Data and original assets license: CC BY-NC 4.0" src="https://img.shields.io/badge/Data%20%26%20Original%20Assets-CC_BY--NC_4.0-8A2BE2"></a>
 </p>
 
 ## Overview
@@ -54,8 +48,9 @@ python -m pip install -r requirements.txt
 python -m pip install -e ".[eval]"
 ```
 
-The Hugging Face dataset repository has three independently downloadable
-components:
+The release is available on [Hugging Face](https://huggingface.co/datasets/Robbyant-Research/BiDex-100)
+and [ModelScope](https://modelscope.cn/datasets/Robbyant-Research/BiDex-100),
+with the same three independently downloadable components:
 
 ```text
 assets/                    compressed simulation asset packs
@@ -63,7 +58,8 @@ datasets/lerobotv21/       LeRobot v2.1 datasets
 datasets/lerobotv30/       LeRobot v3.0 datasets
 ```
 
-Download everything and prepare the simulation assets:
+Download everything from Hugging Face (the default source) and prepare the
+simulation assets:
 
 ```bash
 python -m pip install -U huggingface_hub
@@ -73,12 +69,27 @@ bash scripts/download_release.sh all downloads/BiDex-100
 bash scripts/setup_assets_links.sh downloads/BiDex-100
 ```
 
-Each component can instead be downloaded separately into the same destination:
+To download from ModelScope instead, install its CLI and select the source:
+
+```bash
+python -m pip install -U modelscope
+
+bash scripts/download_release.sh --source modelscope all downloads/BiDex-100
+bash scripts/setup_assets_links.sh downloads/BiDex-100
+```
+
+Public ModelScope downloads do not require login. Each component can instead
+be downloaded separately into the same destination:
 
 ```bash
 bash scripts/download_release.sh assets downloads/BiDex-100
 bash scripts/download_release.sh lerobotv21 downloads/BiDex-100
 bash scripts/download_release.sh lerobotv30 downloads/BiDex-100
+
+# The same component selection works with ModelScope.
+bash scripts/download_release.sh --source modelscope assets downloads/BiDex-100
+bash scripts/download_release.sh --source modelscope lerobotv21 downloads/BiDex-100
+bash scripts/download_release.sh --source modelscope lerobotv30 downloads/BiDex-100
 ```
 
 `scripts/download_assets.sh` and `scripts/download_datasets.sh` remain as
@@ -87,12 +98,25 @@ convenience wrappers. Run `download_datasets.sh lerobotv21`,
 or both dataset formats. The download destination preserves the repository
 layout shown above.
 
+Both wrappers accept `--source modelscope` before their positional arguments:
+
+```bash
+bash scripts/download_assets.sh --source modelscope downloads/BiDex-100
+bash scripts/download_datasets.sh --source modelscope all downloads/BiDex-100
+```
+
+Set `BIDEX_DOWNLOAD_SOURCE=modelscope` to select ModelScope by default;
+`--source` overrides this setting. `BIDEX_HF_REPO` and `BIDEX_MODELSCOPE_REPO`
+override the repository ID for their respective source (both default to
+`Robbyant-Research/BiDex-100`). Rerun the same command to reuse downloaded files
+and resume an interrupted download. After downloading, the script checks for
+all five asset packs or all 106 task directories per selected dataset format,
+including task metadata, Parquet data, and videos.
+
 The asset setup script accepts either `downloads/BiDex-100` or
 `downloads/BiDex-100/assets`. It extracts each archive in place, creates the
 repository links, and recreates the relative aliases used by assembly tasks.
-When `assets/SHA256SUMS` is present, archive checksums are verified; otherwise
-the script records each local archive digest so unchanged extractions can be
-reused safely. It is idempotent, so an interrupted setup can be rerun safely.
+It is idempotent, so an interrupted setup can be rerun safely.
 Alternatively set
 `BIDEX_ASSETS=/path/to/BiDex-100/assets`. Export `HF_TOKEN` instead of using
 `hf auth login` in non-interactive environments.

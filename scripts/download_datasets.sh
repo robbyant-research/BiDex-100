@@ -3,9 +3,18 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source_args=()
+if [[ "${1:-}" == "--source" ]]; then
+  if [[ $# -lt 2 || -z "$2" || "$2" == -* ]]; then
+    echo "ERROR: --source requires huggingface or modelscope" >&2
+    exit 2
+  fi
+  source_args=(--source "$2")
+  shift 2
+fi
 
 usage() {
-  echo "Usage: $0 [lerobotv21|lerobotv30|all] [destination]" >&2
+  echo "Usage: $0 [--source huggingface|modelscope] [lerobotv21|lerobotv30|all] [destination]" >&2
 }
 
 component="${1:-all}"
@@ -35,4 +44,4 @@ if [[ $# -gt 1 ]]; then
   exit 2
 fi
 
-exec "$SCRIPT_DIR/download_release.sh" "$component" "$destination"
+exec "$SCRIPT_DIR/download_release.sh" "${source_args[@]}" "$component" "$destination"

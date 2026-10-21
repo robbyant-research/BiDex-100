@@ -1,31 +1,43 @@
 #!/usr/bin/env bash
-# Download selected parts of the BiDex-100 Hugging Face release.
+# Download selected parts of the BiDex-100 release from either dataset host.
 set -euo pipefail
 
-REPO_ID="${BIDEX_HF_REPO:-inclusionAI/BiDex-100}"
+source="${BIDEX_DOWNLOAD_SOURCE:-huggingface}"
 DEFAULT_DESTINATION="${BIDEX_DOWNLOAD_ROOT:-downloads/BiDex-100}"
 
 usage() {
   cat <<EOF
-Usage: $0 <component> [destination]
+Usage: $0 [--source huggingface|modelscope] <component> [destination]
 
 Components:
   assets       3D assets and metadata
   lerobotv21   LeRobot v2.1 datasets
   lerobotv30   LeRobot v3.0 datasets
+  datasets     both dataset formats
   all          assets and both dataset formats
 
-The destination keeps the Hugging Face repository layout:
+The destination keeps the same repository layout for either source:
   <destination>/assets/
   <destination>/datasets/lerobotv21/
   <destination>/datasets/lerobotv30/
 
 Environment variables:
   BIDEX_DOWNLOAD_ROOT  default destination (default: downloads/BiDex-100)
-  BIDEX_HF_REPO        repository ID (default: inclusionAI/BiDex-100)
+  BIDEX_DOWNLOAD_SOURCE  huggingface (default) or modelscope
+  BIDEX_HF_REPO        Hugging Face repository (default: Robbyant-Research/BiDex-100)
+  BIDEX_MODELSCOPE_REPO ModelScope repository (default: Robbyant-Research/BiDex-100)
   BIDEX_EXPECTED_TASKS expected task count per dataset format (default: 106)
 EOF
 }
+
+if [[ "${1:-}" == "--source" ]]; then
+  if [[ $# -lt 2 || -z "$2" || "$2" == -* ]]; then
+    echo "ERROR: --source requires huggingface or modelscope" >&2
+    exit 2
+  fi
+  source="$2"
+  shift 2
+fi
 
 if [[ $# -lt 1 || "$1" == "-h" || "$1" == "--help" ]]; then
   usage
@@ -69,22 +81,52 @@ case "$component" in
     ;;
 esac
 
-if ! command -v hf >/dev/null 2>&1; then
-  echo "ERROR: Hugging Face CLI not found. Install it with:" >&2
-  echo "  python -m pip install -U huggingface_hub" >&2
+case "$source" in
+  huggingface|hf)
+    source="huggingface"
+    REPO_ID="${BIDEX_HF_REPO:-Robbyant-Research/BiDex-100}"
+    cli="hf"
+    package="huggingface_hub"
+    ;;
+  modelscope)
+    REPO_ID="${BIDEX_MODELSCOPE_REPO:-Robbyant-Research/BiDex-100}"
+    cli="modelscope"
+    package="modelscope"
+    ;;
+  *)
+    echo "ERROR: unknown download source: $source (use huggingface or modelscope)" >&2
+    exit 2
+    ;;
+esac
+
+if ! command -v "$cli" >/dev/null 2>&1; then
+  echo "ERROR: $cli CLI not found. Install it with:" >&2
+  echo "  python -m pip install -U $package" >&2
   exit 1
 fi
 
 mkdir -p "$destination"
+echo "Source     : $source"
 echo "Repository : $REPO_ID"
 echo "Component  : $component"
 echo "Destination: $destination"
 echo "Includes   : ${includes[*]}"
 
-hf download "$REPO_ID" \
-  --repo-type dataset \
-  --include "${includes[@]}" \
-  --local-dir "$destination"
+if [[ "$source" == "modelscope" ]]; then
+  # ModelScope 1.38+ uses --local-dir; older SDKs use --local_dir.
+  local_dir_option="--local_dir"
+  if [[ "$(modelscope download --help)" == *"--local-dir"* ]]; then
+    local_dir_option="--local-dir"
+  fi
+  modelscope download "$REPO_ID" --repo-type dataset \
+    --include "${includes[@]}" \
+    "$local_dir_option" "$destination"
+else
+  hf download "$REPO_ID" \
+    --repo-type dataset \
+    --include "${includes[@]}" \
+    --local-dir "$destination"
+fi
 
 validate_assets() {
   local pack archive

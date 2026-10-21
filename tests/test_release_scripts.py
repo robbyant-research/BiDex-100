@@ -33,18 +33,23 @@ def test_local_eval_initializes_eval_pid_before_cleanup_trap() -> None:
     assert script.index('EVAL_PID=""') < script.index("_cleanup_all()")
 
 
-def test_download_release_component_filters(tmp_path: Path) -> None:
+@pytest.fixture
+def download_cli(tmp_path: Path) -> tuple[dict[str, str], Path]:
     bin_dir = tmp_path / "bin"
     bin_dir.mkdir()
-    args_log = tmp_path / "hf-args"
+    args_log = tmp_path / "download-args"
     mock_hf = bin_dir / "hf"
     mock_hf.write_text(
         "#!/usr/bin/env bash\n"
+        "if [[ ${2:-} == --help ]]; then\n"
+        "  if [[ ${MODELSCOPE_LEGACY_CLI:-0} == 1 ]]; then echo --local_dir; else echo --local-dir; fi\n"
+        "  exit 0\n"
+        "fi\n"
         "printf '%s\\n' \"$@\" > \"$HF_ARGS_LOG\"\n"
         "argv=(\"$@\")\n"
         "destination=''\n"
         "for ((i=0; i<${#argv[@]}; i++)); do\n"
-        "  if [[ ${argv[$i]} == --local-dir ]]; then destination=${argv[$((i+1))]}; fi\n"
+        "  if [[ ${argv[$i]} == --local-dir || ${argv[$i]} == --local_dir ]]; then destination=${argv[$((i+1))]}; fi\n"
         "done\n"
         "for arg in \"${argv[@]}\"; do\n"
         "  case $arg in\n"
@@ -66,13 +71,28 @@ def test_download_release_component_filters(tmp_path: Path) -> None:
         encoding="utf-8",
     )
     mock_hf.chmod(0o755)
+    shutil.copy2(mock_hf, bin_dir / "modelscope")
     env = {
         **os.environ,
         "PATH": f"{bin_dir}:{os.environ['PATH']}",
         "HF_ARGS_LOG": str(args_log),
         "BIDEX_EXPECTED_TASKS": "1",
+        "BIDEX_DOWNLOAD_SOURCE": "huggingface",
     }
+    env.pop("BIDEX_HF_REPO", None)
+    env.pop("BIDEX_MODELSCOPE_REPO", None)
+    return env, args_log
 
+
+@pytest.mark.parametrize("source", ["huggingface", "modelscope", "modelscope-legacy"])
+def test_download_release_component_filters(
+    tmp_path: Path, download_cli: tuple[dict[str, str], Path], source: str,
+) -> None:
+    env, args_log = download_cli
+    legacy = source == "modelscope-legacy"
+    if legacy:
+        source = "modelscope"
+        env = {**env, "MODELSCOPE_LEGACY_CLI": "1"}
     expected = {
         "assets": ["assets/**"],
         "lerobotv21": ["datasets/lerobotv21/**"],
@@ -92,26 +112,79 @@ def test_download_release_component_filters(tmp_path: Path) -> None:
         _run(
             "bash",
             "scripts/download_release.sh",
+            "--source",
+            source,
             component,
             str(destination),
             env=env,
         )
         argv = args_log.read_text(encoding="utf-8").splitlines()
-        assert argv[:3] == ["download", "inclusionAI/BiDex-100", "--repo-type"]
-        assert argv[3] == "dataset"
+        assert argv[:4] == ["download", "Robbyant-Research/BiDex-100", "--repo-type", "dataset"]
         include_index = argv.index("--include")
-        local_dir_index = argv.index("--local-dir")
+        local_dir_index = argv.index("--local_dir" if legacy else "--local-dir")
         assert argv[include_index + 1 : local_dir_index] == patterns
         assert argv[local_dir_index + 1] == str(destination)
 
 
-def test_download_release_rejects_empty_successful_download(tmp_path: Path) -> None:
+@pytest.mark.parametrize(
+    ("script", "args", "patterns"),
+    [
+        ("download_assets.sh", [], ["assets/**"]),
+        ("download_datasets.sh", ["all"], ["datasets/lerobotv21/**", "datasets/lerobotv30/**"]),
+        ("download_datasets.sh", ["v21"], ["datasets/lerobotv21/**"]),
+        ("download_datasets.sh", ["3.0"], ["datasets/lerobotv30/**"]),
+        ("download_datasets.sh", [], ["datasets/lerobotv21/**", "datasets/lerobotv30/**"]),
+    ],
+)
+def test_modelscope_wrappers_forward_source_and_preserve_layout(
+    tmp_path: Path, download_cli: tuple[dict[str, str], Path],
+    script: str, args: list[str], patterns: list[str],
+) -> None:
+    env, args_log = download_cli
+    destination = tmp_path / "download with spaces"
+    _run("bash", f"scripts/{script}", "--source", "modelscope", *args, str(destination), env=env)
+    argv = args_log.read_text().splitlines()
+    assert argv[:4] == ["download", "Robbyant-Research/BiDex-100", "--repo-type", "dataset"]
+    assert argv[argv.index("--include") + 1:argv.index("--local-dir")] == patterns
+    assert argv[-1] == str(destination)
+
+
+def test_download_source_environment_and_explicit_override(
+    tmp_path: Path, download_cli: tuple[dict[str, str], Path],
+) -> None:
+    env, args_log = download_cli
+    env = {**env, "BIDEX_DOWNLOAD_SOURCE": "modelscope", "BIDEX_MODELSCOPE_REPO": "example/mirror"}
+    destination = str(tmp_path / "release")
+    _run("bash", "scripts/download_release.sh", "assets", destination, env=env)
+    assert args_log.read_text().splitlines()[:4] == ["download", "example/mirror", "--repo-type", "dataset"]
+    _run("bash", "scripts/download_release.sh", "--source", "huggingface", "assets", destination, env=env)
+    assert args_log.read_text().splitlines()[:3] == ["download", "Robbyant-Research/BiDex-100", "--repo-type"]
+
+
+@pytest.mark.parametrize("script", ["download_release.sh", "download_assets.sh", "download_datasets.sh"])
+@pytest.mark.parametrize("source_args", [["--source"], ["--source", "invalid"]])
+def test_download_rejects_invalid_source_arguments(
+    tmp_path: Path, download_cli: tuple[dict[str, str], Path], script: str, source_args: list[str],
+) -> None:
+    env, args_log = download_cli
+    args = ["assets", str(tmp_path / "release")] if script == "download_release.sh" else [str(tmp_path / "release")]
+    if source_args == ["--source"]:
+        args = []
+    result = subprocess.run(["bash", f"scripts/{script}", *source_args, *args], cwd=REPO_ROOT, env=env, text=True, capture_output=True)
+    assert result.returncode == 2
+    assert "source" in result.stderr
+    assert not args_log.exists()
+
+
+@pytest.mark.parametrize("source", ["huggingface", "modelscope"])
+def test_download_release_rejects_empty_successful_download(tmp_path: Path, source: str) -> None:
     bin_dir = tmp_path / "bin"
     bin_dir.mkdir()
     mock_hf = bin_dir / "hf"
     mock_hf.write_text("#!/usr/bin/env bash\nexit 0\n", encoding="utf-8")
     mock_hf.chmod(0o755)
-    env = {**os.environ, "PATH": f"{bin_dir}:{os.environ['PATH']}"}
+    shutil.copy2(mock_hf, bin_dir / "modelscope")
+    env = {**os.environ, "PATH": f"{bin_dir}:{os.environ['PATH']}", "BIDEX_DOWNLOAD_SOURCE": source}
 
     result = subprocess.run(
         [
@@ -131,14 +204,15 @@ def test_download_release_rejects_empty_successful_download(tmp_path: Path) -> N
     assert "Download complete." not in result.stdout
 
 
-def test_download_release_rejects_metadata_without_payload(tmp_path: Path) -> None:
+@pytest.mark.parametrize("source", ["huggingface", "modelscope"])
+def test_download_release_rejects_metadata_without_payload(tmp_path: Path, source: str) -> None:
     bin_dir = tmp_path / "bin"
     bin_dir.mkdir()
     mock_hf = bin_dir / "hf"
     mock_hf.write_text(
         "#!/usr/bin/env bash\n"
         "while [[ $# -gt 0 ]]; do\n"
-        "  if [[ $1 == --local-dir ]]; then\n"
+        "  if [[ $1 == --local-dir || $1 == --local_dir ]]; then\n"
         "    mkdir -p \"$2/datasets/lerobotv21/task/meta\"\n"
         "    printf '{}\\n' > \"$2/datasets/lerobotv21/task/meta/info.json\"\n"
         "    exit 0\n"
@@ -148,10 +222,12 @@ def test_download_release_rejects_metadata_without_payload(tmp_path: Path) -> No
         encoding="utf-8",
     )
     mock_hf.chmod(0o755)
+    shutil.copy2(mock_hf, bin_dir / "modelscope")
     env = {
         **os.environ,
         "PATH": f"{bin_dir}:{os.environ['PATH']}",
         "BIDEX_EXPECTED_TASKS": "1",
+        "BIDEX_DOWNLOAD_SOURCE": source,
     }
 
     result = subprocess.run(
