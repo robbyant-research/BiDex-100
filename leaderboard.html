@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BiDex-100 · Leaderboard &amp; Detailed Results</title>
+<meta name="description" content="Compare seven VLA models across 106 BiDex-100 tasks. Explore News, capability rankings, matched ID/OOD results, and full task replays.">
+<meta property="og:title" content="BiDex-100 · Leaderboard &amp; Detailed Results">
+<meta property="og:description" content="106 tasks · 5 capability axes · two 22-DoF bimanual embodiments · 8,080 teleop demos · matched ID/OOD evaluation · 7 VLA models.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="static/images/figures/overview.png">
+<link rel="icon" href="static/images/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="static/images/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="static/images/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="static/images/favicon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="static/images/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/layout.css">
+</head>
+<body class="results-page">
+<nav class="nav solid" id="nav">
+  <div class="nav-inner">
+    <a href="./" class="brand" aria-label="BiDex-100 home"><span class="brand-text">BiDex-100</span></a>
+    <div class="nav-links" id="nav-links">
+      <a href="./#overview">Overview</a>
+      <a href="document.html">Document</a>
+      <a href="./#get-started">Tasks</a>
+      <a class="page-current" href="leaderboard.html" aria-current="page">Leaderboard</a>
+      <a href="#news">News</a>
+    </div>
+    <div class="nav-cta"><a class="btn btn-primary" href="./#get-started">Explore tasks <span aria-hidden="true">↗</span></a><button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
+</nav>
+<div class="drawer" id="drawer">
+  <div class="drawer-head"><span class="brand-name">BiDex-100</span><button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button></div>
+  <a href="./">Home</a><a href="./#overview">Overview</a>
+  <a href="document.html">Document</a><a href="./#get-started">Tasks</a><a href="#news">News</a><a href="#leaderboard">Leaderboard</a><a href="#results">Detailed Results</a>
+</div>
+<main id="top">
+<header class="results-header">
+  <div class="container">
+    <a class="back-link" href="./">← Back to the benchmark</a>
+    <p class="eyebrow">BiDex-100 · Evaluation</p>
+    <h1>Benchmark results.</h1>
+    <p class="results-intro">Compare policies across capabilities.<br>Then look closer at every task.</p>
+    <div class="results-facts"><span>7 VLA models</span><span>106 tasks</span><span>Matched ID / OOD</span><span>100 rollouts per task · 50 ID + 50 OOD</span></div>
+  </div>
+</header>
+<nav class="results-jump-nav" aria-label="Results sections"><div class="container"><a href="#news">News</a><a href="#leaderboard">Leaderboard</a><a href="#results">Detailed Results</a><a class="results-gallery-link" href="./#get-started">Task gallery ↗</a></div></nav>
+<section class="section news-section" id="news" aria-labelledby="news-title">
+  <div class="container">
+    <div class="section-head"><p class="eyebrow" id="news-title">News</p><h2>Updates from the benchmark.</h2></div>
+    <div class="news-list">
+      <article class="news-item"><time datetime="2026-10-21">2026.10.21</time><div><span class="news-tag">Website</span><h3>A dedicated home for benchmark results.</h3><p>Leaderboard and per-task results now share this page, with capability, metric, and domain filters. <a href="#leaderboard">Explore the rankings →</a></p></div></article>
+      <article class="news-item"><time datetime="2026-10-20">2026.10.20</time><div><span class="news-tag">Task gallery</span><h3>Full-length videos for all 106 tasks.</h3><p>The task gallery now includes complete demonstrations and rollouts, replacing short previews. <a href="./#get-started">Watch the replays →</a></p></div></article>
+      <article class="news-item"><time datetime="2026-10-19">2026.10.19</time><div><span class="news-tag">Evaluation</span><h3>Seven-model ID / OOD results updated.</h3><p>Aggregate rankings, capability breakdowns, and individual task results reflect the evaluation snapshot dated October 19. <a href="#results">Inspect detailed results →</a></p></div></article>
+    </div>
+  </div>
+</section>
+<!-- ================= LEADERBOARD ================= -->
+<section class="section evidence-band evidence-band--results" id="leaderboard">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Leaderboard</p>
+      <h2>7 co-trained models.</h2>
+      <p class="lead"><b>SR</b> strict success rate · <b>Score</b> progress score.</p>
+      <time class="results-updated" datetime="2026-10-19">Updated 2026.10.19</time>
+    </div>
+
+    <div class="leaderboard-card" style="margin-bottom:28px;">
+      <div class="leaderboard-toolbar">
+        <div class="lb-filters" aria-label="Leaderboard controls">
+          <label class="field" for="lb-dimension"><span>Dimension</span>
+            <select class="lb-select" id="lb-dimension">
+              <option value="overall">Overall</option>
+              <option value="Generalization">Generalization</option>
+              <option value="Instruction_Following">Instruction-Following</option>
+              <option value="Limited_Demonstrations">Limited-Demonstrations</option>
+              <option value="Long_Horizon">Long-Horizon</option>
+              <option value="Memory">Memory</option>
+            </select>
+          </label>
+          <div class="field"><span>Rank by</span><div class="rt-chips">
+            <button class="rt-chip active" data-lb-group="metric" data-k="succ">SR</button>
+            <button class="rt-chip" data-lb-group="metric" data-k="score">Score</button>
+          </div></div>
+          <div class="field"><span>Domain</span><div class="rt-chips">
+            <button class="rt-chip active" data-lb-group="domain" data-k="all">ID + OOD</button>
+            <button class="rt-chip" data-lb-group="domain" data-k="id">ID</button>
+            <button class="rt-chip" data-lb-group="domain" data-k="ood">OOD</button>
+          </div></div>
+        </div>
+      </div>
+      <div class="lb-wrap"><table class="lb-table compact" id="agg-table"></table></div>
+      <p class="model-icon-credit">Model icons via <a href="https://robodojo-benchmark.com/leaderboard#agent" target="_blank" rel="noopener">RoboDojo</a>.</p>
+      <p class="evidence-caption">Every result cell is shown as <b>SR / Score</b>. Ranking follows the selected dimension, metric, and domain; capability columns are equal-weight means over their tasks. Best values are highlighted.</p>
+    </div>
+
+    <div class="section-head detailed-heading" id="results">
+      <p class="eyebrow">Detailed Results</p>
+      <h2>Per-task evaluation results · 106 tasks × 7 models.</h2>
+      <p class="lead">Each task has 100 rollouts in total: 50 In-Domain + 50 Out-of-Domain (2 fixed seeds × 25 episodes per domain). Strict success is shown first by default; toggle the metric or domain to inspect partial progress and OOD degradation.</p>
+      <time class="results-updated" datetime="2026-10-19">Updated 2026.10.19</time>
+    </div>
+    <div class="results-task-filter">
+      <label class="search-field" for="result-search"><span>Find a task</span><input id="result-search" type="search" placeholder="Search by task or instruction…" autocomplete="off"></label>
+      <label class="field" for="result-axis"><span>Capability</span><select class="lb-select" id="result-axis"><option value="all">All capabilities</option><option value="Generalization">Generalization</option><option value="Instruction_Following">Instruction-Following</option><option value="Limited_Demonstrations">Limited-Demonstrations</option><option value="Long_Horizon">Long-Horizon</option><option value="Memory">Memory</option></select></label>
+      <p id="result-count" class="result-count" aria-live="polite"></p>
+    </div>
+    <div class="chart-panel wide">
+      <div class="rt-controls">
+        <div class="field"><span>Metric</span><div class="rt-chips">
+          <button class="rt-chip active" data-group="metric" data-k="succ">Strict success</button>
+          <button class="rt-chip" data-group="metric" data-k="score">Progress score</button>
+        </div></div>
+        <div class="field"><span>Domain</span><div class="rt-chips">
+          <button class="rt-chip active" data-group="domain" data-k="all">ID + OOD (mean)</button>
+          <button class="rt-chip" data-group="domain" data-k="id">In-Domain</button>
+          <button class="rt-chip" data-group="domain" data-k="ood">Out-of-Domain</button>
+        </div></div>
+      </div>
+      <div class="table-wrap"><table class="results-table" id="results-table" aria-describedby="rtable-cap"></table></div>
+      <p id="rtable-cap" class="dim evidence-caption">Cell shading scales with the value (0–100). Rows are grouped by capability axis (colored header); the <b>Overall mean</b> footer is the equal-weight per-model mean over 212 task-runs (106 tasks × 2 domains). Select a task name for its full replay and per-subtask breakdown. <b>Best value per task is bolded.</b></p>
+    </div>
+  </div>
+</section>
+
+</main>
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px;"><span class="brand-text">BiDex-100</span></div>
+        <p class="dim" style="max-width:42ch; font-size:14px;">A simulation benchmark for bimanual dexterous manipulation: 106 capability-organized tasks, two 22-DoF dexterous embodiments, matched ID/OOD evaluation, and 8,080 teleoperated demonstrations. Built on MuJoCo.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="./#overview">Overview</a>
+        <a href="./#dataset">Dataset</a>
+        <a href="./#get-started">Tasks</a>
+        <a href="./#setup">Setup</a>
+        <a href="#leaderboard">Leaderboard</a>
+      </div>
+      <div>
+        <h5>Reproduce</h5>
+        <a href="document.html">Document</a>
+        <a href="#leaderboard">Baselines</a>
+        <a href="./#domain-randomization">Evaluation</a>
+        <a class="resource-link" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
+      </div>
+      <div>
+        <h5>Data</h5>
+        <a class="resource-link" href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face</a>
+        <a class="resource-link" href="https://modelscope.cn/datasets/Robbyant-Research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/modelscope.svg" width="20" height="20" alt="" aria-hidden="true">ModelScope</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="ver">BiDex-100 homepage · v2026.09</span>
+      <span>Built on MuJoCo · LeRobot v2.1 · © 2026 BiDex-100 authors.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="copy-toast" id="copy-toast">BibTeX copied</div>
+
+<script src="static/js/data.js"></script>
+<script src="static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks</title>
+<meta name="description" content="BiDex-100 is a simulation benchmark for bimanual dexterous manipulation: 106 tasks across five capability axes, two 22-DoF dexterous embodiments, 8,080 teleoperated demonstrations, matched In-Domain / Out-of-Domain evaluation, and progress-based predicate scoring. Seven recent VLA models are evaluated under one unified protocol.">
+<meta property="og:title" content="BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks">
+<meta property="og:description" content="106 tasks · 5 capability axes · two 22-DoF bimanual embodiments · 8,080 teleop demos · matched ID/OOD evaluation · 7 VLA models.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="static/images/figures/overview.png">
+<link rel="icon" href="static/images/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="static/images/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="static/images/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="static/images/favicon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="static/images/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/layout.css">
+<link rel="stylesheet" href="static/css/dataset.css">
+</head>
+<body class="home-page">
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="BiDex-100 home">
+      <span class="brand-text">BiDex-100</span>
+    </a>
+    <div class="nav-links" id="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="document.html">Document</a>
+      <a href="#get-started">Tasks</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="leaderboard.html#news">News</a>
+    </div>
+    <div class="nav-cta">
+      <a href="document.html" class="btn btn-primary">Get started <span class="btn-arrow" aria-hidden="true">→</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
+</nav>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <span class="brand-name">BiDex-100</span>
+    <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+  </div>
+  <a href="#overview">Overview</a>
+  <a href="document.html">Document</a>
+  <a href="#setup">Setup</a>
+  <a href="#domain-randomization">Domain Randomization</a>
+  <a href="#get-started">Tasks</a>
+  <a href="leaderboard.html">Leaderboard</a>
+  <a href="leaderboard.html#news">News</a>
+</div>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<header class="hero hero-centered hero-fullscreen" id="hero">
+  <video class="hero-bg-video" id="hero-video" src="static/videos/showcase_cropped.mp4" poster="static/videos/showcase_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="hero-bg-scrim" aria-hidden="true"></div>
+  <div class="container hero-stage">
+    <div class="hero-content">
+      <h1 class="hero-wordmark">BiDex-100</h1>
+      <p class="hero-subtitle">A Comprehensive Benchmark for Bimanual Dexterous Manipulation Across 100+ Simulation Tasks</p>
+      <div class="hero-contributors" aria-label="Authors and affiliations">
+        <p class="hero-author-slot">Anonymous Authors</p>
+        <p class="hero-affiliation-slot">Anonymous Institution(s) · Submitted for review</p>
+      </div>
+      <nav class="cta" aria-label="Project resources">
+        <a class="btn btn-resource" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/arxiv.svg" width="20" height="20" alt="" aria-hidden="true">Paper</a>
+        <a class="btn btn-resource" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
+        <a class="btn btn-resource" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face</a>
+        <a class="btn btn-resource" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/modelscope.svg" width="20" height="20" alt="" aria-hidden="true">ModelScope</a>
+        <a class="btn btn-resource" href="static/pdf/BiDex_Supplementary_Material.pdf">Supplementary</a>
+        <a class="btn btn-primary" href="leaderboard.html">Leaderboard <span class="btn-arrow" aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="stats-section" id="capabilities" aria-label="Benchmark statistics">
+  <div class="container">
+    <div class="stats-grid" id="stats-grid"></div>
+  </div>
+</section>
+
+<!-- ================= PROJECT VIDEO ================= -->
+<section class="video-placeholder" id="video">
+  <div class="container hero-banner">
+    <div class="section-head">
+      <p class="eyebrow">Video</p>
+      <h2>Project showcase.</h2>
+    </div>
+    <figure class="hero-evidence">
+      <div class="hero-evidence-frame">
+        <video class="video-showcase-video" src="static/videos/video_compressed.mp4" autoplay muted loop playsinline preload="metadata" controls aria-label="BiDex-100 project showcase"></video>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= ABSTRACT ================= -->
+<section class="section evidence-band evidence-band--paper" id="abstract" data-section-index="01">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Abstract</p>
+      <h2>Benchmarking bimanual dexterous manipulation along capability edges.</h2>
+    </div>
+    <p class="abstract-text">Bimanual manipulation with dexterous hands has attracted growing attention in research on robotic action models. However, few studies have developed benchmarks specifically tailored for dexterous manipulation, leaving it unclear <i>how</i> the dexterous-manipulation capability of existing models actually bears out. We present <b>BiDex-100</b>, a simulation benchmark for bimanual dexterous manipulation that combines broad task coverage, multi-dimensional evaluation, and high-DoF hand embodiments. Concretely, the benchmark comprises <b>106 tasks</b> organized along five capability axes: <b>Generalization</b>, <b>Instruction Following</b>, <b>Limited Demonstrations</b>, <b>Long Horizon</b>, and <b>Memory</b>. Each task is paired with an out-of-domain variant featuring controlled visual and spatial changes, allowing systematic assessment of robustness. In addition, the benchmark supports two embodiments and provides <b>8,080 success-validated teleoperated demonstrations</b>, totaling 6.25M frames. We evaluate seven recent Vision-Language-Action models under a unified protocol, establishing baselines for capability-specific performance, robustness, and data efficiency. Code, tasks, data, and evaluation tools will be made public.</p>
+  </div>
+</section>
+
+<!-- ================= SYSTEM OVERVIEW ================= -->
+<section class="section overview-fig evidence-band evidence-band--figure" id="overview" data-section-index="02">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">System Overview</p>
+      <h2>106 declarative tasks, two bimanual dexterous embodiments, matched ID / OOD scoring.</h2>
+    </div>
+    <figure class="overview-frame">
+      <img src="static/images/figures/overview.png" alt="BiDex-100 overview: 106 tasks across five capability axes, two bimanual 22-DoF dexterous embodiments, 8,080 demonstrations, and matched In-Domain / Out-of-Domain evaluation with progress-based scoring." fetchpriority="high">
+      <figcaption class="evidence-caption"><b>Overview of BiDex-100.</b> The benchmark provides 106 declarative task specifications across five capability axes, 8,080 success-validated teleoperated demonstrations on two bimanual embodiments equipped with dexterous hands, and progress-based scoring under matched In-Domain and Out-of-Domain protocols. Five representative tasks, one per capability axis — Memory, Long-Horizon, Instruction-Following, Limited-Demonstrations, and Generalization — each shown with a real demonstration and its language instruction.</figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ================= SETUP ================= -->
+<section class="section evidence-band" id="setup" data-section-index="03">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Setup</p>
+      <h2>Embodiments, teleoperation pipeline, and synchronized observations.</h2>
+    </div>
+
+    <div class="setup-grid">
+      <!-- Embodiment & Observation -->
+      <div class="setup-sub" id="setup-embodiments">
+        <div class="section-head">
+          <p class="eyebrow">Embodiment & Observation</p>
+          <h2>Two bimanual 22-DoF dexterous embodiments, one 58-DoF joint interface.</h2>
+          <p class="lead">Both platforms share the same 22-DoF Shadow-style dexterous hand on two 7-DoF arms, giving a 58-DoF action space. Observations are synchronized RGB-D images from head, left-wrist, and right-wrist cameras at 480×360 and 25 Hz, with full proprioceptive state. All 106 tasks are evaluated on the dual-Franka platform; 10 Generalization tasks are additionally instantiated on the Astribot S1 humanoid.</p>
+        </div>
+        <div class="emb-grid" id="emb-grid"></div>
+      </div>
+
+      <!-- Teleoperation Pipeline -->
+      <div class="setup-sub" id="setup-teleop">
+        <div class="section-head">
+          <p class="eyebrow">Teleoperation Pipeline</p>
+          <h2>From human hands to bimanual dexterity — 8,080 validated episodes.</h2>
+          <p class="lead">Demonstrations are collected through two complementary teleoperation modalities — an exoskeleton glove and an Apple Vision Pro headset — that feed a single optimization-based retargeting stack, producing one homogeneous 58-DoF data stream across platforms and devices.</p>
+        </div>
+        <div class="teleop-mod" id="teleop-mod">
+          <div class="tm tm--media">
+            <span class="tm-thumb"><img src="static/images/figures/teleop_factr.png" alt="Exoskeleton glove: joint-level finger tracking teleoperation pipeline used in BiDex-100" loading="lazy"></span>
+            <span class="tm-body"><h4>Exoskeleton glove</h4><p>An exoskeleton glove streams joint-level finger tracking for high-dexterity, contact-rich manipulation.</p></span>
+          </div>
+          <div class="tm tm--media">
+            <span class="tm-thumb"><img src="static/images/figures/teleop_avp.png" alt="Apple Vision Pro WebXR teleoperation pipeline used in BiDex-100" loading="lazy"></span>
+            <span class="tm-body"><h4>Apple Vision Pro</h4><p>An Apple Vision Pro headset (WebXR) streams wrist poses and 25 hand keypoints for untethered operation.</p></span>
+          </div>
+        </div>
+        <div class="teleop-steps">
+          <div class="teleop-step"><div><h4>Capture wrist & hand motion</h4><p>The glove or headset streams human hand keypoints and wrist pose at the control rate; a fixed linear node map converts headset keypoints to the glove's canonical joint representation.</p></div></div>
+          <div class="teleop-step"><div><h4>Retarget & solve IK</h4><p>Arm targets come from a constrained NLP over the first five joints (SLSQP) minimizing weighted position, orientation and temporal-smoothness cost; two wrist DoF and arm-length mismatch are recovered in closed form. Hand targets are a weighted least-squares fit of robot keypoints to tracked human keypoints.</p></div></div>
+          <div class="teleop-step"><div><h4>Record actions, states & observations</h4><p>Each step stores the 58-DoF action, 130-D observation, six RGB-D streams, subtask-progress annotations, and a serialized initial state enabling exact replay of the episode's initial conditions.</p></div></div>
+        </div>
+      </div>
+
+      <!-- Six Synchronized Camera Views -->
+      <div class="setup-sub" id="setup-views">
+        <div class="section-head">
+          <p class="eyebrow">Six Synchronized Camera Views</p>
+          <h2>One episode, six time-aligned RGB-D streams.</h2>
+          <p class="lead">Every demonstration episode stores color <em>and</em> depth for the head and both wrist cameras, fully synchronized. Press play to watch all six views in lockstep; drag the timeline to scrub. (Demo: <i>Pour Ice Between Two Cups</i> · Dual Franka.)</p>
+        </div>
+        <div class="modalplayer" data-modalplayer data-manifest="static/videos/modal/manifest.json">
+          <div class="modal-grid"></div>
+          <div class="mp-ctrl">
+            <button class="mp-play" type="button" aria-label="Play synchronized views">▶</button>
+            <input type="range" class="mp-seek" min="0" max="1000" value="0" aria-label="Episode timeline scrubber">
+            <span class="mp-frame">0:00 / 0:00</span>
+            <span class="mp-ep">Pour Ice Between Two Cups · Dual Franka</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DATASET ================= -->
+<section class="section evidence-band dataset-section" id="dataset" data-section-index="04" aria-labelledby="dataset-heading">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Dataset</p>
+      <h2 id="dataset-heading">A closer look at the demonstrations.</h2>
+      <p class="lead">Explore how tasks, demonstrations and recorded time are distributed across the five capability axes and two embodiments.</p>
+    </div>
+    <div class="dataset-facts" aria-label="Dataset totals"><span><b>8,080</b> demonstrations</span><span><b>6,248,973</b> frames</span><span><b>69.43 h</b> recorded at 25 Hz</span></div>
+    <div class="dataset-grid" id="dataset-charts" aria-busy="true">
+      <article class="dataset-card dataset-card--flow" aria-labelledby="flow-heading">
+        <div class="dataset-card-head"><div><p class="dataset-kicker">01 / Embodiment → capability → task → duration</p><h3 id="flow-heading">Where demonstrations come from</h3></div><span class="dataset-unit" id="flow-visible-total">106 tasks · 8,080 demonstrations</span></div>
+        <div class="flow-controls">
+          <div class="flow-axis-filters" role="group" aria-label="Sankey capability filter"><button type="button" data-flow-axis="all" aria-pressed="true">All 106 tasks</button><button type="button" data-flow-axis="Generalization" aria-pressed="false">Generalization</button><button type="button" data-flow-axis="Instruction_Following" aria-pressed="false">Instruction Following</button><button type="button" data-flow-axis="Limited_Demonstrations" aria-pressed="false">Limited Demonstrations</button><button type="button" data-flow-axis="Long_Horizon" aria-pressed="false">Long Horizon</button><button type="button" data-flow-axis="Memory" aria-pressed="false">Memory</button></div>
+          <div class="dataset-toggle flow-weight-toggle" role="group" aria-label="Sankey flow width"><button type="button" data-flow-weight="demonstrations" aria-pressed="true">Demonstrations</button><button type="button" data-flow-weight="hours" aria-pressed="false">Recorded hours</button></div>
+        </div>
+        <p class="flow-explainer">Each fine ribbon represents one task. Filter a capability to reveal task names, or select a task to trace its full path. Duration bands use each task's mean demonstration length.</p>
+        <p class="flow-scroll-hint">Swipe horizontally to explore all four stages →</p>
+        <div class="dataset-flow" id="dataset-flow" tabindex="0" role="region" aria-label="Scrollable four-stage dataset Sankey"></div>
+        <div class="flow-task-detail"><strong id="flow-task-name">Trace an individual task</strong><span id="flow-task-stats">Hover or focus to inspect a task.</span></div>
+        <p class="dataset-readout" id="flow-readout" aria-live="polite">Hover or focus on a flow to explore its demonstrations.</p>
+      </article>
+      <article class="dataset-card" aria-labelledby="composition-heading">
+        <div class="dataset-card-head"><div><p class="dataset-kicker">02 / Composition</p><h3 id="composition-heading">Five axes, different shares</h3></div></div>
+        <div class="dataset-toggle" role="group" aria-label="Composition metric"><button type="button" data-dataset-metric="tasks" aria-pressed="true">Tasks</button><button type="button" data-dataset-metric="demonstrations" aria-pressed="false">Demonstrations</button></div>
+        <div class="dataset-donut-wrap"><div id="dataset-donut"></div><div class="dataset-legend" id="dataset-legend"></div></div>
+        <p class="dataset-readout" id="composition-readout" aria-live="polite">Select an axis to see its share of the dataset.</p>
+      </article>
+      <article class="dataset-card" aria-labelledby="time-heading">
+        <div class="dataset-card-head"><div><p class="dataset-kicker">03 / Recorded time</p><h3 id="time-heading">The scale of each capability</h3></div><span class="dataset-unit">Hours</span></div>
+        <div class="dataset-bars" id="dataset-bars"></div>
+        <p class="dataset-readout" id="time-readout" aria-live="polite">One timeline per demonstration, across all synchronized views.</p>
+      </article>
+    </div>
+    <p class="dataset-source" id="dataset-source">Statistics use the full LeRobot v2.1 metadata across all 106 tasks. Recorded time = frames ÷ 25 Hz; synchronized camera views are counted once. <a href="static/data/dataset-statistics.csv" download>Download per-task statistics ↗</a></p>
+    <noscript><p>106 tasks · 8,080 demonstrations · 6,248,973 frames · 69.43 recorded hours. <a href="static/data/dataset-statistics.csv">View the per-task statistics.</a></p></noscript>
+  </div>
+</section>
+
+<!-- ================= DOMAIN RANDOMIZATION ================= -->
+<section class="section evidence-band evidence-band--protocol" id="domain-randomization" data-section-index="05">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Domain Randomization</p>
+      <h2>Matched In-Domain / Out-of-Domain evaluation through controlled randomization.</h2>
+      <p class="lead">Goals are machine-checkable predicate conjunctions with deterministic seeding and matched In-Domain / Out-of-Domain variants. <b>Strict success</b> requires a perfect 100; the following <b>progress score</b> rewards partial completion in [0,100]. Below, each randomized condition is demonstrated from the head camera on a different out-of-domain task.</p>
+    </div>
+    <div class="eval-tiers">
+      <div class="eval-tier"><div class="top-bar" style="background:var(--green);"></div><div class="num">01</div><div class="n">Success & progress</div><div class="d">Strict success requires all predicates; the following score sums latched weighted subtask credit (Σ wₖ = 100) to expose partial progress.</div></div>
+      <div class="eval-tier"><div class="top-bar" style="background:var(--accent);"></div><div class="num">02</div><div class="n">Latched & ordered credit</div><div class="d">Must-hold, latch-violation and ordered-subtask mechanisms defeat touch-and-go, forbidden outcomes and out-of-sequence gains.</div></div>
+      <div class="eval-tier"><div class="top-bar" style="background:var(--amber);"></div><div class="num">03</div><div class="n">Matched ID / OOD</div><div class="d">Every task has one baked <code>__ood</code> variant (identical seed & initial state) over five scripted shifts — directly comparable robustness.</div></div>
+      <div class="eval-tier"><div class="top-bar" style="background:var(--brick);"></div><div class="num">04</div><div class="n">Data efficiency</div><div class="d">The Limited-Demonstrations axis isolates a fixed 30-demonstration regime, measuring skill acquisition when training data are scarce.</div></div>
+    </div>
+
+    <div style="margin-top:clamp(32px,4vw,52px);">
+      <h4 class="lb-title">Five domain-randomization modes</h4>
+      <div class="dr-grid" id="dr-grid"></div>
+    </div>
+
+    <div style="margin-top:28px">
+      <h4 style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin:0 0 12px">The five scripted out-of-domain shifts</h4>
+      <div class="shift-list">
+        <div class="sh"><span class="nn">Scene randomization</span><span class="dd">Floor, wall and tabletop textures redrawn from a held-out pool, with lighting position and intensity jitter.</span></div>
+        <div class="sh"><span class="nn">Region offset</span><span class="dd">Placement regions translated 4–9 cm in the world frame (precision-critical slots excluded).</span></div>
+        <div class="sh"><span class="nn">Distractor injection</span><span class="dd">2–6 sibling objects added; grasping a distractor terminates the episode at its latched score.</span></div>
+        <div class="sh"><span class="nn">Object rescaling</span><span class="dd">Articulated objects scaled by {0.85, 0.9, 1.1, 1.15}.</span></div>
+        <div class="sh"><span class="nn">Left-right mirroring</span><span class="dd">The whole layout is mirrored about the workspace midline; left/right is swapped in the instruction.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GET STARTED ================= -->
+<section class="section evidence-band evidence-band--atlas" id="get-started" data-section-index="06">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Tasks</p>
+      <h2>The 106-task capability atlas.</h2>
+      <p class="lead">Each card shows a head-camera frame from a real demonstration, the task's per-subtask completion (mini bars), and the best-performing model. Click any card for the demo replay, full per-subtask completion rates, and the 7-model In-Domain / Out-of-Domain breakdown. Filter by capability axis below.</p>
+    </div>
+    <div class="task-rail" id="task-filters" role="tablist" aria-label="Task filter"></div>
+    <div class="task-grid" id="all-tasks"></div>
+  </div>
+</section>
+
+<section class="results-invitation">
+  <div class="container">
+    <div><p class="eyebrow">Compare the baselines</p><h2>From demonstrations to evaluation.</h2><p>Explore seven VLA models across all 106 tasks, with matched ID and OOD results.</p></div>
+    <a class="btn btn-primary" href="leaderboard.html">Explore the leaderboard <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px;"><span class="brand-text">BiDex-100</span></div>
+        <p class="dim" style="max-width:42ch; font-size:14px;">A simulation benchmark for bimanual dexterous manipulation: 106 capability-organized tasks, two 22-DoF dexterous embodiments, matched ID/OOD evaluation, and 8,080 teleoperated demonstrations. Built on MuJoCo.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="#overview">Overview</a>
+        <a href="#dataset">Dataset</a>
+        <a href="#get-started">Tasks</a>
+        <a href="#setup">Setup</a>
+        <a href="leaderboard.html">Leaderboard</a>
+      </div>
+      <div>
+        <h5>Reproduce</h5>
+        <a href="document.html">Document</a>
+        <a href="leaderboard.html">Baselines</a>
+        <a href="#domain-randomization">Evaluation</a>
+        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
+      </div>
+      <div>
+        <h5>Data</h5>
+        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face</a>
+        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/modelscope.svg" width="20" height="20" alt="" aria-hidden="true">ModelScope</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="ver">BiDex-100 homepage · v2026.09</span>
+      <span>Built on MuJoCo · LeRobot v2.1 · © 2026 BiDex-100 authors.</span>
+    </div>
+  </div>
+</footer>
+
+
+<script src="static/js/data.js"></script>
+<script type="application/json" id="modal-manifest">{"video_dir": "static/videos/modal"}</script>
+<script src="static/js/app.js"></script>
+<script src="static/js/dataset.js"></script>
+</body>
+</html>

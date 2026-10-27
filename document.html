@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BiDex-100 · Document</title>
+<meta name="description" content="Set up BiDex-100 simulation, download data, train π0.5, LingBot-VLA-v2 and GR00T, and reproduce evaluation.">
+<meta property="og:title" content="BiDex-100 · Document">
+<meta property="og:description" content="106 tasks · 5 capability axes · two 22-DoF bimanual embodiments · 8,080 teleop demos · matched ID/OOD evaluation · 7 VLA models.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="static/images/figures/overview.png">
+<link rel="icon" href="static/images/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="static/images/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="static/images/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="static/images/favicon-180.png">
+<link rel="apple-touch-icon" sizes="192x192" href="static/images/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..900;1,8..60,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/layout.css">
+<link rel="stylesheet" href="static/css/document.css">
+</head>
+<body class="results-page document-page">
+<nav class="nav solid" id="nav">
+  <div class="nav-inner">
+    <a href="./" class="brand" aria-label="BiDex-100 home"><span class="brand-text">BiDex-100</span></a>
+    <div class="nav-links" id="nav-links">
+      <a href="./#overview">Overview</a>
+      <a class="page-current" href="document.html" aria-current="page">Document</a>
+      <a href="./#get-started">Tasks</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="leaderboard.html#news">News</a>
+    </div>
+    <div class="nav-cta"><a class="btn btn-primary" href="./#get-started">Explore tasks <span aria-hidden="true">↗</span></a><button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
+</nav>
+<div class="drawer" id="drawer">
+  <div class="drawer-head"><span class="brand-name">BiDex-100</span><button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button></div>
+  <a href="./">Home</a><a href="./#overview">Overview</a>
+  <a href="document.html">Document</a><a href="./#get-started">Tasks</a><a href="leaderboard.html#news">News</a><a href="leaderboard.html">Leaderboard</a><a href="leaderboard.html#results">Detailed Results</a>
+</div>
+
+<main id="top">
+  <header class="doc-header"><div class="container">
+    <p class="eyebrow">BiDex-100 · Document</p>
+    <h1>From setup to evaluation.</h1>
+    <p>Build the simulation environment, train a policy, and reproduce the benchmark.</p>
+    <div class="doc-quick-links"><a href="#installation">Set up simulation <span aria-hidden="true">↗</span></a><a href="#models">Train a model <span aria-hidden="true">↗</span></a><a href="#evaluation">Run evaluation <span aria-hidden="true">↗</span></a></div>
+  </div></header>
+  <div class="container doc-layout">
+    <aside class="doc-sidebar"><details open><summary>On this page</summary><nav aria-label="Document contents"><a href="#installation">Simulation environment</a><a href="#simulation">Create and run a task</a><a href="#training">Training data and action spaces</a><a href="#models">Model environments and training</a><a href="#pi05">π0.5</a><a href="#lingbot">LingBot-VLA-v2</a><a href="#gr00t">GR00T-N1.7</a><a href="#additional-models">Additional model adapters</a><a href="#evaluation">Unified evaluation</a><a href="#licensing">Licensing and acknowledgements</a><a href="#citation">Citation</a></nav></details><a class="doc-source" role="link" aria-disabled="true" tabindex="-1">Benchmark on GitHub ↗</a></aside>
+    <div class="doc-content"><article class="doc-section" id="installation" aria-labelledby="heading-installation"><h2 id="heading-installation">Simulation environment</h2><p>Repository addresses are omitted for anonymous review. Before running the clone commands, set <code>BIDEX_REPO_URL</code>, <code>OPENPI_REPO_URL</code>, <code>LINGBOT_REPO_URL</code>, and <code>GROOT_REPO_URL</code> to the source repository URLs for your release.</p><pre><code class="language-bash">git clone &quot;$BIDEX_REPO_URL&quot; BiDex-100
+cd BiDex-100
+
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m pip install -e &quot;.[eval]&quot;
+</code></pre>
+<p>The release is available on <a role="link" aria-disabled="true" tabindex="-1">Hugging Face</a>
+and <a role="link" aria-disabled="true" tabindex="-1">ModelScope</a>,
+with the same three independently downloadable components:</p>
+<pre><code class="language-text">assets/                    compressed simulation asset packs
+datasets/lerobotv21/       LeRobot v2.1 datasets
+datasets/lerobotv30/       LeRobot v3.0 datasets
+</code></pre>
+<p>Download everything from Hugging Face (the default source) and prepare the
+simulation assets:</p>
+<pre><code class="language-bash">python -m pip install -U huggingface_hub
+hf auth login  # omit for public, unauthenticated downloads
+
+bash scripts/download_release.sh all downloads/BiDex-100
+bash scripts/setup_assets_links.sh downloads/BiDex-100
+</code></pre>
+<p>To download from ModelScope instead, install its CLI and select the source:</p>
+<pre><code class="language-bash">python -m pip install -U modelscope
+
+bash scripts/download_release.sh --source modelscope all downloads/BiDex-100
+bash scripts/setup_assets_links.sh downloads/BiDex-100
+</code></pre>
+<p>Public ModelScope downloads do not require login. Each component can instead
+be downloaded separately into the same destination:</p>
+<pre><code class="language-bash">bash scripts/download_release.sh assets downloads/BiDex-100
+bash scripts/download_release.sh lerobotv21 downloads/BiDex-100
+bash scripts/download_release.sh lerobotv30 downloads/BiDex-100
+
+# The same component selection works with ModelScope.
+bash scripts/download_release.sh --source modelscope assets downloads/BiDex-100
+bash scripts/download_release.sh --source modelscope lerobotv21 downloads/BiDex-100
+bash scripts/download_release.sh --source modelscope lerobotv30 downloads/BiDex-100
+</code></pre>
+<p><code>scripts/download_assets.sh</code> and <code>scripts/download_datasets.sh</code> remain as
+convenience wrappers. Run <code>download_datasets.sh lerobotv21</code>,
+<code>download_datasets.sh lerobotv30</code>, or <code>download_datasets.sh all</code> to fetch one
+or both dataset formats. The download destination preserves the repository
+layout shown above.</p>
+<p>Both wrappers accept <code>--source modelscope</code> before their positional arguments:</p>
+<pre><code class="language-bash">bash scripts/download_assets.sh --source modelscope downloads/BiDex-100
+bash scripts/download_datasets.sh --source modelscope all downloads/BiDex-100
+</code></pre>
+<p>Set <code>BIDEX_DOWNLOAD_SOURCE=modelscope</code> to select ModelScope by default;
+<code>--source</code> overrides this setting. <code>BIDEX_HF_REPO</code> and <code>BIDEX_MODELSCOPE_REPO</code>
+override the repository ID for their respective source. Dataset repository IDs
+are omitted for anonymous review; set these variables to your release dataset IDs
+before downloading. Rerun the same command to reuse downloaded files
+and resume an interrupted download. After downloading, the script checks for
+all five asset packs or all 106 task directories per selected dataset format,
+including task metadata, Parquet data, and videos.</p>
+<p>The asset setup script accepts either <code>downloads/BiDex-100</code> or
+<code>downloads/BiDex-100/assets</code>. It extracts each archive in place, creates the
+repository links, and recreates the relative aliases used by assembly tasks.
+It is idempotent, so an interrupted setup can be rerun safely.
+Alternatively set
+<code>BIDEX_ASSETS=/path/to/BiDex-100/assets</code>. Export <code>HF_TOKEN</code> instead of using
+<code>hf auth login</code> in non-interactive environments.</p>
+<p>For headless GPU rendering, select EGL before starting Python:</p>
+<pre><code class="language-bash">export MUJOCO_GL=egl
+export PYOPENGL_PLATFORM=egl
+</code></pre></article>
+<article class="doc-section" id="simulation" aria-labelledby="heading-simulation"><h2 id="heading-simulation">Create and run a task</h2><p>Task YAML files under <code>bidex/tasks_data/suites/&lt;suite&gt;/&lt;task&gt;.yaml</code> define the
+scene, robot, objects, initialization distribution, instruction, success
+predicates, subtasks, and OOD counterpart. The five suites contain 10, 10, 20,
+26, and 40 tasks respectively (106 total).</p>
+<p>This minimal example is complete and directly runnable. It disables cameras so
+that the first simulation check does not require a graphics context, resets one
+task, holds the reset robot pose, advances physics with <code>env.step</code>, and closes
+all MuJoCo resources:</p>
+<pre><code class="language-python">from bidex import BiDexEnv, load_task
+
+task = load_task(&quot;Memory&quot;, &quot;uncover_red_cube&quot;)
+env = BiDexEnv(task, control_mode=&quot;joint&quot;, cameras=[])
+
+try:
+    obs = env.reset(seed=0)
+    action = {
+        &quot;arm_joint_position&quot;: obs[&quot;arm_joint_position&quot;].copy(),
+        &quot;dex_joint_position&quot;: obs[&quot;dex_joint_position&quot;].copy(),
+    }
+
+    for _ in range(64):
+        obs, reward, terminated, info = env.step(action)
+        if terminated:
+            break
+
+    print({&quot;reward&quot;: reward, &quot;terminated&quot;: terminated, &quot;score&quot;: info.get(&quot;score&quot;)})
+finally:
+    env.close()
+</code></pre>
+<p>Use <code>list_suites()</code> and <code>list_tasks(&lt;suite&gt;)</code> to discover the 106 base tasks.
+Pass <code>include_ood=True</code> to <code>list_tasks</code> only when inspecting the paired OOD
+variant definitions. Pass
+<code>cameras=["head", "left_wrist", "right_wrist"]</code> when RGB observations are
+needed.</p></article>
+<article class="doc-section" id="training" aria-labelledby="heading-training"><h2 id="heading-training">Training data and action spaces</h2><p>BiDex-100 is model-agnostic: this repository provides the benchmark and data
+contract, while each VLA implementation owns its trainer. The supported 58-D
+representations are:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Arm component</th>
+<th>Hand component</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>joint</code></td>
+<td><code>actions.arm_joint_position</code> (14-D)</td>
+<td><code>actions.dex_joint_position</code> (44-D)</td>
+</tr>
+<tr>
+<td><code>robot_ee</code></td>
+<td><code>actions.abs_end_effector</code> (14-D)</td>
+<td><code>actions.dex_joint_position</code> (44-D)</td>
+</tr>
+<tr>
+<td><code>camera_ee</code></td>
+<td><code>actions.abs_end_effector_camera</code> (14-D)</td>
+<td><code>actions.dex_joint_position</code> (44-D)</td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>bidex.tasks.benchmark.BENCHMARKS</code> and <code>MODES</code> as the canonical suite and
+modality registry when adding a trainer integration.</p>
+<h3>Reported training setup</h3>
+<p>The currently reported model results use <strong>co-training</strong>: demonstrations from
+multiple benchmark tasks are merged into one training corpus and used to train
+one shared policy checkpoint. Evaluation then runs that same checkpoint across
+all applicable tasks; the reported numbers are not an ensemble of separately
+trained per-task policies.</p></article>
+<article class="doc-section" id="models" aria-labelledby="heading-models"><h2 id="heading-models">Model environments and training</h2><p>Install the simulator and each model in separate environments. Run commands below
+from the indicated repository root. Use the same downloaded task corpus for
+co-training: one shared policy across tasks and embodiments. The reported joint
+setup uses the three RGB cameras, 14 arm joints and 44 hand joints, in right-first
+order. Pretrained model weights are separate downloads from the source code.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>BiDex-100 source</th>
+<th>Training runtime</th>
+<th>Reported checkpoint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>π0.5</td>
+<td><a role="link" aria-disabled="true" tabindex="-1">openpi-bidex100</a></td>
+<td>Python 3.11 · JAX / OpenPI</td>
+<td>60k steps · chunk 50</td>
+</tr>
+<tr>
+<td>LingBot-VLA-v2</td>
+<td><a role="link" aria-disabled="true" tabindex="-1">lingbot-vla-v2-bidex100</a></td>
+<td>Python 3.12 · PyTorch / FSDP2</td>
+<td>60k steps · chunk 50</td>
+</tr>
+<tr>
+<td>GR00T-N1.7</td>
+<td><a role="link" aria-disabled="true" tabindex="-1">Isaac-GR00T-bidex100</a></td>
+<td>Python 3.12 · PyTorch</td>
+<td>400k steps · chunk 16</td>
+</tr>
+</tbody>
+</table>
+<p>Each model repository includes a <code>BIDEX100.md</code> guide. The commands below use the
+public BiDex-100 names. A few serialized identifiers retain aliases for checkpoints
+created before the benchmark was renamed.</p></article>
+<article class="doc-section" id="pi05" aria-labelledby="heading-pi05"><h2 id="heading-pi05">π0.5</h2><h3>Create the environment</h3>
+<pre><code class="language-bash">git clone &quot;$OPENPI_REPO_URL&quot; openpi-bidex100
+cd openpi-bidex100
+python -m pip install -U uv
+GIT_LFS_SKIP_SMUDGE=1 uv sync --python 3.11
+</code></pre>
+<p>The repository lockfile selects OpenPI's LeRobot revision and JAX dependencies.
+Use this environment for both the trainer and policy server. The unified evaluation launcher also uses this interpreter for simulation
+workers, so install the benchmark dependencies into it before evaluation.</p>
+<h3>Prepare data and train</h3>
+<p>Set an absolute path to the downloaded <strong>LeRobot v2.1</strong> root. It contains the
+five capability directories, each with task-level <code>meta/info.json</code> files.</p>
+<pre><code class="language-bash">export BIDEX_DATA_ROOT=/absolute/path/to/BiDex-100/downloads/BiDex-100/datasets/lerobotv21
+
+uv run scripts/compute_norm_stats.py --config-name BiDex-All-joint-1
+uv run scripts/train.py BiDex-All-joint-1 \
+  --exp-name bidex_all_joint \
+  --batch-size 256 \
+  --num-train-steps 60000 \
+  --fsdp-devices 8
+</code></pre>
+<p>The 58-D projection layers are initialized for BiDex-100 while compatible weights
+are transferred from <code>gs://openpi-assets/checkpoints/pi05_base/params</code>. The joint
+transform trains on deltas and restores absolute targets for evaluation. For a
+single GPU, use <code>--fsdp-devices 1</code> and choose a batch size that fits memory.
+The checkpoint path is <code>checkpoints/BiDex-All-joint-1/bidex_all_joint/60000</code>.</p>
+<h3>Evaluate</h3>
+<p>Run from the <strong>BiDex-100</strong> repository after preparing the model environment and checkpoint above. Replace the absolute paths, activate the simulation environment, install the benchmark dependencies into <code>MODEL_PY</code> as described under <a href="#evaluation">Unified evaluation</a>, and use a fresh <code>MID_OVERRIDE</code> for each run. This launches the full benchmark: 50 ID + 50 OOD rollouts per task, with the native task horizon and model action chunk.</p><p>The config name above matches newly trained public checkpoints. For an earlier checkpoint using <code>assets/dexsim_all_joint</code>, select the retained <code>DexSim-All-joint-1</code> config alias and the matching checkpoint path.</p>
+<pre><code class="language-bash">export MODEL_REPO=/absolute/path/to/openpi-bidex100
+export MODEL_PY=&quot;$MODEL_REPO/.venv/bin/python&quot;
+export MODEL_CKPT=&quot;$MODEL_REPO/checkpoints/BiDex-All-joint-1/bidex_all_joint/60000&quot;
+export BATCHED_CONFIG=BiDex-All-joint-1
+export BIDEX_LEADERBOARD_ROOT=/absolute/path/to/evaluation-output
+export ID_SEEDS=0,1 OOD_SEEDS=2,3 EPS=25
+export MODEL_GPUS=0,1,2,3,4,5,6,7
+export RENDER_GPUS=0,1,2,3,4,5,6,7
+export MID_OVERRIDE=pi05_alljoint_60k_full_norm20
+
+bash scripts/evaluation/run_vec_models_eval.sh pi05
+</code></pre></article>
+<article class="doc-section" id="lingbot" aria-labelledby="heading-lingbot"><h2 id="heading-lingbot">LingBot-VLA-v2</h2><h3>Create the environment</h3>
+<pre><code class="language-bash">git clone --recurse-submodules &quot;$LINGBOT_REPO_URL&quot; lingbot-vla-v2-bidex100
+cd lingbot-vla-v2-bidex100
+bash tools/create_train_env.sh --env-name bidex-lingbot
+conda activate bidex-lingbot
+</code></pre>
+<p>The repository installer creates Python 3.12 and pins the PyTorch 2.8 stack.
+It also installs FlashAttention and the depth packages. A matching local
+FlashAttention wheel can be supplied with <code>--flash-attn-wheel /path/to/wheel.whl</code>.
+Download the LingBot-VLA-v2-6B base checkpoint, Qwen3-VL tokenizer/processor,
+MoGe weights, and the depth/video teacher files described in the upstream README.</p>
+<h3>Prepare the 58-D checkpoint and data</h3>
+<p>BiDex-100 uses 58 action dimensions; the pretrained LingBot checkpoint uses 55.
+Use the migrated projection-expansion utility before fine-tuning:</p>
+<pre><code class="language-bash">python scripts/bidex_create_58d_ckpt.py \
+  --src /absolute/path/to/lingbot-vla-v2-6b \
+  --dst /absolute/path/to/lingbot-vla-v2-6b-58d
+
+python scripts/prepare_bidex100.py \
+  --data-root /absolute/path/to/BiDex-100/downloads/BiDex-100/datasets/lerobotv30 \
+  --model-path /absolute/path/to/lingbot-vla-v2-6b-58d \
+  --tokenizer-path /absolute/path/to/Qwen3-VL-4B-Instruct \
+  --teacher-root /absolute/path/to/lingbot-vla-v2-6b \
+  --moge-path /absolute/path/to/moge-2-vitb-normal/model.pt \
+  --output-dir /absolute/path/to/outputs/lingbot-bidex
+</code></pre>
+<p>This writes <code>assets/training_data/bidex_all_joint.txt</code> and
+<code>configs/vla/bidex/local_joint.yaml</code>. It keeps the joint delta-action convention
+and checkpoint milestones from the source integration, while supplying your
+data, tokenizer, teacher and output paths. The released joint normalization
+statistics are included at <code>assets/norm_stats/bidex_joint.json</code>.</p>
+<h3>Train</h3>
+<pre><code class="language-bash">CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
+  bash train.sh tasks/vla/train_lingbotvla.py configs/vla/bidex/local_joint.yaml
+</code></pre>
+<p>The generated recipe trains for 60k steps with the source 58-D architecture and
+alignment objectives. For fewer GPUs, adjust micro/global batch sizes and
+gradient accumulation together. Evaluate the saved step directory (or its
+<code>hf_ckpt</code> subdirectory) that contains the Hugging Face weights.</p>
+<h3>Evaluate</h3>
+<p>Run from the <strong>BiDex-100</strong> repository after preparing the model environment and checkpoint above. Replace the absolute paths, activate the simulation environment, install the benchmark dependencies into <code>MODEL_PY</code> as described under <a href="#evaluation">Unified evaluation</a>, and use a fresh <code>MID_OVERRIDE</code> for each run. This launches the full benchmark: 50 ID + 50 OOD rollouts per task, with the native task horizon and model action chunk.</p><p>Set <code>MODEL_PY</code> to the Python executable in the <code>bidex-lingbot</code> environment created above. The saved step is under <code>checkpoints/global_step_60000</code>.</p>
+<pre><code class="language-bash">export MODEL_REPO=/absolute/path/to/lingbot-vla-v2-bidex100
+export MODEL_PY=/absolute/path/to/conda/envs/bidex-lingbot/bin/python
+export MODEL_VLM_PATH=/absolute/path/to/Qwen3-VL-4B-Instruct
+export MODEL_CKPT=/absolute/path/to/outputs/lingbot-bidex/checkpoints/global_step_60000
+export BIDEX_LEADERBOARD_ROOT=/absolute/path/to/evaluation-output
+export ID_SEEDS=0,1 OOD_SEEDS=2,3 EPS=25
+export MODEL_GPUS=0,1,2,3,4,5,6,7
+export RENDER_GPUS=0,1,2,3,4,5,6,7
+export MID_OVERRIDE=lingbot_alljoint_60k_full_norm20
+
+bash scripts/evaluation/run_vec_models_eval.sh lingbot
+</code></pre></article>
+<article class="doc-section" id="gr00t" aria-labelledby="heading-gr00t"><h2 id="heading-gr00t">GR00T-N1.7</h2><h3>Create the environment</h3>
+<pre><code class="language-bash">GIT_LFS_SKIP_SMUDGE=1 git clone &quot;$GROOT_REPO_URL&quot; Isaac-GR00T-bidex100
+cd Isaac-GR00T-bidex100
+python -m pip install -U uv
+uv sync --python 3.12 --all-extras
+</code></pre>
+<p>For an NVIDIA dGPU, use a CUDA-compatible driver and the dependency setup in
+<code>scripts/deployment/dgpu/install_deps.sh</code>. Download the GR00T-N1.7 pretrained
+model separately. The BiDex-100 integration keeps the upstream installation
+manifests and training loop.</p>
+<h3>Prepare data and train</h3>
+<p>The preparation utility writes the state/action/camera mapping required by
+GR00T to each task's <code>meta/modality.json</code>. It uses the <strong>LeRobot v2.1</strong> download.
+The joint embodiment is shared by both robots, giving one normalization profile
+for the co-trained policy.</p>
+<pre><code class="language-bash">uv run python examples/BiDex-100/prepare_training.py \
+  --data-root /absolute/path/to/BiDex-100/downloads/BiDex-100/datasets/lerobotv21
+
+NUM_GPUS=8 MAX_STEPS=400000 GLOBAL_BATCH_SIZE=256 \
+  uv run bash examples/BiDex-100/train.sh \
+    --data-root /absolute/path/to/BiDex-100/downloads/BiDex-100/datasets/lerobotv21 \
+    --base-model-path /absolute/path/to/GR00T-N1.7-3B \
+    --output-dir /absolute/path/to/outputs/gr00t-bidex
+</code></pre>
+<p><code>examples/BiDex-100/dex_sim_joint_config.py</code> defines the three RGB cameras,
+58-D relative arm/hand targets and native 16-step action chunk. The persisted
+<code>dex_sim_joint</code> identifier is retained for compatibility with the benchmark's
+existing checkpoint loader; the integration is for BiDex-100.</p>
+<h3>Evaluate</h3>
+<p>Run from the <strong>BiDex-100</strong> repository after preparing the model environment and checkpoint above. Replace the absolute paths, activate the simulation environment, install the benchmark dependencies into <code>MODEL_PY</code> as described under <a href="#evaluation">Unified evaluation</a>, and use a fresh <code>MID_OVERRIDE</code> for each run. This launches the full benchmark: 50 ID + 50 OOD rollouts per task, with the native task horizon and model action chunk.</p>
+<pre><code class="language-bash">export MODEL_REPO=/absolute/path/to/Isaac-GR00T-bidex100
+export MODEL_PY=&quot;$MODEL_REPO/.venv/bin/python&quot;
+export MODEL_CKPT=/absolute/path/to/outputs/gr00t-bidex/checkpoint-400000
+export BIDEX_LEADERBOARD_ROOT=/absolute/path/to/evaluation-output
+export ID_SEEDS=0,1 OOD_SEEDS=2,3 EPS=25
+export MODEL_GPUS=0,1,2,3,4,5,6,7
+export RENDER_GPUS=0,1,2,3,4,5,6,7
+export MID_OVERRIDE=gr00t_allmixed_400k_full_norm20
+
+bash scripts/evaluation/run_vec_models_eval.sh gr00t
+</code></pre></article>
+<article class="doc-section" id="additional-models" aria-labelledby="heading-additional-models"><h2 id="heading-additional-models">Additional model adapters</h2><p>The benchmark also includes evaluation adapters for the four models below.
+Their source repositories are linked here; the three BiDex-100 forks above are
+the model integrations released with this guide. Use a BiDex-100-trained
+checkpoint with the adapter's expected schema, rather than an unrelated upstream
+checkpoint. Follow each source repository's installation and fine-tuning guide
+when preparing its model environment.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Source / environment and training guide</th>
+<th>Evaluation selector</th>
+<th>Extra path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Galaxea G0.5</td>
+<td><a href="https://github.com/OpenGalaxea/GalaxeaVLA">GalaxeaVLA</a></td>
+<td><code>galaxea</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>OpenDM DM0.5</td>
+<td><a href="https://github.com/dexmal/opendm">OpenDM</a></td>
+<td><code>dm05</code></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Xiaomi XR1</td>
+<td><a href="https://github.com/XiaomiRobotics/Xiaomi-Robotics-1">Xiaomi-Robotics-1</a></td>
+<td><code>xr1</code></td>
+<td><code>MODEL_VLM_PATH</code></td>
+</tr>
+<tr>
+<td>InternVLA-A1.5</td>
+<td><a href="https://github.com/InternRobotics/InternVLA-A-series">InternVLA-A1.5</a></td>
+<td><code>internvla</code></td>
+<td><code>MODEL_VLM_PATH</code></td>
+</tr>
+</tbody>
+</table>
+<p>For each adapter, export <code>MODEL_PY</code>, <code>MODEL_REPO</code>, <code>MODEL_CKPT</code> and
+<code>BIDEX_LEADERBOARD_ROOT</code>, plus <code>MODEL_VLM_PATH</code> where listed. Then run, for
+example, <code>bash scripts/evaluation/run_vec_models_eval.sh galaxea smoke</code>.
+Use a separate output identifier for each checkpoint. The next section describes
+the full 100-rollout protocol shared by all seven models.</p></article>
+<article class="doc-section" id="evaluation" aria-labelledby="heading-evaluation"><h2 id="heading-evaluation">Unified evaluation</h2><p>BiDex-100 exposes one evaluation contract for different VLA policies. A model
+adapter receives the same three camera observations, proprioceptive state, and
+language instruction; the benchmark owns task discovery, seeded resets,
+ID/OOD randomization, rollout execution, scoring, videos, and result schemas.
+This keeps model comparisons independent of model-specific launch code.</p>
+<h3>ID/OOD protocol summary</h3>
+<p><strong>Each task has 100 rollouts in total: 50 ID + 50 OOD.</strong></p>
+<p>The canonical protocol evaluates 25 episodes for each of two ID seeds (<code>0,1</code>)
+and two OOD seeds (<code>2,3</code>). Both domains use deterministic per-episode reset
+seeds and the same task instructions, success predicates, rollout horizon, and
+scoring rules.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>In-domain (ID)</th>
+<th>Out-of-domain (OOD)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task definition</td>
+<td>Base task YAML.</td>
+<td>The task's committed <code>__ood.yaml</code> variant (all 106 tasks are covered).</td>
+</tr>
+<tr>
+<td>Robot initial state</td>
+<td>Deterministically samples a recorded working pose from the task's evaluation H5 and restores robot joints only; objects retain the fresh base-YAML placement.</td>
+<td>Uses the task's default robot reset pose; it does not sample an H5 demonstration pose.</td>
+</tr>
+<tr>
+<td>Objects and layout</td>
+<td>Base-YAML regions and object identities.</td>
+<td>Task-specific baked region/layout shifts; selected tasks additionally use left/right arm mirroring, collision-safe distractors, or per-episode articulated-object scale changes.</td>
+</tr>
+<tr>
+<td>Scene appearance</td>
+<td>Original floor, wall, table, and lights.</td>
+<td>Deterministic floor/wall/table textures and randomized lighting.</td>
+</tr>
+<tr>
+<td>Cameras</td>
+<td>Nominal head and wrist extrinsics.</td>
+<td>A collision-audited finite pose bank independently controls head and wrist changes.</td>
+</tr>
+</tbody>
+</table>
+<p>OOD appearance randomization is intentionally bounded but visually strong:</p>
+<ul>
+<li>Lighting cycles through five exposure profiles from <code>dark</code> to
+  <code>high_bright</code> with key/fill/ambient levels of <code>0.11/0.035/0.014</code>,
+  <code>0.18/0.060/0.022</code>, <code>0.29/0.100/0.040</code>, <code>0.40/0.145/0.058</code>, and
+  <code>0.48/0.180/0.072</code>. The key light casts shadows and spans the full azimuth
+  circle, elevations of 25/38/52/66/76 degrees, neutral/warm/cool tints, and
+  distances of 3.0/3.5/4.0/4.4 m. The non-shadowing fill light provides an
+  illumination floor to avoid unusably dark observations.</li>
+<li>Head-camera offsets are bounded to 1.8 cm and 6 degrees. Wrist-camera offsets
+  are bounded to 1.35 cm and 6 degrees; the mount-clearance axis is restricted
+  to outward motion for both Franka and Astribot so the robot connector cannot
+  move in front of the lens. Across the canonical 50 OOD episodes per task,
+  camera occurrence counts are exactly 20 nominal, 10 head-only, 10
+  wrists-only, and 10 head-and-wrists.</li>
+<li>Object/layout changes come from each task's committed OOD YAML. Distractor
+  identity is fixed per task and OOD seed while placement is resampled per
+  episode; task geometry and reachability constraints keep objects on usable,
+  collision-safe tabletop regions.</li>
+</ul>
+<p>Randomization uses component-scoped SHA-256 keys, NumPy PCG64 streams, and
+hash-validated texture/camera manifests. Consequently, a fixed task, seed, and
+episode produces the same plan on different machines without depending on GPU
+or renderer output.</p>
+<p>Seven reference integrations are included: π0.5, Galaxea G0.5, GR00T N1.7,
+LingBot-VLA, XR-1, InternVLA-A1.5, and DM0.5. Additional models can use the same
+driver by implementing the observation-to-action adapter used by
+<code>bidex/eval/run_leaderboard_eval.py</code>.</p>
+<p>The launcher has no machine-specific defaults. Every integration supplies:</p>
+<ul>
+<li><code>MODEL_PY</code>: Python interpreter for the model environment.</li>
+<li><code>MODEL_REPO</code>: model source directory.</li>
+<li><code>MODEL_CKPT</code>: checkpoint path.</li>
+<li><code>BIDEX_LEADERBOARD_ROOT</code>: output directory.</li>
+</ul>
+<p><code>MODEL_VLM_PATH</code> is additionally required by LingBot-VLA, XR-1, and
+InternVLA-A1.5 because those adapters load a separate local VLM backbone.
+<code>OPENPI_DATA_HOME</code> is an optional native OpenPI cache override; when unset,
+OpenPI uses its normal cache.</p>
+<h3>Full evaluation settings</h3>
+<p>The three model examples above follow the full evaluation recipe: <code>ID_SEEDS=0,1</code>, <code>OOD_SEEDS=2,3</code> and <code>EPS=25</code>, giving <strong>100 rollouts per task</strong>. All eight GPUs host both policy servers and render workers. Run from a fresh shell with no earlier task filters or debug overrides; the launcher defaults to all tasks with native horizons and action chunks.</p>
+<p>Install the simulation dependencies in the active BiDex-100 environment as described in <a href="#installation">Simulation environment</a>. The launcher uses <code>MODEL_PY</code> for both policy servers and simulation workers. Install the benchmark requirements into that environment too, before running any of the three full examples:</p>
+<pre><code class="language-bash">&quot;$MODEL_PY&quot; -m pip install -r requirements.txt h5py
+</code></pre><p>For an environment created by <code>uv sync</code> without pip, use:</p>
+<pre><code class="language-bash">uv pip install --python &quot;$MODEL_PY&quot; -r requirements.txt h5py
+</code></pre><p>For offline π0.5 evaluation, point OpenPI at a pre-populated cache containing the tokenizer and base-model assets. Leave this unset to use OpenPI's normal cache and download behavior:</p>
+<pre><code class="language-bash">export OPENPI_DATA_HOME=/absolute/path/to/openpi-cache
+</code></pre><h3>GPU layouts</h3>
+<p><code>MODEL_GPUS</code> assigns policy servers and <code>RENDER_GPUS</code> assigns vectorized
+MuJoCo workers. The benchmark protocol and output schema do not change with
+the layout. Every layout uses the same server-client transport; a GPU present
+in both lists hosts separate policy-server and render-worker processes.</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th><code>MODEL_GPUS</code></th>
+<th><code>RENDER_GPUS</code></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single GPU</td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+<td>Policy and simulation share one card.</td>
+</tr>
+<tr>
+<td>Dedicated split</td>
+<td><code>0</code></td>
+<td><code>1,2,3,4,5,6,7</code></td>
+<td>One policy card and seven render-only cards.</td>
+</tr>
+<tr>
+<td>Multi-server split</td>
+<td><code>0,1</code></td>
+<td><code>2,3,4,5,6,7</code></td>
+<td>Two policy servers distribute requests from six workers.</td>
+</tr>
+<tr>
+<td>Partial overlap</td>
+<td><code>0,1</code></td>
+<td><code>1,2,3,4,5,6,7</code></td>
+<td>GPU 1 hosts both roles.</td>
+</tr>
+<tr>
+<td>Full overlap</td>
+<td><code>0,1,2,3,4,5,6,7</code></td>
+<td><code>0,1,2,3,4,5,6,7</code></td>
+<td>Every card hosts one server and one worker.</td>
+</tr>
+</tbody>
+</table>
+<p>Use a distinct <code>MID_OVERRIDE</code> for every smoke or full run.
+<code>BENCHES</code>, <code>BIDEX_TASKS</code>, <code>SEEDS</code>, <code>ID_SEEDS</code>, <code>OOD_SEEDS</code>, <code>EPS</code>,
+<code>ENVS_PER_GPU</code>, <code>MAX_RECORD_ENVS</code>, and <code>BIDEX_MAX_ENVS_PER_GPU</code> refine the
+protocol without changing its scoring contract. <code>GPUS</code> remains a compatibility
+alias; explicit model/render lists are recommended.</p>
+<p>Workers execute the full action chunk returned by each model by default. Set
+<code>BIDEX_VEC_CHUNK_REUSE</code> to a positive integer only to cap that native horizon
+for an explicit ablation; empty or zero keeps the model's maximum chunk size.</p>
+<h3>View results</h3>
+<p>A full joint evaluation produces 12 domain-result JSON files and <code>summary.json</code>. The files cover six suite/robot settings × two domains: Generalization evaluates both robots; the other four suites use Franka. Each file aggregates task results. Inspect the summary and logs for episode totals and failures.</p>
+<p><code>MID_OVERRIDE</code> identifies one evaluated checkpoint/configuration. Results,
+videos, and live logs are isolated under that identifier:</p>
+<pre><code class="language-text">results/&lt;MID_OVERRIDE&gt;/&lt;benchmark&gt;_&lt;robot&gt;_&lt;mode&gt;_&lt;domain&gt;.json
+mp4s/&lt;MID_OVERRIDE&gt;/&lt;setting&gt;/&lt;task&gt;/s&lt;seed&gt;_ep&lt;episode&gt;.mp4
+runs/&lt;MID_OVERRIDE&gt;/&lt;run_name&gt;/{in_domain,out_of_domain}/...
+</code></pre>
+<p>Start the leaderboard on all local interfaces:</p>
+<pre><code class="language-bash">python bidex/eval/baseline_leaderboard_server.py \
+  --lb-root &quot;$BIDEX_LEADERBOARD_ROOT&quot; \
+  --host 0.0.0.0 --port 12006 --base-url /baselines
+</code></pre>
+<p>Open <code>http://&lt;host-ip&gt;:12006/baselines/</code> from the local network. The page
+discovers model rows from <code>results/&lt;MID_OVERRIDE&gt;/</code>, refreshes live results,
+and serves rollout videos. Leaderboards rank by strict success rate by default;
+progress score is the secondary metric and can be selected from the metric toggle.</p></article>
+<article class="doc-section" id="licensing" aria-labelledby="heading-licensing"><h2 id="heading-licensing">Licensing and acknowledgements</h2><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Codebase</td>
+<td><a role="link" aria-disabled="true" tabindex="-1">MIT License</a></td>
+</tr>
+<tr>
+<td>BiDex-100 datasets</td>
+<td><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></td>
+</tr>
+<tr>
+<td>BiDex-100 original 3D assets</td>
+<td><a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></td>
+</tr>
+<tr>
+<td>Third-party assets</td>
+<td>Their original upstream licenses, retained inside each asset subdirectory</td>
+</tr>
+</tbody>
+</table>
+<h3>Acknowledgements</h3>
+<p>BiDex-100 builds on
+<a href="https://mujoco.readthedocs.io/">MuJoCo</a>,
+<a href="https://github.com/huggingface/lerobot">LeRobot</a>,
+<a href="https://github.com/Lifelong-Robot-Learning/LIBERO">LIBERO</a>,
+<a href="https://github.com/robocasa/robocasa">RoboCasa</a>,
+<a href="https://github.com/ARISE-Initiative/robosuite">robosuite</a>,
+<a href="https://github.com/brave-eai/dexjoco">dexjoco</a>, and
+<a href="https://github.com/mattzh72/articraft">Articraft</a>.</p></article>
+<article class="doc-section" id="citation" aria-labelledby="heading-citation"><h2 id="heading-citation">Citation</h2><pre><code class="language-bibtex">@misc{bidex100,
+  title        = {BiDex-100: A Comprehensive Benchmark for Bimanual Dexterous
+                  Manipulation Across 100+ Simulation Tasks},
+  year         = {2026},
+}
+</code></pre></article></div>
+  </div>
+</main>
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px;"><span class="brand-text">BiDex-100</span></div>
+        <p class="dim" style="max-width:42ch; font-size:14px;">A simulation benchmark for bimanual dexterous manipulation: 106 capability-organized tasks, two 22-DoF dexterous embodiments, matched ID/OOD evaluation, and 8,080 teleoperated demonstrations. Built on MuJoCo.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="./#overview">Overview</a>
+        <a href="./#dataset">Dataset</a>
+        <a href="./#get-started">Tasks</a>
+        <a href="document.html">Document</a>
+        <a href="leaderboard.html">Leaderboard</a>
+      </div>
+      <div>
+        <h5>Reproduce</h5>
+        <a href="document.html">Document</a>
+        <a href="leaderboard.html">Baselines</a>
+        <a href="./#domain-randomization">Evaluation</a>
+        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
+      </div>
+      <div>
+        <h5>Data</h5>
+        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face</a>
+        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/modelscope.svg" width="20" height="20" alt="" aria-hidden="true">ModelScope</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="ver">BiDex-100 homepage · v2026.09</span>
+      <span>Built on MuJoCo · LeRobot v2.1 · © 2026 BiDex-100 authors.</span>
+    </div>
+  </div>
+</footer>
+
+
+<div class="doc-toast" id="doc-toast" role="status" aria-live="polite"></div>
+<script src="static/js/data.js"></script>
+<script src="static/js/app.js"></script>
+<script src="static/js/document.js"></script>
+</body>
+</html>

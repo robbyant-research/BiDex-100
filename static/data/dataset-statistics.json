@@ -1,0 +1,1195 @@
+{
+  "fps": 25,
+  "source": {
+    "kind": "lerobot_v21_metadata",
+    "description": "All 106 task meta/info.json files from the released LeRobot v2.1 dataset; synchronized camera views are counted once."
+  },
+  "totals": {
+    "tasks": 106,
+    "demonstrations": 8080,
+    "frames": 6248973,
+    "hours": 69.43303333333334
+  },
+  "axes": [
+    {
+      "key": "Generalization",
+      "label": "Generalization",
+      "short": "GEN",
+      "color": "#1a7a6d",
+      "tasks": 40,
+      "demonstrations": 4000,
+      "frames": 2720517,
+      "hours": 30.227966666666664
+    },
+    {
+      "key": "Instruction_Following",
+      "label": "Instruction Following",
+      "short": "IF",
+      "color": "#556b2f",
+      "tasks": 20,
+      "demonstrations": 1300,
+      "frames": 663275,
+      "hours": 7.369722222222222
+    },
+    {
+      "key": "Limited_Demonstrations",
+      "label": "Limited Demonstrations",
+      "short": "LD",
+      "color": "#a47c35",
+      "tasks": 26,
+      "demonstrations": 780,
+      "frames": 387591,
+      "hours": 4.306566666666667
+    },
+    {
+      "key": "Long_Horizon",
+      "label": "Long Horizon",
+      "short": "LH",
+      "color": "#a2574f",
+      "tasks": 10,
+      "demonstrations": 1000,
+      "frames": 1242818,
+      "hours": 13.809088888888889
+    },
+    {
+      "key": "Memory",
+      "label": "Memory",
+      "short": "MEM",
+      "color": "#78649a",
+      "tasks": 10,
+      "demonstrations": 1000,
+      "frames": 1234772,
+      "hours": 13.719688888888887
+    }
+  ],
+  "robots": [
+    {
+      "key": "dual_fr3v2_sharpa",
+      "label": "Dual Franka FR3",
+      "tasks": 96,
+      "demonstrations": 7080,
+      "frames": 5677945,
+      "hours": 63.088277777777776
+    },
+    {
+      "key": "astribot_s1_fixed_sharpa",
+      "label": "Astribot S1",
+      "tasks": 10,
+      "demonstrations": 1000,
+      "frames": 571028,
+      "hours": 6.3447555555555555
+    }
+  ],
+  "flows": [
+    {
+      "robot": "dual_fr3v2_sharpa",
+      "axis": "Generalization",
+      "tasks": 30,
+      "demonstrations": 3000,
+      "frames": 2149489,
+      "hours": 23.88321111111111
+    },
+    {
+      "robot": "dual_fr3v2_sharpa",
+      "axis": "Instruction_Following",
+      "tasks": 20,
+      "demonstrations": 1300,
+      "frames": 663275,
+      "hours": 7.369722222222222
+    },
+    {
+      "robot": "dual_fr3v2_sharpa",
+      "axis": "Limited_Demonstrations",
+      "tasks": 26,
+      "demonstrations": 780,
+      "frames": 387591,
+      "hours": 4.306566666666667
+    },
+    {
+      "robot": "dual_fr3v2_sharpa",
+      "axis": "Long_Horizon",
+      "tasks": 10,
+      "demonstrations": 1000,
+      "frames": 1242818,
+      "hours": 13.809088888888889
+    },
+    {
+      "robot": "dual_fr3v2_sharpa",
+      "axis": "Memory",
+      "tasks": 10,
+      "demonstrations": 1000,
+      "frames": 1234772,
+      "hours": 13.719688888888887
+    },
+    {
+      "robot": "astribot_s1_fixed_sharpa",
+      "axis": "Generalization",
+      "tasks": 10,
+      "demonstrations": 1000,
+      "frames": 571028,
+      "hours": 6.3447555555555555
+    }
+  ],
+  "tasks": [
+    {
+      "key": "Generalization/cook_egg_in_frypan",
+      "name": "cook_egg_in_frypan",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 71156,
+      "hours": 0.7906222222222221,
+      "mean_duration_seconds": 28.4624
+    },
+    {
+      "key": "Generalization/drop_two_spoons_from_tray_into_two_cups",
+      "name": "drop_two_spoons_from_tray_into_two_cups",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 69959,
+      "hours": 0.7773222222222222,
+      "mean_duration_seconds": 27.983600000000003
+    },
+    {
+      "key": "Generalization/grill_steak_and_corn",
+      "name": "grill_steak_and_corn",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 75049,
+      "hours": 0.8338777777777778,
+      "mean_duration_seconds": 30.0196
+    },
+    {
+      "key": "Generalization/hang_mugs_on_tree",
+      "name": "hang_mugs_on_tree",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 52887,
+      "hours": 0.5876333333333333,
+      "mean_duration_seconds": 21.1548
+    },
+    {
+      "key": "Generalization/heat_sandwich_bread_in_microwave",
+      "name": "heat_sandwich_bread_in_microwave",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 102257,
+      "hours": 1.136188888888889,
+      "mean_duration_seconds": 40.9028
+    },
+    {
+      "key": "Generalization/insert_spatula_and_rolling_pin_into_glass_cup",
+      "name": "insert_spatula_and_rolling_pin_into_glass_cup",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 92383,
+      "hours": 1.0264777777777778,
+      "mean_duration_seconds": 36.9532
+    },
+    {
+      "key": "Generalization/insert_two_cubes_into_slot",
+      "name": "insert_two_cubes_into_slot",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 116149,
+      "hours": 1.2905444444444445,
+      "mean_duration_seconds": 46.4596
+    },
+    {
+      "key": "Generalization/load_three_canned_food_onto_dish_rack",
+      "name": "load_three_canned_food_onto_dish_rack",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 74522,
+      "hours": 0.8280222222222222,
+      "mean_duration_seconds": 29.8088
+    },
+    {
+      "key": "Generalization/make_cereal_in_bowl",
+      "name": "make_cereal_in_bowl",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 35467,
+      "hours": 0.3940777777777778,
+      "mean_duration_seconds": 14.1868
+    },
+    {
+      "key": "Generalization/make_espresso",
+      "name": "make_espresso",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 84271,
+      "hours": 0.9363444444444445,
+      "mean_duration_seconds": 33.708400000000005
+    },
+    {
+      "key": "Generalization/measure_two_paprika_shakers_on_digital_scale",
+      "name": "measure_two_paprika_shakers_on_digital_scale",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 67841,
+      "hours": 0.7537888888888888,
+      "mean_duration_seconds": 27.1364
+    },
+    {
+      "key": "Generalization/nest_medium_box_in_large_box",
+      "name": "nest_medium_box_in_large_box",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 91659,
+      "hours": 1.0184333333333333,
+      "mean_duration_seconds": 36.6636
+    },
+    {
+      "key": "Generalization/organize_items_in_desk_caddy",
+      "name": "organize_items_in_desk_caddy",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 95500,
+      "hours": 1.0611111111111111,
+      "mean_duration_seconds": 38.2
+    },
+    {
+      "key": "Generalization/pick_up_peach",
+      "name": "pick_up_peach",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 35593,
+      "hours": 0.39547777777777776,
+      "mean_duration_seconds": 14.2372
+    },
+    {
+      "key": "Generalization/pick_up_pear",
+      "name": "pick_up_pear",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 29768,
+      "hours": 0.3307555555555556,
+      "mean_duration_seconds": 11.9072
+    },
+    {
+      "key": "Generalization/pick_up_spoon_from_tray_into_cup",
+      "name": "pick_up_spoon_from_tray_into_cup",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 74122,
+      "hours": 0.8235777777777779,
+      "mean_duration_seconds": 29.6488
+    },
+    {
+      "key": "Generalization/pick_up_tangerine",
+      "name": "pick_up_tangerine",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 25942,
+      "hours": 0.28824444444444447,
+      "mean_duration_seconds": 10.376800000000001
+    },
+    {
+      "key": "Generalization/place_cake_tongs_and_mug_on_tiered_shelf",
+      "name": "place_cake_tongs_and_mug_on_tiered_shelf",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 65231,
+      "hours": 0.7247888888888888,
+      "mean_duration_seconds": 26.092399999999998
+    },
+    {
+      "key": "Generalization/place_coffee_mug_and_spoon_on_tray",
+      "name": "place_coffee_mug_and_spoon_on_tray",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 50491,
+      "hours": 0.5610111111111111,
+      "mean_duration_seconds": 20.1964
+    },
+    {
+      "key": "Generalization/place_condiments_on_tray",
+      "name": "place_condiments_on_tray",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 125287,
+      "hours": 1.3920777777777777,
+      "mean_duration_seconds": 50.114799999999995
+    },
+    {
+      "key": "Generalization/prepare_salad_in_bowl",
+      "name": "prepare_salad_in_bowl",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 79697,
+      "hours": 0.8855222222222222,
+      "mean_duration_seconds": 31.878800000000002
+    },
+    {
+      "key": "Generalization/prepare_tea_with_cup",
+      "name": "prepare_tea_with_cup",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 50759,
+      "hours": 0.5639888888888889,
+      "mean_duration_seconds": 20.3036
+    },
+    {
+      "key": "Generalization/put_apple_and_orange_in_bowl",
+      "name": "put_apple_and_orange_in_bowl",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 45614,
+      "hours": 0.5068222222222222,
+      "mean_duration_seconds": 18.2456
+    },
+    {
+      "key": "Generalization/put_apple_in_white_bowl",
+      "name": "put_apple_in_white_bowl",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 67908,
+      "hours": 0.7545333333333334,
+      "mean_duration_seconds": 27.163200000000003
+    },
+    {
+      "key": "Generalization/put_hotdog_bun_on_tray",
+      "name": "put_hotdog_bun_on_tray",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 32139,
+      "hours": 0.3571,
+      "mean_duration_seconds": 12.855599999999999
+    },
+    {
+      "key": "Generalization/put_marshmallow_and_cookie_dough_ball_in_bowl",
+      "name": "put_marshmallow_and_cookie_dough_ball_in_bowl",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 66416,
+      "hours": 0.7379555555555555,
+      "mean_duration_seconds": 26.566399999999998
+    },
+    {
+      "key": "Generalization/put_measuring_cup_and_ice_into_glass",
+      "name": "put_measuring_cup_and_ice_into_glass",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 94225,
+      "hours": 1.0469444444444445,
+      "mean_duration_seconds": 37.69
+    },
+    {
+      "key": "Generalization/put_mustard_and_honey_bottle_on_tray",
+      "name": "put_mustard_and_honey_bottle_on_tray",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 80325,
+      "hours": 0.8925,
+      "mean_duration_seconds": 32.13
+    },
+    {
+      "key": "Generalization/put_onion_on_cutting_board",
+      "name": "put_onion_on_cutting_board",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 50428,
+      "hours": 0.5603111111111111,
+      "mean_duration_seconds": 20.1712
+    },
+    {
+      "key": "Generalization/put_peach_in_fruit_bowl",
+      "name": "put_peach_in_fruit_bowl",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 47806,
+      "hours": 0.5311777777777777,
+      "mean_duration_seconds": 19.1224
+    },
+    {
+      "key": "Generalization/put_peeler_and_pizza_cutter_in_drainer",
+      "name": "put_peeler_and_pizza_cutter_in_drainer",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 35545,
+      "hours": 0.39494444444444443,
+      "mean_duration_seconds": 14.218
+    },
+    {
+      "key": "Generalization/put_sweet_potato_and_onion_in_bowl",
+      "name": "put_sweet_potato_and_onion_in_bowl",
+      "axis": "Generalization",
+      "robot": "astribot_s1_fixed_sharpa",
+      "demonstrations": 100,
+      "frames": 77324,
+      "hours": 0.8591555555555556,
+      "mean_duration_seconds": 30.9296
+    },
+    {
+      "key": "Generalization/put_three_apples_into_fruit_bowl",
+      "name": "put_three_apples_into_fruit_bowl",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 55176,
+      "hours": 0.6130666666666666,
+      "mean_duration_seconds": 22.0704
+    },
+    {
+      "key": "Generalization/rethread_bagel_and_donut_onto_middle_rod",
+      "name": "rethread_bagel_and_donut_onto_middle_rod",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 70816,
+      "hours": 0.7868444444444445,
+      "mean_duration_seconds": 28.3264
+    },
+    {
+      "key": "Generalization/stack_three_canned_food",
+      "name": "stack_three_canned_food",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 93719,
+      "hours": 1.0413222222222223,
+      "mean_duration_seconds": 37.4876
+    },
+    {
+      "key": "Generalization/stack_yellow_book_on_black_book",
+      "name": "stack_yellow_book_on_black_book",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 51764,
+      "hours": 0.5751555555555555,
+      "mean_duration_seconds": 20.7056
+    },
+    {
+      "key": "Generalization/stand_two_wine_bottles_upright",
+      "name": "stand_two_wine_bottles_upright",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 28720,
+      "hours": 0.3191111111111111,
+      "mean_duration_seconds": 11.488
+    },
+    {
+      "key": "Generalization/store_condiments_in_short_cabinet",
+      "name": "store_condiments_in_short_cabinet",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 81798,
+      "hours": 0.9088666666666667,
+      "mean_duration_seconds": 32.7192
+    },
+    {
+      "key": "Generalization/store_snacks_in_slide_cabinet",
+      "name": "store_snacks_in_slide_cabinet",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 88682,
+      "hours": 0.9853555555555557,
+      "mean_duration_seconds": 35.4728
+    },
+    {
+      "key": "Generalization/take_milk_from_microwave",
+      "name": "take_milk_from_microwave",
+      "axis": "Generalization",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 86122,
+      "hours": 0.9569111111111112,
+      "mean_duration_seconds": 34.4488
+    },
+    {
+      "key": "Instruction_Following/hammer_one_nail_each_hand",
+      "name": "hammer_one_nail_each_hand",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 82683,
+      "hours": 0.9187000000000001,
+      "mean_duration_seconds": 33.0732
+    },
+    {
+      "key": "Instruction_Following/hammer_two_nails_each_hand",
+      "name": "hammer_two_nails_each_hand",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 49465,
+      "hours": 0.549611111111111,
+      "mean_duration_seconds": 19.785999999999998
+    },
+    {
+      "key": "Instruction_Following/open_bottle_and_drop_one_sugar_cube_in_bottle",
+      "name": "open_bottle_and_drop_one_sugar_cube_in_bottle",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 48273,
+      "hours": 0.5363666666666667,
+      "mean_duration_seconds": 19.3092
+    },
+    {
+      "key": "Instruction_Following/open_bottle_and_drop_two_sugar_cubes_in_bottle",
+      "name": "open_bottle_and_drop_two_sugar_cubes_in_bottle",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 77583,
+      "hours": 0.8620333333333334,
+      "mean_duration_seconds": 31.0332
+    },
+    {
+      "key": "Instruction_Following/pack_four_mangoes_into_baskets",
+      "name": "pack_four_mangoes_into_baskets",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 63887,
+      "hours": 0.7098555555555556,
+      "mean_duration_seconds": 25.5548
+    },
+    {
+      "key": "Instruction_Following/pack_two_mangoes_into_two_baskets",
+      "name": "pack_two_mangoes_into_two_baskets",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 43018,
+      "hours": 0.4779777777777778,
+      "mean_duration_seconds": 17.2072
+    },
+    {
+      "key": "Instruction_Following/put_jam_from_tray_onto_shelf",
+      "name": "put_jam_from_tray_onto_shelf",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 12497,
+      "hours": 0.13885555555555557,
+      "mean_duration_seconds": 16.662666666666667
+    },
+    {
+      "key": "Instruction_Following/put_lemon_from_tray_onto_shelf",
+      "name": "put_lemon_from_tray_onto_shelf",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 17393,
+      "hours": 0.19325555555555557,
+      "mean_duration_seconds": 23.19066666666667
+    },
+    {
+      "key": "Instruction_Following/put_milk_carton_from_tray_onto_shelf",
+      "name": "put_milk_carton_from_tray_onto_shelf",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 14213,
+      "hours": 0.1579222222222222,
+      "mean_duration_seconds": 18.950666666666667
+    },
+    {
+      "key": "Instruction_Following/put_orange_from_tray_onto_shelf",
+      "name": "put_orange_from_tray_onto_shelf",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 16712,
+      "hours": 0.1856888888888889,
+      "mean_duration_seconds": 22.282666666666668
+    },
+    {
+      "key": "Instruction_Following/put_teapot_from_tray_onto_shelf",
+      "name": "put_teapot_from_tray_onto_shelf",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 15422,
+      "hours": 0.17135555555555557,
+      "mean_duration_seconds": 20.562666666666665
+    },
+    {
+      "key": "Instruction_Following/take_jam_from_shelf_into_tray",
+      "name": "take_jam_from_shelf_into_tray",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 12785,
+      "hours": 0.14205555555555555,
+      "mean_duration_seconds": 17.046666666666667
+    },
+    {
+      "key": "Instruction_Following/take_lemon_from_shelf_into_tray",
+      "name": "take_lemon_from_shelf_into_tray",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 16615,
+      "hours": 0.18461111111111111,
+      "mean_duration_seconds": 22.153333333333332
+    },
+    {
+      "key": "Instruction_Following/take_milk_carton_from_shelf_into_tray",
+      "name": "take_milk_carton_from_shelf_into_tray",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 11466,
+      "hours": 0.12739999999999999,
+      "mean_duration_seconds": 15.288
+    },
+    {
+      "key": "Instruction_Following/take_orange_from_shelf_into_tray",
+      "name": "take_orange_from_shelf_into_tray",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 13925,
+      "hours": 0.15472222222222223,
+      "mean_duration_seconds": 18.566666666666666
+    },
+    {
+      "key": "Instruction_Following/take_teapot_from_shelf_into_tray",
+      "name": "take_teapot_from_shelf_into_tray",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 12507,
+      "hours": 0.13896666666666666,
+      "mean_duration_seconds": 16.676
+    },
+    {
+      "key": "Instruction_Following/thread_bagel_and_donut_onto_middle_and_side_rods",
+      "name": "thread_bagel_and_donut_onto_middle_and_side_rods",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 45618,
+      "hours": 0.5068666666666667,
+      "mean_duration_seconds": 18.2472
+    },
+    {
+      "key": "Instruction_Following/thread_bagel_and_donut_onto_side_rods",
+      "name": "thread_bagel_and_donut_onto_side_rods",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 41821,
+      "hours": 0.46467777777777775,
+      "mean_duration_seconds": 16.7284
+    },
+    {
+      "key": "Instruction_Following/water_one_plant_each_hand",
+      "name": "water_one_plant_each_hand",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 34399,
+      "hours": 0.3822111111111111,
+      "mean_duration_seconds": 13.7596
+    },
+    {
+      "key": "Instruction_Following/water_two_plants_each_hand",
+      "name": "water_two_plants_each_hand",
+      "axis": "Instruction_Following",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 32993,
+      "hours": 0.3665888888888889,
+      "mean_duration_seconds": 13.1972
+    },
+    {
+      "key": "Limited_Demonstrations/arrange_bar_on_tray_and_cake_on_plate",
+      "name": "arrange_bar_on_tray_and_cake_on_plate",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 14797,
+      "hours": 0.16441111111111112,
+      "mean_duration_seconds": 19.729333333333333
+    },
+    {
+      "key": "Limited_Demonstrations/arrange_three_bagels_in_oven_tray",
+      "name": "arrange_three_bagels_in_oven_tray",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 24335,
+      "hours": 0.2703888888888889,
+      "mean_duration_seconds": 32.446666666666665
+    },
+    {
+      "key": "Limited_Demonstrations/assemble_arch_bridge",
+      "name": "assemble_arch_bridge",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 39131,
+      "hours": 0.4347888888888889,
+      "mean_duration_seconds": 52.17466666666667
+    },
+    {
+      "key": "Limited_Demonstrations/drain_three_tomatoes_in_strainer",
+      "name": "drain_three_tomatoes_in_strainer",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 45151,
+      "hours": 0.5016777777777778,
+      "mean_duration_seconds": 60.20133333333333
+    },
+    {
+      "key": "Limited_Demonstrations/flip_open_bottle_cap",
+      "name": "flip_open_bottle_cap",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 6873,
+      "hours": 0.07636666666666667,
+      "mean_duration_seconds": 9.164
+    },
+    {
+      "key": "Limited_Demonstrations/insert_items_into_shelf",
+      "name": "insert_items_into_shelf",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 22577,
+      "hours": 0.25085555555555555,
+      "mean_duration_seconds": 30.102666666666668
+    },
+    {
+      "key": "Limited_Demonstrations/open_bread_maker_lid",
+      "name": "open_bread_maker_lid",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 4698,
+      "hours": 0.052199999999999996,
+      "mean_duration_seconds": 6.263999999999999
+    },
+    {
+      "key": "Limited_Demonstrations/open_flatbed_scanner_lid",
+      "name": "open_flatbed_scanner_lid",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 5392,
+      "hours": 0.059911111111111116,
+      "mean_duration_seconds": 7.189333333333334
+    },
+    {
+      "key": "Limited_Demonstrations/open_microwave_oven_door",
+      "name": "open_microwave_oven_door",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 8542,
+      "hours": 0.09491111111111111,
+      "mean_duration_seconds": 11.389333333333333
+    },
+    {
+      "key": "Limited_Demonstrations/open_rice_cooker_lid",
+      "name": "open_rice_cooker_lid",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 3675,
+      "hours": 0.04083333333333333,
+      "mean_duration_seconds": 4.9
+    },
+    {
+      "key": "Limited_Demonstrations/open_wheelie_bin_lid",
+      "name": "open_wheelie_bin_lid",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 8792,
+      "hours": 0.0976888888888889,
+      "mean_duration_seconds": 11.722666666666667
+    },
+    {
+      "key": "Limited_Demonstrations/pack_three_avocados_into_tiered_basket",
+      "name": "pack_three_avocados_into_tiered_basket",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 17550,
+      "hours": 0.195,
+      "mean_duration_seconds": 23.4
+    },
+    {
+      "key": "Limited_Demonstrations/pick_up_fork_from_tray_into_cup",
+      "name": "pick_up_fork_from_tray_into_cup",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 22267,
+      "hours": 0.2474111111111111,
+      "mean_duration_seconds": 29.68933333333333
+    },
+    {
+      "key": "Limited_Demonstrations/pick_up_whisk",
+      "name": "pick_up_whisk",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 4809,
+      "hours": 0.05343333333333334,
+      "mean_duration_seconds": 6.412000000000001
+    },
+    {
+      "key": "Limited_Demonstrations/place_two_oranges_on_shelf_tiers",
+      "name": "place_two_oranges_on_shelf_tiers",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 16442,
+      "hours": 0.18268888888888887,
+      "mean_duration_seconds": 21.922666666666665
+    },
+    {
+      "key": "Limited_Demonstrations/pull_down_slot_machine_lever",
+      "name": "pull_down_slot_machine_lever",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 4673,
+      "hours": 0.05192222222222222,
+      "mean_duration_seconds": 6.230666666666666
+    },
+    {
+      "key": "Limited_Demonstrations/pull_open_cabinet_drawer",
+      "name": "pull_open_cabinet_drawer",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 5254,
+      "hours": 0.05837777777777778,
+      "mean_duration_seconds": 7.005333333333334
+    },
+    {
+      "key": "Limited_Demonstrations/pull_open_cash_register_drawer",
+      "name": "pull_open_cash_register_drawer",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 4983,
+      "hours": 0.05536666666666667,
+      "mean_duration_seconds": 6.644
+    },
+    {
+      "key": "Limited_Demonstrations/put_apple_and_orange_into_basket",
+      "name": "put_apple_and_orange_into_basket",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 9189,
+      "hours": 0.1021,
+      "mean_duration_seconds": 12.252
+    },
+    {
+      "key": "Limited_Demonstrations/put_three_eggs_into_tupperware",
+      "name": "put_three_eggs_into_tupperware",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 17596,
+      "hours": 0.1955111111111111,
+      "mean_duration_seconds": 23.461333333333336
+    },
+    {
+      "key": "Limited_Demonstrations/raise_laptop_stand_platform",
+      "name": "raise_laptop_stand_platform",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 8495,
+      "hours": 0.0943888888888889,
+      "mean_duration_seconds": 11.326666666666666
+    },
+    {
+      "key": "Limited_Demonstrations/rotate_two_cubes_around_plates",
+      "name": "rotate_two_cubes_around_plates",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 40487,
+      "hours": 0.44985555555555556,
+      "mean_duration_seconds": 53.98266666666667
+    },
+    {
+      "key": "Limited_Demonstrations/serve_cheese_on_two_cutting_boards",
+      "name": "serve_cheese_on_two_cutting_boards",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 13200,
+      "hours": 0.14666666666666667,
+      "mean_duration_seconds": 17.6
+    },
+    {
+      "key": "Limited_Demonstrations/sort_pepper_and_onion_into_two_bowls",
+      "name": "sort_pepper_and_onion_into_two_bowls",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 11983,
+      "hours": 0.13314444444444445,
+      "mean_duration_seconds": 15.977333333333332
+    },
+    {
+      "key": "Limited_Demonstrations/store_frozen_food_in_freezer",
+      "name": "store_frozen_food_in_freezer",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 12516,
+      "hours": 0.13906666666666667,
+      "mean_duration_seconds": 16.688
+    },
+    {
+      "key": "Limited_Demonstrations/store_items_in_white_cabinet",
+      "name": "store_items_in_white_cabinet",
+      "axis": "Limited_Demonstrations",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 30,
+      "frames": 14184,
+      "hours": 0.1576,
+      "mean_duration_seconds": 18.912
+    },
+    {
+      "key": "Long_Horizon/fill_jar_with_snacks",
+      "name": "fill_jar_with_snacks",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 131665,
+      "hours": 1.4629444444444446,
+      "mean_duration_seconds": 52.666000000000004
+    },
+    {
+      "key": "Long_Horizon/fill_pot_and_bottle_with_sugar_cubes_and_veg",
+      "name": "fill_pot_and_bottle_with_sugar_cubes_and_veg",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 178534,
+      "hours": 1.983711111111111,
+      "mean_duration_seconds": 71.4136
+    },
+    {
+      "key": "Long_Horizon/grill_drumsticks_fish_and_squash",
+      "name": "grill_drumsticks_fish_and_squash",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 115892,
+      "hours": 1.2876888888888889,
+      "mean_duration_seconds": 46.3568
+    },
+    {
+      "key": "Long_Horizon/insert_three_plates_into_dish_rack",
+      "name": "insert_three_plates_into_dish_rack",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 71034,
+      "hours": 0.7892666666666667,
+      "mean_duration_seconds": 28.413600000000002
+    },
+    {
+      "key": "Long_Horizon/nest_four_bowls",
+      "name": "nest_four_bowls",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 124613,
+      "hours": 1.384588888888889,
+      "mean_duration_seconds": 49.845200000000006
+    },
+    {
+      "key": "Long_Horizon/place_strainer_with_tomatoes_and_spoon_on_dish_rack",
+      "name": "place_strainer_with_tomatoes_and_spoon_on_dish_rack",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 141778,
+      "hours": 1.575311111111111,
+      "mean_duration_seconds": 56.7112
+    },
+    {
+      "key": "Long_Horizon/recycle_five_cans_into_bin",
+      "name": "recycle_five_cans_into_bin",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 91804,
+      "hours": 1.0200444444444443,
+      "mean_duration_seconds": 36.721599999999995
+    },
+    {
+      "key": "Long_Horizon/restock_fridge_with_condiments_and_bottles",
+      "name": "restock_fridge_with_condiments_and_bottles",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 179528,
+      "hours": 1.9947555555555556,
+      "mean_duration_seconds": 71.8112
+    },
+    {
+      "key": "Long_Horizon/sort_mixed_food_into_boxes",
+      "name": "sort_mixed_food_into_boxes",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 107287,
+      "hours": 1.1920777777777776,
+      "mean_duration_seconds": 42.91479999999999
+    },
+    {
+      "key": "Long_Horizon/stack_sugar_cubes",
+      "name": "stack_sugar_cubes",
+      "axis": "Long_Horizon",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 100683,
+      "hours": 1.1187,
+      "mean_duration_seconds": 40.2732
+    },
+    {
+      "key": "Memory/drop_fruits_in_basket_then_remove_in_order",
+      "name": "drop_fruits_in_basket_then_remove_in_order",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 190414,
+      "hours": 2.115711111111111,
+      "mean_duration_seconds": 76.1656
+    },
+    {
+      "key": "Memory/drop_items_into_picnic_basket_then_remove_in_order",
+      "name": "drop_items_into_picnic_basket_then_remove_in_order",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 258732,
+      "hours": 2.8748,
+      "mean_duration_seconds": 103.4928
+    },
+    {
+      "key": "Memory/pour_ice_between_two_cups",
+      "name": "pour_ice_between_two_cups",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 61085,
+      "hours": 0.6787222222222222,
+      "mean_duration_seconds": 24.434
+    },
+    {
+      "key": "Memory/press_button_then_grasp_mug",
+      "name": "press_button_then_grasp_mug",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 86768,
+      "hours": 0.9640888888888889,
+      "mean_duration_seconds": 34.7072
+    },
+    {
+      "key": "Memory/press_red_button_then_blue_button",
+      "name": "press_red_button_then_blue_button",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 46482,
+      "hours": 0.5164666666666666,
+      "mean_duration_seconds": 18.5928
+    },
+    {
+      "key": "Memory/swap_candles_between_bowls",
+      "name": "swap_candles_between_bowls",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 117304,
+      "hours": 1.3033777777777777,
+      "mean_duration_seconds": 46.9216
+    },
+    {
+      "key": "Memory/swap_cup_colors_with_cube",
+      "name": "swap_cup_colors_with_cube",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 118727,
+      "hours": 1.319188888888889,
+      "mean_duration_seconds": 47.4908
+    },
+    {
+      "key": "Memory/swap_fruits_between_bowls",
+      "name": "swap_fruits_between_bowls",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 136733,
+      "hours": 1.5192555555555556,
+      "mean_duration_seconds": 54.6932
+    },
+    {
+      "key": "Memory/uncover_cubes_in_order",
+      "name": "uncover_cubes_in_order",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 134708,
+      "hours": 1.4967555555555554,
+      "mean_duration_seconds": 53.883199999999995
+    },
+    {
+      "key": "Memory/uncover_red_cube",
+      "name": "uncover_red_cube",
+      "axis": "Memory",
+      "robot": "dual_fr3v2_sharpa",
+      "demonstrations": 100,
+      "frames": 83819,
+      "hours": 0.9313222222222223,
+      "mean_duration_seconds": 33.5276
+    }
+  ]
+}

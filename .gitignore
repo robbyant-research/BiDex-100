@@ -1,0 +1,9 @@
+# Source / build code — not part of the published webpage
+build/
+scripts/
+__pycache__/
+*.pyc
+*.log
+
+# Backups
+*.bak

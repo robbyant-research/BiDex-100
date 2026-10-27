@@ -1,0 +1,65 @@
+/* Per-task horizontal bar chart, rendered inline on the main page.
+   Reuses design tokens from static/css/bidex-100.css. */
+
+.lbch-section { padding-top: 1rem; }
+.lbch-container { max-width: 1180px; margin: 0 auto; padding: 0 12px; }
+
+.lbch-head { text-align: center; max-width: 880px; margin: 0 auto 1rem; }
+.lbch-title { font-family: var(--brand-font); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.3rem); color: var(--ink); margin: .3rem 0 .4rem; letter-spacing: -.02em; }
+.lbch-sub { color: var(--ink-soft); font-size: 1rem; line-height: 1.6; max-width: 820px; margin: 0 auto; }
+
+/* controls: reuse .lb-toolbar/.lb-chips from bidex-100.css, as a card */
+.lbch-controls { border-radius: var(--radius); border: 1px solid var(--line-soft); box-shadow: 0 12px 32px -24px rgba(32,34,36,.4); margin: 0 auto .9rem; max-width: 1180px; }
+.lbch-controls .lb-stamp { margin-left: auto; }
+
+/* legend */
+.lbch-legend { list-style: none; margin: 0 auto 1rem; padding: 0; display: flex; flex-wrap: wrap; gap: 7px 10px; justify-content: center; max-width: 1180px; }
+.lbch-legend-item { display: inline-flex; align-items: center; gap: 7px; padding: 5px 12px 5px 9px; border: 1px solid var(--line-soft); border-radius: 999px; background: var(--surface); cursor: default; transition: transform .15s ease, box-shadow .15s ease; }
+.lbch-legend-item:hover { transform: translateY(-1px); box-shadow: 0 6px 14px -10px rgba(32,34,36,.55); }
+.lbch-swatch { width: 12px; height: 12px; border-radius: 3px; box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
+.lbch-legend-name { font-family: var(--brand-font); font-weight: 600; font-size: 13px; color: var(--ink); white-space: nowrap; }
+
+/* the large chart: a scrollable card */
+.lbch-stage {
+  position: relative; margin: 0 auto; max-width: 1180px;
+  background: var(--surface); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); box-shadow: 0 12px 32px -24px rgba(32,34,36,.45);
+  overflow: auto; max-height: 78vh;
+}
+.lbch-ax-sticky { position: sticky; top: 0; z-index: 3; background: var(--surface); border-bottom: 1px solid var(--line-soft); }
+.lbch-axis { display: block; }
+.lbch-svg-host { min-width: 100%; }
+.lbch-svg { display: block; }
+
+/* SVG internals */
+.lbch-bg { fill: var(--surface); }
+.lbch-vgrid { stroke: var(--line-soft); stroke-width: 1; shape-rendering: crispEdges; }
+.lbch-vbase { stroke: rgba(32, 34, 36, .30); stroke-width: 1; shape-rendering: crispEdges; }
+.lbch-cat { font-family: var(--brand-font); font-size: 12.5px; font-weight: 700; }
+.lbch-cat-n { font-size: 10px; font-weight: 500; opacity: .78; }
+.lbch-tlabel { font-family: var(--brand-font); font-size: 9.5px; fill: var(--ink-soft); }
+.lbch-ax-x { font-family: var(--mono-font); font-size: 10.5px; fill: var(--muted); }
+.lbch-bar { transition: opacity .18s ease, filter .18s ease; cursor: pointer; }
+.lbch-bar:hover { filter: brightness(1.12); }
+
+/* isolate a model when its legend item is hovered */
+.lbch-focus-mi-0 .lbch-bar:not(.lbch-mi-0),
+.lbch-focus-mi-1 .lbch-bar:not(.lbch-mi-1),
+.lbch-focus-mi-2 .lbch-bar:not(.lbch-mi-2),
+.lbch-focus-mi-3 .lbch-bar:not(.lbch-mi-3),
+.lbch-focus-mi-4 .lbch-bar:not(.lbch-mi-4),
+.lbch-focus-mi-5 .lbch-bar:not(.lbch-mi-5),
+.lbch-focus-mi-6 .lbch-bar:not(.lbch-mi-6) { opacity: .12; }
+
+/* tooltip */
+.lbch-tip {
+  position: fixed; z-index: 50; display: none;
+  background: rgba(20, 22, 26, .96); color: #fff;
+  padding: 8px 12px; border-radius: 8px; box-shadow: 0 8px 22px rgba(0,0,0,.38);
+  font-family: var(--brand-font); font-size: 12px; line-height: 1.35;
+  pointer-events: none; max-width: 360px;
+}
+.lbch-tip-model { font-weight: 700; }
+.lbch-tip-task { color: #cfd6dd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 340px; }
+.lbch-tip-val { color: #fff; margin-top: 2px; }
+.lbch-tip-val b { color: #9fd0ff; }
