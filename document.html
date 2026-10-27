@@ -51,8 +51,8 @@
     <div class="doc-quick-links"><a href="#installation">Set up simulation <span aria-hidden="true">↗</span></a><a href="#models">Train a model <span aria-hidden="true">↗</span></a><a href="#evaluation">Run evaluation <span aria-hidden="true">↗</span></a></div>
   </div></header>
   <div class="container doc-layout">
-    <aside class="doc-sidebar"><details open><summary>On this page</summary><nav aria-label="Document contents"><a href="#installation">Simulation environment</a><a href="#simulation">Create and run a task</a><a href="#training">Training data and action spaces</a><a href="#models">Model environments and training</a><a href="#pi05">π0.5</a><a href="#lingbot">LingBot-VLA-v2</a><a href="#gr00t">GR00T-N1.7</a><a href="#additional-models">Additional model adapters</a><a href="#evaluation">Unified evaluation</a><a href="#licensing">Licensing and acknowledgements</a><a href="#citation">Citation</a></nav></details><a class="doc-source" role="link" aria-disabled="true" tabindex="-1">Benchmark on GitHub ↗</a></aside>
-    <div class="doc-content"><article class="doc-section" id="installation" aria-labelledby="heading-installation"><h2 id="heading-installation">Simulation environment</h2><p>Repository addresses are omitted for anonymous review. Before running the clone commands, set <code>BIDEX_REPO_URL</code>, <code>OPENPI_REPO_URL</code>, <code>LINGBOT_REPO_URL</code>, and <code>GROOT_REPO_URL</code> to the source repository URLs for your release.</p><pre><code class="language-bash">git clone &quot;$BIDEX_REPO_URL&quot; BiDex-100
+    <aside class="doc-sidebar"><details open><summary>On this page</summary><nav aria-label="Document contents"><a href="#installation">Simulation environment</a><a href="#simulation">Create and run a task</a><a href="#training">Training data and action spaces</a><a href="#models">Model environments and training</a><a href="#pi05">π0.5</a><a href="#lingbot">LingBot-VLA-v2</a><a href="#gr00t">GR00T-N1.7</a><a href="#additional-models">Additional model adapters</a><a href="#evaluation">Unified evaluation</a><a href="#licensing">Licensing and acknowledgements</a><a href="#citation">Citation</a></nav></details><a class="doc-source" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener">Benchmark on GitHub ↗</a></aside>
+    <div class="doc-content"><article class="doc-section" id="installation" aria-labelledby="heading-installation"><h2 id="heading-installation">Simulation environment</h2><pre><code class="language-bash">git clone https://github.com/robbyant-research/BiDex-100.git
 cd BiDex-100
 
 python -m venv .venv
@@ -60,8 +60,8 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 python -m pip install -e &quot;.[eval]&quot;
 </code></pre>
-<p>The release is available on <a role="link" aria-disabled="true" tabindex="-1">Hugging Face</a>
-and <a role="link" aria-disabled="true" tabindex="-1">ModelScope</a>,
+<p>The release is available on <a href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100">Hugging Face</a>
+and <a href="https://modelscope.cn/datasets/Robbyant-Research/BiDex-100">ModelScope</a>,
 with the same three independently downloadable components:</p>
 <pre><code class="language-text">assets/                    compressed simulation asset packs
 datasets/lerobotv21/       LeRobot v2.1 datasets
@@ -103,9 +103,8 @@ bash scripts/download_datasets.sh --source modelscope all downloads/BiDex-100
 </code></pre>
 <p>Set <code>BIDEX_DOWNLOAD_SOURCE=modelscope</code> to select ModelScope by default;
 <code>--source</code> overrides this setting. <code>BIDEX_HF_REPO</code> and <code>BIDEX_MODELSCOPE_REPO</code>
-override the repository ID for their respective source. Dataset repository IDs
-are omitted for anonymous review; set these variables to your release dataset IDs
-before downloading. Rerun the same command to reuse downloaded files
+override the repository ID for their respective source (both default to
+<code>Robbyant-Research/BiDex-100</code>). Rerun the same command to reuse downloaded files
 and resume an interrupted download. After downloading, the script checks for
 all five asset packs or all 106 task directories per selected dataset format,
 including task metadata, Parquet data, and videos.</p>
@@ -208,19 +207,19 @@ order. Pretrained model weights are separate downloads from the source code.</p>
 <tbody>
 <tr>
 <td>π0.5</td>
-<td><a role="link" aria-disabled="true" tabindex="-1">openpi-bidex100</a></td>
+<td><a href="https://github.com/WangYong-999/openpi-bidex100">openpi-bidex100</a></td>
 <td>Python 3.11 · JAX / OpenPI</td>
 <td>60k steps · chunk 50</td>
 </tr>
 <tr>
 <td>LingBot-VLA-v2</td>
-<td><a role="link" aria-disabled="true" tabindex="-1">lingbot-vla-v2-bidex100</a></td>
+<td><a href="https://github.com/WangYong-999/lingbot-vla-v2-bidex100">lingbot-vla-v2-bidex100</a></td>
 <td>Python 3.12 · PyTorch / FSDP2</td>
 <td>60k steps · chunk 50</td>
 </tr>
 <tr>
 <td>GR00T-N1.7</td>
-<td><a role="link" aria-disabled="true" tabindex="-1">Isaac-GR00T-bidex100</a></td>
+<td><a href="https://github.com/WangYong-999/Isaac-GR00T-bidex100">Isaac-GR00T-bidex100</a></td>
 <td>Python 3.12 · PyTorch</td>
 <td>400k steps · chunk 16</td>
 </tr>
@@ -230,7 +229,7 @@ order. Pretrained model weights are separate downloads from the source code.</p>
 public BiDex-100 names. A few serialized identifiers retain aliases for checkpoints
 created before the benchmark was renamed.</p></article>
 <article class="doc-section" id="pi05" aria-labelledby="heading-pi05"><h2 id="heading-pi05">π0.5</h2><h3>Create the environment</h3>
-<pre><code class="language-bash">git clone &quot;$OPENPI_REPO_URL&quot; openpi-bidex100
+<pre><code class="language-bash">git clone https://github.com/WangYong-999/openpi-bidex100.git
 cd openpi-bidex100
 python -m pip install -U uv
 GIT_LFS_SKIP_SMUDGE=1 uv sync --python 3.11
@@ -270,7 +269,7 @@ export MID_OVERRIDE=pi05_alljoint_60k_full_norm20
 bash scripts/evaluation/run_vec_models_eval.sh pi05
 </code></pre></article>
 <article class="doc-section" id="lingbot" aria-labelledby="heading-lingbot"><h2 id="heading-lingbot">LingBot-VLA-v2</h2><h3>Create the environment</h3>
-<pre><code class="language-bash">git clone --recurse-submodules &quot;$LINGBOT_REPO_URL&quot; lingbot-vla-v2-bidex100
+<pre><code class="language-bash">git clone --recurse-submodules https://github.com/WangYong-999/lingbot-vla-v2-bidex100.git
 cd lingbot-vla-v2-bidex100
 bash tools/create_train_env.sh --env-name bidex-lingbot
 conda activate bidex-lingbot
@@ -323,7 +322,7 @@ export MID_OVERRIDE=lingbot_alljoint_60k_full_norm20
 bash scripts/evaluation/run_vec_models_eval.sh lingbot
 </code></pre></article>
 <article class="doc-section" id="gr00t" aria-labelledby="heading-gr00t"><h2 id="heading-gr00t">GR00T-N1.7</h2><h3>Create the environment</h3>
-<pre><code class="language-bash">GIT_LFS_SKIP_SMUDGE=1 git clone &quot;$GROOT_REPO_URL&quot; Isaac-GR00T-bidex100
+<pre><code class="language-bash">GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/WangYong-999/Isaac-GR00T-bidex100.git
 cd Isaac-GR00T-bidex100
 python -m pip install -U uv
 uv sync --python 3.12 --all-extras
@@ -586,7 +585,7 @@ progress score is the secondary metric and can be selected from the metric toggl
 <tbody>
 <tr>
 <td>Codebase</td>
-<td><a role="link" aria-disabled="true" tabindex="-1">MIT License</a></td>
+<td><a href="https://github.com/robbyant-research/BiDex-100/blob/master/LICENSE">MIT License</a></td>
 </tr>
 <tr>
 <td>BiDex-100 datasets</td>
@@ -640,12 +639,12 @@ progress score is the secondary metric and can be selected from the metric toggl
         <a href="document.html">Document</a>
         <a href="leaderboard.html">Baselines</a>
         <a href="./#domain-randomization">Evaluation</a>
-        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
+        <a class="resource-link" href="https://github.com/robbyant-research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/github.svg" width="20" height="20" alt="" aria-hidden="true">GitHub</a>
       </div>
       <div>
         <h5>Data</h5>
-        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face</a>
-        <a class="resource-link" role="link" aria-disabled="true" tabindex="-1"><img class="resource-icon" src="static/images/icons/modelscope.svg" width="20" height="20" alt="" aria-hidden="true">ModelScope</a>
+        <a class="resource-link" href="https://huggingface.co/datasets/Robbyant-Research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face</a>
+        <a class="resource-link" href="https://modelscope.cn/datasets/Robbyant-Research/BiDex-100" target="_blank" rel="noopener"><img class="resource-icon" src="static/images/icons/modelscope.svg" width="20" height="20" alt="" aria-hidden="true">ModelScope</a>
       </div>
     </div>
     <div class="footer-bottom">
