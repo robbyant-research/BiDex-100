@@ -1,0 +1,131 @@
+name: water_one_plant_each_hand
+language: Use the left watering can to water the leftmost plant and the right watering can to water the rightmost plant.
+max_seconds: 20.32
+max_steps: 508
+subtasks:
+- name: Right arm waters the rightmost plant
+  score: 25
+- name: Left arm waters the leftmost plant
+  score: 25
+- name: Extra plant_1 is not watered
+  score: 25
+- name: Extra plant_2 is not watered
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions: {}
+objects:
+- name: dexjoco_plant_1
+  pos:
+  - -0.1
+  - 0.28
+  - 0.905
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.7
+  freejoint: false
+- name: dexjoco_plant_2
+  pos:
+  - -0.1
+  - 0.1
+  - 0.905
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.7
+  freejoint: false
+- name: dexjoco_plant_3
+  pos:
+  - -0.1
+  - -0.1
+  - 0.905
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.7
+  freejoint: false
+- name: dexjoco_plant_4
+  pos:
+  - -0.1
+  - -0.28
+  - 0.905
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.7
+  freejoint: false
+- name: dexjoco_spray
+  pos:
+  - 0.25
+  - 0.18
+  - 0.88
+  quat:
+  - 0.5
+  - 0.5
+  - -0.5
+  - -0.5
+  scale: 0.7
+  freejoint: true
+  spray: true
+- name: dexjoco_spray
+  pos:
+  - 0.25
+  - -0.18
+  - 0.88
+  quat:
+  - 0.5
+  - 0.5
+  - -0.5
+  - -0.5
+  scale: 0.7
+  freejoint: true
+  spray: true
+fixtures: []
+goal:
+- type: watered
+  args:
+  - dexjoco_plant_1
+  subtask: Right arm waters the rightmost plant
+  threshold: 0.12
+- type: watered
+  args:
+  - dexjoco_plant_4
+  subtask: Left arm waters the leftmost plant
+  threshold: 0.12
+- type: not_watered
+  args:
+  - dexjoco_plant_2
+  subtask: Extra plant_1 is not watered
+  threshold: 0.12
+  latch_violation: true
+- type: not_watered
+  args:
+  - dexjoco_plant_3
+  subtask: Extra plant_2 is not watered
+  threshold: 0.12
+  latch_violation: true
+obj_of_interest:
+- dexjoco_plant_1
+- dexjoco_plant_2
+- dexjoco_plant_3
+- dexjoco_plant_4
+- dexjoco_spray

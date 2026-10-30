@@ -1,0 +1,133 @@
+name: water_two_plants_each_hand
+language: Use the left watering can to water the two left plants and the right watering can to water the two right plants.
+max_seconds: 20.32
+max_steps: 508
+subtasks:
+- name: Right arm waters the first right plant
+  score: 25
+- name: Right arm waters the second right plant
+  score: 25
+- name: Left arm waters the first left plant
+  score: 25
+- name: Left arm waters the second left plant
+  score: 25
+ood:
+  base_task: tabletop_water_two_plants_each_hand
+  scene_randomize: true
+  baked_layout: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions: {}
+objects:
+- name: dexjoco_plant_1
+  pos:
+  - -0.1
+  - 0.28
+  - 0.905
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.7
+  freejoint: false
+- name: dexjoco_plant_2
+  pos:
+  - -0.1
+  - 0.1
+  - 0.905
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.7
+  freejoint: false
+- name: dexjoco_plant_3
+  pos:
+  - -0.1
+  - -0.1
+  - 0.905
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.7
+  freejoint: false
+- name: dexjoco_plant_4
+  pos:
+  - -0.1
+  - -0.28
+  - 0.905
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.7
+  freejoint: false
+- name: dexjoco_spray
+  pos:
+  - 0.25
+  - 0.18
+  - 0.88
+  quat:
+  - 0.5
+  - 0.5
+  - -0.5
+  - -0.5
+  scale: 0.7
+  freejoint: true
+  spray: true
+- name: dexjoco_spray
+  pos:
+  - 0.25
+  - -0.18
+  - 0.88
+  quat:
+  - 0.5
+  - 0.5
+  - -0.5
+  - -0.5
+  scale: 0.7
+  freejoint: true
+  spray: true
+fixtures: []
+goal:
+- type: watered
+  args:
+  - dexjoco_plant_1
+  subtask: Right arm waters the first right plant
+  threshold: 0.12
+- type: watered
+  args:
+  - dexjoco_plant_2
+  subtask: Right arm waters the second right plant
+  threshold: 0.12
+- type: watered
+  args:
+  - dexjoco_plant_3
+  subtask: Left arm waters the first left plant
+  threshold: 0.12
+- type: watered
+  args:
+  - dexjoco_plant_4
+  subtask: Left arm waters the second left plant
+  threshold: 0.12
+obj_of_interest:
+- dexjoco_plant_1
+- dexjoco_plant_2
+- dexjoco_plant_3
+- dexjoco_plant_4
+- dexjoco_spray

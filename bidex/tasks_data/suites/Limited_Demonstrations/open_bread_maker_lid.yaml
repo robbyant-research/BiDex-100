@@ -1,0 +1,48 @@
+name: open_bread_maker_lid
+language: Open the lid of the bread maker.
+subtasks:
+- name: Open the lid of the bread maker
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - -0.45
+  - 0.7
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  bread_maker_with_hinged_lid_zone:
+    center:
+    - 0.3
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: bread_maker_with_hinged_lid
+  region: bread_maker_with_hinged_lid_zone
+  scale: 0.65
+fixtures: []
+articulations:
+- object: bread_maker_with_hinged_lid
+  joint: body_to_lid
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - bread_maker_with_hinged_lid
+  - body_to_lid
+  threshold: 1.17
+  subtask: Open the lid of the bread maker
+obj_of_interest:
+- bread_maker_with_hinged_lid
+max_seconds: 60

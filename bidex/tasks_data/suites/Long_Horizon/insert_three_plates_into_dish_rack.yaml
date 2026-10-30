@@ -1,0 +1,187 @@
+name: insert_three_plates_into_dish_rack
+language: Pick up the three plates and insert each into the dish rack to dry.
+subtasks:
+- name: Pick up the first plate
+  score: 10
+- name: Insert the first plate into the dish rack
+  score: 20
+- name: Pick up the second plate
+  score: 10
+- name: Insert the second plate into the dish rack
+  score: 25
+- name: Pick up the third plate
+  score: 10
+- name: Insert the third plate into the dish rack
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Every object is from a previously-UNTOUCHED category: dish_rack (DishRack028)
+# and three plates (plate_9/1/2). The dish rack is the same wire rack used by
+# `tabletop_load_three_canned_food_onto_dish_rack`, free-jointed with mass 5
+# (heavy enough to stay put while plates are loaded), yaw pinned ~pi/2 so its
+# long axis runs along world y. Once it settles on the 0.80 table its only real
+# horizontal support is the drip-tray slab -- 0.29 m (world x) x 0.48 m (world y),
+# top z ~0.835 -- so a resting plate's lowest point sits ~0.85 m (well above the
+# table), and a plate left on the table at x ~0.22 has NO rack contact.
+# `inside_contact` (not the xy-radius `inside`) is the robust gate: a plate
+# counts as inserted only when it has a SUPPORT contact with the rack subtree --
+# a vertical-normal contact, i.e. the drip tray is beneath it holding it up --
+# which a plate merely carried past the rack's side wires does NOT have.
+# `must_hold:true` rejects a plate that landed on the rack then slid off onto the
+# table (no support contact at the end). `on_edge(plate)` (added) additionally
+# requires the plate to stand VERTICALLY on its rim in a rack slot -- its
+# disk-normal (local z) horizontal within ~30 deg (threshold 0.5) -- so a plate
+# merely lying FLAT on the drip tray does NOT count as inserted. This changes the
+# intended success state from the earlier "flat on the tray" design to a real
+# vertical dish-rack insertion; the spawn layout (plates flat in a y-row on the
+# +x side) is only the INITIAL state. The plates are SCALED TO 0.8 (~14.4 cm
+# dia) for a geometric reason: the tray is only 0.29 x 0.48 m and three
+# full-size 0.18-m plates do NOT pack flat on it (2 fit, the 3rd must overlap or
+# overhang -- overlapping plates shove each other off the tray during settle, and
+# an overhanging trio only stays put by perching on the thin end frame, which a
+# naive flat drop does not reproduce, leaving 1/3 surviving). At scale 0.8 three
+# plates sit flat in a y-row on the tray (centres y = -0.16/0/+0.16, 0.016 m
+# face gap, edge 0.232 m < tray 0.239 m), each with a stable vertical support
+# contact -- verified 3/3 over a 12000-step settle. A plate stacked entirely on
+# another plate (plate-plate support, no rack contact) still reads inside_contact
+# False, so the robot must set the three down at different xy spots; the tray has
+# room for three 14-cm plates in a row. The spawn layout mirrors the canned-food
+# task: rack on the -x side, three plates in a y-column on the +x side. Region
+# boxes are disjoint:
+#   rack    x[-0.21,-0.15]  y[-0.03,0.03]   (xy 0.03)
+#   plate_a x[0.19,0.25]   y[0.23,0.27]    (xy 0.03 / 0.02)
+#   plate_b x[0.19,0.25]   y[-0.02,0.02]   (xy 0.03 / 0.02)
+#   plate_c x[0.19,0.25]   y[-0.27,-0.23]  (xy 0.03 / 0.02)
+# rack-to-plates ~0.34 m clear in x; plate zones 0.25 m apart in y with +/-0.02
+# jitter -> worst-case centre separation 0.21 m vs a 0.144 m plate (0.066 m face
+# clearance, no pre-embed); plate edges stay <=0.34 m from the table centre
+# (<0.40 m table half-width, no edge fall-off).
+regions:
+  dish_rack_zone:
+    center:
+    - -0.18
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - 0.0
+    - 0.0
+  plate_a_zone:
+    center:
+    - 0.22
+    - 0.25
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -0.3
+    - 0.3
+  plate_b_zone:
+    center:
+    - 0.22
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -0.3
+    - 0.3
+  plate_c_zone:
+    center:
+    - 0.22
+    - -0.25
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -0.3
+    - 0.3
+objects:
+- name: rc/lightwheel/dish_rack/DishRack028
+  region: dish_rack_zone
+  scale: 0.8
+  freejoint: false
+  mass: 5
+- name: rc/objaverse/plate/plate_9
+  region: plate_a_zone
+  scale: 0.8
+  freejoint: true
+- name: rc/objaverse/plate/plate_5
+  region: plate_b_zone
+  scale: 0.8
+  freejoint: true
+- name: rc/objaverse/plate/plate_2
+  region: plate_c_zone
+  scale: 0.8
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/plate/plate_9
+  subtask: Pick up the first plate
+- type: inside_contact
+  args:
+  - rc/objaverse/plate/plate_9
+  - rc/lightwheel/dish_rack/DishRack028
+  subtask: Insert the first plate into the dish rack
+  must_hold: true
+- type: on_edge
+  args:
+  - rc/objaverse/plate/plate_9
+  threshold: 0.5
+  subtask: Insert the first plate into the dish rack
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/plate/plate_5
+  subtask: Pick up the second plate
+- type: inside_contact
+  args:
+  - rc/objaverse/plate/plate_5
+  - rc/lightwheel/dish_rack/DishRack028
+  subtask: Insert the second plate into the dish rack
+  must_hold: true
+- type: on_edge
+  args:
+  - rc/objaverse/plate/plate_5
+  threshold: 0.5
+  subtask: Insert the second plate into the dish rack
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/plate/plate_2
+  subtask: Pick up the third plate
+- type: inside_contact
+  args:
+  - rc/objaverse/plate/plate_2
+  - rc/lightwheel/dish_rack/DishRack028
+  subtask: Insert the third plate into the dish rack
+  must_hold: true
+- type: on_edge
+  args:
+  - rc/objaverse/plate/plate_2
+  threshold: 0.5
+  subtask: Insert the third plate into the dish rack
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/dish_rack/DishRack028
+- rc/objaverse/plate/plate_9
+- rc/objaverse/plate/plate_5
+- rc/objaverse/plate/plate_2

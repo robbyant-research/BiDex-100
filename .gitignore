@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+build/
+dist/
+
+# Temp MJCF files the env writes at runtime
+sim_combined_*.xml
+sim_robot_posed_*.xml
+obj*_*.xml
+
+# Renderer / logs
+*.mp4
+*.log
+MUJOCO_LOG.TXT
+
+# Local collected data
+collect_runs/
+sim_dataset/
+*.jsonl
+tests/vis_*
+downloads/
+leaderboard/
+
+# Claude Code local settings (per-environment, not shared)
+.claude/
+_diag_frames/
+.efc_*
+
+# External asset symlinks (point to local data dir, not shared)
+bidex/libero
+bidex/robocasa/assets
+bidex/robots/assembly/astribot_s1/meshes
+bidex/robots/assembly/astribot_s1/shared/meshes

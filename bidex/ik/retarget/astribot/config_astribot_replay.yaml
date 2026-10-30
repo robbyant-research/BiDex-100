@@ -1,0 +1,76 @@
+# astribot S1 config for the humanoid-arm-retarget pipeline.
+#
+# Ported from gr1_avp_teleop/config_gr1.yaml for the astribot S1 fixed-base
+# variant. Structure identical; only the robot-specific numbers differ.
+#
+# left_base / right_base : placeholder VR-world -> arm-base transforms. When
+#   the calib replay runs with --head-anchor (default), these are OVERWRITTEN
+#   at runtime by T_align = T_astribot_head @ R_remap @ inv(T_avp_head_frame0),
+#   so the values here only matter if head-anchor is disabled.
+# left_wrist / right_wrist : human-wrist -> robot-EE frame correction (the EE
+#   here is astribot_arm_*_tool_link). Start from the GR1 values; re-tune in
+#   the calibration step if the wrist axes look rotated in the 3D plot.
+# bounds : astribot MJCF joint ranges for arm joints 1..5 (5 deg margin), NOT
+#   the upstream fftai values — narrow bounds trap the SLSQP at a joint limit
+#   (the GR1 lesson). Order (10-DOF): [L_j1..5, R_j1..5].
+
+left_fk_function: bidex.ik.retarget.astribot.fk_functions_replay.left_fk
+right_fk_function: bidex.ik.retarget.astribot.fk_functions_replay.right_fk
+num_joints: 14
+
+lower_bounds: [-172, -82, -171, 5, -131, -82, -82, -82, 5, -131]
+upper_bounds: [82, 27, 82, 141, 131, 172, 27, 171, 141, 131]
+init_q: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+# VR world frame in left base frame (placeholder; head-anchor overrides)
+left_base:
+  - [0, 1, 0, 0]
+  - [-1, 0, 0, 0]
+  - [0, 0, 1, -1.2568]
+  - [0, 0, 0, 1]
+
+# VR world frame in right base frame (placeholder; head-anchor overrides)
+right_base:
+  - [0, 1, 0, 0]
+  - [-1, 0, 0, 0]
+  - [0, 0, 1, -1.2568]
+  - [0, 0, 0, 1]
+
+# robot ee frame in human left wrist frame.
+# Data-driven Procrustes fit: with the head-anchor active, this is the
+# constant rotation that maps AVP left-wrist orientation (in robot base
+# frame) to astribot left tool_link orientation, minimising orientation
+# error over a 200-frame collection from tracking.jsonl. Re-run the fit
+# (scripts/astribot_jsonl_calib_replay.py + procrustes) if you change the
+# JSONL or the head-anchor remap. Steady-state residual: L≈0.6 cm, R≈0.6 cm
+# at ori_weight=0.5 (≤1.2 cm at upstream's ori_weight=6).
+left_wrist:
+  - [-0.7056,  0.2930, -0.6452, 0]
+  - [-0.6794, -0.0212,  0.7335, 0]
+  - [ 0.2013,  0.9559,  0.2140, 0]
+  - [0, 0, 0, 1]
+
+# robot ee frame in human right wrist frame (same Procrustes procedure)
+right_wrist:
+  - [-0.5397, -0.2364,  0.8079, 0]
+  - [-0.8390,  0.0730, -0.5391, 0]
+  - [ 0.0685, -0.9689, -0.2378, 0]
+  - [0, 0, 0, 1]
+
+# Scale position targets to compensate for astribot arms being longer
+# than human arms. >1.0 = robot reaches further than operator motion.
+# The head-anchor already aligns AVP head to robot head, so this only
+# amplifies the relative hand-to-head displacement.
+scale_factor: 1.4
+
+# Neck-mount offset: when AVP is worn around the neck (not on head),
+# the head tracker origin shifts down relative to actual eye level.
+# This offset is ADDED to T_avp_head (in AVP head-local frame) before
+# computing the head-anchor, virtually raising the origin back to eye
+# height so arm targets push outward to natural reach distance.
+# Format: [x_forward, y_left, z_up] in AVP head-local meters.
+# Set to [0, 0, 0] when AVP is worn normally on the head.
+# NOTE: the head-anchor uses the FIRST frame's head pose as reference,
+# so if the operator's hands are already at a natural position in
+# frame 0, the offset may not be needed (set to [0, 0, 0]).
+neck_offset: [0.0, 0.0, 0.0]

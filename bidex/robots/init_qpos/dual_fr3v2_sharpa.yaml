@@ -1,0 +1,26 @@
+# Initial joint qpos for dual_fr3v2_sharpa.
+#
+# Mirrors the legacy config.yaml fields
+# sim_config.left_franka_init_qpos / right_franka_init_qpos.
+# Joints are looked up by name in the resolved MJCF; values not listed
+# stay at the MuJoCo default (typically zero). Sharpa hand joints are
+# intentionally omitted — they start at zero (open hand).
+#
+# Right shoulder yaw = -pi/4 (arm outward to the right), elbow bent
+# ~135deg, wrist neutral. The pose places the EE in front-of-robot at
+# ~tabletop height, ready for pick-and-place.
+joints:
+  left_fr3v2_joint1: 0.7854
+  left_fr3v2_joint2: -0.7854
+  left_fr3v2_joint3: 0.0
+  left_fr3v2_joint4: -2.356
+  left_fr3v2_joint5: 0.0
+  left_fr3v2_joint6: 1.57
+  left_fr3v2_joint7: 0.7854
+  right_fr3v2_joint1: -0.7854
+  right_fr3v2_joint2: -0.7854
+  right_fr3v2_joint3: 0.0
+  right_fr3v2_joint4: -2.356
+  right_fr3v2_joint5: 0.0
+  right_fr3v2_joint6: 1.57
+  right_fr3v2_joint7: 0.7854

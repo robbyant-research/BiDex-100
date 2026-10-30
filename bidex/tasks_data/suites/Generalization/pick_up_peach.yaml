@@ -1,0 +1,40 @@
+name: pick_up_peach
+language: Pick up the peach.
+subtasks:
+- name: Pick up the peach
+  score: 100
+robot_type: astribot_s1_fixed_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - 0.0
+  - 0.0
+  quat:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+regions:
+  peach_zone:
+    center:
+    - 0.45
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.15
+    - 0.15
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: peach
+  region: peach_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - peach
+  subtask: Pick up the peach
+obj_of_interest:
+- peach

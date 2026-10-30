@@ -1,0 +1,94 @@
+name: nest_medium_box_in_large_box
+language: Place the medium box inside the large box, then place the cube inside the medium box.
+subtasks:
+- name: Pick up the medium box
+  score: 10
+- name: Nest the medium box inside the large box
+  score: 40
+- name: Pick up the cube
+  score: 10
+- name: Place the cube inside the medium box
+  score: 40
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 220
+robot_pose:
+  pos: [0.5, -0.45, 0.6]
+  quat: [0.382683, 0, 0, 0.92388]
+# ordered_subtasks: true
+# ASSEMBLY (nested boxes): a three-tier matryoshka. The large open box
+# (10 cm) sits on the table; the medium open box (6.8 cm) is lowered into it
+# (0.8 cm/side clearance); the 4 cm cube is then placed into the medium box.
+# ordered_subtasks forces medium-into-large before cube-into-medium. Graded by
+# inside_contact: box_m supported by box_l (z_min 0.815, above the large floor),
+# cube supported by box_m (z_min 0.82, above the medium floor) -- so a part on the
+# table beside the boxes never latches. box_l spawns in its own nest_zone (it is
+# large and stays put); box_m and cube_a spawn in parts_zone. Each part lifted
+# then placed, must_hold. `upright(box_m / box_l / cube_a)` (threshold 0.9,
+# ~26 deg) is AND-ed onto the nest/cube subtasks so all three parts must rest
+# FLAT (horizontal, as at spawn) at the final frame -- a tipped-over box or cube
+# fails even if it is technically inside_contact.
+regions:
+  nest_zone:
+    center: [0.0, 0.0, 0.80]
+    xy_range: [0.02, 0.02]
+    yaw_range: [-0.3, 0.3]
+    rest_on_surface: true
+  parts_zone:
+    center: [0.26, 0.0, 0.80]
+    xy_range: [0.09, 0.12]
+    yaw_range: [-3.14, 3.14]
+    rest_on_surface: true
+    min_distance: 0.09
+objects:
+- name: assembly_box_l
+  region: nest_zone
+  freejoint: true
+  scale: 1
+- name: assembly_box_m
+  region: parts_zone
+  freejoint: true
+  scale: 1
+- name: cube_a
+  region: parts_zone
+  freejoint: true
+  scale: 1
+fixtures: []
+goal:
+- type: lifted
+  args: [assembly_box_m]
+  subtask: Pick up the medium box
+  threshold: 0.85
+- type: inside_contact
+  args: [assembly_box_m, assembly_box_l]
+  threshold: 0.803
+  subtask: Nest the medium box inside the large box
+  must_hold: true
+- type: upright
+  args: [assembly_box_m]
+  threshold: 0.9
+  subtask: Nest the medium box inside the large box
+  must_hold: true
+- type: upright
+  args: [assembly_box_l]
+  threshold: 0.9
+  subtask: Nest the medium box inside the large box
+  must_hold: true
+- type: lifted
+  args: [cube_a]
+  subtask: Pick up the cube
+  threshold: 0.85
+- type: inside_contact
+  args: [cube_a, assembly_box_m]
+  threshold: 0.803
+  subtask: Place the cube inside the medium box
+  must_hold: true
+- type: upright
+  args: [cube_a]
+  threshold: 0.9
+  subtask: Place the cube inside the medium box
+  must_hold: true
+obj_of_interest:
+- assembly_box_l
+- assembly_box_m
+- cube_a

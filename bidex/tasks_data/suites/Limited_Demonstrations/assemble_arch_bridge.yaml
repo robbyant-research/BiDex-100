@@ -1,0 +1,107 @@
+name: assemble_arch_bridge
+language: Stand two piers on the base, lay the deck across them, then set the capstone cube on the middle of the deck.
+subtasks:
+- name: Stand pier A on the base
+  score: 10
+- name: Stand pier B on the base
+  score: 10
+- name: Pick up the deck
+  score: 20
+- name: Lay the deck across the two piers
+  score: 20
+- name: Pick up the capstone
+  score: 20
+- name: Set the capstone on the deck centre
+  score: 20
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 260
+robot_pose:
+  pos: [0.5, -0.45, 0.6]
+  quat: [0.382683, 0, 0, 0.92388]
+# ordered_subtasks: true
+# ASSEMBLY (arch bridge, scale 1.25). Two piers stand 8 cm apart on the
+# base; the 15 cm deck spans the gap with a cantilever each side; a cube capstone
+# centres on the deck. ordered_subtasks forces pier_a -> pier_b -> deck ->
+# capstone. inside_contact grades each tier (z_min = tier resting surface: base
+# top 0.8125, pier tops 0.85, deck top 0.8875). pier_a/pier_b are block_short
+# aliases; cube_a is the assembly_cube alias. Regions centred on the table
+# (fixture y=+0.10, parts y=-0.12, x~0). min_distance 0.115 >= deck+pier AABB
+# pair sum. Each part lifted then placed, must_hold.
+regions:
+  fixture_zone:
+    center: [0.0, 0.0, 0.80]
+    xy_range: [0.0, 0.01]
+    yaw_range: [0.0, 0.01]
+    rest_on_surface: true
+  parts_zone:
+    center: [0.22, 0.0, 0.80]
+    xy_range: [0.02, 0.3]
+    yaw_range: [-3.14, 3.14]
+    rest_on_surface: true
+    min_distance: 0.115
+objects:
+- name: assembly_base
+  region: fixture_zone
+  freejoint: false
+  scale: 1.25
+- name: pier_a
+  region: parts_zone
+  scale: 1.25
+  freejoint: true
+- name: pier_b
+  region: parts_zone
+  scale: 1.25
+  freejoint: true
+- name: assembly_bridge_deck
+  region: parts_zone
+  scale: 1.25
+  freejoint: true
+- name: cube_a
+  region: parts_zone
+  scale: 1.25
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args: [pier_a]
+  subtask: Stand pier A on the base
+  threshold: 0.83
+- type: inside_contact
+  args: [pier_a, assembly_base]
+  threshold: 0.805
+  subtask: Stand pier A on the base
+  must_hold: true
+- type: lifted
+  args: [pier_b]
+  subtask: Stand pier B on the base
+  threshold: 0.83
+- type: inside_contact
+  args: [pier_b, assembly_base]
+  threshold: 0.805
+  subtask: Stand pier B on the base
+  must_hold: true
+- type: lifted
+  args: [assembly_bridge_deck]
+  subtask: Pick up the deck
+  threshold: 0.85
+- type: inside_contact
+  args: [assembly_bridge_deck, pier_a]
+  threshold: 0.85
+  subtask: Lay the deck across the two piers
+  must_hold: true
+- type: lifted
+  args: [cube_a]
+  subtask: Pick up the capstone
+  threshold: 0.85
+- type: inside_contact
+  args: [cube_a, assembly_bridge_deck]
+  threshold: 0.8875
+  subtask: Set the capstone on the deck centre
+  must_hold: true
+obj_of_interest:
+- assembly_base
+- pier_a
+- pier_b
+- assembly_bridge_deck
+- cube_a

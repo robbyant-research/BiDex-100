@@ -1,0 +1,86 @@
+name: put_sweet_potato_and_onion_in_bowl
+language: Put the sweet potato and the onion in the bowl.
+subtasks:
+- name: Pick up the sweet potato
+  score: 25
+- name: Put the sweet potato in the bowl
+  score: 25
+- name: Put the onion in the bowl
+  score: 50
+robot_type: astribot_s1_fixed_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - 0.0
+  - 0.0
+  quat:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+regions:
+  sweet_potato_zone:
+    center:
+    - 0.3
+    - -0.15
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+  onion_zone:
+    center:
+    - 0.3
+    - 0.15
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+  bowl_zone:
+    center:
+    - 0.55
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: sweet_potato
+  region: sweet_potato_zone
+- name: onion
+  region: onion_zone
+- name: bowl
+  region: bowl_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - sweet_potato
+  subtask: Pick up the sweet potato
+- type: supported_in_region
+  args:
+  - sweet_potato
+  - bowl
+  - reg_int
+  subtask: Put the sweet potato in the bowl
+  must_hold: true
+- type: supported_in_region
+  args:
+  - onion
+  - bowl
+  - reg_int
+  subtask: Put the onion in the bowl
+  must_hold: true
+obj_of_interest:
+- sweet_potato
+- onion
+- bowl

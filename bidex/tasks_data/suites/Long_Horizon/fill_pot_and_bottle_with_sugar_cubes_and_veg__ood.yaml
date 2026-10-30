@@ -1,0 +1,227 @@
+name: fill_pot_and_bottle_with_sugar_cubes_and_veg
+language: Left arm opens the bottle's cap, drops the two vegetables and the largest
+  sugar cube into the pot, closes the cap, and lifts it, while the right arm drops
+  the other three sugar cubes into the bottle.
+subtasks:
+- name: Left arm opens the bottle's articulated cap
+  score: 20
+- name: Left arm places the first vegetable into the pot
+  score: 10
+- name: Left arm places the second vegetable into the pot
+  score: 10
+- name: Left arm drops the largest sugar cube into the pot
+  score: 10
+- name: Right arm drops the second sugar cube into the bottle
+  score: 10
+- name: Right arm drops the third sugar cube into the bottle
+  score: 10
+- name: Right arm drops the fourth sugar cube into the bottle
+  score: 10
+- name: Left arm lifts the pot
+  score: 10
+- name: Left arm closes the bottle's articulated cap
+  score: 10
+ood:
+  base_task: tabletop_long_bottle_pot_veg
+  scene_randomize: true
+  baked_layout: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+max_seconds: 180
+ordered_subtasks: true
+regions:
+  veg_zone:
+    center:
+    - 0.2
+    - -0.2
+    - 0.84
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.05
+    rest_on_surface: true
+  dish_zone:
+    center:
+    - 0.2
+    - 0.2
+    - 0.84
+    xy_range:
+    - 0.07
+    - 0.07
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.05
+objects:
+- name: rc/lightwheel/saucepan/Saucepan002
+  pos:
+  - -0.2
+  - -0.2
+  - 0.85
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.0
+  mass: 0.1
+  freejoint: true
+- name: a_classic_occ_bottle_with_articulated_cap
+  pos:
+  - -0.2
+  - 0.1
+  - 0.98
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 0.65
+  freejoint: true
+- name: rc/objaverse/plate/plate_0
+  pos:
+  - 0.2
+  - -0.2
+  - 0.816
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.3
+  freejoint: false
+- name: rc/objaverse/broccoli/broccoli_0
+  region: veg_zone
+  scale: 1.0
+  freejoint: true
+- name: rc/objaverse/broccoli/broccoli_1
+  region: veg_zone
+  scale: 1.0
+  freejoint: true
+- name: rc/objaverse/plate/plate_1
+  pos:
+  - 0.2
+  - 0.2
+  - 0.807
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.3
+  freejoint: false
+- name: rc/lightwheel/sugar_cube/SugarCube001
+  region: dish_zone
+  scale: 3
+  freejoint: true
+- name: rc/lightwheel/sugar_cube/SugarCube002
+  region: dish_zone
+  scale: 3
+  freejoint: true
+- name: rc/lightwheel/sugar_cube/SugarCube003
+  region: dish_zone
+  scale: 3
+  freejoint: true
+- name: rc/lightwheel/sugar_cube/SugarCube004
+  region: dish_zone
+  scale: 2.8
+  freejoint: true
+fixtures: []
+articulations:
+- object: a_classic_occ_bottle_with_articulated_cap
+  joint: cap_hinge
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - a_classic_occ_bottle_with_articulated_cap
+  - cap_hinge
+  threshold: 1.26
+  subtask: Left arm opens the bottle's articulated cap
+  order_group: items
+- type: inside
+  args:
+  - rc/objaverse/broccoli/broccoli_0
+  - rc/lightwheel/saucepan/Saucepan002
+  subtask: Left arm places the first vegetable into the pot
+  threshold: 0.1
+  must_hold: true
+  order_group: items
+- type: inside
+  args:
+  - rc/objaverse/broccoli/broccoli_1
+  - rc/lightwheel/saucepan/Saucepan002
+  subtask: Left arm places the second vegetable into the pot
+  threshold: 0.1
+  must_hold: true
+  order_group: items
+- type: inside
+  args:
+  - rc/lightwheel/sugar_cube/SugarCube002
+  - rc/lightwheel/saucepan/Saucepan002
+  subtask: Left arm drops the largest sugar cube into the pot
+  threshold: 0.1
+  must_hold: true
+  order_group: items
+- type: in_bottle
+  args:
+  - rc/lightwheel/sugar_cube/SugarCube001
+  - a_classic_occ_bottle_with_articulated_cap
+  subtask: Right arm drops the second sugar cube into the bottle
+  threshold: 0.1
+  must_hold: true
+  order_group: items
+- type: in_bottle
+  args:
+  - rc/lightwheel/sugar_cube/SugarCube003
+  - a_classic_occ_bottle_with_articulated_cap
+  subtask: Right arm drops the third sugar cube into the bottle
+  threshold: 0.1
+  must_hold: true
+  order_group: items
+- type: in_bottle
+  args:
+  - rc/lightwheel/sugar_cube/SugarCube004
+  - a_classic_occ_bottle_with_articulated_cap
+  subtask: Right arm drops the fourth sugar cube into the bottle
+  threshold: 0.1
+  must_hold: true
+  order_group: items
+- type: lifted
+  args:
+  - rc/lightwheel/saucepan/Saucepan002
+  subtask: Left arm lifts the pot
+  threshold: 0.90
+  must_hold: true
+  order_group: items
+- type: closed
+  args:
+  - a_classic_occ_bottle_with_articulated_cap
+  - cap_hinge
+  threshold: 0.5
+  subtask: Left arm closes the bottle's articulated cap
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/saucepan/Saucepan002
+- a_classic_occ_bottle_with_articulated_cap
+- rc/objaverse/plate/plate_0
+- rc/objaverse/broccoli/broccoli_0
+- rc/objaverse/broccoli/broccoli_1
+- rc/objaverse/plate/plate_1
+- rc/lightwheel/sugar_cube/SugarCube001
+- rc/lightwheel/sugar_cube/SugarCube002
+- rc/lightwheel/sugar_cube/SugarCube003
+- rc/lightwheel/sugar_cube/SugarCube004

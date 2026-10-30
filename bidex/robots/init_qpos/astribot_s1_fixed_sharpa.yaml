@@ -1,0 +1,46 @@
+# Initial joint qpos for astribot_s1_fixed_sharpa.
+#
+# Same shape contract as dual_fr3v2_sharpa.yaml: {joint_name: qpos}.
+# The "tabletop-ready" pose mirrors the structure of FR3v2's
+# `right_franka_init_qpos = [-pi/4, -pi/4, 0, -3pi/4, 0, pi/2, pi/4]`:
+# shoulder out (joint_1 = +-pi/4), elbow bent ~pi/2 (joint_4 = pi/2),
+# wrist neutral. Left arm uses the mirrored sign.
+#
+# Torso joints are biased so the upper body leans slightly forward and
+# down, so the EE comfortably reaches the tabletop in front. Head joints
+# are zeroed (operator can look around via the AVP immersive view).
+#
+# Astribot arm joint ranges (from
+# assembly/astribot_s1/shared/astribot_s1_body_subtree.xml):
+#   joint_1: [-3.087,  1.517]   shoulder yaw  (right: positive = outward)
+#   joint_2: [-1.517,  0.550]   shoulder roll
+#   joint_3: [-3.080,  1.517]   shoulder pitch
+#   joint_4: [ 0.000,  2.550]   elbow bend (large => more bent)
+#   joint_5: [-2.370,  2.370]   wrist roll
+#   joint_6: [-0.780,  0.780]   wrist pitch
+#   joint_7: [-1.550,  1.550]   wrist yaw
+joints:
+  # Torso: lean forward + slight side, so the arms can reach the table.
+  astribot_torso_joint_1: 0.0
+  astribot_torso_joint_2: 0.0
+  astribot_torso_joint_3: 0.0
+  astribot_torso_joint_4: 0.0
+  # Head: neutral.
+  astribot_head_joint_1: 0.0
+  astribot_head_joint_2: 1.0
+  # Left arm: shoulder out to left (+pi/4), elbow ~90deg, wrist neutral.
+  astribot_arm_left_joint_1: 0.0
+  astribot_arm_left_joint_2: 0.0
+  astribot_arm_left_joint_3: -1.5708
+  astribot_arm_left_joint_4: 1.5708
+  astribot_arm_left_joint_5: 0.0
+  astribot_arm_left_joint_6: 0.0
+  astribot_arm_left_joint_7: 0.0
+  # Right arm: shoulder out to right (-pi/4), elbow ~90deg, wrist neutral.
+  astribot_arm_right_joint_1: 0.0
+  astribot_arm_right_joint_2: 0.0
+  astribot_arm_right_joint_3: 1.5708
+  astribot_arm_right_joint_4: 1.5708
+  astribot_arm_right_joint_5: 0.0
+  astribot_arm_right_joint_6: 0.0
+  astribot_arm_right_joint_7: 0.0

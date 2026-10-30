@@ -1,0 +1,173 @@
+name: restock_fridge_with_condiments_and_bottles
+language: Open the fridge, put the two condiments and the two tall bottles inside,
+  and close the door with the water bottle standing upright.
+subtasks:
+- name: Left arm opens the fridge door
+  score: 25
+- name: Right arm puts the water bottle into the fridge
+  score: 10
+- name: Right arm puts the bottled drink into the fridge
+  score: 10
+- name: Left arm puts the mayonnaise into the fridge
+  score: 10
+- name: Left arm puts the mustard into the fridge
+  score: 10
+- name: Left arm closes the fridge door
+  score: 15
+- name: The water bottle stands upright in the fridge
+  score: 20
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+max_seconds: 180
+ordered_subtasks: true
+regions:
+  fridge_zone:
+    center:
+    - -0.2
+    - 0.0
+    - 0.82
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - 0.0
+    - 0.3
+  tall_zone:
+    center:
+    - 0.25
+    - -0.2
+    - 0.95
+    xy_range:
+    - 0.06
+    - 0.1
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.05
+  cond_zone:
+    center:
+    - 0.25
+    - 0.18
+    - 0.89
+    xy_range:
+    - 0.1
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.09
+objects:
+- name: refrigerator_with_hinged_doors
+  region: fridge_zone
+  scale: 0.95
+  freejoint: false
+  mass: 3.0
+- name: rc/objaverse/water_bottle/water_bottle_0
+  region: tall_zone
+  freejoint: true
+- name: rc/objaverse/bottled_drink/bottled_drink_0
+  region: cond_zone
+  freejoint: true
+- name: rc/lightwheel/mayonnaise/Mayonnaise001
+  region: cond_zone
+  freejoint: true
+- name: rc/lightwheel/mustard/Mustard001
+  region: cond_zone
+  spawn_quat:
+  - 0
+  - 1
+  - 0
+  - 0
+  freejoint: true
+fixtures: []
+articulations:
+- object: refrigerator_with_hinged_doors
+  joint: cabinet_to_door
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - refrigerator_with_hinged_doors
+  - cabinet_to_door
+  threshold: 1.15
+  subtask: Left arm opens the fridge door
+- type: inside_local_box
+  args:
+  - rc/objaverse/water_bottle/water_bottle_0
+  - refrigerator_with_hinged_doors
+  - -0.13
+  - 0.11
+  - -0.16
+  - 0.16
+  - 0.02
+  - 0.45
+  subtask: Right arm puts the water bottle into the fridge
+  must_hold: true
+  order_group: stock
+- type: inside_local_box
+  args:
+  - rc/objaverse/bottled_drink/bottled_drink_0
+  - refrigerator_with_hinged_doors
+  - -0.13
+  - 0.11
+  - -0.16
+  - 0.16
+  - 0.02
+  - 0.45
+  subtask: Right arm puts the bottled drink into the fridge
+  must_hold: true
+  order_group: stock
+- type: inside_local_box
+  args:
+  - rc/lightwheel/mayonnaise/Mayonnaise001
+  - refrigerator_with_hinged_doors
+  - -0.13
+  - 0.11
+  - -0.16
+  - 0.16
+  - 0.02
+  - 0.45
+  subtask: Left arm puts the mayonnaise into the fridge
+  must_hold: true
+  order_group: stock
+- type: inside_local_box
+  args:
+  - rc/lightwheel/mustard/Mustard001
+  - refrigerator_with_hinged_doors
+  - -0.13
+  - 0.11
+  - -0.16
+  - 0.16
+  - 0.02
+  - 0.45
+  subtask: Left arm puts the mustard into the fridge
+  must_hold: true
+  order_group: stock
+- type: closed
+  args:
+  - refrigerator_with_hinged_doors
+  - cabinet_to_door
+  threshold: 0.3
+  subtask: Left arm closes the fridge door
+  must_hold: true
+- type: upright
+  args:
+  - rc/objaverse/water_bottle/water_bottle_0
+  subtask: The water bottle stands upright in the fridge
+  must_hold: true
+obj_of_interest:
+- refrigerator_with_hinged_doors
+- rc/objaverse/water_bottle/water_bottle_0
+- rc/objaverse/bottled_drink/bottled_drink_0
+- rc/lightwheel/mayonnaise/Mayonnaise001
+- rc/lightwheel/mustard/Mustard001

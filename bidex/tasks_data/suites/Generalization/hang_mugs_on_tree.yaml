@@ -1,0 +1,107 @@
+name: hang_mugs_on_tree
+language: Pick up each of the two mugs and hang them both on the wooden mug tree.
+subtasks:
+- name: Pick up the first mug
+  score: 10
+- name: Hang the first mug on the mug tree
+  score: 40
+- name: Pick up the second mug
+  score: 10
+- name: Hang the second mug on the mug tree
+  score: 40
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions:
+  mug_a_zone:
+    center:
+    - 0.3
+    - 0.15
+    - 0.85
+    xy_range:
+    - 0.1
+    - 0.1
+    yaw_range:
+    - 1.047
+    - 2.094
+  mug_b_zone:
+    center:
+    - 0.3
+    - -0.15
+    - 0.85
+    xy_range:
+    - 0.1
+    - 0.1
+    yaw_range:
+    - 1.047
+    - 2.094
+objects:
+- name: mug_tree
+  pos:
+  - 0.05
+  - 0.0
+  - 0.85
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1.1
+  freejoint: false
+- name: rc/objaverse/mug/mug_8
+  region: mug_a_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/mug/mug_16
+  region: mug_b_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+# hung_on (NOT `on`): a mug hanging on a peg is SUPPORTED by the tree via a
+# vertical-normal contact at peg height. The old `on(..., 0.08)` fired the moment
+# a mug bumped the trunk (dxy < 0.08, z > tree_z - 0.02 is true even for a mug
+# standing on the table next to the tree), so a touch-and-topple latched success.
+# must_hold requires the mug to still be hanging at the final frame.
+# Thresholds relaxed to cut FALSE NEGATIVES (a genuinely-hung mug sometimes went
+# undetected): contact_dz 0.08 -> 0.05 (`threshold`; contact z >= tree origin +0.05
+# m, still above the +0.03 base feet) and normal_z_min 0.5 -> 0.35 (args[2]; a
+# tilted/swung mug up to ~69 deg still reads as peg-supported). A mug leaning on
+# the trunk (horizontal normal ~0) or resting on the base/feet is still rejected.
+- type: lifted
+  args:
+  - rc/objaverse/mug/mug_8
+  subtask: Pick up the first mug
+- type: hung_on
+  args:
+  - rc/objaverse/mug/mug_8
+  - mug_tree
+  - 0.35
+  subtask: Hang the first mug on the mug tree
+  threshold: 0.05
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/mug/mug_16
+  subtask: Pick up the second mug
+- type: hung_on
+  args:
+  - rc/objaverse/mug/mug_16
+  - mug_tree
+  - 0.35
+  subtask: Hang the second mug on the mug tree
+  threshold: 0.05
+  must_hold: true
+obj_of_interest:
+- mug_tree
+- rc/objaverse/mug/mug_8
+- rc/objaverse/mug/mug_16

@@ -1,0 +1,80 @@
+# IK profile for astribot_s1_fixed_sharpa.
+#
+# Uses the mink (QP) solver — same backend that drives dual_fr3v2_sharpa,
+# now also used for astribot. The previous humanoid_arm (SLSQP) profile
+# is kept in git history if you ever need to compare; mink is preferred
+# because:
+#   - same backend as dual_fr3v2 → fewer code paths to debug
+#   - converges faster on the easy targets we throw at it (no analytic
+#     wrist split needed for AVP teleop)
+#   - shared posture-task knob across robots
+#
+#   - solver: mink
+#       QP-based IK with FrameTask + PostureTask. Convergence tolerances
+#       and per-iter step clamps live inside FrankaKinematicsSolver
+#       (see force_cbf/.../easy_kinematic_solver/franka_kinematics_solver.py
+#       _ik_mink).
+#
+#   - target_frame: world
+#       mink consumes targets in the IK model's WORLD frame (the model
+#       loaded by FrankaKinematicsSolver is the full astribot assembly,
+#       so its world ≡ assembly world). AVP teleop computes its target
+#       in chassis-LOCAL coordinates internally for the increment logic,
+#       then converts to assembly-world via the cached chassis static
+#       pose before publishing on LEFT/RIGHT_KINEMATICS_END_CMD. env's
+#       _solve_eef_ik then runs the standard world → sim-chassis-local
+#       rebase + IK chassis post-mult before feeding the solver. This is
+#       exactly the dual_fr3v2 path — astribot just rides it now.
+#
+#       (Aside: humanoid_arm needed target_frame=base_local because it
+#       does its own base-local FK in _ha_fk_in_base_local. mink does
+#       NOT — it lets MuJoCo run FK in IK world and reads site_xpos,
+#       which is world-frame. Mixing base_local target + mink would
+#       silently offset every command by the IK chassis static pose.)
+#
+#   - base_body_name: chassis_base
+#       Still set for completeness — mink doesn't consume it, but the
+#       resolve_ik_profile() helper passes it through to RobotProfile
+#       in case a future swap back to humanoid_arm is needed.
+#
+# Hand joints are NOT in posture_freeze_joints — the Manus → sharpa
+# retargeter (manus_data_retarget.py) drives them independently on
+# SHARPA_LEFT_ACTION / SHARPA_RIGHT_ACTION.
+solver: mink
+target_frame: world
+
+_posture_freeze_common: &freeze
+  - astribot_torso_joint_1
+  - astribot_torso_joint_2
+  - astribot_torso_joint_3
+  - astribot_torso_joint_4
+  - astribot_head_joint_1
+  - astribot_head_joint_2
+
+left:
+  xml_path: bidex/robots/assembly/astribot_s1/astribot_s1_fixed_sharpa.xml
+  end_site_name: arm_left_tool
+  base_body_name: chassis_base
+  arm_joint_names:
+    - astribot_arm_left_joint_1
+    - astribot_arm_left_joint_2
+    - astribot_arm_left_joint_3
+    - astribot_arm_left_joint_4
+    - astribot_arm_left_joint_5
+    - astribot_arm_left_joint_6
+    - astribot_arm_left_joint_7
+  posture_freeze_joints: *freeze
+
+right:
+  xml_path: bidex/robots/assembly/astribot_s1/astribot_s1_fixed_sharpa.xml
+  end_site_name: arm_right_tool
+  base_body_name: chassis_base
+  arm_joint_names:
+    - astribot_arm_right_joint_1
+    - astribot_arm_right_joint_2
+    - astribot_arm_right_joint_3
+    - astribot_arm_right_joint_4
+    - astribot_arm_right_joint_5
+    - astribot_arm_right_joint_6
+    - astribot_arm_right_joint_7
+  posture_freeze_joints: *freeze

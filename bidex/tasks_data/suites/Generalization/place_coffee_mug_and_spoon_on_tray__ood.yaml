@@ -1,0 +1,105 @@
+name: place_coffee_mug_and_spoon_on_tray
+language: Place the red coffee mug and the wooden spoon on the wooden tray.
+subtasks:
+- name: Pick up the red coffee mug
+  score: 25
+- name: Place the red coffee mug on the wooden tray
+  score: 25
+- name: Pick up the wooden spoon
+  score: 25
+- name: Put the wooden spoon on the wooden tray
+  score: 25
+ood:
+  base_task: tabletop_serve_coffee_mug_with_spoon
+  scene_randomize: true
+  baked_layout: true
+  geometry_safe_placement: true
+  distractors:
+    count: 4
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  red_coffee_mug_zone:
+    center:
+    - -0.25
+    - -0.1315
+    - 0.85
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -0.3
+    - 0.3
+  wooden_tray_zone:
+    center:
+    - -0.05
+    - 0.1412
+    - 0.85
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -0.15
+    - 0.15
+  wooden_spoon_zone:
+    center:
+    - 0.1859
+    - 0.0361
+    - 0.85
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -0.4
+    - 0.4
+objects:
+- name: red_coffee_mug
+  region: red_coffee_mug_zone
+- name: wooden_tray
+  region: wooden_tray_zone
+- name: wooden_spoon
+  region: wooden_spoon_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - red_coffee_mug
+  subtask: Pick up the red coffee mug
+# Count actual upward tray support, including its long ends. A fixed
+# radius around the tray origin rejects valid placements and accepts hovering.
+- type: inside_contact
+  args:
+  - red_coffee_mug
+  - wooden_tray
+  subtask: Place the red coffee mug on the wooden tray
+  must_hold: true
+- type: lifted
+  args:
+  - wooden_spoon
+  subtask: Pick up the wooden spoon
+# The spoon head keypoint must be inside the tray's live 3D contain_region.
+# This allows the handle to extend out while rejecting a spoon resting on the mug.
+- type: keypoint_in_site
+  args:
+  - wooden_spoon
+  - wooden_tray
+  - contain_region
+  - reg_bbox
+  - y+
+  threshold: 0.75
+  subtask: Put the wooden spoon on the wooden tray
+  must_hold: true
+obj_of_interest:
+- red_coffee_mug
+- wooden_tray
+- wooden_spoon

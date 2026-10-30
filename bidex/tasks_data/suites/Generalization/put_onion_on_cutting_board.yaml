@@ -1,0 +1,63 @@
+name: put_onion_on_cutting_board
+language: Pick up the onion and place it on the cutting board.
+subtasks:
+- name: Pick up the onion
+  score: 50
+- name: Place the onion on the cutting_board
+  score: 50
+robot_type: astribot_s1_fixed_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - 0.0
+  - 0.0
+  quat:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+regions:
+  onion_zone:
+    center:
+    - 0.4
+    - -0.15
+    - 0.8775
+    xy_range:
+    - 0.12
+    - 0.12
+    yaw_range:
+    - -3.14
+    - 3.14
+  cutting_board_zone:
+    center:
+    - 0.4
+    - 0.15
+    - 0.8775
+    xy_range:
+    - 0.12
+    - 0.12
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: onion
+  region: onion_zone
+- name: cutting_board
+  region: cutting_board_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - onion
+  subtask: Pick up the onion
+- type: 'on'
+  args:
+  - onion
+  - cutting_board
+  threshold: 0.08
+  subtask: Place the onion on the cutting_board
+  must_hold: true
+obj_of_interest:
+- onion
+- cutting_board

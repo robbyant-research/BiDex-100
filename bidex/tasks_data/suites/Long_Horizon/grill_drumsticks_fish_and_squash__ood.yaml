@@ -1,0 +1,217 @@
+name: grill_drumsticks_fish_and_squash
+language: Open the grill lid, place the two drumsticks, the two fish, and the squash
+  on the grill, then close the lid.
+subtasks:
+- name: Left arm opens the grill lid
+  score: 15
+- name: Left arm lays the first drumstick on the grill
+  score: 15
+- name: Left arm lays the second drumstick on the grill
+  score: 15
+- name: Right arm lays the first fish on the grill
+  score: 15
+- name: Right arm lays the second fish on the grill
+  score: 15
+- name: Right arm lays the squash on the grill
+  score: 15
+- name: Left arm closes the grill lid
+  score: 10
+ood:
+  base_task: tabletop_long_bbq_grill_fish
+  scene_randomize: true
+  baked_layout: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+max_seconds: 180
+ordered_subtasks: true
+regions:
+  grill_zone:
+    center:
+    - -0.01
+    - 0.04
+    - 0.82
+    xy_range:
+    - 0.02
+    - 0.02
+    yaw_range:
+    - 1.5707
+    - 1.5709
+  meat_zone:
+    center:
+    - 0.2123
+    - -0.1992
+    - 0.88
+    xy_range:
+    - 0.06
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.09
+  fish0_zone:
+    center:
+    - 0.2623
+    - 0.04
+    - 0.833
+    xy_range:
+    - 0.05
+    - 0.03
+    yaw_range:
+    - 0.9
+    - 1.5
+  fish1_zone:
+    center:
+    - 0.2623
+    - 0.24
+    - 0.833
+    xy_range:
+    - 0.05
+    - 0.03
+    yaw_range:
+    - 0.9
+    - 1.5
+  squash_zone:
+    center:
+    - 0.2123
+    - 0.02
+    - 0.89
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: create_a_backyard_gas_grill_with_a_wheeled_lower
+  region: grill_zone
+  scale: 0.7
+  freejoint: false
+  mass: 3.0
+- name: rc/lightwheel/chicken_drumstick/ChickenDrumstick001
+  region: meat_zone
+  freejoint: true
+- name: rc/lightwheel/chicken_drumstick/ChickenDrumstick002
+  region: meat_zone
+  scale: 1.2
+  freejoint: true
+- name: rc/objaverse/fish/fish_0
+  region: fish0_zone
+  scale: 1.2
+  freejoint: true
+- name: rc/objaverse/fish/fish_1
+  region: fish1_zone
+  scale: 1.1
+  freejoint: true
+- name: rc/objaverse/squash/squash_0
+  region: squash_zone
+  scale: 0.8
+  freejoint: true
+fixtures: []
+articulations:
+- object: create_a_backyard_gas_grill_with_a_wheeled_lower
+  joint: cookbox_to_lid
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - cookbox_to_lid
+  threshold: 0.72
+  subtask: Left arm opens the grill lid
+# The cookbox wall ends near local z=0.39, but stacked food can sit above it
+# while remaining under the closed lid crown (~0.446). Use 0.45 for the root
+# envelope so physically contained stacks are not rejected.
+- type: inside_local_box
+  args:
+  - rc/lightwheel/chicken_drumstick/ChickenDrumstick001
+  - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
+  subtask: Left arm lays the first drumstick on the grill
+  threshold: 0.0
+  must_hold: true
+  order_group: grill
+- type: inside_local_box
+  args:
+  - rc/lightwheel/chicken_drumstick/ChickenDrumstick002
+  - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
+  subtask: Left arm lays the second drumstick on the grill
+  threshold: 0.0
+  must_hold: true
+  order_group: grill
+- type: inside_local_box
+  args:
+  - rc/objaverse/fish/fish_0
+  - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
+  subtask: Right arm lays the first fish on the grill
+  threshold: 0.0
+  must_hold: true
+  order_group: grill
+- type: inside_local_box
+  args:
+  - rc/objaverse/fish/fish_1
+  - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
+  subtask: Right arm lays the second fish on the grill
+  threshold: 0.0
+  must_hold: true
+  order_group: grill
+- type: inside_local_box
+  args:
+  - rc/objaverse/squash/squash_0
+  - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - -0.135
+  - 0.135
+  - -0.088
+  - 0.088
+  - 0.30
+  - 0.45
+  subtask: Right arm lays the squash on the grill
+  threshold: 0.0
+  must_hold: true
+  order_group: grill
+- type: closed
+  args:
+  - create_a_backyard_gas_grill_with_a_wheeled_lower
+  - cookbox_to_lid
+  threshold: 0.3
+  subtask: Left arm closes the grill lid
+  must_hold: true
+obj_of_interest:
+- create_a_backyard_gas_grill_with_a_wheeled_lower
+- rc/lightwheel/chicken_drumstick/ChickenDrumstick001
+- rc/lightwheel/chicken_drumstick/ChickenDrumstick002
+- rc/objaverse/fish/fish_0
+- rc/objaverse/fish/fish_1
+- rc/objaverse/squash/squash_0

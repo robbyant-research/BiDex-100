@@ -1,0 +1,48 @@
+name: open_flatbed_scanner_lid
+language: Open the lid of the flatbed scanner.
+subtasks:
+- name: Open the lid of the flatbed scanner
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - -0.45
+  - 0.7
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  flatbed_scanner_with_hinged_lid_zone:
+    center:
+    - 0.3
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: flatbed_scanner_with_hinged_lid
+  region: flatbed_scanner_with_hinged_lid_zone
+  scale: 0.65
+fixtures: []
+articulations:
+- object: flatbed_scanner_with_hinged_lid
+  joint: rear_lid_hinge
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - flatbed_scanner_with_hinged_lid
+  - rear_lid_hinge
+  threshold: 0.81
+  subtask: Open the lid of the flatbed scanner
+obj_of_interest:
+- flatbed_scanner_with_hinged_lid
+max_seconds: 60

@@ -1,0 +1,172 @@
+name: pack_four_mangoes_into_baskets
+language: With the left arm pick up the two leftmost mangoes and place them into the left basket, and with the right arm pick up the two rightmost mangoes and place them into the right basket.
+max_seconds: 36.76
+max_steps: 919
+subtasks:
+- name: Left arm picks up the first (leftmost) mango
+  score: 10
+- name: Left arm places the first mango into the left basket
+  score: 20
+- name: Left arm picks up the second mango
+  score: 10
+- name: Left arm places the second mango into the left basket
+  score: 10
+- name: Right arm picks up the fourth (rightmost) mango
+  score: 10
+- name: Right arm places the fourth mango into the right basket
+  score: 20
+- name: Right arm picks up the third mango
+  score: 10
+- name: Right arm places the third mango into the right basket
+  score: 10
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions:
+  mango_a_zone:
+    center:
+    - 0.25
+    - 0.22
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.0
+    yaw_range:
+    - -3.14
+    - 3.14
+  mango_b_zone:
+    center:
+    - 0.25
+    - 0.08
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.0
+    yaw_range:
+    - -3.14
+    - 3.14
+  mango_c_zone:
+    center:
+    - 0.25
+    - -0.08
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.0
+    yaw_range:
+    - -3.14
+    - 3.14
+  mango_d_zone:
+    center:
+    - 0.25
+    - -0.22
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.0
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: rc/lightwheel/tiered_basket/TieredBasket003
+  pos:
+  - -0.1
+  - 0.18
+  - 0.8
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+- name: rc/lightwheel/tiered_basket/TieredBasket004
+  pos:
+  - -0.1
+  - -0.18
+  - 0.8
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+- name: rc/objaverse/mango/mango_1
+  region: mango_a_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/mango/mango_4
+  region: mango_b_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/mango/mango_5
+  region: mango_c_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/mango/mango_8
+  region: mango_d_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/mango/mango_8
+  subtask: Left arm picks up the first (leftmost) mango
+- type: supported_in_region
+  args:
+  - rc/objaverse/mango/mango_8
+  - rc/lightwheel/tiered_basket/TieredBasket004
+  - reg_bbox
+  subtask: Left arm places the first mango into the left basket
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/mango/mango_5
+  subtask: Left arm picks up the second mango
+- type: supported_in_region
+  args:
+  - rc/objaverse/mango/mango_5
+  - rc/lightwheel/tiered_basket/TieredBasket004
+  - reg_bbox
+  subtask: Left arm places the second mango into the left basket
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/mango/mango_1
+  subtask: Right arm picks up the fourth (rightmost) mango
+- type: supported_in_region
+  args:
+  - rc/objaverse/mango/mango_1
+  - rc/lightwheel/tiered_basket/TieredBasket003
+  - reg_bbox
+  subtask: Right arm places the fourth mango into the right basket
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/mango/mango_4
+  subtask: Right arm picks up the third mango
+- type: supported_in_region
+  args:
+  - rc/objaverse/mango/mango_4
+  - rc/lightwheel/tiered_basket/TieredBasket003
+  - reg_bbox
+  subtask: Right arm places the third mango into the right basket
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/tiered_basket/TieredBasket003
+- rc/lightwheel/tiered_basket/TieredBasket004
+- rc/objaverse/mango/mango_8
+- rc/objaverse/mango/mango_5
+- rc/objaverse/mango/mango_1
+- rc/objaverse/mango/mango_4

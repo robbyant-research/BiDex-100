@@ -1,0 +1,15 @@
+# IK profile for dual_fr3v2_sharpa.
+# Preserves the legacy BiDex-100 behaviour: each arm is solved against
+# the STANDALONE fr3v2 XML (not the dual assembly), so qpos[:7] indexing
+# is the arm subspace. solver=mink by default; data_collect_sim falls
+# back to dls if mink isn't installed (preserves existing pattern at
+# env.py:566 and data_collect_sim.py:131).
+solver: mink
+left:
+  xml_path: bidex/robots/arms/franka_fr3_v2/fr3v2.xml
+  end_site_name: end
+  # arm_joint_names omitted → solver synthesises arange(7), byte-identical
+  # to the pre-RobotProfile behaviour for the existing fr3v2 callers.
+right:
+  xml_path: bidex/robots/arms/franka_fr3_v2/fr3v2.xml
+  end_site_name: end

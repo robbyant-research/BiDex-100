@@ -1,0 +1,157 @@
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - scissors
+  threshold: 0.9
+  subtask: Pick up the scissors
+# inside_site_any over the caddy's 4 compartment sites (right/left/back/front
+# _contain_region), NOT inside_box: inside_box accepts scissors merely LEANING
+# against the caddy's EXTERIOR (within the wall footprint + z window), so a
+# touch-but-not-placed-in counted as success. inside_site requires the scissors'
+# centre inside a compartment site box AND a contact with the caddy body (resting
+# on the compartment floor) -- only a genuinely-dropped-in scissors latches.
+- type: inside_site_any
+  args:
+  - scissors
+  - desk_caddy
+  - right_contain_region
+  - left_contain_region
+  - back_contain_region
+  - front_contain_region
+  threshold: 0.02
+  subtask: Put the scissors into the desk caddy
+  must_hold: true
+- type: lifted
+  args:
+  - bar_soap
+  subtask: Pick up the soap
+- type: inside_site_any
+  args:
+  - bar_soap
+  - desk_caddy
+  - right_contain_region
+  - left_contain_region
+  - back_contain_region
+  - front_contain_region
+  threshold: 0.02
+  subtask: Put the soap into the desk caddy
+  must_hold: true
+- type: lifted
+  args:
+  - mug_tree
+  subtask: Pick up the mug tree
+- type: inside_box
+  args:
+  - mug_tree
+  - desk_caddy
+  subtask: Place the mug tree into the desk caddy
+  threshold: 0.04
+  must_hold: true
+- type: upright
+  args:
+  - mug_tree
+  threshold: 0.7
+  subtask: Place the mug tree into the desk caddy
+  must_hold: true
+language: Pick up the scissors and put them into the desk caddy, then place the soap
+  into the desk caddy, and put the mug tree into the caddy.
+subtasks:
+- name: Pick up the scissors
+  score: 15
+- name: Put the scissors into the desk caddy
+  score: 20
+- name: Pick up the soap
+  score: 15
+- name: Put the soap into the desk caddy
+  score: 15
+- name: Pick up the mug tree
+  score: 15
+- name: Place the mug tree into the desk caddy
+  score: 20
+ood:
+  base_task: tabletop_organize_desk_with_caddy
+  scene_randomize: true
+  baked_layout: true
+  distractors:
+    count: 4
+name: organize_items_in_desk_caddy
+obj_of_interest:
+- desk_caddy
+- scissors
+- bar_soap
+- mug_tree
+objects:
+- name: desk_caddy
+  region: desk_caddy_zone
+  scale: 1
+  freejoint: true
+- name: scissors
+  region: scissors_zone
+  scale: 1
+  freejoint: true
+- name: bar_soap
+  region: bar_soap_zone
+  scale: 1
+  freejoint: true
+- name: mug_tree
+  region: mug_tree_zone
+  scale: 1
+  freejoint: true
+regions:
+  bar_soap_zone:
+    center:
+    - 0.1492
+    - 0.166
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -0.3
+    - 0.3
+  desk_caddy_zone:
+    center:
+    - -0.05
+    - 0.146
+    - 0.85
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - 2.99
+    - 3.29
+  mug_tree_zone:
+    center:
+    - 0.2375
+    - -0.1421
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -0.2
+    - 0.2
+  scissors_zone:
+    center:
+    - -0.1
+    - -0.2039
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - -0.4
+    - 0.4
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style

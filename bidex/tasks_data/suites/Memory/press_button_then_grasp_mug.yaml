@@ -1,0 +1,116 @@
+name: press_button_then_grasp_mug
+language: With the right arm press the yellow button exactly four times, and only then, with the left arm pick up the mug and place it on the tray.
+subtasks:
+- name: Right arm presses the yellow button exactly four times
+  score: 60
+- name: Left arm picks up the mug
+  score: 10
+- name: Left arm places the mug on the tray
+  score: 30
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Grasp + press, ORDERED: the press phase is a prerequisite for the grasp. The
+# right arm presses dexjoco_button_yellow EXACTLY four times (pressed_exact +
+# must_hold: 3 too few never latches, 5 overshoots -> holds_now False). The
+# left arm then picks up the mug (rc/objaverse/mug/mug_0, UNUSED) and sets it on
+# the tray (rc/objaverse/tray/tray_1, UNUSED, welded fixture). ordered_subtasks:
+# the "press four" subtask gates the "pick up the mug" subtask, so the mug must
+# NOT be lifted before the four presses are done. Button color reused (only 5
+# colors exist, all used); the graspable, the count, and the press-first order
+# differ from the other grasp+press tasks.
+# Region boxes (disjoint +/-y hemispheres):
+#   button x[0.13,0.23] y[0.14,0.22]   (right)
+#   mug   x[0.17,0.27] y[-0.22,-0.18]  (left, near)
+#   tray  x[-0.17,-0.07] y[-0.22,-0.18](left, far -- target)
+ordered_subtasks: true
+regions:
+  yellow_button_zone:
+    center:
+    - 0.18
+    - 0.18
+    - 0.80
+    xy_range:
+    - 0.08
+    - 0.04
+    yaw_range:
+    - -0.3
+    - 0.3
+  mug_zone:
+    center:
+    - 0.22
+    - -0.20
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+  tray_zone:
+    center:
+    - -0.12
+    - -0.20
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - 0.0
+    - 0.0
+objects:
+- name: rc/objaverse/tray/tray_1
+  region: tray_zone
+  scale: 1
+  freejoint: true
+- name: dexjoco_button_yellow
+  region: yellow_button_zone
+  pos:
+  - 0.18
+  - 0.18
+  - 0.80
+  quat:
+  - 1
+  - 0
+  - 0
+  - 0
+  scale: 1
+  freejoint: false
+  button: true
+- name: rc/objaverse/mug/mug_0
+  region: mug_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: pressed_exact
+  args:
+  - dexjoco_button_yellow
+  - 4
+  subtask: Right arm presses the yellow button exactly four times
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/mug/mug_0
+  subtask: Left arm picks up the mug
+- type: 'on'
+  args:
+  - rc/objaverse/mug/mug_0
+  - rc/objaverse/tray/tray_1
+  subtask: Left arm places the mug on the tray
+  threshold: 0.06
+  must_hold: true
+obj_of_interest:
+- dexjoco_button_yellow
+- rc/objaverse/mug/mug_0
+- rc/objaverse/tray/tray_1

@@ -1,0 +1,129 @@
+name: prepare_tea_with_cup
+language: Pick up the cup and place it on the placemat, then put the honey bottle next to the cup, and place the teapot on the placemat.
+subtasks:
+- name: Pick up the cup
+  score: 15
+- name: Place the cup on the placemat
+  score: 15
+- name: Pick up the honey bottle
+  score: 15
+- name: Place the honey bottle on the placemat
+  score: 20
+- name: Pick up the teapot
+  score: 15
+- name: Place the teapot on the placemat
+  score: 20
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  # Layout de-overlapped vs the huge placemat (~0.40 x 0.29 m AABB). The placemat
+  # is PINNED (xy_range 0) so its footprint stays x[-0.25,0.15] y[0.05,0.35]; the
+  # cup/honey/teapot spawn OUTSIDE it (cup low-left, honey right, teapot low) so
+  # no init penetration (verified 0/30 resets). The robot still picks each and
+  # places it on the placemat during the episode.
+  cup_zone:
+    center:
+    - -0.25
+    - -0.15
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  placemat_zone:
+    center:
+    - -0.05
+    - 0.2
+    - 0.85
+    xy_range:
+    - 0.0
+    - 0.0
+    yaw_range:
+    - -0.15
+    - 0.15
+  honey_bottle_zone:
+    center:
+    - 0.28
+    - 0.15
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  teapot_zone:
+    center:
+    - 0.2
+    - -0.15
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: cup
+  region: cup_zone
+- name: placemat
+  region: placemat_zone
+- name: honey_bottle
+  region: honey_bottle_zone
+- name: teapot
+  region: teapot_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - cup
+  subtask: Pick up the cup
+# inside_contact (NOT `on`): the placemat is a thin FREE-JOINT mat -- `on` (xy
+# radius 0.1) sometimes missed an object resting near the placemat edge or after
+# the mat shifted beneath it. inside_contact requires the object be SUPPORTED by
+# the placemat (vertical contact), which is edge- and shift-robust; must_hold
+# requires it still resting on the mat at the final frame. (Same gate for the
+# honey bottle and the teapot.)
+- type: inside_contact
+  args:
+  - cup
+  - placemat
+  subtask: Place the cup on the placemat
+  must_hold: true
+- type: lifted
+  args:
+  - honey_bottle
+  subtask: Pick up the honey bottle
+- type: inside_contact
+  args:
+  - honey_bottle
+  - placemat
+  subtask: Place the honey bottle on the placemat
+  must_hold: true
+- type: lifted
+  args:
+  - teapot
+  subtask: Pick up the teapot
+- type: inside_contact
+  args:
+  - teapot
+  - placemat
+  subtask: Place the teapot on the placemat
+  must_hold: true
+obj_of_interest:
+- cup
+- placemat
+- honey_bottle
+- teapot

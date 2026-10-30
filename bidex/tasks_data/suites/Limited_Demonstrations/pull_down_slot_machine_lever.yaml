@@ -1,0 +1,48 @@
+name: pull_down_slot_machine_lever
+language: Pull down the lever of the slot machine.
+subtasks:
+- name: Pull down the lever of the slot machine
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: dexjoco_table_arena
+robot_pose:
+  pos:
+  - 0.8
+  - -0.45
+  - 0.7
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  a_casino_slot_machine_with_a_tall_cabinet_a_fron_zone:
+    center:
+    - 0.3
+    - 0.0
+    - 0.8775
+    xy_range:
+    - 0.03
+    - 0.03
+    yaw_range:
+    - -0.2
+    - 0.2
+objects:
+- name: a_casino_slot_machine_with_a_tall_cabinet_a_fron
+  region: a_casino_slot_machine_with_a_tall_cabinet_a_fron_zone
+  scale: 0.5
+fixtures: []
+articulations:
+- object: a_casino_slot_machine_with_a_tall_cabinet_a_fron
+  joint: cabinet_to_pull_handle
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - a_casino_slot_machine_with_a_tall_cabinet_a_fron
+  - cabinet_to_pull_handle
+  threshold: 0.63
+  subtask: Pull down the lever of the slot machine
+obj_of_interest:
+- a_casino_slot_machine_with_a_tall_cabinet_a_fron
+max_seconds: 60

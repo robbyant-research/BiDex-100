@@ -1,0 +1,177 @@
+name: recycle_five_cans_into_bin
+language: Open the pedal bin lid, toss the five cans in, then close the lid.
+subtasks:
+- name: Left arm flips open the bin lid
+  score: 15
+- name: Left arm tosses the first can into the bin
+  score: 15
+- name: Left arm tosses the second can into the bin
+  score: 15
+- name: Left arm tosses the third can into the bin
+  score: 15
+- name: Right arm tosses the fourth can into the bin
+  score: 15
+- name: Right arm tosses the fifth can into the bin
+  score: 15
+- name: Left arm closes the bin lid
+  score: 10
+ood:
+  base_task: tabletop_long_recycle_cans_bin
+  scene_randomize: true
+  baked_layout: true
+  geometry_safe_placement: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+max_seconds: 180
+ordered_subtasks: true
+regions:
+  bin_zone:
+    center:
+    - -0.18
+    - 0.04
+    - 0.82
+    xy_range:
+    - 0.02
+    - 0.02
+    yaw_range:
+    - 1.5
+    - 1.57
+  can_zone:
+    center:
+    - 0.16
+    - -0.0185
+    - 0.88
+    xy_range:
+    - 0.2
+    - 0.3
+    yaw_range:
+    - -3.14
+    - 3.14
+    min_distance: 0.09
+objects:
+- name: pedal_trash_bin_with_hinged_lid
+  region: bin_zone
+  scale: 0.7
+  freejoint: false
+  mass: 1.0
+- name: rc/objaverse/can/can_0
+  region: can_zone
+  freejoint: true
+- name: rc/objaverse/can/can_2
+  region: can_zone
+  freejoint: true
+- name: rc/objaverse/can/can_3
+  region: can_zone
+  freejoint: true
+- name: rc/objaverse/can/can_4
+  region: can_zone
+  freejoint: true
+- name: rc/objaverse/can/can_6
+  region: can_zone
+  freejoint: true
+fixtures: []
+articulations:
+- object: pedal_trash_bin_with_hinged_lid
+  joint: shell_to_lid
+  qpos: 0.0
+goal:
+- type: open
+  args:
+  - pedal_trash_bin_with_hinged_lid
+  - shell_to_lid
+  threshold: 0.71
+  subtask: Left arm flips open the bin lid
+- type: inside_local_box
+  args:
+  - rc/objaverse/can/can_0
+  - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
+  subtask: Left arm tosses the first can into the bin
+  threshold: 0.0
+  must_hold: true
+  order_group: trash
+- type: inside_local_box
+  args:
+  - rc/objaverse/can/can_2
+  - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
+  subtask: Left arm tosses the second can into the bin
+  threshold: 0.0
+  must_hold: true
+  order_group: trash
+- type: inside_local_box
+  args:
+  - rc/objaverse/can/can_3
+  - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
+  subtask: Left arm tosses the third can into the bin
+  threshold: 0.0
+  must_hold: true
+  order_group: trash
+- type: inside_local_box
+  args:
+  - rc/objaverse/can/can_4
+  - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
+  subtask: Right arm tosses the fourth can into the bin
+  threshold: 0.0
+  must_hold: true
+  order_group: trash
+- type: inside_local_box
+  args:
+  - rc/objaverse/can/can_6
+  - pedal_trash_bin_with_hinged_lid
+  - -0.116
+  - 0.116
+  - -0.097
+  - 0.097
+  - 0.0
+  - 0.39
+  subtask: Right arm tosses the fifth can into the bin
+  threshold: 0.0
+  must_hold: true
+  order_group: trash
+- type: closed
+  args:
+  - pedal_trash_bin_with_hinged_lid
+  - shell_to_lid
+  threshold: 0.3
+  subtask: Left arm closes the bin lid
+  must_hold: true
+obj_of_interest:
+- pedal_trash_bin_with_hinged_lid
+- rc/objaverse/can/can_0
+- rc/objaverse/can/can_2
+- rc/objaverse/can/can_3
+- rc/objaverse/can/can_4
+- rc/objaverse/can/can_6

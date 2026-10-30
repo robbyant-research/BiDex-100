@@ -1,0 +1,149 @@
+name: put_apple_and_orange_in_bowl
+language: Put one apple and one orange into the bowl, and leave one apple and one orange untouched on the table.
+subtasks:
+- name: Pick up the first apple
+  score: 20
+- name: Place the first apple into the bowl
+  score: 30
+- name: Pick up the second orange
+  score: 20
+- name: Place the second orange into the bowl
+  score: 30
+- name: Leave the first orange untouched on the table
+  score: 0
+- name: Leave the second apple untouched on the table
+  score: 0
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+regions:
+  bowl_zone:
+    center:
+    - -0.15
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - 0.0
+    - 0.0
+    rest_on_surface: true
+  apple0_zone:
+    center:
+    - 0.1
+    - 0.18
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  apple1_zone:
+    center:
+    - 0.24
+    - 0.18
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  orange0_zone:
+    center:
+    - 0.1
+    - -0.18
+    - 0.85
+    xy_range:
+    - 0.02
+    - 0.02
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  orange1_zone:
+    center:
+    - 0.24
+    - -0.18
+    - 0.85
+    xy_range:
+    - 0.03
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/objaverse/bowl/bowl_13
+  region: bowl_zone
+  scale: 2
+  freejoint: true
+  mass: 200
+- name: rc/objaverse/apple/apple_2
+  region: apple0_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/apple/apple_3
+  region: apple1_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/orange/orange_2
+  region: orange0_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/orange/orange_4
+  region: orange1_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/apple/apple_2
+  subtask: Pick up the first apple
+- type: inside_contact
+  args:
+  - rc/objaverse/apple/apple_2
+  - rc/objaverse/bowl/bowl_13
+  subtask: Place the first apple into the bowl
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/orange/orange_4
+  subtask: Pick up the second orange
+- type: inside_contact
+  args:
+  - rc/objaverse/orange/orange_4
+  - rc/objaverse/bowl/bowl_13
+  subtask: Place the second orange into the bowl
+  must_hold: true
+- type: not_lifted
+  args:
+  - rc/objaverse/orange/orange_2
+  subtask: Leave the first orange untouched on the table
+  latch_violation: true
+- type: not_lifted
+  args:
+  - rc/objaverse/apple/apple_3
+  subtask: Leave the second apple untouched on the table
+  latch_violation: true
+obj_of_interest:
+- rc/objaverse/bowl/bowl_13
+- rc/objaverse/apple/apple_2
+- rc/objaverse/apple/apple_3
+- rc/objaverse/orange/orange_2
+- rc/objaverse/orange/orange_4

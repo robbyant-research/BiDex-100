@@ -1,0 +1,107 @@
+name: put_three_apples_into_fruit_bowl
+language: Pick up the three apples and place them into the fruit bowl.
+subtasks:
+- name: Place the item into the container
+  score: 100
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+ordered_subtasks: true
+regions:
+  cont_zone:
+    center:
+    - -0.12
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.05
+    - 0.05
+    yaw_range:
+    - 0.0
+    - 0.01
+    rest_on_surface: true
+  it0_zone:
+    center:
+    - 0.22
+    - -0.18
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  it1_zone:
+    center:
+    - 0.22
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  it2_zone:
+    center:
+    - 0.22
+    - 0.18
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/lightwheel/fruit_bowl/FruitBowl002
+  region: cont_zone
+  freejoint: true
+  mass: 200
+- name: rc/objaverse/apple/apple_12
+  region: it0_zone
+  freejoint: true
+- name: rc/objaverse/apple/apple_13
+  region: it1_zone
+  freejoint: true
+- name: rc/objaverse/apple/apple_14
+  region: it2_zone
+  freejoint: true
+fixtures: []
+goal:
+- type: inside_contact
+  args:
+  - rc/objaverse/apple/apple_12
+  - rc/lightwheel/fruit_bowl/FruitBowl002
+  subtask: Place the item into the container
+  must_hold: true
+- type: inside_contact
+  args:
+  - rc/objaverse/apple/apple_13
+  - rc/lightwheel/fruit_bowl/FruitBowl002
+  subtask: Place the item into the container
+  must_hold: true
+- type: inside_contact
+  args:
+  - rc/objaverse/apple/apple_14
+  - rc/lightwheel/fruit_bowl/FruitBowl002
+  subtask: Place the item into the container
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/fruit_bowl/FruitBowl002
+- rc/objaverse/apple/apple_12
+- rc/objaverse/apple/apple_13
+- rc/objaverse/apple/apple_14

@@ -1,0 +1,41 @@
+<mujoco>
+  <!-- Sharpa-specific default classes only. Unlike the GR1 version,
+       this fragment does NOT redefine visual/collision because the
+       astribot_s1 asset file already declares them under
+       <default class="main">. Redefining would trigger
+       "repeated default class name" on load. The sharpa subtrees in
+       this directory reference class="visual"/class="collision" so
+       they will inherit astribot's defaults (group/type) instead of
+       sharpa's. This is fine because every sharpa palm geom that uses
+       class="collision" explicitly sets type="mesh" / contype /
+       conaffinity / group inline, so the only practical difference is
+       that the sharpa palm collision geoms no longer inherit
+       priority=1 / friction=1.5 — re-add inline on those geoms if
+       grasping behaviour is off. -->
+  <default>
+    <default class="CMC_joint">
+      <joint armature="0.0032" frictionloss="0.132" damping="4.20E-05" actuatorfrcrange="-3.3 3.3"/>
+    </default>
+    <default class="PCMC_joint">
+      <joint armature="0.00012" frictionloss="0.012" damping="4.20E-05" actuatorfrcrange="-0.5285 0.5285"/>
+    </default>
+    <default class="MCP_joint">
+      <joint armature="0.00265" frictionloss="0.07456" damping="2.38E-05" actuatorfrcrange="-1.864 1.864"/>
+    </default>
+    <default class="PIP_joint">
+      <joint armature="0.0006" frictionloss="0.01276" damping="4.06E-06" actuatorfrcrange="-0.638 0.638"/>
+    </default>
+    <default class="DIP_joint">
+      <joint armature="0.00042" frictionloss="0.00378738" damping="1.21E-06" actuatorfrcrange="-0.189369 0.189369"/>
+    </default>
+    <default class="elastomer_geom">
+      <geom solref="0.02 1" solimp="0.9 0.95 0.001" friction="2.0 0.05 0.001" condim="4" priority="2" margin="0.0005"/>
+    </default>
+    <default class="finger_link">
+      <geom condim="4" friction="1.5 0.05 0.001" priority="1" margin="0.0005"/>
+    </default>
+    <default class="elastomer_collision">
+      <geom type="capsule" group="3" contype="1" conaffinity="1" solref="0.02 1" condim="4" friction="2.0 0.05 0.001" priority="2" margin="0.0005" solimp="0.9 0.95 0.001"/>
+    </default>
+  </default>
+</mujoco>

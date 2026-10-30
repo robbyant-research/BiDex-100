@@ -1,0 +1,63 @@
+name: put_apple_in_white_bowl
+language: Pick up the apple and put it inside the white bowl.
+subtasks:
+- name: Pick up the apple
+  score: 50
+- name: Put the apple inside the white bowl
+  score: 50
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  apple_zone:
+    center:
+    - 0.22
+    - -0.1
+    - 0.85
+    xy_range:
+    - 0.12
+    - 0.12
+    yaw_range:
+    - -0.3
+    - 0.3
+  white_bowl_zone:
+    center:
+    - -0.08
+    - 0.2
+    - 0.85
+    xy_range:
+    - 0.12
+    - 0.12
+    yaw_range:
+    - -0.3
+    - 0.3
+objects:
+- name: apple
+  region: apple_zone
+- name: white_bowl
+  region: white_bowl_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - apple
+  subtask: Pick up the apple
+- type: inside
+  args:
+  - apple
+  - white_bowl
+  threshold: 0.08
+  subtask: Put the apple inside the white bowl
+  must_hold: true
+obj_of_interest:
+- apple
+- white_bowl

@@ -1,0 +1,154 @@
+name: pack_three_avocados_into_tiered_basket
+language: Pick up the three avocados one at a time and drop them into the tiered basket so they rest in it.
+subtasks:
+- name: Pick up the first avocado
+  score: 10
+- name: Place the first avocado into the basket
+  score: 20
+- name: Pick up the second avocado
+  score: 10
+- name: Place the second avocado into the basket
+  score: 25
+- name: Pick up the third avocado
+  score: 10
+- name: Place the third avocado into the basket
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Every object is from a previously-UNTOUCHED category: the objaverse `avocado`
+# family (avocado_0/1/2) is entirely new and the lightwheel `tiered_basket`
+# family is new to this task (TieredBasket001 is a free instance -- the
+# picnic-basket tasks use TieredBasket003/004). A tiered basket is a two-tier
+# wire basket on a stand (~20 cm wide bowls) -- a heavy station (freejoint +
+# mass 200, rest_on_surface true so its base sits on the table, yaw pinned 0) as
+# the fixed pack target on the -x side; the three ~7 cm avocados spawn
+# free-jointed on the +x side in a y-column.
+#
+# `inside_contact` (NOT the xy-radius `inside` / `inside_box`) is the robust gate
+# -- the SAME family as the strainer / dish-rack / multi-tier-shelf tasks: an
+# avocado counts as packed only when it has a SUPPORT contact (vertical normal)
+# with the basket's body subtree, i.e. a basket bowl is actually holding it up.
+# An avocado left on the TABLE beside the basket has no contact with the basket
+# body, so it reads RED. `must_hold: true` rejects an avocado that rattled back
+# out of the basket by the final frame.
+#
+# Region boxes are disjoint (separation in x between basket and avocados,
+# separation in y within the avocado column): basket x[-0.19,-0.11] y[-0.04,0.04]
+# (xy 0.04); avocados x[0.14,0.30] at y +/-{0.22,0.0,-0.22} (each xy 0.08 ->
+# 0.16 wide). basket-to-avocado ~0.29 m clear in x; avocado zones 0.22 m apart in
+# y centre (0.06 m gap between 0.16-wide boxes); the ~7 cm avocados never touch.
+regions:
+  basket_zone:
+    center:
+    - -0.15
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.04
+    - 0.04
+    yaw_range:
+    - 0.0
+    - 0.0
+    rest_on_surface: true
+  av0_zone:
+    center:
+    - 0.18
+    - 0.22
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  av1_zone:
+    center:
+    - 0.22
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  av2_zone:
+    center:
+    - 0.22
+    - -0.18
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/lightwheel/tiered_basket/TieredBasket001
+  region: basket_zone
+  scale: 1
+  freejoint: true
+  mass: 200
+- name: rc/objaverse/avocado/avocado_4
+  region: av0_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/avocado/avocado_5
+  region: av1_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/avocado/avocado_6
+  region: av2_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/avocado/avocado_4
+  subtask: Pick up the first avocado
+- type: inside_contact
+  args:
+  - rc/objaverse/avocado/avocado_4
+  - rc/lightwheel/tiered_basket/TieredBasket001
+  subtask: Place the first avocado into the basket
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/avocado/avocado_5
+  subtask: Pick up the second avocado
+- type: inside_contact
+  args:
+  - rc/objaverse/avocado/avocado_5
+  - rc/lightwheel/tiered_basket/TieredBasket001
+  subtask: Place the second avocado into the basket
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/avocado/avocado_6
+  subtask: Pick up the third avocado
+- type: inside_contact
+  args:
+  - rc/objaverse/avocado/avocado_6
+  - rc/lightwheel/tiered_basket/TieredBasket001
+  subtask: Place the third avocado into the basket
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/tiered_basket/TieredBasket001
+- rc/objaverse/avocado/avocado_4
+- rc/objaverse/avocado/avocado_5
+- rc/objaverse/avocado/avocado_6

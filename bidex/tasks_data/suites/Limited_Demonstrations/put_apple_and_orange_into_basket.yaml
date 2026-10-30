@@ -1,0 +1,94 @@
+name: put_apple_and_orange_into_basket
+language: Pick up the apple and the orange and put them both inside the basket.
+subtasks:
+- name: Pick up the apple
+  score: 25
+- name: Put the apple inside the basket
+  score: 25
+- name: Pick up the orange
+  score: 25
+- name: Put the orange inside the basket
+  score: 25
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  apple_zone:
+    center:
+    - -0.22
+    - -0.1
+    - 0.85
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+  orange_zone:
+    center:
+    - 0.22
+    - -0.1
+    - 0.85
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+  basket_zone:
+    center:
+    - 0.0
+    - 0.2
+    - 0.85
+    xy_range:
+    - 0.09
+    - 0.09
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: apple
+  region: apple_zone
+- name: orange
+  region: orange_zone
+- name: basket
+  region: basket_zone
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - apple
+  subtask: Pick up the apple
+# must_hold on both placements: an apple/orange that ROLLED OUT of the basket
+# (centre beyond the 0.1 m xy radius at the final frame) no longer counts.
+- type: inside
+  args:
+  - apple
+  - basket
+  threshold: 0.1
+  subtask: Put the apple inside the basket
+  must_hold: true
+- type: lifted
+  args:
+  - orange
+  subtask: Pick up the orange
+- type: inside
+  args:
+  - orange
+  - basket
+  threshold: 0.1
+  subtask: Put the orange inside the basket
+  must_hold: true
+obj_of_interest:
+- apple
+- orange
+- basket

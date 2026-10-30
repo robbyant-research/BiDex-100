@@ -1,0 +1,132 @@
+name: swap_fruits_between_bowls
+language: Left arm moves the peach to the right bowl, right arm moves the lime to
+  the left, then left arm moves the lime to the right and right arm moves the peach
+  to the left.
+subtasks:
+- name: Left arm moves the peach to the right bowl
+  score: 25
+- name: Right arm moves the lime to the left bowl
+  score: 25
+- name: Left arm moves the lime back to the right bowl
+  score: 25
+- name: Right arm moves the peach back to the left bowl
+  score: 25
+ood:
+  base_task: tabletop_swap_fruits
+  scene_randomize: true
+  baked_layout: true
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+ordered_subtasks: true
+regions:
+  left_bowl_zone:
+    center:
+    - 0.2184
+    - -0.1616
+    - 0.85
+    xy_range:
+    - 0.1
+    - 0.04
+    yaw_range:
+    - -0.3
+    - 0.3
+  right_bowl_zone:
+    center:
+    - 0.2119
+    - 0.1153
+    - 0.85
+    xy_range:
+    - 0.1
+    - 0.04
+    yaw_range:
+    - -0.3
+    - 0.3
+  peach_zone:
+    target: obj1_root
+    center:
+    - 0.0
+    - 0.0
+    - 0.13
+    xy_range:
+    - 0.0
+    - 0.0
+    yaw_range:
+    - -3.14
+    - 3.14
+  lime_zone:
+    target: obj2_root
+    center:
+    - 0.0
+    - 0.0
+    - 0.13
+    xy_range:
+    - 0.0
+    - 0.0
+    yaw_range:
+    - -3.14
+    - 3.14
+objects:
+- name: rc/objaverse/bowl/bowl_15
+  region: left_bowl_zone
+  mass: 200.0
+- name: rc/objaverse/bowl/bowl_9
+  region: right_bowl_zone
+  mass: 200.0
+- name: rc/objaverse/peach/peach_2
+  region: peach_zone
+- name: rc/objaverse/lime/lime_1
+  region: lime_zone
+fixtures: []
+goal:
+- type: supported_in_region
+  args:
+  - rc/objaverse/peach/peach_2
+  - rc/objaverse/bowl/bowl_9
+  - reg_int
+  subtask: Left arm moves the peach to the right bowl
+  order_group: swap_out
+- type: supported_in_region
+  args:
+  - rc/objaverse/lime/lime_1
+  - rc/objaverse/bowl/bowl_15
+  - reg_int
+  subtask: Right arm moves the lime to the left bowl
+  order_group: swap_out
+- type: supported_in_region
+  args:
+  - rc/objaverse/lime/lime_1
+  - rc/objaverse/bowl/bowl_9
+  - reg_int
+  subtask: Left arm moves the lime back to the right bowl
+  order_group: swap_back
+- type: supported_in_region
+  args:
+  - rc/objaverse/peach/peach_2
+  - rc/objaverse/bowl/bowl_15
+  - reg_int
+  subtask: Right arm moves the peach back to the left bowl
+  must_hold: true
+  order_group: swap_back
+- type: supported_in_region
+  args:
+  - rc/objaverse/lime/lime_1
+  - rc/objaverse/bowl/bowl_9
+  - reg_int
+  subtask: Right arm moves the peach back to the left bowl
+  must_hold: true
+  order_group: swap_back
+obj_of_interest:
+- rc/objaverse/peach/peach_2
+- rc/objaverse/lime/lime_1
+- rc/objaverse/bowl/bowl_15
+- rc/objaverse/bowl/bowl_9

@@ -1,0 +1,87 @@
+name: take_milk_from_microwave
+language: Open the microwave, take out the milk, and place it on the table.
+subtasks:
+- name: Open the microwave door
+  score: 40
+- name: Pick up the milk
+  score: 30
+- name: Place the milk on the table
+  score: 30
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0.0
+  - 0.0
+  - 0.92388
+regions:
+  microwave_zone:
+    center:
+    - -0.1
+    - -0.1
+    - 0.8
+    xy_range:
+    - 0.12
+    - 0.12
+    yaw_range:
+    - 1.57
+    - 2.0
+  milk_zone:
+    # Milk spawns INSIDE the microwave cavity, body-relative to the microwave
+    # (obj1_object) so it tracks the cabinet's per-episode xy jitter. Center is
+    # the cavity-floor rest point in the microwave body frame: xy = (0,0) is the
+    # body-origin projection, which the cavity surrounds for ANY door yaw
+    # (yaw_range 1.57..2.0), so the milk stays inside the cavity without the
+    # sampler having to compose the cabinet's orientation. z = 0.091 puts the
+    # milk's collision-box bottom on the cavity floor (body_z 0.8 + 0.036 floor
+    # + 0.055 milk half-height), so it rests instead of dropping. xy_range is
+    # kept tiny (0.02) so the milk can't reach a wall. (The prior world-frame
+    # center (-0.1,-0.1,0.98) + 0.06 range + the microwave's +-0.12 jitter / yaw
+    # routinely planted the milk 5-13 cm into a wall/door -> tunneling & fly-off.)
+    target: obj1_object
+    center:
+    - 0.0
+    - 0.0
+    - 0.091
+    xy_range:
+    - 0.02
+    - 0.02
+    yaw_range:
+    - -0.1
+    - 0.1
+objects:
+- name: microwave
+  region: microwave_zone
+  scale: 1.5
+  freejoint: true
+- name: milk
+  region: milk_zone
+  freejoint: true
+fixtures: []
+articulations:
+- object: microwave
+  joint: microjoint
+  qpos: closed
+goal:
+- type: open
+  args:
+  - microwave
+  - microjoint
+  subtask: Open the microwave door
+- type: lifted
+  args:
+  - milk
+  subtask: Pick up the milk
+- type: on_table
+  args:
+  - milk
+  subtask: Place the milk on the table
+  must_hold: true
+obj_of_interest:
+- microwave
+- milk

@@ -1,0 +1,128 @@
+name: stack_three_canned_food
+language: Stack the three cans on top of each other.
+subtasks:
+- name: Pick up the middle can
+  score: 10
+- name: Stack the middle can on the base can
+  score: 40
+- name: Pick up the top can
+  score: 10
+- name: Stack the top can on the middle can
+  score: 40
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Three DISTINCT, previously-UNUSED canned_food instances (canned_food_4/5/6 --
+# distinct from the canned_food_0/1/3 the dish-rack task uses). They are short
+# food tins ~9.1-9.6 cm tall and ~6.5-6.8 cm wide, so a flush column raises the
+# upper centre ~0.093-0.096 m per layer. The base tin (canned_food_5) is WELDED
+# (freejoint false, rest_on_surface true so its flat rim sits on the table, yaw
+# pinned 0) as the fixed stack target on the -x side; canned_food_4 (mid) and
+# canned_food_6 (top) are free-jointed and spawn on the +x side, each to be
+# lifted and stacked in sequence. Stacking follows tabletop_stack_bowls:
+# `stacked_on(upper, lower, z_lo, z_hi)` with an explicit z WINDOW (0.07, 0.13)
+# and `threshold` 0.05 m xy, `must_hold: true`.
+#
+# The z window is the real discriminator for cans: a neat one-tin layer raises
+# the upper centre ~0.094 m -- inside (0.07, 0.13) -- while two tins side by
+# side (dz ~0 < 0.07) and a two-layer gap (dz ~0.19 > 0.13) are BOTH rejected.
+# The 0.05 m xy radius further rejects a tin set BESIDE the column (two tins
+# touching sit ~0.065 m apart > 0.05). The base tin is welded (not free-jointed
+# like stack_bowls' base) because -- unlike nested bowls -- a can column is NOT
+# self-capturing, so an immovable base keeps the lower contact from sliding
+# while the upper tins are placed.
+#
+# Region boxes are disjoint: base x[-0.12,-0.08] y[-0.02,0.02]; the two upper
+# tins x[0.22,0.30] at y +/-0.16 (each xy 0.04 -> 0.08 wide). base-to-upper
+# ~0.30 m clear in x; upper tins 0.32 m apart in y (0.24 m clear). The ~6.6 cm
+# tins never touch at spawn.
+regions:
+  tin_base_zone:
+    center:
+    - 0.0
+    - 0.0
+    - 0.8
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - 0.0
+    - 0.0
+    rest_on_surface: true
+  tin_mid_zone:
+    center:
+    - 0.2
+    - 0.16
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+  tin_top_zone:
+    center:
+    - 0.2
+    - -0.16
+    - 0.85
+    xy_range:
+    - 0.08
+    - 0.08
+    yaw_range:
+    - -0.3
+    - 0.3
+objects:
+- name: rc/objaverse/canned_food/canned_food_5
+  region: tin_base_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/canned_food/canned_food_4
+  region: tin_mid_zone
+  scale: 1
+  freejoint: true
+- name: rc/objaverse/canned_food/canned_food_6
+  region: tin_top_zone
+  scale: 1
+  freejoint: true
+fixtures: []
+goal:
+- type: lifted
+  args:
+  - rc/objaverse/canned_food/canned_food_4
+  subtask: Pick up the middle can
+- type: stacked_on
+  args:
+  - rc/objaverse/canned_food/canned_food_4
+  - rc/objaverse/canned_food/canned_food_5
+  - 0.07
+  - 0.13
+  subtask: Stack the middle can on the base can
+  threshold: 0.05
+  must_hold: true
+- type: lifted
+  args:
+  - rc/objaverse/canned_food/canned_food_6
+  subtask: Pick up the top can
+- type: stacked_on
+  args:
+  - rc/objaverse/canned_food/canned_food_6
+  - rc/objaverse/canned_food/canned_food_4
+  - 0.07
+  - 0.13
+  subtask: Stack the top can on the middle can
+  threshold: 0.05
+  must_hold: true
+obj_of_interest:
+- rc/objaverse/canned_food/canned_food_5
+- rc/objaverse/canned_food/canned_food_4
+- rc/objaverse/canned_food/canned_food_6

@@ -1,0 +1,103 @@
+# Two oranges: place one on the lower tier of the shelf and the other on the
+# upper tier. The shelf sits in the middle of the table.
+name: place_two_oranges_on_shelf_tiers
+language: Pick up the two oranges and place one on the lower tier of the shelf and the other on the upper tier.
+subtasks:
+- name: Place one orange on the upper tier of the shelf
+  score: 40
+- name: Place the other orange on the lower tier of the shelf
+  score: 60
+robot_type: dual_fr3v2_sharpa
+scene: libero_tabletop_base_style
+max_seconds: 180
+robot_pose:
+  pos:
+  - 0.5
+  - -0.45
+  - 0.6
+  quat:
+  - 0.382683
+  - 0
+  - 0
+  - 0.92388
+# Shelf004 (scale 0.9), two tiers. The stacked_on z-windows span the tier rest
+# ranges (upper ~0.30-0.46, lower ~0.08-0.28 delta-z above the shelf base) and
+# the xy radius is widened to 0.15 -- the tier slab is ~0.142 x 0.094 m at scale
+# 0.9, so the old 0.07 radius rejected an orange placed near the slab EDGE (the
+# "placed on lower tier never latched" bug; the earlier window-only fix kept the
+# 0.07 radius, so it still failed). rest_on_surface centers the shelf on the
+# table; the two oranges spawn to the right (x=+0.25), spaced in y, then are
+# placed onto the two tiers.
+regions:
+  shelf_zone:
+    center:
+    - 0.0
+    - 0.0
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - 1.57
+    - 1.58
+    rest_on_surface: true
+  fruit_zone_a:
+    center:
+    - 0.25
+    - 0.15
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+  fruit_zone_b:
+    center:
+    - 0.25
+    - -0.15
+    - 0.85
+    xy_range:
+    - 0.06
+    - 0.06
+    yaw_range:
+    - -3.14
+    - 3.14
+    rest_on_surface: true
+objects:
+- name: rc/lightwheel/tiered_shelf/Shelf004
+  region: shelf_zone
+  scale: 0.9
+  freejoint: true
+  mass: 200
+- name: rc/objaverse/orange/orange_1
+  region: fruit_zone_a
+  freejoint: true
+- name: rc/objaverse/orange/orange_2
+  region: fruit_zone_b
+  freejoint: true
+fixtures: []
+goal:
+- type: stacked_on
+  args:
+  - rc/objaverse/orange/orange_1
+  - rc/lightwheel/tiered_shelf/Shelf004
+  - 0.30
+  - 0.46
+  subtask: Place one orange on the upper tier of the shelf
+  threshold: 0.15
+  must_hold: true
+- type: stacked_on
+  args:
+  - rc/objaverse/orange/orange_2
+  - rc/lightwheel/tiered_shelf/Shelf004
+  - 0.08
+  - 0.28
+  subtask: Place the other orange on the lower tier of the shelf
+  threshold: 0.15
+  must_hold: true
+obj_of_interest:
+- rc/lightwheel/tiered_shelf/Shelf004
+- rc/objaverse/orange/orange_1
+- rc/objaverse/orange/orange_2
